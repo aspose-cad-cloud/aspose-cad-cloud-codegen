@@ -9660,29 +9660,6 @@
         {
           "type": "object",
           "properties": {
-            "BorderType": {
-              "enum": [
-                "Bottom",
-                "Left",
-                "Right",
-                "Top",
-                "Horizontal",
-                "Vertical",
-                "DiagonalDown",
-                "DiagonalUp",
-                "None"
-              ],
-              "description": "Gets or sets the border type.\n            "
-            },
-            "Color": {
-              "description": "Gets or sets the border color.\n            ",
-              "$ref": "#/definitions/XmlColor"
-            },
-            "DistanceFromText": {
-              "type": "number",
-              "description": "Gets or sets distance of the border from text or from the page edge in points.",
-              "format": "double"
-            },
             "LineStyle": {
               "enum": [
                 "None",
@@ -9720,9 +9697,32 @@
               "description": "Gets or sets the border width in points.",
               "format": "double"
             },
+            "Color": {
+              "description": "Gets or sets the border color.\n            ",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "DistanceFromText": {
+              "type": "number",
+              "description": "Gets or sets distance of the border from text or from the page edge in points.",
+              "format": "double"
+            },
             "Shadow": {
               "type": "boolean",
               "description": "Gets or sets a value indicating whether the border has a shadow."
+            },
+            "BorderType": {
+              "enum": [
+                "Bottom",
+                "Left",
+                "Right",
+                "Top",
+                "Horizontal",
+                "Vertical",
+                "DiagonalDown",
+                "DiagonalUp",
+                "None"
+              ],
+              "description": "Gets or sets the border type.\n            "
             }
           }
         }
@@ -9997,9 +9997,28 @@
               "type": "boolean",
               "description": "Allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents."
             },
+            "PreferredWidth": {
+              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
+              "$ref": "#/definitions/PreferredWidth"
+            },
             "Bidi": {
               "type": "boolean",
               "description": "Gets or sets whether this is a right-to-left table."
+            },
+            "LeftPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
+              "format": "double"
+            },
+            "RightPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
+              "format": "double"
+            },
+            "TopPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
+              "format": "double"
             },
             "BottomPadding": {
               "type": "number",
@@ -10016,19 +10035,23 @@
               "description": "Gets or sets the value that represents the left indent of the table.",
               "format": "double"
             },
-            "LeftPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
-              "format": "double"
+            "StyleOptions": {
+              "enum": [
+                "None",
+                "FirstRow",
+                "LastRow",
+                "FirstColumn",
+                "LastColumn",
+                "RowBands",
+                "Default",
+                "ColumnBands",
+                "Default2003"
+              ],
+              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
             },
-            "PreferredWidth": {
-              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
-              "$ref": "#/definitions/PreferredWidth"
-            },
-            "RightPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
-              "format": "double"
+            "StyleName": {
+              "type": "string",
+              "description": "Gets or sets the name of the table style applied to this table."
             },
             "StyleIdentifier": {
               "enum": [
@@ -10408,24 +10431,6 @@
               ],
               "description": "Gets or sets the locale independent style identifier of the table style applied to this table."
             },
-            "StyleName": {
-              "type": "string",
-              "description": "Gets or sets the name of the table style applied to this table."
-            },
-            "StyleOptions": {
-              "enum": [
-                "None",
-                "FirstRow",
-                "LastRow",
-                "FirstColumn",
-                "LastColumn",
-                "RowBands",
-                "Default",
-                "ColumnBands",
-                "Default2003"
-              ],
-              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
-            },
             "TextWrapping": {
               "enum": [
                 "Default",
@@ -10433,11 +10438,6 @@
                 "Around"
               ],
               "description": "Get or sets TextWrapping  for table."
-            },
-            "TopPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
-              "format": "double"
             }
           }
         }
@@ -10920,82 +10920,6 @@
         {
           "type": "object",
           "properties": {
-            "AllCaps": {
-              "type": "boolean",
-              "description": "True if the font is formatted as all capital letters.\n            "
-            },
-            "Bidi": {
-              "type": "boolean",
-              "description": "Specifies whether the contents of this run shall have right-to-left characteristics.\n            "
-            },
-            "Bold": {
-              "type": "boolean",
-              "description": "True if the font is formatted as bold.\n            "
-            },
-            "BoldBi": {
-              "type": "boolean",
-              "description": "True if the right-to-left text is formatted as bold.\n            "
-            },
-            "Border": {
-              "description": "Border object that specifies border for the font.",
-              "$ref": "#/definitions/Border"
-            },
-            "Color": {
-              "description": "Gets or sets the color of the font.\n            ",
-              "$ref": "#/definitions/XmlColor"
-            },
-            "ComplexScript": {
-              "type": "boolean",
-              "description": "Specifies whether the contents of this run shall be treated as complex script text regardless\nof their Unicode character values when determining the formatting for this run.\n            "
-            },
-            "DoubleStrikeThrough": {
-              "type": "boolean",
-              "description": "True if the font is formatted as double strikethrough text.\n            "
-            },
-            "Emboss": {
-              "type": "boolean",
-              "description": "True if the font is formatted as embossed.\n            "
-            },
-            "Engrave": {
-              "type": "boolean",
-              "description": "True if the font is formatted as engraved.\n            "
-            },
-            "Hidden": {
-              "type": "boolean",
-              "description": "True if the font is formatted as hidden text.\n            "
-            },
-            "HighlightColor": {
-              "description": "Gets or sets the highlight (marker) color.\n            ",
-              "$ref": "#/definitions/XmlColor"
-            },
-            "Italic": {
-              "type": "boolean",
-              "description": "True if the font is formatted as italic.\n            "
-            },
-            "ItalicBi": {
-              "type": "boolean",
-              "description": "True if the right-to-left text is formatted as italic.\n            "
-            },
-            "Kerning": {
-              "type": "number",
-              "description": "Gets or sets the font size at which kerning starts.\n            ",
-              "format": "double"
-            },
-            "LocaleId": {
-              "type": "integer",
-              "description": "Gets or sets the locale identifier (language) of the formatted characters.\n            ",
-              "format": "int32"
-            },
-            "LocaleIdBi": {
-              "type": "integer",
-              "description": "Gets or sets the locale identifier (language) of the formatted right-to-left characters.\n            ",
-              "format": "int32"
-            },
-            "LocaleIdFarEast": {
-              "type": "integer",
-              "description": "Gets or sets the locale identifier (language) of the formatted Asian characters.\n            ",
-              "format": "int32"
-            },
             "Name": {
               "type": "string",
               "description": "Gets or sets the name of the font\n            "
@@ -11016,28 +10940,6 @@
               "type": "string",
               "description": "Returns or sets the font used for characters with character codes from 128 through 255.\n            "
             },
-            "NoProofing": {
-              "type": "boolean",
-              "description": "True when the formatted characters are not to be spell checked."
-            },
-            "Outline": {
-              "type": "boolean",
-              "description": "True if the font is formatted as outline.\n            "
-            },
-            "Position": {
-              "type": "number",
-              "description": "Gets or sets the position of text (in points) relative to the base line.\nA positive number raises the text, and a negative number lowers it.\n            ",
-              "format": "double"
-            },
-            "Scaling": {
-              "type": "integer",
-              "description": "Gets or sets character width scaling in percent.\n            ",
-              "format": "int32"
-            },
-            "Shadow": {
-              "type": "boolean",
-              "description": "True if the font is formatted as shadowed.\n            "
-            },
             "Size": {
               "type": "number",
               "description": "Gets or sets the font size in points.\n            ",
@@ -11048,18 +10950,167 @@
               "description": "Gets or sets the font size in points used in a right-to-left document.\n            ",
               "format": "double"
             },
+            "Bold": {
+              "type": "boolean",
+              "description": "True if the font is formatted as bold.\n            "
+            },
+            "BoldBi": {
+              "type": "boolean",
+              "description": "True if the right-to-left text is formatted as bold.\n            "
+            },
+            "Italic": {
+              "type": "boolean",
+              "description": "True if the font is formatted as italic.\n            "
+            },
+            "ItalicBi": {
+              "type": "boolean",
+              "description": "True if the right-to-left text is formatted as italic.\n            "
+            },
+            "Color": {
+              "description": "Gets or sets the color of the font.\n            ",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "StrikeThrough": {
+              "type": "boolean",
+              "description": "True if the font is formatted as strikethrough text.\n            "
+            },
+            "DoubleStrikeThrough": {
+              "type": "boolean",
+              "description": "True if the font is formatted as double strikethrough text.\n            "
+            },
+            "Shadow": {
+              "type": "boolean",
+              "description": "True if the font is formatted as shadowed.\n            "
+            },
+            "Outline": {
+              "type": "boolean",
+              "description": "True if the font is formatted as outline.\n            "
+            },
+            "Emboss": {
+              "type": "boolean",
+              "description": "True if the font is formatted as embossed.\n            "
+            },
+            "Engrave": {
+              "type": "boolean",
+              "description": "True if the font is formatted as engraved.\n            "
+            },
+            "Superscript": {
+              "type": "boolean",
+              "description": "True if the font is formatted as superscript.\n            "
+            },
+            "Subscript": {
+              "type": "boolean",
+              "description": "True if the font is formatted as subscript.\n            "
+            },
             "SmallCaps": {
               "type": "boolean",
               "description": "True if the font is formatted as small capital letters.\n            "
+            },
+            "AllCaps": {
+              "type": "boolean",
+              "description": "True if the font is formatted as all capital letters.\n            "
+            },
+            "Hidden": {
+              "type": "boolean",
+              "description": "True if the font is formatted as hidden text.\n            "
+            },
+            "Underline": {
+              "enum": [
+                "None",
+                "Single",
+                "Words",
+                "Double",
+                "Dotted",
+                "Thick",
+                "Dash",
+                "DotDash",
+                "DotDotDash",
+                "Wavy",
+                "DottedHeavy",
+                "DashHeavy",
+                "DotDashHeavy",
+                "DotDotDashHeavy",
+                "WavyHeavy",
+                "DashLong",
+                "WavyDouble",
+                "DashLongHeavy"
+              ],
+              "description": "Gets or sets the type of underline applied to the font."
+            },
+            "UnderlineColor": {
+              "description": "Gets or sets the color of the underline applied to the font.",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "Scaling": {
+              "type": "integer",
+              "description": "Gets or sets character width scaling in percent.\n            ",
+              "format": "int32"
             },
             "Spacing": {
               "type": "number",
               "description": "Returns or sets the spacing (in points) between characters.\n            ",
               "format": "double"
             },
-            "StrikeThrough": {
+            "Position": {
+              "type": "number",
+              "description": "Gets or sets the position of text (in points) relative to the base line.\nA positive number raises the text, and a negative number lowers it.\n            ",
+              "format": "double"
+            },
+            "Kerning": {
+              "type": "number",
+              "description": "Gets or sets the font size at which kerning starts.\n            ",
+              "format": "double"
+            },
+            "HighlightColor": {
+              "description": "Gets or sets the highlight (marker) color.\n            ",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "TextEffect": {
+              "enum": [
+                "None",
+                "LasVegasLights",
+                "BlinkingBackground",
+                "SparkleText",
+                "MarchingBlackAnts",
+                "MarchingRedAnts",
+                "Shimmer"
+              ],
+              "description": "Gets or sets the font animation effect."
+            },
+            "Bidi": {
               "type": "boolean",
-              "description": "True if the font is formatted as strikethrough text.\n            "
+              "description": "Specifies whether the contents of this run shall have right-to-left characteristics.\n            "
+            },
+            "ComplexScript": {
+              "type": "boolean",
+              "description": "Specifies whether the contents of this run shall be treated as complex script text regardless\nof their Unicode character values when determining the formatting for this run.\n            "
+            },
+            "NoProofing": {
+              "type": "boolean",
+              "description": "True when the formatted characters are not to be spell checked."
+            },
+            "LocaleId": {
+              "type": "integer",
+              "description": "Gets or sets the locale identifier (language) of the formatted characters.\n            ",
+              "format": "int32"
+            },
+            "LocaleIdBi": {
+              "type": "integer",
+              "description": "Gets or sets the locale identifier (language) of the formatted right-to-left characters.\n            ",
+              "format": "int32"
+            },
+            "LocaleIdFarEast": {
+              "type": "integer",
+              "description": "Gets or sets the locale identifier (language) of the formatted Asian characters.\n            ",
+              "format": "int32"
+            },
+            "Border": {
+              "description": "Border object that specifies border for the font.",
+              "$ref": "#/definitions/Border"
+            },
+            "StyleName": {
+              "type": "string",
+              "description": "Gets or sets the name of the character style applied to this formatting.\n            "
             },
             "StyleIdentifier": {
               "enum": [
@@ -11438,57 +11489,6 @@
                 "Nil"
               ],
               "description": "Gets or sets the locale independent style identifier of the character style applied to this formatting."
-            },
-            "StyleName": {
-              "type": "string",
-              "description": "Gets or sets the name of the character style applied to this formatting.\n            "
-            },
-            "Subscript": {
-              "type": "boolean",
-              "description": "True if the font is formatted as subscript.\n            "
-            },
-            "Superscript": {
-              "type": "boolean",
-              "description": "True if the font is formatted as superscript.\n            "
-            },
-            "TextEffect": {
-              "enum": [
-                "None",
-                "LasVegasLights",
-                "BlinkingBackground",
-                "SparkleText",
-                "MarchingBlackAnts",
-                "MarchingRedAnts",
-                "Shimmer"
-              ],
-              "description": "Gets or sets the font animation effect."
-            },
-            "Underline": {
-              "enum": [
-                "None",
-                "Single",
-                "Words",
-                "Double",
-                "Dotted",
-                "Thick",
-                "Dash",
-                "DotDash",
-                "DotDotDash",
-                "Wavy",
-                "DottedHeavy",
-                "DashHeavy",
-                "DotDashHeavy",
-                "DotDotDashHeavy",
-                "WavyHeavy",
-                "DashLong",
-                "WavyDouble",
-                "DashLongHeavy"
-              ],
-              "description": "Gets or sets the type of underline applied to the font."
-            },
-            "UnderlineColor": {
-              "description": "Gets or sets the color of the underline applied to the font.",
-              "$ref": "#/definitions/XmlColor"
             }
           }
         }
@@ -12605,42 +12605,100 @@
         {
           "type": "object",
           "properties": {
+            "DifferentFirstPageHeaderFooter": {
+              "type": "boolean",
+              "description": "True if a different header or footer is used on the first page.\n            "
+            },
+            "SectionStart": {
+              "enum": [
+                "Continuous",
+                "NewColumn",
+                "NewPage",
+                "EvenPage",
+                "OddPage"
+              ],
+              "description": "Returns or sets the type of section break for the specified object.\n            "
+            },
+            "SuppressEndnotes": {
+              "type": "boolean",
+              "description": "True if endnotes are printed at the end of the next section that doesn't suppress endnotes.\n                Suppressed endnotes are printed before the endnotes in that section.\n            "
+            },
+            "VerticalAlignment": {
+              "enum": [
+                "Top",
+                "Center",
+                "Justify",
+                "Bottom"
+              ],
+              "description": "Returns or sets the vertical alignment of text on each page in a document or section.\n            "
+            },
             "Bidi": {
               "type": "boolean",
               "description": "Specifies that this section contains bidirectional (complex scripts) text.\n            "
             },
-            "BorderAlwaysInFront": {
-              "type": "boolean",
-              "description": "Specifies where the page border is positioned relative to intersecting texts and objects.\n            "
+            "PageWidth": {
+              "type": "number",
+              "description": "Returns or sets the width of the page in points.\n            ",
+              "format": "double"
             },
-            "BorderAppliesTo": {
-              "enum": [
-                "AllPages",
-                "FirstPage",
-                "OtherPages"
-              ],
-              "description": "Specifies which pages the page border is printed on.\n            "
+            "PageHeight": {
+              "type": "number",
+              "description": "Returns or sets the height of the page in points.\n            ",
+              "format": "double"
             },
-            "BorderDistanceFrom": {
+            "PaperSize": {
               "enum": [
-                "Text",
-                "PageEdge"
+                "A3",
+                "A4",
+                "A5",
+                "B4",
+                "B5",
+                "Executive",
+                "Folio",
+                "Ledger",
+                "Legal",
+                "Letter",
+                "EnvelopeDL",
+                "Quarto",
+                "Statement",
+                "Tabloid",
+                "Paper10x14",
+                "Paper11x17",
+                "Custom"
               ],
-              "description": "Gets or sets a value that indicates whether the specified page border is measured from the edge of the page or from\nthe text it surrounds.\n            "
+              "description": "Returns or sets the paper size.\n            "
+            },
+            "Orientation": {
+              "enum": [
+                "Portrait",
+                "Landscape"
+              ],
+              "description": "Returns or sets the orientation of the page.\n            "
+            },
+            "LeftMargin": {
+              "type": "number",
+              "description": "Returns or sets the distance (in points) between the left edge of the page and the left boundary of the body text.\n            ",
+              "format": "double"
+            },
+            "RightMargin": {
+              "type": "number",
+              "description": "Returns or sets the distance (in points) between the right edge of the page and the right boundary of the body\ntext.\n            ",
+              "format": "double"
+            },
+            "TopMargin": {
+              "type": "number",
+              "description": "Returns or sets the distance (in points) between the top edge of the page and the top boundary of the body text.\n            ",
+              "format": "double"
             },
             "BottomMargin": {
               "type": "number",
               "description": "Returns or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body\ntext.\n            ",
               "format": "double"
             },
-            "DifferentFirstPageHeaderFooter": {
-              "type": "boolean",
-              "description": "True if a different header or footer is used on the first page.\n            "
-            },
-            "FirstPageTray": {
-              "type": "integer",
-              "description": "Gets or sets the paper tray (bin) to use for the first page of a section.\nThe value is implementation (printer) specific.\n            ",
-              "format": "int32"
+            "HeaderDistance": {
+              "type": "number",
+              "description": "Returns or sets the distance (in points) between the header and the top of the page.\n            ",
+              "format": "double"
             },
             "FooterDistance": {
               "type": "number",
@@ -12652,55 +12710,15 @@
               "description": "Gets or sets the amount of extra space added to the margin for document binding.\n            ",
               "format": "double"
             },
-            "HeaderDistance": {
-              "type": "number",
-              "description": "Returns or sets the distance (in points) between the header and the top of the page.\n            ",
-              "format": "double"
-            },
-            "LeftMargin": {
-              "type": "number",
-              "description": "Returns or sets the distance (in points) between the left edge of the page and the left boundary of the body text.\n            ",
-              "format": "double"
-            },
-            "LineNumberCountBy": {
+            "FirstPageTray": {
               "type": "integer",
-              "description": "Returns or sets the numeric increment for line numbers.\n            ",
+              "description": "Gets or sets the paper tray (bin) to use for the first page of a section.\nThe value is implementation (printer) specific.\n            ",
               "format": "int32"
-            },
-            "LineNumberDistanceFromText": {
-              "type": "number",
-              "description": "Gets or sets distance between the right edge of line numbers and the left edge of the document.\n            ",
-              "format": "double"
-            },
-            "LineNumberRestartMode": {
-              "enum": [
-                "RestartPage",
-                "RestartSection",
-                "Continuous"
-              ],
-              "description": "Gets or sets the way line numbering runs  that is, whether it starts over at the beginning of a new\npage or section or runs continuously.\n            "
-            },
-            "LineStartingNumber": {
-              "type": "integer",
-              "description": "Gets or sets the starting line number.\n            ",
-              "format": "int32"
-            },
-            "Orientation": {
-              "enum": [
-                "Portrait",
-                "Landscape"
-              ],
-              "description": "Returns or sets the orientation of the page.\n            "
             },
             "OtherPagesTray": {
               "type": "integer",
               "description": "Gets or sets the paper tray (bin) to be used for all but the first page of a section.\nThe value is implementation (printer) specific.\n            ",
               "format": "int32"
-            },
-            "PageHeight": {
-              "type": "number",
-              "description": "Returns or sets the height of the page in points.\n            ",
-              "format": "double"
             },
             "PageNumberStyle": {
               "enum": [
@@ -12770,78 +12788,60 @@
               ],
               "description": "Gets or sets the page number format.\n            "
             },
+            "RestartPageNumbering": {
+              "type": "boolean",
+              "description": "True if page numbering restarts at the beginning of the section.\n            "
+            },
             "PageStartingNumber": {
               "type": "integer",
               "description": "Gets or sets the starting page number of the section.\n            ",
               "format": "int32"
             },
-            "PageWidth": {
-              "type": "number",
-              "description": "Returns or sets the width of the page in points.\n            ",
-              "format": "double"
-            },
-            "PaperSize": {
+            "LineNumberRestartMode": {
               "enum": [
-                "A3",
-                "A4",
-                "A5",
-                "B4",
-                "B5",
-                "Executive",
-                "Folio",
-                "Ledger",
-                "Legal",
-                "Letter",
-                "EnvelopeDL",
-                "Quarto",
-                "Statement",
-                "Tabloid",
-                "Paper10x14",
-                "Paper11x17",
-                "Custom"
+                "RestartPage",
+                "RestartSection",
+                "Continuous"
               ],
-              "description": "Returns or sets the paper size.\n            "
+              "description": "Gets or sets the way line numbering runs  that is, whether it starts over at the beginning of a new\npage or section or runs continuously.\n            "
             },
-            "RestartPageNumbering": {
-              "type": "boolean",
-              "description": "True if page numbering restarts at the beginning of the section.\n            "
+            "LineNumberCountBy": {
+              "type": "integer",
+              "description": "Returns or sets the numeric increment for line numbers.\n            ",
+              "format": "int32"
             },
-            "RightMargin": {
+            "LineNumberDistanceFromText": {
               "type": "number",
-              "description": "Returns or sets the distance (in points) between the right edge of the page and the right boundary of the body\ntext.\n            ",
+              "description": "Gets or sets distance between the right edge of line numbers and the left edge of the document.\n            ",
               "format": "double"
+            },
+            "LineStartingNumber": {
+              "type": "integer",
+              "description": "Gets or sets the starting line number.\n            ",
+              "format": "int32"
             },
             "RtlGutter": {
               "type": "boolean",
               "description": "Gets or sets whether Microsoft Word uses gutters for the section based on a right-to-left language or a\nleft-to-right language.\n            "
             },
-            "SectionStart": {
-              "enum": [
-                "Continuous",
-                "NewColumn",
-                "NewPage",
-                "EvenPage",
-                "OddPage"
-              ],
-              "description": "Returns or sets the type of section break for the specified object.\n            "
-            },
-            "SuppressEndnotes": {
+            "BorderAlwaysInFront": {
               "type": "boolean",
-              "description": "True if endnotes are printed at the end of the next section that doesn't suppress endnotes.\n                Suppressed endnotes are printed before the endnotes in that section.\n            "
+              "description": "Specifies where the page border is positioned relative to intersecting texts and objects.\n            "
             },
-            "TopMargin": {
-              "type": "number",
-              "description": "Returns or sets the distance (in points) between the top edge of the page and the top boundary of the body text.\n            ",
-              "format": "double"
-            },
-            "VerticalAlignment": {
+            "BorderDistanceFrom": {
               "enum": [
-                "Top",
-                "Center",
-                "Justify",
-                "Bottom"
+                "Text",
+                "PageEdge"
               ],
-              "description": "Returns or sets the vertical alignment of text on each page in a document or section.\n            "
+              "description": "Gets or sets a value that indicates whether the specified page border is measured from the edge of the page or from\nthe text it surrounds.\n            "
+            },
+            "BorderAppliesTo": {
+              "enum": [
+                "AllPages",
+                "FirstPage",
+                "OtherPages"
+              ],
+              "description": "Specifies which pages the page border is printed on.\n            "
             }
           }
         }
