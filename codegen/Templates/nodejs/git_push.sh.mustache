@@ -1,0 +1,109 @@
+{{>licenseInfo}}
+{{#models}}
+{{#model}}
+{{#description}}
+/*
+* {{{description}}}
+*/
+{{/description}}
+export class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
+
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {{#vars}}
+        {
+            name: "{{name}}",
+            baseName: "{{baseName}}",
+            type: "{{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}}",
+        }{{#hasMore}},        
+        {{/hasMore}}        
+        {{/vars}}
+    ];
+
+    public static getAttributeTypeMap() {
+        {{#parent}}
+        return super.getAttributeTypeMap().concat({{classname}}.attributeTypeMap);
+        {{/parent}}
+        {{^parent}}
+        return {{classname}}.attributeTypeMap;
+        {{/parent}}
+    }
+
+{{#vars}}
+{{#description}}
+    /*
+    * {{{description}}}
+    */
+{{/description}}
+    public {{name}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
+    
+{{/vars}}            
+}
+
+{{#hasEnums}}
+// tslint:disable:quotemark
+// tslint:disable-next-line:no-namespace
+export namespace {{classname}} {
+{{#vars}}
+{{#isEnum}}
+    export enum {{enumName}} {
+        {{#allowableValues}}
+        {{#enumVars}}
+        {{name}} = {{{value}}} as any,
+        {{/enumVars}}
+        {{/allowableValues}}
+    }
+{{/isEnum}}
+{{/vars}}
+}
+// tslint:enable:quotemark
+{{/hasEnums}}
+{{/model}}
+{{/models}}
+const enumsMap = {
+    {{#models}}
+        {{#model}}
+            {{#hasEnums}}
+                {{#vars}}
+                    {{#isEnum}}
+    "{{datatypeWithEnum}}": {{datatypeWithEnum}},
+                    {{/isEnum}}
+                {{/vars}}
+            {{/hasEnums}}
+        {{/model}}
+    {{/models}}
+};
+
+const typeMap = {
+    {{#models}}
+        {{#model}}
+            {{classname}},
+        {{/model}}
+    {{/models}}
+};
+
+export {enumsMap, typeMap};
+{{#apiInfo}}
+{{#apis}}
+{{#operations}}
+{{#operation}}
+
+/*
+* Request model for {{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}} operation.
+*/
+export class {{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request {
+{{#hasParams}}
+{{#allParams}}                
+    /*
+    * {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
+    */
+    public {{paramName}}: {{{dataType}}};
+    {{#hasMore}}
+
+    {{/hasMore}}
+    {{/allParams}}
+    {{/hasParams}}
+}
+{{/operation}}
+{{/operations}}
+{{/apis}}
+{{/apiInfo}}
