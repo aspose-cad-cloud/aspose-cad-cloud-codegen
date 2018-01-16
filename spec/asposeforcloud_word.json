@@ -10714,7 +10714,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TextItem"
-              }
+              },
+              "description": "Collection of text items."
             }
           }
         }
@@ -10732,7 +10733,8 @@
           "type": "object",
           "properties": {
             "Text": {
-              "type": "string"
+              "type": "string",
+              "description": "Text."
             }
           }
         }
@@ -12268,7 +12270,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/DocumentProperty"
-              }
+              },
+              "description": "Collection of document properties."
             }
           }
         }
@@ -13308,7 +13311,8 @@
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "description": "Collection of fields names."
             }
           }
         }
