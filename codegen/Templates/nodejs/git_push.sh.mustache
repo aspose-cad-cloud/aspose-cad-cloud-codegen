@@ -2,12 +2,15 @@
 {{#models}}
 {{#model}}
 {{#description}}
-/*
-* {{{description}}}
-*/
+/**
+ * {{{description}}}
+ */
 {{/description}}
 export class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
 
+    /**
+     * Attribute type map
+     */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {{#vars}}
         {
@@ -19,6 +22,9 @@ export class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
         {{/vars}}
     ];
 
+    /**
+     * Returns attribute type map
+     */
     public static getAttributeTypeMap() {
         {{#parent}}
         return super.getAttributeTypeMap().concat({{classname}}.attributeTypeMap);
@@ -30,9 +36,9 @@ export class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
 
 {{#vars}}
 {{#description}}
-    /*
-    * {{{description}}}
-    */
+    /**
+     * {{{description}}}
+     */
 {{/description}}
     public {{name}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
     
@@ -87,15 +93,15 @@ export {enumsMap, typeMap};
 {{#operations}}
 {{#operation}}
 
-/*
-* Request model for {{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}} operation.
-*/
+/**
+ * Request model for {{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}} operation.
+ */
 export class {{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request {
 {{#hasParams}}
 {{#allParams}}                
-    /*
-    * {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
-    */
+    /**
+     * {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
+     */
     public {{paramName}}: {{{dataType}}};
     {{#hasMore}}
 
