@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.Words for Cloud API Reference",
-    "version": "17.12"
+    "version": "18.1"
   },
   "host": "localhost",
   "basePath": "/v1.1",
@@ -9997,28 +9997,9 @@
               "type": "boolean",
               "description": "Allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents."
             },
-            "PreferredWidth": {
-              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
-              "$ref": "#/definitions/PreferredWidth"
-            },
             "Bidi": {
               "type": "boolean",
               "description": "Gets or sets whether this is a right-to-left table."
-            },
-            "LeftPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
-              "format": "double"
-            },
-            "RightPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
-              "format": "double"
-            },
-            "TopPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
-              "format": "double"
             },
             "BottomPadding": {
               "type": "number",
@@ -10035,23 +10016,19 @@
               "description": "Gets or sets the value that represents the left indent of the table.",
               "format": "double"
             },
-            "StyleOptions": {
-              "enum": [
-                "None",
-                "FirstRow",
-                "LastRow",
-                "FirstColumn",
-                "LastColumn",
-                "RowBands",
-                "Default",
-                "ColumnBands",
-                "Default2003"
-              ],
-              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
+            "LeftPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
+              "format": "double"
             },
-            "StyleName": {
-              "type": "string",
-              "description": "Gets or sets the name of the table style applied to this table."
+            "PreferredWidth": {
+              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
+              "$ref": "#/definitions/PreferredWidth"
+            },
+            "RightPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
+              "format": "double"
             },
             "StyleIdentifier": {
               "enum": [
@@ -10431,6 +10408,24 @@
               ],
               "description": "Gets or sets the locale independent style identifier of the table style applied to this table."
             },
+            "StyleName": {
+              "type": "string",
+              "description": "Gets or sets the name of the table style applied to this table."
+            },
+            "StyleOptions": {
+              "enum": [
+                "None",
+                "FirstRow",
+                "LastRow",
+                "FirstColumn",
+                "LastColumn",
+                "RowBands",
+                "Default",
+                "ColumnBands",
+                "Default2003"
+              ],
+              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
+            },
             "TextWrapping": {
               "enum": [
                 "Default",
@@ -10438,6 +10433,11 @@
                 "Around"
               ],
               "description": "Get or sets TextWrapping  for table."
+            },
+            "TopPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
+              "format": "double"
             }
           }
         }
@@ -10604,14 +10604,50 @@
         {
           "type": "object",
           "properties": {
+            "LeftPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add to the left of the contents of cell.",
+              "format": "double"
+            },
+            "RightPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add to the right of the contents of cell.",
+              "format": "double"
+            },
+            "TopPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add above the contents of cell.",
+              "format": "double"
+            },
             "BottomPadding": {
               "type": "number",
               "description": "Returns or sets the amount of space (in points) to add below the contents of cell.",
               "format": "double"
             },
-            "FitText": {
-              "type": "boolean",
-              "description": "If true, fits text in the cell, compressing each paragraph to the width of the cell."
+            "VerticalAlignment": {
+              "enum": [
+                "Top",
+                "Center",
+                "Bottom"
+              ],
+              "description": "Returns or sets the vertical alignment of text in the cell."
+            },
+            "Width": {
+              "type": "number",
+              "description": "Gets the width of the cell in points.",
+              "format": "double"
+            },
+            "PreferredWidth": {
+              "description": "Returns or sets the preferred width of the cell.",
+              "$ref": "#/definitions/PreferredWidth"
+            },
+            "VerticalMerge": {
+              "enum": [
+                "None",
+                "First",
+                "Previous"
+              ],
+              "description": "Specifies how the cell is merged with other cells vertically."
             },
             "HorizontalMerge": {
               "enum": [
@@ -10620,11 +10656,6 @@
                 "Previous"
               ],
               "description": "Specifies how the cell is merged horizontally with other cells in the row."
-            },
-            "LeftPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add to the left of the contents of cell.",
-              "format": "double"
             },
             "Orientation": {
               "enum": [
@@ -10637,40 +10668,9 @@
               ],
               "description": "Returns or sets the orientation of text in a table cell."
             },
-            "PreferredWidth": {
-              "description": "Returns or sets the preferred width of the cell.",
-              "$ref": "#/definitions/PreferredWidth"
-            },
-            "RightPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add to the right of the contents of cell.",
-              "format": "double"
-            },
-            "TopPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add above the contents of cell.",
-              "format": "double"
-            },
-            "VerticalAlignment": {
-              "enum": [
-                "Top",
-                "Center",
-                "Bottom"
-              ],
-              "description": "Returns or sets the vertical alignment of text in the cell."
-            },
-            "VerticalMerge": {
-              "enum": [
-                "None",
-                "First",
-                "Previous"
-              ],
-              "description": "Specifies how the cell is merged with other cells vertically."
-            },
-            "Width": {
-              "type": "number",
-              "description": "Gets the width of the cell in points.",
-              "format": "double"
+            "FitText": {
+              "type": "boolean",
+              "description": "If true, fits text in the cell, compressing each paragraph to the width of the cell."
             },
             "WrapText": {
               "type": "boolean",
