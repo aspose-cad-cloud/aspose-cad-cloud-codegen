@@ -112,6 +112,10 @@ export class {{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request 
     {{/hasMore}}
     {{/allParams}}
     {{/hasParams}}
+    
+    public constructor(init?: Partial<{{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request>) {        
+        Object.assign(this, init);
+    } 
 }
 {{/operation}}
 {{/operations}}
