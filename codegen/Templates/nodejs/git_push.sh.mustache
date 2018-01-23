@@ -42,7 +42,11 @@ export class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
 {{/description}}
     public {{name}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
     
-{{/vars}}            
+{{/vars}}
+    public constructor(init?: Partial<{{classname}}>) {
+        {{#parent}}super(init);{{/parent}}
+        Object.assign(this, init);
+    }        
 }
 
 {{#hasEnums}}
