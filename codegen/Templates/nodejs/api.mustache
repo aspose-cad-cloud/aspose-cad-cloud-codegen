@@ -4,7 +4,7 @@ import request = require("request");
 
 import { Configuration } from "./internal/configuration";
 import { ObjectSerializer } from "./internal/objectSerializer";
-import { invokeApiMethod } from "./internal/requestHelper";
+import { addQueryParameterToUrl, invokeApiMethod } from "./internal/requestHelper";
 import * as model from "./model/model";
 
 {{#apiInfo}}
@@ -39,29 +39,31 @@ export class {{classname}} {
             throw new Error('Required parameter "requestObj" was null or undefined when calling {{nickname}}.');
         }
 
-        const localVarPath = this.configuration.getApiBaseUrl() + "{{{path}}}"{{#pathParams}}
+        {{#hasQueryParams}}let{{/hasQueryParams}}{{^hasQueryParams}}const{{/hasQueryParams}} localVarPath = this.configuration.getApiBaseUrl() + "{{{path}}}"{{#pathParams}}
             .replace("{" + "{{paramName}}" + "}", String(requestObj.{{paramName}})){{/pathParams}};
         const queryParameters: any = {};
+        {{#hasHeaderParams}}
         const headerParams: any = {};
+        {{/hasHeaderParams}}
+        {{#hasFormParams}}
         const formParams: any = {};
+        {{/hasFormParams}}
 {{#allParams}}{{#required}}
         // verify required parameter 'requestObj.{{paramName}}' is not null or undefined
         if (requestObj.{{paramName}} === null || requestObj.{{paramName}} === undefined) {
             throw new Error('Required parameter "requestObj.{{paramName}}" was null or undefined when calling {{nickname}}.');
         }
-{{/required}}{{/allParams}}
-{{#queryParams}}
-        if (requestObj.{{paramName}} !== undefined) {
-            queryParameters.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
-        }
-
+{{/required}}{{/allParams}}        
+{{#queryParams}}        
+        localVarPath = addQueryParameterToUrl(localVarPath, queryParameters, "{{paramName}}", requestObj.{{paramName}});
 {{/queryParams}}
 {{#headerParams}}
         headerParams.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
 {{/headerParams}}
+ {{#hasFormParams}}
         // tslint:disable-next-line:prefer-const
         let useFormData = false;
-
+{{/hasFormParams}}
 {{#formParams}}
         if (requestObj.{{paramName}} !== undefined) {
             {{#isFile}}
@@ -71,15 +73,18 @@ export class {{classname}} {
             formParams.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
             {{/isFile}}
         }
+
 {{#isFile}}
         useFormData = true;
-{{/isFile}}
 
+{{/isFile}}
 {{/formParams}}
         const requestOptions: request.Options = {
             method: "{{httpMethod}}",
             qs: queryParameters,
+            {{#hasHeaderParams}}
             headers: headerParams,
+            {{/hasHeaderParams}}
             uri: localVarPath,
 {{^isResponseFile}}
             json: true,
@@ -92,6 +97,7 @@ export class {{classname}} {
 {{/bodyParam}}
         };
 
+{{#hasFormParams}}
         if (Object.keys(formParams).length) {
             if (useFormData) {
                 (requestOptions as any).formData = formParams;
@@ -99,7 +105,7 @@ export class {{classname}} {
                 requestOptions.form = formParams;
             }
         }
-
+{{/hasFormParams}}
         const response = await invokeApiMethod(requestOptions, this.configuration);
         {{#returnType}}
         const result =  ObjectSerializer.deserialize(response.body, "{{{returnType}}}");
