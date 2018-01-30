@@ -60,10 +60,6 @@ export class {{classname}} {
 {{#headerParams}}
         headerParams.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
 {{/headerParams}}
- {{#hasFormParams}}
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
-{{/hasFormParams}}
 {{#formParams}}
         if (requestObj.{{paramName}} !== undefined) {
             {{#isFile}}
@@ -74,10 +70,6 @@ export class {{classname}} {
             {{/isFile}}
         }
 
-{{#isFile}}
-        useFormData = true;
-
-{{/isFile}}
 {{/formParams}}
         const requestOptions: request.Options = {
             method: "{{httpMethod}}",
@@ -98,13 +90,7 @@ export class {{classname}} {
         };
 
 {{#hasFormParams}}
-        if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
-        }
+        (requestOptions as any).formData = formParams;        
 {{/hasFormParams}}
         const response = await invokeApiMethod(requestOptions, this.configuration);
         {{#returnType}}
