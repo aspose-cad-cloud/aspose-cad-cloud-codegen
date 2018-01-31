@@ -46,8 +46,8 @@ module {{moduleName}}
 {{/required}}{{/allParams}}    # @param [Hash] opts the optional parameters
 {{#allParams}}{{^required}}    # @option opts [{{{dataType}}}] :{{paramName}} {{description}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
 {{/required}}{{/allParams}}    # @return [{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}]
-    def {{operationId}}({{operationId}}_request)
-      {{#returnType}}data, _status_code, _headers = {{/returnType}}{{operationId}}_with_http_info({{operationId}}_request)
+    def {{operationId}}(request)
+      {{#returnType}}data, _status_code, _headers = {{/returnType}}{{operationId}}_with_http_info(request)
       {{#returnType}}data{{/returnType}}{{^returnType}}nil{{/returnType}}
     end
 
@@ -57,8 +57,8 @@ module {{moduleName}}
 {{/required}}{{/allParams}}    # @param [Hash] opts the optional parameters
 {{#allParams}}{{^required}}    # @option opts [{{{dataType}}}] :{{paramName}} {{description}}
 {{/required}}{{/allParams}}    # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>] {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
-    def {{operationId}}_with_http_info({{operationId}}_request)
-	  if !{{operationId}}_request.is_a? {{operationId}}Request
+    def {{operationId}}_with_http_info(request)
+	  unless request.is_a? {{operationId}}_request
 	    fail ArgumentError, "Incorrect request type"
 	  end
 	  
@@ -68,13 +68,13 @@ module {{moduleName}}
       {{#allParams}}
       {{#required}}
       # verify the required parameter '{{paramName}}' is set
-      if @api_client.config.client_side_validation && {{operationId}}_request.{{{paramName}}}.nil?
+      if @api_client.config.client_side_validation && request.{{{paramName}}}.nil?
         fail ArgumentError, "Missing the required parameter '{{paramName}}' when calling {{classname}}.{{operationId}}"
       end
       {{#isEnum}}
       {{^isContainer}}
       # verify enum value
-      if @api_client.config.client_side_validation && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?({{operationId}}_request.{{{paramName}}})
+      if @api_client.config.client_side_validation && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
         fail ArgumentError, "invalid value for '{{{paramName}}}', must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}"
       end
       {{/isContainer}}
@@ -83,12 +83,12 @@ module {{moduleName}}
       {{^required}}
       {{#isEnum}}
       {{#collectionFormat}}
-      if @api_client.config.client_side_validation && {{operationId}}_request.{{{paramName}}} && !{{operationId}}_request.{{{paramName}}}.all?{|item| [{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(item)}
+      if @api_client.config.client_side_validation && request.{{{paramName}}} && !request.{{{paramName}}}.all?{|item| [{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(item)}
         fail ArgumentError, 'invalid value for "{{{paramName}}}", must include one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
       end
       {{/collectionFormat}}
       {{^collectionFormat}}
-      if @api_client.config.client_side_validation && {{operationId}}_request.{{{paramName}}} && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?({{operationId}}_request.{{{paramName}}})
+      if @api_client.config.client_side_validation && request.{{{paramName}}} && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
         fail ArgumentError, 'invalid value for "{{{paramName}}}", must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
       end
       {{/collectionFormat}}
@@ -96,44 +96,44 @@ module {{moduleName}}
       {{/required}}
       {{#hasValidation}}
       {{#maxLength}}
-      if @api_client.config.client_side_validation && {{^required}}!{{operationId}}_request.{{{paramName}}}.nil? && {{/required}}{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}.to_s.length > {{{maxLength}}}
+      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length > {{{maxLength}}}
         fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, the character length must be smaller than or equal to {{{maxLength}}}.'
       end
 
       {{/maxLength}}
       {{#minLength}}
-      if @api_client.config.client_side_validation && {{^required}}!{{{paramName}}}.nil? && {{/required}}{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}.to_s.length < {{{minLength}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, the character length must be great than or equal to {{{minLength}}}.'
+      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length < {{{minLength}}}
+        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, the character length must be great than or equal to {{{minLength}}}.'
       end
 
       {{/minLength}}
       {{#maximum}}
-      if @api_client.config.client_side_validation && {{^required}}!{{operationId}}_request.{{{paramName}}}.nil? && {{/required}}{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{{maximum}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}.'
+      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{{maximum}}}
+        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}.'
       end
 
       {{/maximum}}
       {{#minimum}}
-      if @api_client.config.client_side_validation && {{^required}}!{{operationId}}_request.{{{paramName}}}.nil? && {{/required}}{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}} {{{minimum}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}.'
+      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}} {{{minimum}}}
+        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}.'
       end
 
       {{/minimum}}
       {{#pattern}}
-      if @api_client.config.client_side_validation && {{^required}}!{{operationId}}_request.{{{paramName}}}.nil? && {{/required}}{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}} !~ Regexp.new({{{pattern}}})
-        fail ArgumentError, "invalid value for '{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}' when calling {{classname}}.{{operationId}}, must conform to the pattern {{{pattern}}}."
+      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} !~ Regexp.new({{{pattern}}})
+        fail ArgumentError, "invalid value for '{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}' when calling {{classname}}.{{operationId}}, must conform to the pattern {{{pattern}}}."
       end
 
       {{/pattern}}
       {{#maxItems}}
-      if @api_client.config.client_side_validation && {{^required}}!{{operationId}}_request.{{{paramName}}}.nil? && {{/required}}{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}.length > {{{maxItems}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, number of items must be less than or equal to {{{maxItems}}}.'
+      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length > {{{maxItems}}}
+        fail ArgumentError, 'invalid value for "{{#required}}request.{{{paramName}}}{{/required}}{{^required}}{request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, number of items must be less than or equal to {{{maxItems}}}.'
       end
 
       {{/maxItems}}
       {{#minItems}}
-      if @api_client.config.client_side_validation && {{^required}}!{{operationId}}_request.{{{paramName}}}.nil? && {{/required}}{{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}.length < {{{minItems}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, number of items must be greater than or equal to {{{minItems}}}.'
+      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length < {{{minItems}}}
+        fail ArgumentError, 'invalid value for "{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, number of items must be greater than or equal to {{{minItems}}}.'
       end
 
       {{/minItems}}
@@ -142,19 +142,19 @@ module {{moduleName}}
       # resource path
       local_var_path = "{{{path}}}"
 	  {{#pathParams}}
-	  local_var_path.sub('{' + downcase_first_letter('{{baseName}}') + '}', {{operationId}}_request.{{paramName}}.to_s)
+	  local_var_path.sub('{' + downcase_first_letter('{{baseName}}') + '}', request.{{paramName}}.to_s)
 	  {{/pathParams}}
 
       # query parameters
       query_params = {}
       {{#queryParams}}
       {{#required}}
-      query_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param({{operationId}}_request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}{{operationId}}_request.{{{paramName}}}{{/collectionFormat}}
+      query_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}}
       {{/required}}
       {{/queryParams}}
       {{#queryParams}}
       {{^required}}
-      query_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param({{operationId}}_request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}{{operationId}}_request.{{{paramName}}}{{/collectionFormat}} unless {{operationId}}_request.{{{paramName}}}.nil?
+      query_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}} unless request.{{{paramName}}}.nil?
       {{/required}}
       {{/queryParams}}
 
@@ -170,12 +170,12 @@ module {{moduleName}}
       {{/hasConsumes}}
       {{#headerParams}}
       {{#required}}
-      header_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param({{operationId}}_request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}{{operationId}}_request.{{{paramName}}}{{/collectionFormat}}
+      header_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}}
       {{/required}}
       {{/headerParams}}
       {{#headerParams}}
       {{^required}}
-      header_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param({{operationId}}_request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}{{operationId}}_request.{{{paramName}}}{{/collectionFormat}} unless {{operationId}}_request.{{{paramName}}}.nil?
+      header_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}} unless request.{{{paramName}}}.nil?
       {{/required}}
       {{/headerParams}}
 
@@ -183,12 +183,12 @@ module {{moduleName}}
       form_params = {}
       {{#formParams}}
       {{#required}}
-      form_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param({{operationId}}_request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}{{operationId}}_request.{{{paramName}}}{{/collectionFormat}}
+      form_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}}
       {{/required}}
       {{/formParams}}
       {{#formParams}}
       {{^required}}
-      form_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param({{operationId}}_request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}{{operationId}}_request.{{{paramName}}}{{/collectionFormat}} unless {{operationId}}_request.{{paramName}}.nil?
+      form_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}} unless request.{{paramName}}.nil?
       {{/required}}
       {{/formParams}}
 
@@ -197,7 +197,7 @@ module {{moduleName}}
       post_body = nil
       {{/bodyParam}}
       {{#bodyParam}}
-      post_body = @api_client.object_to_http_body({{#required}}{{operationId}}_request.{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}})
+      post_body = @api_client.object_to_http_body({{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}})
       {{/bodyParam}}
       auth_names = [{{#authMethods}}'{{name}}'{{#hasMore}}, {{/hasMore}}{{/authMethods}}]
       data, status_code, headers = @api_client.call_api(:{{httpMethod}}, local_var_path,
@@ -215,13 +215,12 @@ module {{moduleName}}
 {{/operation}}
   end
   
- #
- # Helper method to convert first letter to downcase
- #
-def downcase_first_letter(str)
-  str[0].downcase + str[1..-1]
-end
+	#
+	# Helper method to convert first letter to downcase
+	#
+	def downcase_first_letter(str)
+		str[0].downcase + str[1..-1]
+	end
 {{/operations}}
-
 end
 {{> requestModel}}
