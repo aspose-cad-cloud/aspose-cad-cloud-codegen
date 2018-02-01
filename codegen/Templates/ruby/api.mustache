@@ -42,10 +42,8 @@ module {{moduleName}}
 {{newline}}
     # {{{summary}}}
     # {{{notes}}}
-{{#allParams}}{{#required}}    # @param {{paramName}} {{description}}
-{{/required}}{{/allParams}}    # @param [Hash] opts the optional parameters
-{{#allParams}}{{^required}}    # @option opts [{{{dataType}}}] :{{paramName}} {{description}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-{{/required}}{{/allParams}}    # @return [{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}]
+	# @param request {{operationId}}_request
+    # @return [{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}]
     def {{operationId}}(request)
       {{#returnType}}data, _status_code, _headers = {{/returnType}}{{operationId}}_with_http_info(request)
       {{#returnType}}data{{/returnType}}{{^returnType}}nil{{/returnType}}
@@ -53,10 +51,8 @@ module {{moduleName}}
 
     # {{summary}}
     # {{notes}}
-{{#allParams}}{{#required}}    # @param {{paramName}} {{description}}
-{{/required}}{{/allParams}}    # @param [Hash] opts the optional parameters
-{{#allParams}}{{^required}}    # @option opts [{{{dataType}}}] :{{paramName}} {{description}}
-{{/required}}{{/allParams}}    # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>] {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
+    # # @param request {{operationId}}_request
+    # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>] {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
     def {{operationId}}_with_http_info(request)
 	  unless request.is_a? {{operationId}}_request
 	    fail ArgumentError, "Incorrect request type"
