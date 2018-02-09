@@ -11,6 +11,7 @@ Directory | Description
 --------- | -----------
 [.NET SDK](https://github.com/aspose-words-cloud/aspose-words-cloud-dotnet) | Cloud SDK for .NET Framework 2.0 and higher
 [PHP SDK](https://github.com/aspose-words-cloud/aspose-words-cloud-php) | Cloud SDK for PHP 5.6 and higher
+[Node.js SDK](https://github.com/aspose-words-cloud/aspose-words-cloud-node) | Cloud SDK for Node.js 4.8.7 and higher
 
 To use these SDKs, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
 
