@@ -5,7 +5,6 @@ codegen\Tools\SplitRubyCodeFile.exe C:\tmp\ruby\lib\ruby_sdk\api\words_api.rb C:
 
 del /S /Q "SDKs\RUBY\lib" || goto :error
 xcopy "C:\tmp\ruby\lib\ruby_sdk" "SDKs\RUBY\lib" /E || goto :error
-xcopy "C:\tmp\ruby\lib\ruby_sdk.rb" "SDKs\RUBY\lib" || goto :error
 
 goto :EOF
 
