@@ -1,0 +1,106 @@
+{{>licenseInfo}}
+import http = require("http");
+import request = require("request");
+
+import { Configuration } from "./internal/configuration";
+import { ObjectSerializer } from "./internal/objectSerializer";
+import { addQueryParameterToUrl, invokeApiMethod } from "./internal/requestHelper";
+import * as model from "./model/model";
+
+{{#apiInfo}}
+{{#apis}}
+{{#operations}}
+/**
+ * Library for communicating with the Aspose.Words Cloud API
+ */
+export class {{classname}} {
+    /**
+     * API configuration
+     */
+    public configuration: Configuration;
+
+    /**
+     * @param appSID App SID.
+     * @param appKey App key.
+     * @param baseUrl Base api Url.
+     * @param debugMode A value indicating whether debug mode. In debug mode all requests and responses are logged to console.
+     */
+    constructor(appSID: string, appKey: string, baseUrl?: string, debugMode?: boolean) {
+        this.configuration = new Configuration(appSID, appKey, baseUrl, debugMode);
+    }
+
+{{#operation}}
+    /**
+     * {{&summary}}{{#notes}} {{&notes}}{{/notes}}
+     * @param requestObj contains request parameters
+     */
+    public async {{nickname}}(requestObj: model.{{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request): Promise<{response: http.ClientResponse, body: {{#vendorExtensions}}{{#x-binary-result}}Buffer{{/x-binary-result}}{{/vendorExtensions}}{{#vendorExtensions}}{{^x-binary-result}}{{#returnType}}model.{{{returnType}}}{{/returnType}}{{^returnType}}body?: any; {{/returnType}}{{/x-binary-result}}{{/vendorExtensions}}}> {
+        if (requestObj === null || requestObj === undefined) {
+            throw new Error('Required parameter "requestObj" was null or undefined when calling {{nickname}}.');
+        }
+
+        {{#hasQueryParams}}let{{/hasQueryParams}}{{^hasQueryParams}}const{{/hasQueryParams}} localVarPath = this.configuration.getApiBaseUrl() + "{{{path}}}"{{#pathParams}}
+            .replace("{" + "{{paramName}}" + "}", String(requestObj.{{paramName}})){{/pathParams}};
+        const queryParameters: any = {};
+        {{#hasHeaderParams}}
+        const headerParams: any = {};
+        {{/hasHeaderParams}}
+        {{#hasFormParams}}
+        const formParams: any = {};
+        {{/hasFormParams}}
+{{#allParams}}{{#required}}
+        // verify required parameter 'requestObj.{{paramName}}' is not null or undefined
+        if (requestObj.{{paramName}} === null || requestObj.{{paramName}} === undefined) {
+            throw new Error('Required parameter "requestObj.{{paramName}}" was null or undefined when calling {{nickname}}.');
+        }
+{{/required}}{{/allParams}}        
+{{#queryParams}}        
+        localVarPath = addQueryParameterToUrl(localVarPath, queryParameters, "{{paramName}}", requestObj.{{paramName}});
+{{/queryParams}}
+{{#headerParams}}
+        headerParams.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
+{{/headerParams}}
+{{#formParams}}
+        if (requestObj.{{paramName}} !== undefined) {
+            {{#isFile}}
+            formParams.{{baseName}} = requestObj.{{paramName}};
+            {{/isFile}}
+            {{^isFile}}
+            formParams.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
+            {{/isFile}}
+        }
+
+{{/formParams}}
+        const requestOptions: request.Options = {
+            method: "{{httpMethod}}",
+            qs: queryParameters,
+            {{#hasHeaderParams}}
+            headers: headerParams,
+            {{/hasHeaderParams}}
+            uri: localVarPath,
+{{^isResponseFile}}
+            json: true,
+{{/isResponseFile}}
+{{#isResponseFile}}
+            encoding: null,
+{{/isResponseFile}}
+{{#bodyParam}}
+            body: ObjectSerializer.serialize(requestObj.{{paramName}}, requestObj.{{paramName}}.constructor.name),
+{{/bodyParam}}
+        };
+
+{{#hasFormParams}}
+        (requestOptions as any).formData = formParams;        
+{{/hasFormParams}}
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        {{#returnType}}
+        const result =  ObjectSerializer.deserialize(response.body, "{{{returnType}}}");
+        return Promise.resolve({body: result, response});
+        {{/returnType}}        
+    }
+
+{{/operation}}
+}
+{{/operations}}
+{{/apis}}
+{{/apiInfo}}

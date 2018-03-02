@@ -8,3 +8,6 @@
 [submodule "SDKs/RUBY"]
 	path = SDKs/RUBY
 	url = https://github.com/aspose-words-cloud/aspose-words-cloud-ruby
+[submodule "SDKs/node"]
+	path = SDKs/node
+	url = https://github.com/aspose-words-cloud/aspose-words-cloud-node.git
