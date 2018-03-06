@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.Words for Cloud API Reference",
-    "version": "18.1"
+    "version": "18.2"
   },
   "host": "localhost",
   "basePath": "/v1.1",
@@ -10604,50 +10604,14 @@
         {
           "type": "object",
           "properties": {
-            "LeftPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add to the left of the contents of cell.",
-              "format": "double"
-            },
-            "RightPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add to the right of the contents of cell.",
-              "format": "double"
-            },
-            "TopPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add above the contents of cell.",
-              "format": "double"
-            },
             "BottomPadding": {
               "type": "number",
               "description": "Returns or sets the amount of space (in points) to add below the contents of cell.",
               "format": "double"
             },
-            "VerticalAlignment": {
-              "enum": [
-                "Top",
-                "Center",
-                "Bottom"
-              ],
-              "description": "Returns or sets the vertical alignment of text in the cell."
-            },
-            "Width": {
-              "type": "number",
-              "description": "Gets the width of the cell in points.",
-              "format": "double"
-            },
-            "PreferredWidth": {
-              "description": "Returns or sets the preferred width of the cell.",
-              "$ref": "#/definitions/PreferredWidth"
-            },
-            "VerticalMerge": {
-              "enum": [
-                "None",
-                "First",
-                "Previous"
-              ],
-              "description": "Specifies how the cell is merged with other cells vertically."
+            "FitText": {
+              "type": "boolean",
+              "description": "If true, fits text in the cell, compressing each paragraph to the width of the cell."
             },
             "HorizontalMerge": {
               "enum": [
@@ -10656,6 +10620,11 @@
                 "Previous"
               ],
               "description": "Specifies how the cell is merged horizontally with other cells in the row."
+            },
+            "LeftPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add to the left of the contents of cell.",
+              "format": "double"
             },
             "Orientation": {
               "enum": [
@@ -10668,9 +10637,40 @@
               ],
               "description": "Returns or sets the orientation of text in a table cell."
             },
-            "FitText": {
-              "type": "boolean",
-              "description": "If true, fits text in the cell, compressing each paragraph to the width of the cell."
+            "PreferredWidth": {
+              "description": "Returns or sets the preferred width of the cell.",
+              "$ref": "#/definitions/PreferredWidth"
+            },
+            "RightPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add to the right of the contents of cell.",
+              "format": "double"
+            },
+            "TopPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add above the contents of cell.",
+              "format": "double"
+            },
+            "VerticalAlignment": {
+              "enum": [
+                "Top",
+                "Center",
+                "Bottom"
+              ],
+              "description": "Returns or sets the vertical alignment of text in the cell."
+            },
+            "VerticalMerge": {
+              "enum": [
+                "None",
+                "First",
+                "Previous"
+              ],
+              "description": "Specifies how the cell is merged with other cells vertically."
+            },
+            "Width": {
+              "type": "number",
+              "description": "Gets the width of the cell in points.",
+              "format": "double"
             },
             "WrapText": {
               "type": "boolean",
@@ -12235,7 +12235,6 @@
             "Ott",
             "Pdf",
             "Xps",
-            "Swf",
             "Tiff",
             "Svg"
           ],
@@ -13714,7 +13713,7 @@
           }
         }
       ],
-      "description": "Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, SWF, images etc)."
+      "description": "Contains common options that can be specified when saving a document into fixed page formats (PDF, XPS, images etc)."
     },
     "MetafileRenderingOptionsData": {
       "type": "object",
@@ -14494,108 +14493,6 @@
         }
       ],
       "description": "container class for svg save options"
-    },
-    "SwfSaveOptionsData": {
-      "type": "null",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/FixedPageSaveOptionsData"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "AllowReadMode": {
-              "type": "boolean",
-              "description": "Allows to enable read mode"
-            },
-            "BookmarksOutlineLevel": {
-              "type": "integer",
-              "description": "Specifies the level in the SWF document outline at which to display Word bookmarks",
-              "format": "int32"
-            },
-            "Compressed": {
-              "type": "boolean",
-              "description": "Specifies whether the generated SWF document should be compressed or not"
-            },
-            "EnableContextMenu": {
-              "type": "boolean",
-              "description": "Enable/disable context menu"
-            },
-            "ExpandedOutlineLevels": {
-              "type": "integer",
-              "description": "Specifies how many levels in the SWF document outline to show expanded when the SWF file is viewed",
-              "format": "int32"
-            },
-            "HeadingsOutlineLevels": {
-              "type": "integer",
-              "description": "Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the SWF document outline",
-              "format": "int32"
-            },
-            "LeftPaneControlFlags": {
-              "type": "string",
-              "description": "Control flags used to configure appearance of left panel of SWF viewer"
-            },
-            "LogoImageBytes": {
-              "type": "string",
-              "description": "Image that will be displayed as logo in the top right corner of the viewer as string in base64 format"
-            },
-            "LogoLink": {
-              "type": "string",
-              "description": "Specifies the full hyperlink address for a logo"
-            },
-            "OutlineOptions": {
-              "description": "Allows to specify outline options",
-              "$ref": "#/definitions/OutlineOptionsData"
-            },
-            "ShowBottomPane": {
-              "type": "boolean",
-              "description": "Show/hide bottom pane"
-            },
-            "ShowFullScreen": {
-              "type": "boolean",
-              "description": "Show/hide fullscreen button"
-            },
-            "ShowLeftPane": {
-              "type": "boolean",
-              "description": "Show/hide left pane"
-            },
-            "ShowPageBorder": {
-              "type": "boolean",
-              "description": "Specifies whether border around pages should be shown"
-            },
-            "ShowPageStepper": {
-              "type": "boolean",
-              "description": "Show/hide page stepper"
-            },
-            "ShowSearch": {
-              "type": "boolean",
-              "description": "Show/hide search section"
-            },
-            "ShowTopPane": {
-              "type": "boolean",
-              "description": "Show/hide whole top pane"
-            },
-            "StartOpenLeftPane": {
-              "type": "boolean",
-              "description": "Start with opened left pane"
-            },
-            "ToolTipsFontName": {
-              "type": "string",
-              "description": "Specifies a font used for tooltips in SWF viewer"
-            },
-            "TopPaneControlFlags": {
-              "type": "string",
-              "description": "Control flags used to configure appearance of top panel of SWF viewer"
-            },
-            "ViewerIncluded": {
-              "type": "boolean",
-              "description": "Specifies whether the generated SWF document should include the integrated document viewer or not"
-            }
-          }
-        }
-      ],
-      "description": "container class for swf save options"
     },
     "TextSaveOptionsData": {
       "type": "null",
