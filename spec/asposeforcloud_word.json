@@ -9997,28 +9997,9 @@
               "type": "boolean",
               "description": "Allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents."
             },
-            "PreferredWidth": {
-              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
-              "$ref": "#/definitions/PreferredWidth"
-            },
             "Bidi": {
               "type": "boolean",
               "description": "Gets or sets whether this is a right-to-left table."
-            },
-            "LeftPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
-              "format": "double"
-            },
-            "RightPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
-              "format": "double"
-            },
-            "TopPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
-              "format": "double"
             },
             "BottomPadding": {
               "type": "number",
@@ -10035,23 +10016,19 @@
               "description": "Gets or sets the value that represents the left indent of the table.",
               "format": "double"
             },
-            "StyleOptions": {
-              "enum": [
-                "None",
-                "FirstRow",
-                "LastRow",
-                "FirstColumn",
-                "LastColumn",
-                "RowBands",
-                "Default",
-                "ColumnBands",
-                "Default2003"
-              ],
-              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
+            "LeftPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
+              "format": "double"
             },
-            "StyleName": {
-              "type": "string",
-              "description": "Gets or sets the name of the table style applied to this table."
+            "PreferredWidth": {
+              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
+              "$ref": "#/definitions/PreferredWidth"
+            },
+            "RightPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
+              "format": "double"
             },
             "StyleIdentifier": {
               "enum": [
@@ -10431,6 +10408,24 @@
               ],
               "description": "Gets or sets the locale independent style identifier of the table style applied to this table."
             },
+            "StyleName": {
+              "type": "string",
+              "description": "Gets or sets the name of the table style applied to this table."
+            },
+            "StyleOptions": {
+              "enum": [
+                "None",
+                "FirstRow",
+                "LastRow",
+                "FirstColumn",
+                "LastColumn",
+                "RowBands",
+                "Default",
+                "ColumnBands",
+                "Default2003"
+              ],
+              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
+            },
             "TextWrapping": {
               "enum": [
                 "Default",
@@ -10438,6 +10433,11 @@
                 "Around"
               ],
               "description": "Get or sets TextWrapping  for table."
+            },
+            "TopPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
+              "format": "double"
             }
           }
         }
