@@ -26,7 +26,7 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "",
+            "description": "The .",
             "schema": {
               "$ref": "#/definitions/AsposeResponse"
             },
@@ -9425,7 +9425,7 @@
           "items": {
             "$ref": "#/definitions/NodeLink"
           },
-          "description": "Child nodes.        "
+          "description": "Child nodes.        \n// TODO: add table as child node"
         }
       },
       "description": "Child nodes of  or "
@@ -12296,7 +12296,7 @@
             },
             "Value": {
               "type": "string",
-              "description": "String value of the document property. "
+              "description": "string value of the document property. "
             },
             "BuiltIn": {
               "type": "boolean",
@@ -14329,7 +14329,7 @@
         },
         "Permissions": {
           "type": "string",
-          "description": "Specifies the operations that are allowed to a user on an encrypted PDF document"
+          "description": "Specifies the operations that are allowed to a user on an encrypted PDF document\n// TODO (andrey.ushakov) : think use this form or list of permissions"
         },
         "UserPassword": {
           "type": "string",
