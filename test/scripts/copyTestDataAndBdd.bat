@@ -6,6 +6,7 @@ del /S /Q "SDKs\node\bdd\features" || goto :error
 xcopy "test\bdd\Features" "SDKs\node\bdd\features" /E || goto :error
 xcopy "test\TestData" "SDKs\node\TestData" /E /y || goto :error
 
+goto :EOF
 :error
 echo Failed with error #%errorlevel%.
 exit /b %errorlevel%
