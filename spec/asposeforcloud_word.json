@@ -2563,6 +2563,7 @@
             "x-nullable": true
           }
         },
+        "deprecated": true,
         "x-csharp-implements": "IWordDocumentRequest",
         "x-operationId": "GetDocumentTextItems"
       }
@@ -9660,29 +9661,6 @@
         {
           "type": "object",
           "properties": {
-            "BorderType": {
-              "enum": [
-                "Bottom",
-                "Left",
-                "Right",
-                "Top",
-                "Horizontal",
-                "Vertical",
-                "DiagonalDown",
-                "DiagonalUp",
-                "None"
-              ],
-              "description": "Gets or sets the border type.\n            "
-            },
-            "Color": {
-              "description": "Gets or sets the border color.\n            ",
-              "$ref": "#/definitions/XmlColor"
-            },
-            "DistanceFromText": {
-              "type": "number",
-              "description": "Gets or sets distance of the border from text or from the page edge in points.",
-              "format": "double"
-            },
             "LineStyle": {
               "enum": [
                 "None",
@@ -9720,9 +9698,32 @@
               "description": "Gets or sets the border width in points.",
               "format": "double"
             },
+            "Color": {
+              "description": "Gets or sets the border color.\n            ",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "DistanceFromText": {
+              "type": "number",
+              "description": "Gets or sets distance of the border from text or from the page edge in points.",
+              "format": "double"
+            },
             "Shadow": {
               "type": "boolean",
               "description": "Gets or sets a value indicating whether the border has a shadow."
+            },
+            "BorderType": {
+              "enum": [
+                "Bottom",
+                "Left",
+                "Right",
+                "Top",
+                "Horizontal",
+                "Vertical",
+                "DiagonalDown",
+                "DiagonalUp",
+                "None"
+              ],
+              "description": "Gets or sets the border type.\n            "
             }
           }
         }
@@ -10922,82 +10923,6 @@
         {
           "type": "object",
           "properties": {
-            "AllCaps": {
-              "type": "boolean",
-              "description": "True if the font is formatted as all capital letters.\n            "
-            },
-            "Bidi": {
-              "type": "boolean",
-              "description": "Specifies whether the contents of this run shall have right-to-left characteristics.\n            "
-            },
-            "Bold": {
-              "type": "boolean",
-              "description": "True if the font is formatted as bold.\n            "
-            },
-            "BoldBi": {
-              "type": "boolean",
-              "description": "True if the right-to-left text is formatted as bold.\n            "
-            },
-            "Border": {
-              "description": "Border object that specifies border for the font.",
-              "$ref": "#/definitions/Border"
-            },
-            "Color": {
-              "description": "Gets or sets the color of the font.\n            ",
-              "$ref": "#/definitions/XmlColor"
-            },
-            "ComplexScript": {
-              "type": "boolean",
-              "description": "Specifies whether the contents of this run shall be treated as complex script text regardless\nof their Unicode character values when determining the formatting for this run.\n            "
-            },
-            "DoubleStrikeThrough": {
-              "type": "boolean",
-              "description": "True if the font is formatted as double strikethrough text.\n            "
-            },
-            "Emboss": {
-              "type": "boolean",
-              "description": "True if the font is formatted as embossed.\n            "
-            },
-            "Engrave": {
-              "type": "boolean",
-              "description": "True if the font is formatted as engraved.\n            "
-            },
-            "Hidden": {
-              "type": "boolean",
-              "description": "True if the font is formatted as hidden text.\n            "
-            },
-            "HighlightColor": {
-              "description": "Gets or sets the highlight (marker) color.\n            ",
-              "$ref": "#/definitions/XmlColor"
-            },
-            "Italic": {
-              "type": "boolean",
-              "description": "True if the font is formatted as italic.\n            "
-            },
-            "ItalicBi": {
-              "type": "boolean",
-              "description": "True if the right-to-left text is formatted as italic.\n            "
-            },
-            "Kerning": {
-              "type": "number",
-              "description": "Gets or sets the font size at which kerning starts.\n            ",
-              "format": "double"
-            },
-            "LocaleId": {
-              "type": "integer",
-              "description": "Gets or sets the locale identifier (language) of the formatted characters.\n            ",
-              "format": "int32"
-            },
-            "LocaleIdBi": {
-              "type": "integer",
-              "description": "Gets or sets the locale identifier (language) of the formatted right-to-left characters.\n            ",
-              "format": "int32"
-            },
-            "LocaleIdFarEast": {
-              "type": "integer",
-              "description": "Gets or sets the locale identifier (language) of the formatted Asian characters.\n            ",
-              "format": "int32"
-            },
             "Name": {
               "type": "string",
               "description": "Gets or sets the name of the font\n            "
@@ -11018,28 +10943,6 @@
               "type": "string",
               "description": "Returns or sets the font used for characters with character codes from 128 through 255.\n            "
             },
-            "NoProofing": {
-              "type": "boolean",
-              "description": "True when the formatted characters are not to be spell checked."
-            },
-            "Outline": {
-              "type": "boolean",
-              "description": "True if the font is formatted as outline.\n            "
-            },
-            "Position": {
-              "type": "number",
-              "description": "Gets or sets the position of text (in points) relative to the base line.\nA positive number raises the text, and a negative number lowers it.\n            ",
-              "format": "double"
-            },
-            "Scaling": {
-              "type": "integer",
-              "description": "Gets or sets character width scaling in percent.\n            ",
-              "format": "int32"
-            },
-            "Shadow": {
-              "type": "boolean",
-              "description": "True if the font is formatted as shadowed.\n            "
-            },
             "Size": {
               "type": "number",
               "description": "Gets or sets the font size in points.\n            ",
@@ -11050,18 +10953,167 @@
               "description": "Gets or sets the font size in points used in a right-to-left document.\n            ",
               "format": "double"
             },
+            "Bold": {
+              "type": "boolean",
+              "description": "True if the font is formatted as bold.\n            "
+            },
+            "BoldBi": {
+              "type": "boolean",
+              "description": "True if the right-to-left text is formatted as bold.\n            "
+            },
+            "Italic": {
+              "type": "boolean",
+              "description": "True if the font is formatted as italic.\n            "
+            },
+            "ItalicBi": {
+              "type": "boolean",
+              "description": "True if the right-to-left text is formatted as italic.\n            "
+            },
+            "Color": {
+              "description": "Gets or sets the color of the font.\n            ",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "StrikeThrough": {
+              "type": "boolean",
+              "description": "True if the font is formatted as strikethrough text.\n            "
+            },
+            "DoubleStrikeThrough": {
+              "type": "boolean",
+              "description": "True if the font is formatted as double strikethrough text.\n            "
+            },
+            "Shadow": {
+              "type": "boolean",
+              "description": "True if the font is formatted as shadowed.\n            "
+            },
+            "Outline": {
+              "type": "boolean",
+              "description": "True if the font is formatted as outline.\n            "
+            },
+            "Emboss": {
+              "type": "boolean",
+              "description": "True if the font is formatted as embossed.\n            "
+            },
+            "Engrave": {
+              "type": "boolean",
+              "description": "True if the font is formatted as engraved.\n            "
+            },
+            "Superscript": {
+              "type": "boolean",
+              "description": "True if the font is formatted as superscript.\n            "
+            },
+            "Subscript": {
+              "type": "boolean",
+              "description": "True if the font is formatted as subscript.\n            "
+            },
             "SmallCaps": {
               "type": "boolean",
               "description": "True if the font is formatted as small capital letters.\n            "
+            },
+            "AllCaps": {
+              "type": "boolean",
+              "description": "True if the font is formatted as all capital letters.\n            "
+            },
+            "Hidden": {
+              "type": "boolean",
+              "description": "True if the font is formatted as hidden text.\n            "
+            },
+            "Underline": {
+              "enum": [
+                "None",
+                "Single",
+                "Words",
+                "Double",
+                "Dotted",
+                "Thick",
+                "Dash",
+                "DotDash",
+                "DotDotDash",
+                "Wavy",
+                "DottedHeavy",
+                "DashHeavy",
+                "DotDashHeavy",
+                "DotDotDashHeavy",
+                "WavyHeavy",
+                "DashLong",
+                "WavyDouble",
+                "DashLongHeavy"
+              ],
+              "description": "Gets or sets the type of underline applied to the font."
+            },
+            "UnderlineColor": {
+              "description": "Gets or sets the color of the underline applied to the font.",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "Scaling": {
+              "type": "integer",
+              "description": "Gets or sets character width scaling in percent.\n            ",
+              "format": "int32"
             },
             "Spacing": {
               "type": "number",
               "description": "Returns or sets the spacing (in points) between characters.\n            ",
               "format": "double"
             },
-            "StrikeThrough": {
+            "Position": {
+              "type": "number",
+              "description": "Gets or sets the position of text (in points) relative to the base line.\nA positive number raises the text, and a negative number lowers it.\n            ",
+              "format": "double"
+            },
+            "Kerning": {
+              "type": "number",
+              "description": "Gets or sets the font size at which kerning starts.\n            ",
+              "format": "double"
+            },
+            "HighlightColor": {
+              "description": "Gets or sets the highlight (marker) color.\n            ",
+              "$ref": "#/definitions/XmlColor"
+            },
+            "TextEffect": {
+              "enum": [
+                "None",
+                "LasVegasLights",
+                "BlinkingBackground",
+                "SparkleText",
+                "MarchingBlackAnts",
+                "MarchingRedAnts",
+                "Shimmer"
+              ],
+              "description": "Gets or sets the font animation effect."
+            },
+            "Bidi": {
               "type": "boolean",
-              "description": "True if the font is formatted as strikethrough text.\n            "
+              "description": "Specifies whether the contents of this run shall have right-to-left characteristics.\n            "
+            },
+            "ComplexScript": {
+              "type": "boolean",
+              "description": "Specifies whether the contents of this run shall be treated as complex script text regardless\nof their Unicode character values when determining the formatting for this run.\n            "
+            },
+            "NoProofing": {
+              "type": "boolean",
+              "description": "True when the formatted characters are not to be spell checked."
+            },
+            "LocaleId": {
+              "type": "integer",
+              "description": "Gets or sets the locale identifier (language) of the formatted characters.\n            ",
+              "format": "int32"
+            },
+            "LocaleIdBi": {
+              "type": "integer",
+              "description": "Gets or sets the locale identifier (language) of the formatted right-to-left characters.\n            ",
+              "format": "int32"
+            },
+            "LocaleIdFarEast": {
+              "type": "integer",
+              "description": "Gets or sets the locale identifier (language) of the formatted Asian characters.\n            ",
+              "format": "int32"
+            },
+            "Border": {
+              "description": "Border object that specifies border for the font.",
+              "$ref": "#/definitions/Border"
+            },
+            "StyleName": {
+              "type": "string",
+              "description": "Gets or sets the name of the character style applied to this formatting.\n            "
             },
             "StyleIdentifier": {
               "enum": [
@@ -11440,57 +11492,6 @@
                 "Nil"
               ],
               "description": "Gets or sets the locale independent style identifier of the character style applied to this formatting."
-            },
-            "StyleName": {
-              "type": "string",
-              "description": "Gets or sets the name of the character style applied to this formatting.\n            "
-            },
-            "Subscript": {
-              "type": "boolean",
-              "description": "True if the font is formatted as subscript.\n            "
-            },
-            "Superscript": {
-              "type": "boolean",
-              "description": "True if the font is formatted as superscript.\n            "
-            },
-            "TextEffect": {
-              "enum": [
-                "None",
-                "LasVegasLights",
-                "BlinkingBackground",
-                "SparkleText",
-                "MarchingBlackAnts",
-                "MarchingRedAnts",
-                "Shimmer"
-              ],
-              "description": "Gets or sets the font animation effect."
-            },
-            "Underline": {
-              "enum": [
-                "None",
-                "Single",
-                "Words",
-                "Double",
-                "Dotted",
-                "Thick",
-                "Dash",
-                "DotDash",
-                "DotDotDash",
-                "Wavy",
-                "DottedHeavy",
-                "DashHeavy",
-                "DotDashHeavy",
-                "DotDotDashHeavy",
-                "WavyHeavy",
-                "DashLong",
-                "WavyDouble",
-                "DashLongHeavy"
-              ],
-              "description": "Gets or sets the type of underline applied to the font."
-            },
-            "UnderlineColor": {
-              "description": "Gets or sets the color of the underline applied to the font.",
-              "$ref": "#/definitions/XmlColor"
             }
           }
         }
@@ -11795,10 +11796,6 @@
         {
           "type": "object",
           "properties": {
-            "Checked": {
-              "type": "boolean",
-              "description": "Gets or sets the checked status of the check box form field."
-            },
             "IsCheckBoxExactSize": {
               "type": "boolean",
               "description": "Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly."
@@ -11807,6 +11804,10 @@
               "type": "number",
               "description": "Gets or sets the size of the checkbox in points. Has effect only when  is true.",
               "format": "double"
+            },
+            "Checked": {
+              "type": "boolean",
+              "description": "Gets or sets the checked status of the check box form field."
             }
           }
         }
@@ -11823,17 +11824,17 @@
         {
           "type": "object",
           "properties": {
+            "DropDownSelectedIndex": {
+              "type": "integer",
+              "description": "Gets or sets the index specifying the currently selected item in a dropdown form field.",
+              "format": "int32"
+            },
             "DropDownItems": {
               "type": "array",
               "items": {
                 "type": "string"
               },
               "description": "Provides access to the items of a dropdown form field."
-            },
-            "DropDownSelectedIndex": {
-              "type": "integer",
-              "description": "Gets or sets the index specifying the currently selected item in a dropdown form field.",
-              "format": "int32"
             }
           }
         }
@@ -13899,7 +13900,8 @@
             },
             "ExportMetafileAsRaster": {
               "type": "boolean",
-              "description": "Specifies whether to convert metafiles into raster images when exporting"
+              "deprecated": true,
+              "description": "Specifies whether to convert metafiles into raster images when exporting. \nDeprecated - use the MetafileFormat property instead"
             },
             "ExportOriginalUrlForLinkedImages": {
               "type": "boolean",
