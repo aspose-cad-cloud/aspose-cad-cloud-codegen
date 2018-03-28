@@ -10605,14 +10605,50 @@
         {
           "type": "object",
           "properties": {
+            "LeftPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add to the left of the contents of cell.",
+              "format": "double"
+            },
+            "RightPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add to the right of the contents of cell.",
+              "format": "double"
+            },
+            "TopPadding": {
+              "type": "number",
+              "description": "Returns or sets the amount of space (in points) to add above the contents of cell.",
+              "format": "double"
+            },
             "BottomPadding": {
               "type": "number",
               "description": "Returns or sets the amount of space (in points) to add below the contents of cell.",
               "format": "double"
             },
-            "FitText": {
-              "type": "boolean",
-              "description": "If true, fits text in the cell, compressing each paragraph to the width of the cell."
+            "VerticalAlignment": {
+              "enum": [
+                "Top",
+                "Center",
+                "Bottom"
+              ],
+              "description": "Returns or sets the vertical alignment of text in the cell."
+            },
+            "Width": {
+              "type": "number",
+              "description": "Gets the width of the cell in points.",
+              "format": "double"
+            },
+            "PreferredWidth": {
+              "description": "Returns or sets the preferred width of the cell.",
+              "$ref": "#/definitions/PreferredWidth"
+            },
+            "VerticalMerge": {
+              "enum": [
+                "None",
+                "First",
+                "Previous"
+              ],
+              "description": "Specifies how the cell is merged with other cells vertically."
             },
             "HorizontalMerge": {
               "enum": [
@@ -10621,11 +10657,6 @@
                 "Previous"
               ],
               "description": "Specifies how the cell is merged horizontally with other cells in the row."
-            },
-            "LeftPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add to the left of the contents of cell.",
-              "format": "double"
             },
             "Orientation": {
               "enum": [
@@ -10638,40 +10669,9 @@
               ],
               "description": "Returns or sets the orientation of text in a table cell."
             },
-            "PreferredWidth": {
-              "description": "Returns or sets the preferred width of the cell.",
-              "$ref": "#/definitions/PreferredWidth"
-            },
-            "RightPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add to the right of the contents of cell.",
-              "format": "double"
-            },
-            "TopPadding": {
-              "type": "number",
-              "description": "Returns or sets the amount of space (in points) to add above the contents of cell.",
-              "format": "double"
-            },
-            "VerticalAlignment": {
-              "enum": [
-                "Top",
-                "Center",
-                "Bottom"
-              ],
-              "description": "Returns or sets the vertical alignment of text in the cell."
-            },
-            "VerticalMerge": {
-              "enum": [
-                "None",
-                "First",
-                "Previous"
-              ],
-              "description": "Specifies how the cell is merged with other cells vertically."
-            },
-            "Width": {
-              "type": "number",
-              "description": "Gets the width of the cell in points.",
-              "format": "double"
+            "FitText": {
+              "type": "boolean",
+              "description": "If true, fits text in the cell, compressing each paragraph to the width of the cell."
             },
             "WrapText": {
               "type": "boolean",
@@ -11796,10 +11796,6 @@
         {
           "type": "object",
           "properties": {
-            "Checked": {
-              "type": "boolean",
-              "description": "Gets or sets the checked status of the check box form field."
-            },
             "IsCheckBoxExactSize": {
               "type": "boolean",
               "description": "Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly."
@@ -11808,6 +11804,10 @@
               "type": "number",
               "description": "Gets or sets the size of the checkbox in points. Has effect only when  is true.",
               "format": "double"
+            },
+            "Checked": {
+              "type": "boolean",
+              "description": "Gets or sets the checked status of the check box form field."
             }
           }
         }
@@ -11824,17 +11824,17 @@
         {
           "type": "object",
           "properties": {
+            "DropDownSelectedIndex": {
+              "type": "integer",
+              "description": "Gets or sets the index specifying the currently selected item in a dropdown form field.",
+              "format": "int32"
+            },
             "DropDownItems": {
               "type": "array",
               "items": {
                 "type": "string"
               },
               "description": "Provides access to the items of a dropdown form field."
-            },
-            "DropDownSelectedIndex": {
-              "type": "integer",
-              "description": "Gets or sets the index specifying the currently selected item in a dropdown form field.",
-              "format": "int32"
             }
           }
         }
