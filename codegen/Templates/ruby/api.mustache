@@ -1,7 +1,7 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="words_api.rb">
- #   Copyright (c) 2017 Aspose.Words for Cloud
+ #   Copyright (c) 2018 Aspose.Words for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,6 +37,7 @@ module {{moduleName}}
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
+      require_all '../models/requests'
     end
 {{#operation}}
 {{newline}}
@@ -53,7 +54,7 @@ module {{moduleName}}
     # {{notes}}
     # # @param request {{operationId}}_request
     # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>] {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
-    def {{operationId}}_with_http_info(request)
+    private def {{operationId}}_with_http_info(request)
 	  unless request.is_a? {{operationId}}_request
 	    fail ArgumentError, "Incorrect request type"
 	  end
@@ -216,28 +217,36 @@ module {{moduleName}}
     end
 {{/operation}}
 
-         #
-	     # Helper method to convert first letter to downcase
-	     #
-        def downcase_first_letter(str)
-          value = str[0].downcase + str[1..-1]
-          value
-        end
+     #
+	 # Helper method to convert first letter to downcase
+	 #
+    private def downcase_first_letter(str)
+      value = str[0].downcase + str[1..-1]
+      value
+    end
          		
-         #
-         # Gets a request token from server
-         #
-        def request_token
-          config = @api_client.config
-          api_version = config.base_path
-          config.base_path = ''
-          request_url = "/oauth2/token"
-          post_data = "grant_type=client_credentials" + "&client_id=" + config.api_key['app_sid'] + "&client_secret=" + config.api_key['api_key']
-          data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :return_type => 'Object')
-          @api_client.config.access_token = data[:access_token]
-          @api_client.config.base_path = api_version
-          @api_client.config.refresh_token = data[:refresh_token]
-        end
+     #
+     # Gets a request token from server
+     #
+    private def request_token
+      config = @api_client.config
+      api_version = config.api_version
+      config.api_version = ''
+      request_url = "/oauth2/token"
+      post_data = "grant_type=client_credentials" + "&client_id=" + config.api_key['app_sid'] + "&client_secret=" + config.api_key['api_key']
+      data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :return_type => 'Object')
+      @api_client.config.access_token = data[:access_token]
+      @api_client.config.api_version = api_version
+      @api_client.config.refresh_token = data[:refresh_token]
+    end
+	
+    # requires all files inside a directory from current dir
+    # @param _dir can be relative path like '/lib' or "../lib"
+    private def require_all(_dir)
+      Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), _dir)) + "/*.rb"].each do |file|
+        require file
+      end
+    end
   end
 {{/operations}}
 end
