@@ -1,37 +1,35 @@
- #
- # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="words_api.rb">
- #   Copyright (c) 2018 Aspose.Words for Cloud
- # </copyright>
- # <summary>
- #   Permission is hereby granted, free of charge, to any person obtaining a copy
- #  of this software and associated documentation files (the "Software"), to deal
- #  in the Software without restriction, including without limitation the rights
- #  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- #  copies of the Software, and to permit persons to whom the Software is
- #  furnished to do so, subject to the following conditions:
- # 
- #  The above copyright notice and this permission notice shall be included in all
- #  copies or substantial portions of the Software.
- # 
- #  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- #  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- #  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- #  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- #  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- #  SOFTWARE.
- # </summary>
- # --------------------------------------------------------------------------------------------------------------------
- #
+# -----------------------------------------------------------------------------------
+# <copyright company="Aspose" file="words_api.rb">
+#   Copyright (c) 2018 Aspose.Words for Cloud
+# </copyright>
+# <summary>
+#   Permission is hereby granted, free of charge, to any person obtaining a copy
+#  of this software and associated documentation files (the "Software"), to deal
+#  in the Software without restriction, including without limitation the rights
+#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#  copies of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+# 
+#  The above copyright notice and this permission notice shall be included in all
+#  copies or substantial portions of the Software.
+# 
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#  SOFTWARE.
+# </summary>
+# -----------------------------------------------------------------------------------
 
-require "uri"
+require 'uri'
 
- #
- # Aspose.Words for Cloud API
- #
 module {{moduleName}}
 {{#operations}}
+  #
+  # Aspose.Words for Cloud API
+  #
   class {{classname}}
     attr_accessor :api_client
 
@@ -43,7 +41,7 @@ module {{moduleName}}
 {{newline}}
     # {{{summary}}}
     # {{{notes}}}
-	# @param request {{operationId}}_request
+    # @param request {{operationId}}_request
     # @return [{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}]
     def {{operationId}}(request)
       {{#returnType}}data, _status_code, _headers = {{/returnType}}{{operationId}}_with_http_info(request)
@@ -55,24 +53,24 @@ module {{moduleName}}
     # # @param request {{operationId}}_request
     # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>] {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
     private def {{operationId}}_with_http_info(request)
-	  unless request.is_a? {{operationId}}_request
-	    fail ArgumentError, "Incorrect request type"
-	  end
-	  
+      unless request.is_a? {{operationId}}_request
+        raise ArgumentError, 'Incorrect request type'
+      end
+      
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: {{classname}}.{{operationId}} ..."
+        @api_client.config.logger.debug 'Calling API: {{classname}}.{{operationId}} ...'
       end
       {{#allParams}}
       {{#required}}
       # verify the required parameter '{{paramName}}' is set
       if @api_client.config.client_side_validation && request.{{{paramName}}}.nil?
-        fail ArgumentError, "Missing the required parameter '{{paramName}}' when calling {{classname}}.{{operationId}}"
+        raise ArgumentError, 'Missing the required parameter {{paramName}} when calling {{classname}}.{{operationId}}'
       end
       {{#isEnum}}
       {{^isContainer}}
       # verify enum value
       if @api_client.config.client_side_validation && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
-        fail ArgumentError, "invalid value for '{{{paramName}}}', must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}"
+        raise ArgumentError, 'invalid value for {{{paramName}}}, must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
       end
       {{/isContainer}}
       {{/isEnum}}
@@ -81,12 +79,12 @@ module {{moduleName}}
       {{#isEnum}}
       {{#collectionFormat}}
       if @api_client.config.client_side_validation && request.{{{paramName}}} && !request.{{{paramName}}}.all?{|item| [{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(item)}
-        fail ArgumentError, 'invalid value for "{{{paramName}}}", must include one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
+        raise ArgumentError, 'invalid value for {{{paramName}}}, must include one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
       end
       {{/collectionFormat}}
       {{^collectionFormat}}
       if @api_client.config.client_side_validation && request.{{{paramName}}} && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
-        fail ArgumentError, 'invalid value for "{{{paramName}}}", must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
+        raise ArgumentError, 'invalid value for {{{paramName}}}, must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
       end
       {{/collectionFormat}}
       {{/isEnum}}
@@ -94,43 +92,43 @@ module {{moduleName}}
       {{#hasValidation}}
       {{#maxLength}}
       if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length > {{{maxLength}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, the character length must be smaller than or equal to {{{maxLength}}}.'
+        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, the character length must be smaller than or equal to {{{maxLength}}}.'
       end
 
       {{/maxLength}}
       {{#minLength}}
       if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length < {{{minLength}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, the character length must be great than or equal to {{{minLength}}}.'
+        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, the character length must be great than or equal to {{{minLength}}}.'
       end
 
       {{/minLength}}
       {{#maximum}}
       if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{{maximum}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}.'
+        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}.'
       end
 
       {{/maximum}}
       {{#minimum}}
       if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}} {{{minimum}}}
-        fail ArgumentError, 'invalid value for "{{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}.'
+        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}.'
       end
 
       {{/minimum}}
       {{#pattern}}
       if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} !~ Regexp.new({{{pattern}}})
-        fail ArgumentError, "invalid value for '{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}' when calling {{classname}}.{{operationId}}, must conform to the pattern {{{pattern}}}."
+        raise ArgumentError, "invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must conform to the pattern {{{pattern}}}."
       end
 
       {{/pattern}}
       {{#maxItems}}
       if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length > {{{maxItems}}}
-        fail ArgumentError, 'invalid value for "{{#required}}request.{{{paramName}}}{{/required}}{{^required}}{request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, number of items must be less than or equal to {{{maxItems}}}.'
+        raise ArgumentError, 'invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}{request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, number of items must be less than or equal to {{{maxItems}}}.'
       end
 
       {{/maxItems}}
       {{#minItems}}
       if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length < {{{minItems}}}
-        fail ArgumentError, 'invalid value for "{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}" when calling {{classname}}.{{operationId}}, number of items must be greater than or equal to {{{minItems}}}.'
+        raise ArgumentError, 'invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, number of items must be greater than or equal to {{{minItems}}}.'
       end
 
       {{/minItems}}
@@ -138,9 +136,9 @@ module {{moduleName}}
       {{/allParams}}
       # resource path
       local_var_path = "{{{path}}}"
-	  {{#pathParams}}
+      {{#pathParams}}
       local_var_path = local_var_path.sub('{' + downcase_first_letter('{{baseName}}') + '}', request.{{paramName}}.to_s)
-	  {{/pathParams}}
+      {{/pathParams}}
 
       # query parameters
       query_params = {}
@@ -151,14 +149,14 @@ module {{moduleName}}
       {{/queryParams}}
       {{#queryParams}}
       {{^required}}
-	    if local_var_path.include? downcase_first_letter('{{baseName}}')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('{{baseName}}') + '}', request.{{paramName}}.to_s)
-	    else
-	     query_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}} unless request.{{{paramName}}}.nil?
-	    end  {{/required}}
+        if local_var_path.include? downcase_first_letter('{{baseName}}')
+          local_var_path = local_var_path.sub('{' + downcase_first_letter('{{baseName}}') + '}', request.{{paramName}}.to_s)
+        else
+          query_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}} unless request.{{{paramName}}}.nil?
+        end  {{/required}}
       {{/queryParams}}
-	  
-	  
+      
+      
 
       # header parameters
       header_params = {}
@@ -213,18 +211,18 @@ module {{moduleName}}
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: {{classname}}#{{operationId}}\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers
+      [data, status_code, headers]
     end
 {{/operation}}
 
      #
-	 # Helper method to convert first letter to downcase
-	 #
+     # Helper method to convert first letter to downcase
+     #
     private def downcase_first_letter(str)
       value = str[0].downcase + str[1..-1]
       value
     end
-         		
+                 
      #
      # Gets a request token from server
      #
@@ -239,7 +237,7 @@ module {{moduleName}}
       @api_client.config.api_version = api_version
       @api_client.config.refresh_token = data[:refresh_token]
     end
-	
+    
     # requires all files inside a directory from current dir
     # @param _dir can be relative path like '/lib' or "../lib"
     private def require_all(_dir)
