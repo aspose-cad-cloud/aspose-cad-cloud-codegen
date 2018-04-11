@@ -9129,13 +9129,13 @@
         {
           "type": "object",
           "properties": {
-            "ProtectionResult": {
-              "type": "boolean",
-              "description": "Result of the changing of protection"
-            },
             "DocumentLink": {
               "description": "Link to the document",
               "$ref": "#/definitions/FileLink"
+            },
+            "ProtectionResult": {
+              "type": "boolean",
+              "description": "Result of the changing of protection"
             }
           }
         }
@@ -9196,7 +9196,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET bookmarks."
+      "description": "This response should be returned by the service when handling:  GET bookmarks."
     },
     "Bookmarks": {
       "type": "null",
@@ -9285,7 +9285,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET bookmarks/{bookmarkName}."
+      "description": "This response should be returned by the service when handling:  GET bookmarks/{bookmarkName}."
     },
     "BookmarkData": {
       "type": "object",
@@ -9319,7 +9319,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/footnotes "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/footnotes "
     },
     "FootnoteCollection": {
       "type": "null",
@@ -9353,9 +9353,9 @@
         {
           "type": "object",
           "properties": {
-            "Position": {
-              "description": "Link to comment range start node.",
-              "$ref": "#/definitions/DocumentPosition"
+            "Content": {
+              "description": "Content of footnote.",
+              "$ref": "#/definitions/StoryChildNodes"
             },
             "FootnoteType": {
               "enum": [
@@ -9364,6 +9364,10 @@
               ],
               "description": "Returns a value that specifies whether this is a footnote or endnote."
             },
+            "Position": {
+              "description": "Link to comment range start node.",
+              "$ref": "#/definitions/DocumentPosition"
+            },
             "ReferenceMark": {
               "type": "string",
               "description": "Gets/sets custom reference mark to be used for this footnote.\nDefault value is , meaning auto-numbered footnotes are used."
@@ -9371,10 +9375,6 @@
             "Text": {
               "type": "string",
               "description": "This is a convenience property that allows to easily get or set text of the footnote."
-            },
-            "Content": {
-              "description": "Content of footnote.",
-              "$ref": "#/definitions/StoryChildNodes"
             }
           }
         }
@@ -9462,7 +9462,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/footnote/0 "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/footnote/0 "
     },
     "OfficeMathObjectsResponse": {
       "type": "null",
@@ -9608,7 +9608,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/officeMathObjects/0 "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/officeMathObjects/0 "
     },
     "BordersResponse": {
       "type": "null",
@@ -9627,7 +9627,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET {nodeWithBorders}/borders."
+      "description": "This response should be returned by the service when handling:\nGET {nodeWithBorders}/borders."
     },
     "BordersCollection": {
       "type": "null",
@@ -9766,7 +9766,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET {nodeWithBorders}/borders."
+      "description": "This response should be returned by the service when handling:\nGET {nodeWithBorders}/borders."
     },
     "TableLinkCollectionResponse": {
       "type": "null",
@@ -9785,7 +9785,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables."
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables."
     },
     "TableLinkCollection": {
       "type": "null",
@@ -9864,7 +9864,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}"
     },
     "Table": {
       "type": "null",
@@ -9876,16 +9876,16 @@
         {
           "type": "object",
           "properties": {
+            "TableProperties": {
+              "description": "Table properties.",
+              "$ref": "#/definitions/TableProperties"
+            },
             "TableRowList": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TableRow"
               },
               "description": "Collection of table's rows."
-            },
-            "TableProperties": {
-              "description": "Table properties.",
-              "$ref": "#/definitions/TableProperties"
             }
           }
         }
@@ -9902,16 +9902,16 @@
         {
           "type": "object",
           "properties": {
+            "RowFormat": {
+              "description": "Provides access to the formatting properties of the row.",
+              "$ref": "#/definitions/TableRowFormat"
+            },
             "TableCellList": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/TableCell"
               },
               "description": "Collection of table's rows."
-            },
-            "RowFormat": {
-              "description": "Provides access to the formatting properties of the row.",
-              "$ref": "#/definitions/TableRowFormat"
             }
           }
         }
@@ -9950,6 +9950,14 @@
         {
           "type": "object",
           "properties": {
+            "AllowBreakAcrossPages": {
+              "type": "boolean",
+              "description": "True if the text in a table row is allowed to split across a page break."
+            },
+            "HeadingFormat": {
+              "type": "boolean",
+              "description": "True if the row is repeated as a table heading on every page when the table spans more than one page."
+            },
             "Height": {
               "type": "number",
               "description": "Gets or sets the height of the table row in points.",
@@ -9962,14 +9970,6 @@
                 "Auto"
               ],
               "description": "Gets or sets the rule for determining the height of the table row."
-            },
-            "AllowBreakAcrossPages": {
-              "type": "boolean",
-              "description": "True if the text in a table row is allowed to split across a page break."
-            },
-            "HeadingFormat": {
-              "type": "boolean",
-              "description": "True if the row is repeated as a table heading on every page when the table spans more than one page."
             }
           }
         }
@@ -9998,28 +9998,9 @@
               "type": "boolean",
               "description": "Allows Microsoft Word and Aspose.Words to automatically resize cells in a table to fit their contents."
             },
-            "PreferredWidth": {
-              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
-              "$ref": "#/definitions/PreferredWidth"
-            },
             "Bidi": {
               "type": "boolean",
               "description": "Gets or sets whether this is a right-to-left table."
-            },
-            "LeftPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
-              "format": "double"
-            },
-            "RightPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
-              "format": "double"
-            },
-            "TopPadding": {
-              "type": "number",
-              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
-              "format": "double"
             },
             "BottomPadding": {
               "type": "number",
@@ -10036,23 +10017,19 @@
               "description": "Gets or sets the value that represents the left indent of the table.",
               "format": "double"
             },
-            "StyleOptions": {
-              "enum": [
-                "None",
-                "FirstRow",
-                "LastRow",
-                "FirstColumn",
-                "LastColumn",
-                "RowBands",
-                "Default",
-                "ColumnBands",
-                "Default2003"
-              ],
-              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
+            "LeftPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the left of the contents of cells.",
+              "format": "double"
             },
-            "StyleName": {
-              "type": "string",
-              "description": "Gets or sets the name of the table style applied to this table."
+            "PreferredWidth": {
+              "description": "Gets or sets the table preferred width. \nPreferred width can be specified as a percentage, number of points or a special \"auto\" value.",
+              "$ref": "#/definitions/PreferredWidth"
+            },
+            "RightPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add to the right of the contents of cells.",
+              "format": "double"
             },
             "StyleIdentifier": {
               "enum": [
@@ -10432,6 +10409,24 @@
               ],
               "description": "Gets or sets the locale independent style identifier of the table style applied to this table."
             },
+            "StyleName": {
+              "type": "string",
+              "description": "Gets or sets the name of the table style applied to this table."
+            },
+            "StyleOptions": {
+              "enum": [
+                "None",
+                "FirstRow",
+                "LastRow",
+                "FirstColumn",
+                "LastColumn",
+                "RowBands",
+                "Default",
+                "ColumnBands",
+                "Default2003"
+              ],
+              "description": "Gets or sets bit flags that specify how a table style is applied to this table."
+            },
             "TextWrapping": {
               "enum": [
                 "Default",
@@ -10439,6 +10434,11 @@
                 "Around"
               ],
               "description": "Get or sets TextWrapping  for table."
+            },
+            "TopPadding": {
+              "type": "number",
+              "description": "Gets or sets the amount of space (in points) to add above the contents of cells.",
+              "format": "double"
             }
           }
         }
@@ -10485,7 +10485,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/properties"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/properties"
     },
     "TableRowResponse": {
       "type": "null",
@@ -10504,7 +10504,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}"
     },
     "TableRowInsert": {
       "type": "object",
@@ -10543,7 +10543,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/rows/{1}/rowformat"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/rows/{1}/rowformat"
     },
     "TableCellResponse": {
       "type": "null",
@@ -10562,7 +10562,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}"
     },
     "TableCellInsert": {
       "type": "object",
@@ -10593,7 +10593,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/tables/{0}/rows/{1}/cells/{2}/cellformat"
     },
     "TableCellFormat": {
       "type": "null",
@@ -10699,7 +10699,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET /{name}/textItems ."
+      "description": "This response should be returned by the service when handling:  GET /{name}/textItems ."
     },
     "TextItems": {
       "type": "null",
@@ -10787,14 +10787,14 @@
         {
           "type": "object",
           "properties": {
+            "DocumentLink": {
+              "description": "Link to the document.",
+              "$ref": "#/definitions/FileLink"
+            },
             "Matches": {
               "type": "integer",
               "description": "Number of occurrences of the captured text in the document.",
               "format": "int32"
-            },
-            "DocumentLink": {
-              "description": "Link to the document.",
-              "$ref": "#/definitions/FileLink"
             }
           }
         }
@@ -10818,7 +10818,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/{paragraphPath}/runs"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/{paragraphPath}/runs"
     },
     "Runs": {
       "type": "null",
@@ -10892,7 +10892,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/runs/{1} "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/runs/{1} "
     },
     "FontResponse": {
       "type": "null",
@@ -10911,7 +10911,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/runs/{1}/font "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/runs/{1}/font "
     },
     "Font": {
       "type": "null",
@@ -11515,7 +11515,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs "
     },
     "ParagraphLinkCollection": {
       "type": "null",
@@ -11575,7 +11575,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0} "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0} "
     },
     "Paragraph": {
       "type": "null",
@@ -11627,7 +11627,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET /{name}/hyperlinks ."
+      "description": "This response should be returned by the service when handling:  GET /{name}/hyperlinks ."
     },
     "Hyperlinks": {
       "type": "null",
@@ -11691,7 +11691,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} ."
+      "description": "This response should be returned by the service when handling:  GET /{name}/hyperlinks/{hyperlinkIndex} ."
     },
     "FormFieldsResponse": {
       "type": "null",
@@ -11710,7 +11710,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/{nodePath}/formfields"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/{nodePath}/formfields"
     },
     "FormFieldCollection": {
       "type": "null",
@@ -11745,33 +11745,13 @@
         {
           "type": "object",
           "properties": {
-            "Name": {
-              "type": "string",
-              "description": "Gets or sets the form field name."
+            "CalculateOnExit": {
+              "type": "boolean",
+              "description": "True if references to the specified form field are automatically updated whenever the field is exited."
             },
             "Enabled": {
               "type": "boolean",
               "description": "True if a form field is enabled."
-            },
-            "StatusText": {
-              "type": "string",
-              "description": "Returns or sets the text that's displayed in the status bar when a form field has the focus."
-            },
-            "OwnStatus": {
-              "type": "boolean",
-              "description": "Specifies the source of the text that's displayed in the status bar when a form field has the focus."
-            },
-            "HelpText": {
-              "type": "string",
-              "description": "Returns or sets the text that's displayed in a message box when the form field has the focus and the user presses F1."
-            },
-            "OwnHelp": {
-              "type": "boolean",
-              "description": "Specifies the source of the text that's displayed in a message box when a form field has the focus and the user presses F1."
-            },
-            "CalculateOnExit": {
-              "type": "boolean",
-              "description": "True if references to the specified form field are automatically updated whenever the field is exited."
             },
             "EntryMacro": {
               "type": "string",
@@ -11780,6 +11760,26 @@
             "ExitMacro": {
               "type": "string",
               "description": "Returns or sets an exit macro name for the form field."
+            },
+            "HelpText": {
+              "type": "string",
+              "description": "Returns or sets the text that's displayed in a message box when the form field has the focus and the user presses F1."
+            },
+            "Name": {
+              "type": "string",
+              "description": "Gets or sets the form field name."
+            },
+            "OwnHelp": {
+              "type": "boolean",
+              "description": "Specifies the source of the text that's displayed in a message box when a form field has the focus and the user presses F1."
+            },
+            "OwnStatus": {
+              "type": "boolean",
+              "description": "Specifies the source of the text that's displayed in the status bar when a form field has the focus."
+            },
+            "StatusText": {
+              "type": "string",
+              "description": "Returns or sets the text that's displayed in the status bar when a form field has the focus."
             }
           }
         }
@@ -11796,10 +11796,6 @@
         {
           "type": "object",
           "properties": {
-            "IsCheckBoxExactSize": {
-              "type": "boolean",
-              "description": "Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly."
-            },
             "CheckBoxSize": {
               "type": "number",
               "description": "Gets or sets the size of the checkbox in points. Has effect only when  is true.",
@@ -11808,6 +11804,10 @@
             "Checked": {
               "type": "boolean",
               "description": "Gets or sets the checked status of the check box form field."
+            },
+            "IsCheckBoxExactSize": {
+              "type": "boolean",
+              "description": "Gets or sets the boolean value that indicates whether the size of the textbox is automatic or specified explicitly."
             }
           }
         }
@@ -11824,17 +11824,17 @@
         {
           "type": "object",
           "properties": {
-            "DropDownSelectedIndex": {
-              "type": "integer",
-              "description": "Gets or sets the index specifying the currently selected item in a dropdown form field.",
-              "format": "int32"
-            },
             "DropDownItems": {
               "type": "array",
               "items": {
                 "type": "string"
               },
               "description": "Provides access to the items of a dropdown form field."
+            },
+            "DropDownSelectedIndex": {
+              "type": "integer",
+              "description": "Gets or sets the index specifying the currently selected item in a dropdown form field.",
+              "format": "int32"
             }
           }
         }
@@ -11851,6 +11851,15 @@
         {
           "type": "object",
           "properties": {
+            "MaxLength": {
+              "type": "integer",
+              "description": "Maximum length for the text field. Zero when the length is not limited.",
+              "format": "int32"
+            },
+            "TextInputDefault": {
+              "type": "string",
+              "description": "Gets or sets the default string or a calculation expression of a text form field. "
+            },
             "TextInputFormat": {
               "type": "string",
               "description": "Returns or sets the text formatting for a text form field."
@@ -11865,15 +11874,6 @@
                 "Calculated"
               ],
               "description": "Gets or sets the type of a text form field."
-            },
-            "TextInputDefault": {
-              "type": "string",
-              "description": "Gets or sets the default string or a calculation expression of a text form field. "
-            },
-            "MaxLength": {
-              "type": "integer",
-              "description": "Maximum length for the text field. Zero when the length is not limited.",
-              "format": "int32"
             }
           }
         }
@@ -11897,7 +11897,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/formfields/{1} "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/formfields/{1} "
     },
     "DrawingObjectsResponse": {
       "type": "null",
@@ -11916,7 +11916,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET /drawingObjects."
+      "description": "This response should be returned by the service when handling:  GET /drawingObjects."
     },
     "DrawingObjectCollection": {
       "type": "null",
@@ -11969,29 +11969,22 @@
         {
           "type": "object",
           "properties": {
-            "RenderLinks": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/WordsApiLink"
-              },
-              "description": "A list of links that originate from this ."
-            },
-            "Width": {
-              "type": "number",
-              "description": "Width of the drawing objects in points.",
-              "format": "double"
-            },
             "Height": {
               "type": "number",
               "description": "Height of the drawing object in points.",
               "format": "double"
             },
-            "OleDataLink": {
-              "description": "Link to ole object. Can be null if shape does not have ole data.",
-              "$ref": "#/definitions/WordsApiLink"
-            },
             "ImageDataLink": {
               "description": "Link to image data. Can be null if shape does not have an image.",
+              "$ref": "#/definitions/WordsApiLink"
+            },
+            "Left": {
+              "type": "number",
+              "description": "Distance in points from the origin to the left side of the image.\n            ",
+              "format": "double"
+            },
+            "OleDataLink": {
+              "description": "Link to ole object. Can be null if shape does not have ole data.",
               "$ref": "#/definitions/WordsApiLink"
             },
             "RelativeHorizontalPosition": {
@@ -12008,11 +12001,6 @@
               ],
               "description": "Specifies where the distance to the image is measured from.\n            "
             },
-            "Left": {
-              "type": "number",
-              "description": "Distance in points from the origin to the left side of the image.\n            ",
-              "format": "double"
-            },
             "RelativeVerticalPosition": {
               "enum": [
                 "Margin",
@@ -12028,9 +12016,21 @@
               ],
               "description": "Specifies where the distance to the image measured from."
             },
+            "RenderLinks": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WordsApiLink"
+              },
+              "description": "A list of links that originate from this ."
+            },
             "Top": {
               "type": "number",
               "description": "Distance in points from the origin to the top side of the image.",
+              "format": "double"
+            },
+            "Width": {
+              "type": "number",
+              "description": "Width of the drawing objects in points.",
               "format": "double"
             },
             "WrapType": {
@@ -12080,7 +12080,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/headersfooters "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/headersfooters "
     },
     "HeaderFooterLinkCollection": {
       "type": "null",
@@ -12151,7 +12151,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/headersfooters/{0} "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/headersfooters/{0} "
     },
     "HeaderFooter": {
       "type": "null",
@@ -12163,12 +12163,12 @@
         {
           "type": "object",
           "properties": {
-            "Paragraphs": {
-              "description": "Link to Paragraphs resource",
-              "$ref": "#/definitions/LinkElement"
-            },
             "DrawingObjects": {
               "description": "Link to DrawingObjects resource",
+              "$ref": "#/definitions/LinkElement"
+            },
+            "Paragraphs": {
+              "description": "Link to Paragraphs resource",
               "$ref": "#/definitions/LinkElement"
             }
           }
@@ -12291,6 +12291,10 @@
         {
           "type": "object",
           "properties": {
+            "BuiltIn": {
+              "type": "boolean",
+              "description": "Flag indicates whether the property is built-in or not.\nIf true the property is built-in, if false the property is custom."
+            },
             "Name": {
               "type": "string",
               "description": "Name of the document property."
@@ -12298,10 +12302,6 @@
             "Value": {
               "type": "string",
               "description": "string value of the document property. "
-            },
-            "BuiltIn": {
-              "type": "boolean",
-              "description": "Flag indicates whether the property is built-in or not.\nIf true the property is built-in, if false the property is custom."
             }
           }
         }
@@ -12344,7 +12344,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET /documentProperties."
+      "description": "This response should be returned by the service when handling:  GET /documentProperties."
     },
     "DocumentPropertyResponse": {
       "type": "null",
@@ -12363,7 +12363,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET documentProperties/{propertyName}."
+      "description": "This response should be returned by the service when handling:  GET documentProperties/{propertyName}."
     },
     "FieldResponse": {
       "type": "null",
@@ -12382,7 +12382,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/fields/{1} "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/paragraphs/{0}/fields/{1} "
     },
     "Field": {
       "type": "null",
@@ -12394,13 +12394,13 @@
         {
           "type": "object",
           "properties": {
-            "Result": {
-              "type": "string",
-              "description": "Field result"
-            },
             "LocaleId": {
               "type": "string",
               "description": "Gets or sets LCID of the field."
+            },
+            "Result": {
+              "type": "string",
+              "description": "Field result"
             }
           }
         }
@@ -12444,7 +12444,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/{nodePath}/fields"
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/{nodePath}/fields"
     },
     "FieldCollection": {
       "type": "null",
@@ -12485,7 +12485,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/sections "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/sections "
     },
     "SectionLinkCollection": {
       "type": "null",
@@ -12539,7 +12539,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/sections/{0} "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/sections/{0} "
     },
     "Section": {
       "type": "null",
@@ -12551,28 +12551,28 @@
         {
           "type": "object",
           "properties": {
-            "Paragraphs": {
-              "description": "Link to Paragraphs resource",
-              "$ref": "#/definitions/LinkElement"
-            },
-            "PageSetup": {
-              "description": "Link to PageSetup resource",
-              "$ref": "#/definitions/LinkElement"
-            },
-            "HeaderFooters": {
-              "description": "Link to HeaderFooters resource",
-              "$ref": "#/definitions/LinkElement"
-            },
-            "Tables": {
-              "description": "Link to Tables resource",
-              "$ref": "#/definitions/LinkElement"
-            },
             "ChildNodes": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/NodeLink"
               },
               "description": "Child nodes."
+            },
+            "HeaderFooters": {
+              "description": "Link to HeaderFooters resource",
+              "$ref": "#/definitions/LinkElement"
+            },
+            "PageSetup": {
+              "description": "Link to PageSetup resource",
+              "$ref": "#/definitions/LinkElement"
+            },
+            "Paragraphs": {
+              "description": "Link to Paragraphs resource",
+              "$ref": "#/definitions/LinkElement"
+            },
+            "Tables": {
+              "description": "Link to Tables resource",
+              "$ref": "#/definitions/LinkElement"
             }
           }
         }
@@ -12596,7 +12596,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/sections/{0}/PageSetup "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/sections/{0}/PageSetup "
     },
     "PageSetup": {
       "type": "null",
@@ -12868,7 +12868,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/comments "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/comments "
     },
     "CommentsCollection": {
       "type": "null",
@@ -12902,34 +12902,34 @@
         {
           "type": "object",
           "properties": {
-            "RangeStart": {
-              "description": "Link to comment range start node.",
-              "$ref": "#/definitions/DocumentPosition"
-            },
-            "RangeEnd": {
-              "description": "Link to comment range end node.",
-              "$ref": "#/definitions/DocumentPosition"
-            },
             "Author": {
               "type": "string",
               "description": "Returns or sets the author name for a comment."
             },
-            "Initial": {
-              "type": "string",
-              "description": "Returns or sets the initials of the user associated with a specific comment."
+            "Content": {
+              "description": "Content of comment",
+              "$ref": "#/definitions/StoryChildNodes"
             },
             "DateTime": {
               "type": "string",
               "description": "Gets the date and time that the comment was made.",
               "format": "date-time"
             },
+            "Initial": {
+              "type": "string",
+              "description": "Returns or sets the initials of the user associated with a specific comment."
+            },
+            "RangeEnd": {
+              "description": "Link to comment range end node.",
+              "$ref": "#/definitions/DocumentPosition"
+            },
+            "RangeStart": {
+              "description": "Link to comment range start node.",
+              "$ref": "#/definitions/DocumentPosition"
+            },
             "Text": {
               "type": "string",
               "description": "This is a convenience property that allows to easily get or set text of the comment."
-            },
-            "Content": {
-              "description": "Content of comment",
-              "$ref": "#/definitions/StoryChildNodes"
             }
           }
         }
@@ -12967,7 +12967,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/comments/0 "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/comments/0 "
     },
     "DocumentEntryList": {
       "type": "object",
@@ -13019,7 +13019,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/search "
+      "description": "This response should be returned by the service when handling:\nGET http://api.aspose.com/v1.1/words/Test.doc/search "
     },
     "SearchResultsCollection": {
       "type": "null",
@@ -13102,13 +13102,13 @@
         {
           "type": "object",
           "properties": {
-            "StatData": {
-              "description": "Statistical data of the document",
-              "$ref": "#/definitions/DocumentStatData"
-            },
             "DocumentLink": {
               "description": "Link to the document",
               "$ref": "#/definitions/FileLink"
+            },
+            "StatData": {
+              "description": "Statistical data of the document",
+              "$ref": "#/definitions/DocumentStatData"
             }
           }
         }
@@ -13215,13 +13215,13 @@
         {
           "type": "object",
           "properties": {
-            "ProtectionData": {
-              "description": "Protection's data of the document",
-              "$ref": "#/definitions/ProtectionData"
-            },
             "DocumentLink": {
               "description": "Link to the document",
               "$ref": "#/definitions/FileLink"
+            },
+            "ProtectionData": {
+              "description": "Protection's data of the document",
+              "$ref": "#/definitions/ProtectionData"
             }
           }
         }
@@ -13295,7 +13295,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  GET /{name}/mailMergeFieldNames."
+      "description": "This response should be returned by the service when handling:  GET /{name}/mailMergeFieldNames."
     },
     "FieldNames": {
       "type": "null",
@@ -13363,7 +13363,7 @@
           }
         }
       ],
-      "description": "This resonse should be returned by the service when handling:  POST /{name}/split ."
+      "description": "This response should be returned by the service when handling:  POST /{name}/split ."
     },
     "SplitDocumentResult": {
       "type": "object",
@@ -13489,6 +13489,15 @@
         {
           "type": "object",
           "properties": {
+            "GraphicsQualityOptions": {
+              "description": "Allows to specify additional System.Drawing.Graphics quality options.",
+              "$ref": "#/definitions/GraphicsQualityOptionsData"
+            },
+            "HorizontalResolution": {
+              "type": "number",
+              "description": "Gets or sets the horizontal resolution for the generated images, in dots per inch.\n\nThis property has effect only when saving to raster image formats.\nThe default value is 96.",
+              "format": "double"
+            },
             "ImageBrightness": {
               "type": "number",
               "description": "Brightness of image",
@@ -13503,41 +13512,23 @@
               "description": "Contrast of image",
               "format": "double"
             },
-            "GraphicsQualityOptions": {
-              "description": "Allows to specify additional System.Drawing.Graphics quality options.",
-              "$ref": "#/definitions/GraphicsQualityOptionsData"
+            "PaperColor": {
+              "type": "string",
+              "description": "Background (paper) color of image"
             },
             "PixelFormat": {
               "type": "string",
               "description": "Pixel format of image"
-            },
-            "PaperColor": {
-              "type": "string",
-              "description": "Background (paper) color of image"
             },
             "Resolution": {
               "type": "number",
               "description": "Sets both horizontal and vertical resolution for the generated images, in dots per inch.\n\nThis property has effect only when saving to raster image formats.\nThe default value is 96.",
               "format": "double"
             },
-            "HorizontalResolution": {
-              "type": "number",
-              "description": "Gets or sets the horizontal resolution for the generated images, in dots per inch.\n\nThis property has effect only when saving to raster image formats.\nThe default value is 96.",
-              "format": "double"
-            },
-            "VerticalResolution": {
-              "type": "number",
-              "description": "Gets or sets the vertical resolution for the generated images, in dots per inch.\n\nThis property has effect only when saving to raster image formats.\nThe default value is 96.",
-              "format": "double"
-            },
             "Scale": {
               "type": "number",
               "description": "Zoom factor of image",
               "format": "double"
-            },
-            "UseHighQualityRendering": {
-              "type": "boolean",
-              "description": "Determine whether or not to use high quality (i.e. slow) rendering algorithms"
             },
             "UseAntiAliasing": {
               "type": "boolean",
@@ -13546,6 +13537,15 @@
             "UseGdiEmfRenderer": {
               "type": "boolean",
               "description": "Gets or sets a value determining whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF."
+            },
+            "UseHighQualityRendering": {
+              "type": "boolean",
+              "description": "Determine whether or not to use high quality (i.e. slow) rendering algorithms"
+            },
+            "VerticalResolution": {
+              "type": "number",
+              "description": "Gets or sets the vertical resolution for the generated images, in dots per inch.\n\nThis property has effect only when saving to raster image formats.\nThe default value is 96.",
+              "format": "double"
             }
           }
         }
@@ -13841,10 +13841,6 @@
         {
           "type": "object",
           "properties": {
-            "PrettyFormat": {
-              "type": "boolean",
-              "description": "Specifies whether or not use pretty formats output"
-            },
             "AllowNegativeIndent": {
               "type": "boolean",
               "description": "Specifies whether negative left and right indents of paragraphs are allowed (not normalized)"
@@ -13874,13 +13870,17 @@
               "type": "boolean",
               "description": "Specifies whether to export built-in and custom document properties"
             },
-            "ExportFontsAsBase64": {
+            "ExportDropDownFormFieldAsText": {
               "type": "boolean",
-              "description": "Specifies whether fonts resources should be embedded to HTML in Base64 encoding.  Default is false."
+              "description": "Controls how drop-down form fields are saved to HTML.\nDefault value is false."
             },
             "ExportFontResources": {
               "type": "boolean",
               "description": "Specifies whether font resources should be exported"
+            },
+            "ExportFontsAsBase64": {
+              "type": "boolean",
+              "description": "Specifies whether fonts resources should be embedded to HTML in Base64 encoding.  Default is false."
             },
             "ExportHeadersFootersMode": {
               "type": "string",
@@ -13939,6 +13939,11 @@
               "type": "boolean",
               "description": "Specifies whether to write the DOCTYPE declaration when saving"
             },
+            "FontResourcesSubsettingSizeThreshold": {
+              "type": "integer",
+              "description": "Controls which font resources need subsetting when saving",
+              "format": "int32"
+            },
             "FontsFolder": {
               "type": "string",
               "description": "Specifies the physical folder where fonts are saved when exporting a document"
@@ -13947,17 +13952,17 @@
               "type": "string",
               "description": "Specifies the name of the folder used to construct font URIs"
             },
-            "FontResourcesSubsettingSizeThreshold": {
-              "type": "integer",
-              "description": "Controls which font resources need subsetting when saving",
-              "format": "int32"
-            },
             "HtmlVersion": {
               "enum": [
                 "Xhtml",
                 "Html5"
               ],
               "description": "Specifies version of HTML standard that should be used when saving the document to HTML or MHTML.  \nDefault value is Aspose.Words.Saving.HtmlVersion.Xhtml."
+            },
+            "ImageResolution": {
+              "type": "integer",
+              "description": "Specifies the output resolution for images when exporting",
+              "format": "int32"
             },
             "ImagesFolder": {
               "type": "string",
@@ -13967,11 +13972,6 @@
               "type": "string",
               "description": "Specifies the name of the folder used to construct image URIs"
             },
-            "ImageResolution": {
-              "type": "integer",
-              "description": "Specifies the output resolution for images when exporting",
-              "format": "int32"
-            },
             "OfficeMathOutputMode": {
               "enum": [
                 "Image",
@@ -13979,6 +13979,10 @@
                 "Text"
               ],
               "description": "Controls how OfficeMath objects are exported to HTML, MHTML or EPUB.  Default value is HtmlOfficeMathOutputMode.Image."
+            },
+            "PrettyFormat": {
+              "type": "boolean",
+              "description": "Specifies whether or not use pretty formats output"
             },
             "ResourceFolder": {
               "type": "string",
@@ -13995,10 +13999,6 @@
             "TableWidthOutputMode": {
               "type": "string",
               "description": "Controls how table, row and cell widths are exported"
-            },
-            "ExportDropDownFormFieldAsText": {
-              "type": "boolean",
-              "description": "Controls how drop-down form fields are saved to HTML.\nDefault value is false."
             }
           }
         }
@@ -14019,6 +14019,10 @@
               "type": "string",
               "description": "Specifies prefix which is added to all class names in style.css file.\nDefault value is \"aw\"."
             },
+            "Encoding": {
+              "type": "string",
+              "description": "Encoding."
+            },
             "ExportEmbeddedCss": {
               "type": "boolean",
               "description": "Specifies whether the CSS (Cascading Style Sheet) should be embedded into Html document."
@@ -14035,13 +14039,18 @@
               "type": "boolean",
               "description": "Gets or sets indication of whether form fields are exported as interactive items (as 'input' tag) rather than converted to text or graphics."
             },
-            "Encoding": {
-              "type": "string",
-              "description": "Encoding."
-            },
             "FontFormat": {
               "type": "string",
               "description": "Specifies export format of fonts"
+            },
+            "PageHorizontalAlignment": {
+              "type": "string",
+              "description": "Specifies the horizontal alignment of pages in an HTML document.\nDefault value is HtmlFixedHorizontalPageAlignment.Center."
+            },
+            "PageMargins": {
+              "type": "number",
+              "description": "Specifies the margins around pages in an HTML document.\nThe margins value is measured in points and should be equal to or greater than 0.\nDefault value is 10 points.",
+              "format": "double"
             },
             "ResourcesFolder": {
               "type": "string",
@@ -14054,15 +14063,6 @@
             "ShowPageBorder": {
               "type": "boolean",
               "description": "Specifies whether border around pages should be shown."
-            },
-            "PageHorizontalAlignment": {
-              "type": "string",
-              "description": "Specifies the horizontal alignment of pages in an HTML document.\nDefault value is HtmlFixedHorizontalPageAlignment.Center."
-            },
-            "PageMargins": {
-              "type": "number",
-              "description": "Specifies the margins around pages in an HTML document.\nThe margins value is measured in points and should be equal to or greater than 0.\nDefault value is 10 points.",
-              "format": "double"
             }
           }
         }
@@ -14092,13 +14092,13 @@
         {
           "type": "object",
           "properties": {
-            "PrettyFormat": {
-              "type": "boolean",
-              "description": "Specifies whether or not use pretty formats output"
-            },
             "IsStrictSchema11": {
               "type": "boolean",
               "description": "Specifies whether export should correspond to ODT specification 1.1 strictly"
+            },
+            "PrettyFormat": {
+              "type": "boolean",
+              "description": "Specifies whether or not use pretty formats output"
             }
           }
         }
@@ -14115,10 +14115,6 @@
         {
           "type": "object",
           "properties": {
-            "PrettyFormat": {
-              "type": "boolean",
-              "description": "Specifies whether or not use pretty formats output"
-            },
             "Compliance": {
               "type": "string",
               "description": "Specifies the OOXML version for the output document"
@@ -14126,6 +14122,10 @@
             "Password": {
               "type": "string",
               "description": "Specifies a password to encrypt document using ECMA376 Standard encryption algorithm"
+            },
+            "PrettyFormat": {
+              "type": "boolean",
+              "description": "Specifies whether or not use pretty formats output"
             }
           }
         }
@@ -14142,13 +14142,17 @@
         {
           "type": "object",
           "properties": {
+            "Compliance": {
+              "type": "string",
+              "description": "Specifies the PDF standards compliance level for output documents"
+            },
             "CreateNoteHyperlinks": {
               "type": "boolean",
               "description": "Specifies whether to convert footnote/endnote references in main text story into active hyperlinks.\nWhen clicked the hyperlink will lead to the corresponding footnote/endnote.\nDefault is false."
             },
-            "Compliance": {
+            "CustomPropertiesExport": {
               "type": "string",
-              "description": "Specifies the PDF standards compliance level for output documents"
+              "description": "Gets or sets a value determining the way  are exported to PDF file.\nDefault value is ."
             },
             "DigitalSignatureDetails": {
               "description": "Specifies the details for signing the output PDF document",
@@ -14178,6 +14182,10 @@
               "type": "string",
               "description": "Specifies the font embedding mode"
             },
+            "ImageColorSpaceExportMode": {
+              "type": "string",
+              "description": "Specifies how the color space will be selected for the images in PDF document."
+            },
             "ImageCompression": {
               "type": "string",
               "description": "Specifies compression type to be used for all images in the document"
@@ -14194,9 +14202,9 @@
               "type": "string",
               "description": "Specifies how the PDF document should be displayed when opened in the PDF reader"
             },
-            "ImageColorSpaceExportMode": {
-              "type": "string",
-              "description": "Specifies how the color space will be selected for the images in PDF document."
+            "PreblendImages": {
+              "type": "boolean",
+              "description": "Gets or sets a value determining whether or not to preblend transparent images with black background color."
             },
             "PreserveFormFields": {
               "type": "boolean",
@@ -14206,13 +14214,13 @@
               "type": "string",
               "description": "Specifies compression type to be used for all textual content in the document"
             },
-            "UseCoreFonts": {
-              "type": "boolean",
-              "description": "Determines whether or not to substitute TrueType fonts Arial, Times New Roman, Courier New and Symbol with core PDF Type 1 fonts"
-            },
             "UseBookFoldPrintingSettings": {
               "type": "boolean",
               "description": "Determines whether the document should be saved using a booklet printing layout"
+            },
+            "UseCoreFonts": {
+              "type": "boolean",
+              "description": "Determines whether or not to substitute TrueType fonts Arial, Times New Roman, Courier New and Symbol with core PDF Type 1 fonts"
             },
             "ZoomBehavior": {
               "type": "string",
@@ -14222,14 +14230,6 @@
               "type": "integer",
               "description": "Determines zoom factor (in percentages) for a document",
               "format": "int32"
-            },
-            "CustomPropertiesExport": {
-              "type": "string",
-              "description": "Gets or sets a value determining the way  are exported to PDF file.\nDefault value is ."
-            },
-            "PreblendImages": {
-              "type": "boolean",
-              "description": "Gets or sets a value determining whether or not to preblend transparent images with black background color."
             }
           }
         }
@@ -14408,10 +14408,6 @@
         {
           "type": "object",
           "properties": {
-            "PrettyFormat": {
-              "type": "boolean",
-              "description": "Specifies whether or not use pretty formats output"
-            },
             "ExportCompactSize": {
               "type": "boolean",
               "description": "Allows to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly"
@@ -14419,6 +14415,10 @@
             "ExportImagesForOldReaders": {
               "type": "boolean",
               "description": "Specifies whether the keywords for \"old readers\" are written to RTF or not"
+            },
+            "PrettyFormat": {
+              "type": "boolean",
+              "description": "Specifies whether or not use pretty formats output"
             }
           }
         }
