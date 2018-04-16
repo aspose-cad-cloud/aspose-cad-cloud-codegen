@@ -7628,14 +7628,6 @@
             "description": "The document name."
           },
           {
-            "type": "boolean",
-            "name": "WithRegions",
-            "in": "query",
-            "required": true,
-            "x-nullable": false,
-            "description": "With regions flag."
-          },
-          {
             "type": "string",
             "name": "Cleanup",
             "in": "query",
@@ -7693,6 +7685,14 @@
             "x-nullable": false,
             "description": "Gets or sets a value indicating whether paragraph with TableStart or \n            TableEnd field should be fully included into mail merge region or particular range between TableStart and TableEnd fields. \n            The default value is true.",
             "default": true
+          },
+          {
+            "type": "boolean",
+            "name": "WithRegions",
+            "in": "query",
+            "x-nullable": false,
+            "description": "With regions flag.",
+            "default": false
           }
         ],
         "responses": {
@@ -7808,8 +7808,9 @@
             "type": "boolean",
             "name": "WithRegions",
             "in": "query",
-            "x-nullable": true,
-            "description": "With regions flag."
+            "x-nullable": false,
+            "description": "With regions flag.",
+            "default": false
           }
         ],
         "responses": {
