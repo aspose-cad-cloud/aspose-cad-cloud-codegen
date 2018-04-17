@@ -6926,6 +6926,37 @@
         "x-operationId": "PostAppendDocument"
       }
     },
+    "/words/classify": {
+      "put": {
+        "tags": [
+          "words"
+        ],
+        "summary": "Classify raw text.",
+        "operationId": "Classify",
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ClassificationRequest"
+            },
+            "x-nullable": true,
+            "description": "with request.\n           "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with classification results.\n           ",
+            "schema": {
+              "$ref": "#/definitions/ClassificationResponse"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "Classify"
+      }
+    },
     "/words/{name}/search": {
       "get": {
         "tags": [
@@ -12998,6 +13029,75 @@
         }
       },
       "description": "Represents a document which will be appended to the original resource document."
+    },
+    "ClassificationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Text": {
+          "type": "string",
+          "description": "Text for classification."
+        },
+        "BestClassesCount": {
+          "type": "integer",
+          "description": "Number of best classes.",
+          "format": "int32"
+        }
+      },
+      "description": "This request should be send to REST api:\nPUT http://api.aspose.com/v1.1/words/classify"
+    },
+    "ClassificationResponse": {
+      "type": "null",
+      "additionalProperties": false,
+      "required": [
+        "BestClassProbability"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/definitions/AsposeResponse"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "BestClassName": {
+              "type": "string",
+              "description": "Best class name.        "
+            },
+            "BestClassProbability": {
+              "type": "number",
+              "description": "Best class probability.",
+              "format": "double"
+            },
+            "BestResults": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ClassificationResult"
+              },
+              "description": "Array of best classes results."
+            }
+          }
+        }
+      ],
+      "description": "This response should be returned by the service when handling:\nPUT http://api.aspose.com/v1.1/words/classify"
+    },
+    "ClassificationResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ClassProbability"
+      ],
+      "properties": {
+        "ClassName": {
+          "type": "string",
+          "description": "Gets or sets the name of the class."
+        },
+        "ClassProbability": {
+          "type": "number",
+          "description": "Gets or sets the probability of class.",
+          "format": "double"
+        }
+      },
+      "description": "Represents a single classification result."
     },
     "SearchResponse": {
       "type": "null",
