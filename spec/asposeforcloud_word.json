@@ -7786,6 +7786,14 @@
             "x-nullable": false,
             "description": "Merge with regions or not. True by default",
             "default": true
+          },
+          {
+            "type": "string",
+            "name": "DocumentFileName",
+            "in": "query",
+            "x-nullable": true,
+            "description": "This file name will be used when resulting document has dynamic field for document file name {filename}. \nIf it is not setted, \"template\" will be used instead. \nNote: if withRegions == true executeTemplate updates fields only inside regions",
+            "default": "template"
           }
         ],
         "responses": {
@@ -7842,6 +7850,14 @@
             "in": "query",
             "x-nullable": true,
             "description": "Clean up options."
+          },
+          {
+            "type": "string",
+            "name": "DocumentFileName",
+            "in": "query",
+            "x-nullable": true,
+            "description": "This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not setted, \"template\" will be used instead. ",
+            "default": "template"
           }
         ],
         "responses": {
@@ -8378,6 +8394,14 @@
             "name": "Storage",
             "in": "query",
             "description": "File storage, which have to be used."
+          },
+          {
+            "type": "string",
+            "name": "DocumentFileName",
+            "in": "query",
+            "x-nullable": true,
+            "description": "This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not setted, \"sourceFilename\" will be used instead. ",
+            "default": "sourceFilename"
           },
           {
             "type": "string",
