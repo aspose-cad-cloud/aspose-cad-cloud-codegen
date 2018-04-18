@@ -8397,18 +8397,18 @@
           },
           {
             "type": "string",
+            "name": "OutPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Path for saving operation result to the local storage."
+          },
+          {
+            "type": "string",
             "name": "DocumentFileName",
             "in": "query",
             "x-nullable": true,
             "description": "This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not setted, \"sourceFilename\" will be used instead. ",
             "default": "sourceFilename"
-          },
-          {
-            "type": "string",
-            "name": "OutPath",
-            "in": "query",
-            "x-nullable": true,
-            "description": "Path for saving operation result to the local storage."
           },
           {
             "type": "string",
