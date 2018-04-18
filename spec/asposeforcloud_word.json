@@ -6939,15 +6939,15 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ClassificationRequest"
+              "$ref": "#/definitions/ClassificationRequestParameters"
             },
             "x-nullable": true,
-            "description": "with request.\n           "
+            "description": "Classification request parameters."
           }
         ],
         "responses": {
           "200": {
-            "description": "with classification results.\n           ",
+            "description": "Classification results.",
             "schema": {
               "$ref": "#/definitions/ClassificationResponse"
             },
@@ -13030,7 +13030,7 @@
       },
       "description": "Represents a document which will be appended to the original resource document."
     },
-    "ClassificationRequest": {
+    "ClassificationRequestParameters": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
