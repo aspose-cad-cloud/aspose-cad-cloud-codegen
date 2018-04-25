@@ -6957,6 +6957,67 @@
         "x-operationId": "Classify"
       }
     },
+    "/words/{documentName}/classify": {
+      "get": {
+        "tags": [
+          "words"
+        ],
+        "summary": "Classify document.",
+        "operationId": "ClassifyDocument",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "DocumentName",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "description": "The document name."
+          },
+          {
+            "type": "string",
+            "name": "Folder",
+            "in": "query",
+            "description": "Original document folder."
+          },
+          {
+            "type": "string",
+            "name": "Storage",
+            "in": "query",
+            "description": "File storage, which have to be used."
+          },
+          {
+            "type": "string",
+            "name": "LoadEncoding",
+            "in": "query",
+            "description": "Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML."
+          },
+          {
+            "type": "string",
+            "name": "Password",
+            "in": "query",
+            "description": "Password for opening an encrypted document."
+          },
+          {
+            "type": "string",
+            "name": "BestClassesCount",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Count of the best classes to return.",
+            "default": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with classification results.",
+            "schema": {
+              "$ref": "#/definitions/ClassificationResponse"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "ClassifyDocument"
+      }
+    },
     "/words/{name}/search": {
       "get": {
         "tags": [
