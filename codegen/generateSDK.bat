@@ -4,6 +4,8 @@ call codegen\generateNetSDK ||  goto :error
 
 call codegen\generatePhpSDK ||  goto :error
 
+call codegen\generateRubySDK ||  goto :error
+
 goto :EOF
 
 :error
