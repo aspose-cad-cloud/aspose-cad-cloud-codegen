@@ -6935,7 +6935,7 @@
         "operationId": "Classify",
         "parameters": [
           {
-            "name": "Request",
+            "name": "Parameters",
             "in": "body",
             "required": true,
             "schema": {
