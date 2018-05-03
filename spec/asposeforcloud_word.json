@@ -6935,14 +6935,22 @@
         "operationId": "Classify",
         "parameters": [
           {
-            "name": "Parameters",
+            "name": "Text",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ClassificationRequestParameters"
+              "type": "string"
             },
             "x-nullable": true,
-            "description": "Classification request parameters."
+            "description": "Text to classify."
+          },
+          {
+            "type": "string",
+            "name": "BestClassesCount",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Count of the best classes to return.",
+            "default": "1"
           }
         ],
         "responses": {
@@ -13114,22 +13122,6 @@
         }
       },
       "description": "Represents a document which will be appended to the original resource document."
-    },
-    "ClassificationRequestParameters": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "Text": {
-          "type": "string",
-          "description": "Text for classification."
-        },
-        "BestClassesCount": {
-          "type": "integer",
-          "description": "Number of best classes.",
-          "format": "int32"
-        }
-      },
-      "description": "This request should be send to REST api:\nPUT http://api.aspose.com/v1.1/words/classify"
     },
     "ClassificationResponse": {
       "type": "null",
