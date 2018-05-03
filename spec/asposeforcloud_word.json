@@ -14076,11 +14076,6 @@
               "type": "string",
               "description": "Controls how list labels are output"
             },
-            "ExportMetafileAsRaster": {
-              "type": "boolean",
-              "deprecated": true,
-              "description": "Specifies whether to convert metafiles into raster images when exporting. \nDeprecated - use the MetafileFormat property instead"
-            },
             "ExportOriginalUrlForLinkedImages": {
               "type": "boolean",
               "description": "Specifies whether original URL should be used as the URL of the linked images.\nDefault value is false."
