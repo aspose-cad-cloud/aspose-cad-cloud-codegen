@@ -35,6 +35,17 @@ namespace {{modelPackage}}\Requests;
 class {{operationId}}Request
 {
     {{#hasParams}}
+    {{#allParams}}                
+    /*
+     * {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
+     */
+    public ${{paramName}};
+    {{#hasMore}}
+	
+    {{/hasMore}}
+    {{/allParams}}
+    
+	
     /*
      * Initializes a new instance of the {{operationId}}Request class.
      *  
@@ -51,14 +62,26 @@ class {{operationId}}Request
 
     {{#allParams}}                
     /*
-     * {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
+     * {{^description}}Gets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
      */
-    public ${{paramName}};
+    public function get_{{paramName}}()
+    {
+        return $this->{{paramName}};
+    }
+
+    /*
+     * {{^description}}Sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
+     */
+    public function set_{{paramName}}($value)
+    {
+        $this->{{paramName}} = $value;
+        return $this;
+    }
     {{#hasMore}}
 	
     {{/hasMore}}
     {{/allParams}}
-    {{/hasParams}}
+    {{/hasParams}}	
 }
 {{/operation}}
 {{/operations}}
