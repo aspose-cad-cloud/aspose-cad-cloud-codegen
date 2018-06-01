@@ -10,6 +10,3 @@
 [submodule "SDKs/node"]
 	path = SDKs/node
 	url = https://github.com/aspose-words-cloud/aspose-words-cloud-node.git
-[submodule "SDKs/python"]
-	path = SDKs/python
-	url = https://github.com/aspose-words-cloud/aspose-words-cloud-python.git
