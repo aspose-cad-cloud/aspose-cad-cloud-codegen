@@ -1,6 +1,19 @@
+[submodule "SDKs/PHP"]
+	path = SDKs/PHP
+	url = https://github.com/aspose-cad-cloud/aspose-cad-cloud-php
+
+[submodule "SDKs/RUBY"]
+	path = SDKs/RUBY
+	url = https://github.com/aspose-cad-cloud/aspose-cad-cloud-ruby
+
+[submodule "SDKs/node"]
+	path = SDKs/node
+	url = https://github.com/aspose-cad-cloud/aspose-cad-cloud-node
+
 [submodule "SDKs/Java"]
 	path = SDKs/Java
 	url = https://github.com/aspose-cad-cloud/aspose-cad-cloud-java
+
 [submodule "SDKs/NET"]
 	path = SDKs/NET
 	url = https://github.com/aspose-cad-cloud/aspose-cad-cloud-dotnet
