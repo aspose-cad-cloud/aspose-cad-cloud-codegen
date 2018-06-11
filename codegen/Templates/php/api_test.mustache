@@ -2,7 +2,7 @@
 /**
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="{{apiPackage}}Test.php">
-*   Copyright (c) 2018 Aspose.Words for Cloud
+*   Copyright (c) 2018 Aspose.CAD for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,7 +28,7 @@
 
 namespace {{invokerPackage}}\Test;
 
-use {{invokerPackage}}\WordsApi;
+use {{invokerPackage}}\CADApi;
 use {{invokerPackage}}\Configuration;
 use {{modelPackage}}\Requests;
 use Aspose\Storage\StorageApi;
@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
 
 {{#operations}}class {{classname}}Test extends \PHPUnit_Framework_TestCase
 {
-	protected $words;
+	protected $CAD;
 	
 	protected $storage;
 	
@@ -56,7 +56,7 @@ use PHPUnit\Framework\TestCase;
         $this->storage->apiClient->apiKey = $this->config->getAppKey();
         $this->storage->apiClient->appSid = $this->config->getAppSid();
         $this->storage->apiClient->apiServer = $this->config->getHost();
-        $this->words = new WordsApi(null, $this->config);
+        $this->CAD = new CADApi(null, $this->config);
     }
 
     {{#operation}}
@@ -79,7 +79,7 @@ use PHPUnit\Framework\TestCase;
 		
 		$request = new Requests\{{vendorExtensions.x-testOperationId}}Request($remoteName, $folder=self::$baseTestPath . $subfolder);
 		
-		$result = $this->words->{{nickname}}($request);
+		$result = $this->CAD->{{nickname}}($request);
 		Assert::assertEquals(200, json_decode($result, true)["Code"]);
 		
     }
