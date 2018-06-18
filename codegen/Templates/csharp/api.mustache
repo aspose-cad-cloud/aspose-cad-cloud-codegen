@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="CadApi.cs">
+// <copyright company="Aspose" file="{{classname}}.cs">
 //   Copyright (c) 2018 Aspose.CAD for Cloud
 // </copyright>
 // <summary>
@@ -27,30 +27,130 @@ namespace {{packageName}}
 {
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
+    using {{packageName}}.Client;
+    using {{packageName}}.Client.Internal;
+    using {{packageName}}.Client.Internal.RequestHandlers;
     using {{packageName}}.Model;
     using {{packageName}}.Model.Requests;
-    using {{packageName}}.RequestHandlers;
     
-    {{#operations}}
     /// <summary>
     /// Aspose.CAD for Cloud API.
     /// </summary>
     public class {{classname}}
-    {        
+    {                 
+        #region Fields
+
+        /// <summary>
+        /// The API invoker
+        /// </summary>
         private readonly ApiInvoker apiInvoker;
-        private readonly Configuration configuration;     
+
+        /// <summary>
+        /// The configuration
+        /// </summary>
+        private readonly Configuration configuration;
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="{{classname}}"/> class.
         /// </summary>
-        /// <param name="apiKey">
-        /// The api Key.
+        /// <param name="appKey">
+        /// The app key.
         /// </param>
         /// <param name="appSid">
-        /// The app Sid.
+        /// The app SID.
         /// </param>
-        public {{classname}}(string apiKey, string appSid)
-            : this(new Configuration { AppKey = apiKey, AppSid = appSid })
+        public {{classname}}(string appKey, string appSid)
+            : this(new Configuration { AppKey = appKey, AppSid = appSid })
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// </summary>
+        /// <param name="appKey">
+        /// The app key.
+        /// </param>
+        /// <param name="appSid">
+        /// The app SID.
+        /// </param>
+        /// <param name="baseUrl">
+        /// The base URL.
+        /// </param>
+        public {{classname}}(string appKey, string appSid, string baseUrl)
+            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl })
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// </summary>
+        /// <param name="appKey">
+        /// The app key.
+        /// </param>
+        /// <param name="appSid">
+        /// The app SID.
+        /// </param>
+        /// <param name="baseUrl">
+        /// The base URL.
+        /// </param>
+        /// <param name="apiVersion">
+        /// API version.
+        /// </param>
+        public {{classname}}(string appKey, string appSid, string baseUrl, string apiVersion)
+            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl, ApiVersion = apiVersion })
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// </summary>
+        /// <param name="appKey">
+        /// The app key.
+        /// </param>
+        /// <param name="appSid">
+        /// The app SID.
+        /// </param>
+        /// <param name="baseUrl">
+        /// The base URL. Use <see cref="Configuration.DefaultBaseUrl"/> to set the default base URL.
+        /// </param>
+        /// <param name="apiVersion">
+        /// API version.
+        /// </param>
+        /// <param name="debug">
+        /// If debug mode is enabled.
+        /// </param>
+        public {{classname}}(string appKey, string appSid, string baseUrl, string apiVersion, bool debug)
+            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl, ApiVersion = apiVersion, DebugMode = debug })
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// </summary>
+        /// <param name="appKey">
+        /// The app key.
+        /// </param>
+        /// <param name="appSid">
+        /// The app SID.
+        /// </param>
+        /// <param name="baseUrl">
+        /// The base URL. Use <see cref="Configuration.DefaultBaseUrl"/> to set the default base URL.
+        /// </param>
+        /// <param name="apiVersion">
+        /// API version.
+        /// </param>
+        /// <param name="authType">
+        /// Authentication type.
+        /// </param>
+        /// <param name="debug">
+        /// If debug mode is enabled.
+        /// </param>
+        public {{classname}}(string appKey, string appSid, string baseUrl, string apiVersion, AuthType authType, bool debug)
+            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl, ApiVersion = apiVersion, AuthType = authType, DebugMode = debug })
         {
         }
 
@@ -58,25 +158,30 @@ namespace {{packageName}}
         /// Initializes a new instance of the <see cref="{{classname}}"/> class.
         /// </summary>    
         /// <param name="configuration">Configuration settings</param>
-        public {{classname}}(Configuration configuration)
+        private {{classname}}(Configuration configuration)
         {
             this.configuration = configuration;
-            
+
             var requestHandlers = new List<IRequestHandler>();
             requestHandlers.Add(new OAuthRequestHandler(this.configuration));
             requestHandlers.Add(new DebugLogRequestHandler(this.configuration));
             requestHandlers.Add(new ApiExceptionRequestHandler());
             requestHandlers.Add(new AuthWithSignatureRequestHandler(this.configuration));
             this.apiInvoker = new ApiInvoker(requestHandlers);
-        }                            
-        {{#operation}}
+        }
 
+        #endregion
+	
+		#region Methods
+		
+	    {{#operations}}
+        {{#operation}}
         /// <summary>
         /// {{summary}} {{notes}}
         /// </summary>
         /// <param name="request">Request. <see cref="{{nickname}}Request" /></param> 
-        /// <returns><see cref="{{#returnType}}{{{returnType}}}{{/returnType}}"/></returns>            
-        public {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}} {{nickname}}({{nickname}}Request request)
+        /// <returns><see cref="{{#returnType}}{{returnType}}{{/returnType}}"/></returns>            
+        public {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}void{{/returnType}} {{nickname}}({{nickname}}Request request)
         {
 {{#allParams}}{{#required}}            // verify the required parameter '{{paramName}}' is set
             if (request.{{baseName}} == null) 
@@ -93,8 +198,8 @@ namespace {{packageName}}
             {{#headerParams}}
             {{#-first}}var headerParams = new Dictionary<string, string>();{{/-first}}
             {{/headerParams}}
+			var formParams = new Dictionary<string, object>();
             {{#formParams}}            
-            {{#-first}}var formParams = new Dictionary<string, object>();{{/-first}}
             {{/formParams}}
             {{#pathParams}}
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "{{paramName}}", request.{{baseName}});
@@ -114,27 +219,36 @@ namespace {{packageName}}
             {
                 {{#isFile}}formParams.Add("{{paramName}}", this.apiInvoker.ToFileInfo(request.{{baseName}}, "{{baseName}}"));{{/isFile}}{{^isFile}}formParams.Add("{{baseName}}", request.{{baseName}}); // form parameter{{/isFile}}
             }
-            
             {{/formParams}}
             try 
             {                               
-{{#vendorExtensions}}{{#x-binary-result}}                    return this.apiInvoker.InvokeBinaryApi(
+			{{#vendorExtensions}}
+				var response = this.apiInvoker.InvokeApi(
                         resourcePath, 
                         "{{httpMethod}}", 
                         {{#hasBodyParam}}postBody{{/hasBodyParam}}{{^hasBodyParam}}null{{/hasBodyParam}}, 
                         {{#hasHeaderParams}}headerParams{{/hasHeaderParams}}{{^hasHeaderParams}}null{{/hasHeaderParams}}, 
-                        {{#hasFormParams}}formParams{{/hasFormParams}}{{^hasFormParams}}null{{/hasFormParams}});{{/x-binary-result}}{{/vendorExtensions}}{{#vendorExtensions}}{{^x-binary-result}}                var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "{{httpMethod}}", 
-                    {{#hasBodyParam}}postBody{{/hasBodyParam}}{{^hasBodyParam}}null{{/hasBodyParam}}, 
-                    {{#hasHeaderParams}}headerParams{{/hasHeaderParams}}{{^hasHeaderParams}}null{{/hasHeaderParams}}, 
-                    {{#hasFormParams}}formParams{{/hasFormParams}}{{^hasFormParams}}null{{/hasFormParams}});
-                if (response != null)
-                {
-                    return ({{returnType}})SerializationHelper.Deserialize(response, typeof({{returnType}}));
-                }
-                    
-                return null;{{/x-binary-result}}{{/vendorExtensions}}
+                        formParams);
+				{{#returnType}}
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof({{returnType}}) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<{{returnType}}>(StreamHelper.ToString(response));
+				}
+				
+				return ({{returnType}})finalResponse;
+				{{/returnType}}
+				{{/vendorExtensions}}
             } 
             catch (ApiException ex) 
             {
@@ -146,8 +260,10 @@ namespace {{packageName}}
                 throw;                
             }
         }
-        {{/operation}}        
+		
+        {{/operation}}   
+		{{/operations}}		
+		#endregion
     }
-    {{/operations}}
 }
 {{>requestModel}}

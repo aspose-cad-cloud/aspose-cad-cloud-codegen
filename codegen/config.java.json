@@ -1,0 +1,17 @@
+{
+  "invokerPackage":"com.aspose.cad.cloud.sdk.invoker",
+  "apiPackage":"com.aspose.cad.cloud.sdk.api",
+  "modelPackage":"com.aspose.cad.cloud.sdk.model",
+  "testPackage":"com.aspose.cad.cloud.test.api",
+  "groupId":"com.aspose",
+  "artifactId":"aspose-cad-cloud",
+  "artifactVersion":"17.11",
+  "artifactDescription":"Aspose.CAD for Cloud SDK",
+  "artifactUrl":"https://github.com/aspose-cad-cloud/aspose-cad-cloud-java",
+  "developerOrganization":"Aspose Pty Ltd.",
+  "developerOrganizationUrl":"https://www.aspose.cloud/",
+  "licenseName":"MIT",
+  "licenseUrl":"https://github.com/aspose-cad-cloud/aspose-cad-cloud-java/blob/master/LICENSE",
+  "developerName":"Aspose",
+  "developerEmail":"sales@asposeptyltd.com"
+}

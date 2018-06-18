@@ -24,12 +24,13 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace {{packageName}}.Model.Requests 
 {
   using {{packageName}}.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.CAD.Cloud.Sdk.Api.CADApi.{{nickname}}" /> operation.
+  /// Request model for <see cref="Aspose.Cad.Cloud.Sdk.CadApi.{{nickname}}" /> operation.
   /// </summary>  
   public class {{nickname}}Request{{#vendorExtensions}}{{#x-csharp-implements}} : {{x-csharp-implements}} {{/x-csharp-implements}}  {{/vendorExtensions}}
   {
@@ -53,7 +54,7 @@ namespace {{packageName}}.Model.Requests
             this.{{baseName}} = {{paramName}};
             {{/allParams}}   
         }
-
+		
         {{#allParams}}                
         /// <summary>
         /// {{^description}}Gets or sets {{baseName}}{{/description}}{{#description}}{{{description}}}{{/description}}
