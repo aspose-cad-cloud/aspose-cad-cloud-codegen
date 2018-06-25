@@ -11,5 +11,5 @@ from __future__ import absolute_import
 from {{packageName}}.api_client import ApiClient
 from {{packageName}}.configuration import Configuration
 # import models into sdk package
-{{#models}}{{#model}}from {{modelPackage}}.{{classFilename}} import {{classname}}
+{{#models}}{{#model}}from {{packageName}}.models.{{classFilename}} import {{classname}}
 {{/model}}{{/models}}
