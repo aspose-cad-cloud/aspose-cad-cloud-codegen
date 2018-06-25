@@ -1,12 +1,15 @@
 [submodule "SDKs/PHP"]
 	path = SDKs/PHP
-	url = https://github.com/aspose-words-cloud/aspose-words-cloud-php
+	url = https://github.com/aspose-words-cloud/aspose-words-cloud-php.git
 [submodule "SDKs/NET"]
 	path = SDKs/NET
-	url = https://github.com/aspose-words-cloud/aspose-words-cloud-dotnet
+	url = https://github.com/aspose-words-cloud/aspose-words-cloud-dotnet.git
 [submodule "SDKs/RUBY"]
 	path = SDKs/RUBY
-	url = https://github.com/aspose-words-cloud/aspose-words-cloud-ruby
+	url = https://github.com/aspose-words-cloud/aspose-words-cloud-ruby.git
 [submodule "SDKs/node"]
 	path = SDKs/node
 	url = https://github.com/aspose-words-cloud/aspose-words-cloud-node.git
+[submodule "SDKs/python"]
+	path = SDKs/python
+	url = https://github.com/aspose-words-cloud/aspose-words-cloud-python.git
