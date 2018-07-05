@@ -29,35 +29,33 @@
 
 module {{moduleName}}
 
- #
- # Request model for {{nickname}} operation.
- #
-class {{operationId}}_request
+  #
+  # Request model for {{nickname}} operation.
+  #
+  class {{operationId}}_request
 
     {{#hasParams}}
 	{{#allParams}}                
-     # {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
-		attr_accessor :{{paramName}}
-		{{#hasMore}}
-		
-		{{/hasMore}}
+        # {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
+        attr_accessor :{{paramName}}
+    {{#hasMore}}
+    {{/hasMore}}
     {{/allParams}}
 	
-     #
-     # Initializes a new instance.
-     {{#allParams}}
-     # @param {{paramName}} {{#description}}{{{description}}}{{/description}}
-     {{/allParams}}
-		def initialize({{#allParams}}{{paramName}}{{^required}}=nil{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
-		{{#allParams}}
-			self.{{paramName}}={{paramName}}
-		{{#hasMore}}
-		{{/hasMore}}
-		{{/allParams}}
-		end
-	
+        #
+        # Initializes a new instance.
+        {{#allParams}}
+        # @param {{paramName}} {{#description}}{{{description}}}{{/description}}
+        {{/allParams}}
+        def initialize({{#allParams}}{{paramName}}{{^required}} = nil{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+        {{#allParams}}
+           self.{{paramName}} = {{paramName}}
+           {{#hasMore}}
+           {{/hasMore}}
+           {{/allParams}}
+        end
     {{/hasParams}}
-	end
+  end
 end
 {{/operation}}
 {{/operations}}
