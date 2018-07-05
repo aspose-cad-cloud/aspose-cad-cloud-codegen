@@ -183,7 +183,7 @@ module {{moduleName}}
                                                         auth_names: auth_names{{#returnType}},
                                                         return_type: '{{{returnType}}}'{{/returnType}})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: 
+        @api_client.config.logger.debug "API called:
         {{classname}}#{{operationId}}\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]

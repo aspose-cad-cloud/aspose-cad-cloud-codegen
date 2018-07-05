@@ -173,7 +173,7 @@
       {{/required}}
       {{#isEnum}}
       {{^isContainer}}
-      {{{name}}}_validator = EnumAttributeValidator.new('{{{datatype}}}', %w({{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}))
+      {{{name}}}_validator = EnumAttributeValidator.new('{{{datatype}}}', %w[{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}])
       return false unless {{{name}}}_validator.valid?(@{{{name}}})
       {{/isContainer}}
       {{/isEnum}}
@@ -210,10 +210,10 @@
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] {{{name}}} Object to be assigned
     def {{{name}}}=({{{name}}})
-      validator = EnumAttributeValidator.new('{{{datatype}}}', %w({{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}))
+      validator = EnumAttributeValidator.new('{{{datatype}}}', %w[{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}])
       if {{{name}}}.to_i == 0
         unless validator.valid?({{{name}}})
-          fail ArgumentError, "invalid value for '{{{name}}}', must be one of #{validator.allowable_values}."
+          raise ArgumentError, "invalid value for '{{{name}}}', must be one of #{validator.allowable_values}."
         end
         @{{{name}}} = {{{name}}}
       else
@@ -230,49 +230,49 @@
     def {{{name}}}=({{{name}}})
       {{#required}}
       if {{{name}}}.nil?
-        fail ArgumentError, "{{{name}}} cannot be nil"
+        raise ArgumentError, "{{{name}}} cannot be nil"
       end
       {{/required}}
 
       {{#maxLength}}
       if {{^required}}!{{{name}}}.nil? && {{/required}}{{{name}}}.to_s.length > {{{maxLength}}}
-        fail ArgumentError, "invalid value for '{{{name}}}', the character length must be smaller than or equal to {{{maxLength}}}."
+        raise ArgumentError, "invalid value for '{{{name}}}', the character length must be smaller than or equal to {{{maxLength}}}."
       end
 
       {{/maxLength}}
       {{#minLength}}
       if {{^required}}!{{{name}}}.nil? && {{/required}}{{{name}}}.to_s.length < {{{minLength}}}
-        fail ArgumentError, "invalid value for '{{{name}}}', the character length must be great than or equal to {{{minLength}}}."
+        raise ArgumentError, "invalid value for '{{{name}}}', the character length must be great than or equal to {{{minLength}}}."
       end
 
       {{/minLength}}
       {{#maximum}}
       if {{^required}}!{{{name}}}.nil? && {{/required}}{{{name}}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{{maximum}}}
-        fail ArgumentError, "invalid value for '{{{name}}}', must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}."
+        raise ArgumentError, "invalid value for '{{{name}}}', must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}."
       end
 
       {{/maximum}}
       {{#minimum}}
       if {{^required}}!{{{name}}}.nil? && {{/required}}{{{name}}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}} {{{minimum}}}
-        fail ArgumentError, "invalid value for '{{{name}}}', must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}."
+        raise ArgumentError, "invalid value for '{{{name}}}', must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}."
       end
 
       {{/minimum}}
       {{#pattern}}
       if {{^required}}!{{{name}}}.nil? && {{/required}}{{{name}}} !~ Regexp.new({{{pattern}}})
-        fail ArgumentError, "invalid value for '{{{name}}}', must conform to the pattern {{{pattern}}}."
+        raise ArgumentError, "invalid value for '{{{name}}}', must conform to the pattern {{{pattern}}}."
       end
 
       {{/pattern}}
       {{#maxItems}}
       if {{^required}}!{{{name}}}.nil? && {{/required}}{{{name}}}.length > {{{maxItems}}}
-        fail ArgumentError, "invalid value for '{{{name}}}', number of items must be less than or equal to {{{maxItems}}}."
+        raise ArgumentError, "invalid value for '{{{name}}}', number of items must be less than or equal to {{{maxItems}}}."
       end
 
       {{/maxItems}}
       {{#minItems}}
       if {{^required}}!{{{name}}}.nil? && {{/required}}{{{name}}}.length < {{{minItems}}}
-        fail ArgumentError, "invalid value for '{{{name}}}', number of items must be greater than or equal to {{{minItems}}}."
+        raise ArgumentError, "invalid value for '{{{name}}}', number of items must be greater than or equal to {{{minItems}}}."
       end
 
       {{/minItems}}
