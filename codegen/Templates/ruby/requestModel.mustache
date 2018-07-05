@@ -29,10 +29,10 @@
 
 module {{moduleName}}
 
- #
- # Request model for {{nickname}} operation.
- #
-class {{operationId}}_request
+  #
+  # Request model for {{nickname}} operation.
+  #
+  class {{operationId}}_request
 
     {{#hasParams}}
 	{{#allParams}}                
@@ -55,7 +55,7 @@ class {{operationId}}_request
            {{/allParams}}
         end
     {{/hasParams}}
-    end
+  end
 end
 {{/operation}}
 {{/operations}}
