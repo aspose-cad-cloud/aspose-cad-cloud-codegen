@@ -55,83 +55,58 @@ module {{moduleName}}
     # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>]
     # {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
     private def {{operationId}}_with_http_info(request)
-      unless request.is_a? {{operationId}}_request
-        raise ArgumentError, 'Incorrect request type'
-      end
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? {{operationId}}_request
 
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: {{classname}}.{{operationId}} ...'
-      end
+      @api_client.config.logger.debug 'Calling API: {{classname}}.{{operationId}} ...' if @api_client.config.debugging
       {{#allParams}}
       {{#required}}
       # verify the required parameter '{{paramName}}' is set
-      if @api_client.config.client_side_validation && request.{{{paramName}}}.nil?
-        raise ArgumentError, 'Missing the required parameter {{paramName}} when calling {{classname}}.{{operationId}}'
-      end
+      raise ArgumentError, 'Missing the required parameter {{paramName}} when calling {{classname}}.{{operationId}}' if @api_client.config.client_side_validation && request.{{{paramName}}}.nil?
       {{#isEnum}}
       {{^isContainer}}
       # verify enum value
-      if @api_client.config.client_side_validation && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
-        raise ArgumentError, 'invalid value for {{{paramName}}}, must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
-      end
+      raise ArgumentError, 'invalid value for {{{paramName}}}, must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}' if @api_client.config.client_side_validation && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
       {{/isContainer}}
       {{/isEnum}}
       {{/required}}
       {{^required}}
       {{#isEnum}}
       {{#collectionFormat}}
-      if @api_client.config.client_side_validation && request.{{{paramName}}} && !request.{{{paramName}}}.all?{|item| [{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(item)}
-        raise ArgumentError, 'invalid value for {{{paramName}}}, must include one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
-      end
+      raise ArgumentError, 'invalid value for {{{paramName}}}, must include one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}' if @api_client.config.client_side_validation && request.{{{paramName}}} && !request.{{{paramName}}}.all?{|item| [{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(item)}
+
       {{/collectionFormat}}
       {{^collectionFormat}}
-      if @api_client.config.client_side_validation && request.{{{paramName}}} && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
-        raise ArgumentError, 'invalid value for {{{paramName}}}, must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}'
-      end
+      raise ArgumentError, 'invalid value for {{{paramName}}}, must be one of {{#allowableValues}}{{#values}}{{{this}}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}' if @api_client.config.client_side_validation && request.{{{paramName}}} && ![{{#allowableValues}}{{#values}}'{{{this}}}'{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}].include?(request.{{{paramName}}})
       {{/collectionFormat}}
       {{/isEnum}}
       {{/required}}
       {{#hasValidation}}
       {{#maxLength}}
-      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length > {{{maxLength}}}
-        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, the character length must be smaller than or equal to {{{maxLength}}}.'
-      end
+      raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}{{operationId}}_request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, the character length must be smaller than or equal to {{{maxLength}}}.' if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length > {{{maxLength}}}
 
       {{/maxLength}}
       {{#minLength}}
-      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length < {{{minLength}}}
-        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, the character length must be great than or equal to {{{minLength}}}.'
-      end
+      raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, the character length must be great than or equal to {{{minLength}}}.' if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.to_s.length < {{{minLength}}}
 
       {{/minLength}}
       {{#maximum}}
-      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{{maximum}}}
-        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}.'
-      end
+      raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must be smaller than {{^exclusiveMaximum}}or equal to {{/exclusiveMaximum}}{{{maximum}}}.' if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}} {{{maximum}}}
 
       {{/maximum}}
       {{#minimum}}
-      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}} {{{minimum}}}
-        raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}.'
-      end
+       raise ArgumentError, 'invalid value for {{#required}}{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must be greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}{{{minimum}}}.' if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}} {{{minimum}}}
 
       {{/minimum}}
       {{#pattern}}
-      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} !~ Regexp.new({{{pattern}}})
-        raise ArgumentError, "invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must conform to the pattern {{{pattern}}}."
-      end
+      raise ArgumentError, "invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, must conform to the pattern {{{pattern}}}." if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} !~ Regexp.new({{{pattern}}})
 
       {{/pattern}}
       {{#maxItems}}
-      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length > {{{maxItems}}}
-        raise ArgumentError, 'invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}{request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, number of items must be less than or equal to {{{maxItems}}}.'
-      end
+      raise ArgumentError, 'invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}{request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, number of items must be less than or equal to {{{maxItems}}}.' if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length > {{{maxItems}}}
 
       {{/maxItems}}
       {{#minItems}}
-      if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length < {{{minItems}}}
-        raise ArgumentError, 'invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, number of items must be greater than or equal to {{{minItems}}}.'
-      end
+      raise ArgumentError, 'invalid value for {{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}} when calling {{classname}}.{{operationId}}, number of items must be greater than or equal to {{{minItems}}}.' if @api_client.config.client_side_validation && {{^required}}!request.{{{paramName}}}.nil? && {{/required}}{{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}}.length < {{{minItems}}}
 
       {{/minItems}}
       {{/hasValidation}}
@@ -201,12 +176,12 @@ module {{moduleName}}
       {{/bodyParam}}
       auth_names = ['oauth']
       data, status_code, headers = @api_client.call_api(:{{httpMethod}}, local_var_path,
-        header_params: header_params,
-        query_params: query_params,
-        form_params: form_params,
-        body: post_body,
-        auth_names: auth_names{{#returnType}},
-        return_type: '{{{returnType}}}'{{/returnType}})
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names{{#returnType}},
+                                                        return_type: '{{{returnType}}}'{{/returnType}})
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: 
         {{classname}}#{{operationId}}\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
