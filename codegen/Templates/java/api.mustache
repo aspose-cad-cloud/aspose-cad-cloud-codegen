@@ -3,7 +3,8 @@ package {{package}};
 
 import {{invokerPackage}}.*;
 import {{invokerPackage}}.internal.*;
-import {{invokerPackage}}.internal.requesthandlers.*;
+import com.aspose.cad.cloud.sdk.model.*;
+import {{invokerPackage}}.internal.requesthandlers.*;;
 import {{modelPackage}}.requests.*;
 import com.aspose.cad.cloud.sdk.stablemodel.*;
 import java.io.File;
@@ -216,11 +217,13 @@ public class {{classname}}
               return null;
           }
                 
-          throw ex;                
+          throw ex;
       }
     }
-  
-    {{/operation}}
-    {{/operations}}
+	
+	{{/operation}}
 }
+
+{{/operations}}
+
 {{>requestModel}}
