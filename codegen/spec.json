@@ -4,7 +4,7 @@
     "title": "Aspose.CAD for Cloud API Reference",
     "version": "17.11.0"
   },
-  "host": "localhost",
+  "host": "api-qa.aspose.cloud",
   "basePath": "/v1.1",
   "schemes": [],
   "consumes": [
@@ -560,7 +560,7 @@
     "oauth": {
       "type": "oauth2",
       "flow": "application",
-      "authorizationUrl": "localhost/oauth2/token"
+      "authorizationUrl": "api-qa.aspose.cloud/oauth2/token"
     }
   }
 }

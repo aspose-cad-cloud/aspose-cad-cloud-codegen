@@ -1,6 +1,7 @@
 {{>licenseInfo}}
 package {{package}};
 
+import {{modelPackage}}.*;
 import {{invokerPackage}}.*;
 import {{invokerPackage}}.internal.*;
 import com.aspose.cad.cloud.sdk.model.*;
@@ -18,6 +19,11 @@ import java.util.HashMap;
  */
 public class {{classname}} 
 {
+	/**
+	 * Current SDK version
+	 */
+	public static final String Version = "{{artifactVersion}}";
+
 	/**
 	 * The API invoker
 	 */
