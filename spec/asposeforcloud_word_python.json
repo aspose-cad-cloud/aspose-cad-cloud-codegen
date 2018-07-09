@@ -16,6 +16,34 @@
     "application/json"
   ],
   "paths": {
+    "/words/fonts/available": {
+      "get": {
+        "tags": [
+          "words"
+        ],
+        "summary": "Gets the list of fonts, available for document processing",
+        "operationId": "GetAvailableFonts",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "FontsLocation",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Folder in filestorage with custom fonts."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "AvailableFontsResponse .",
+            "schema": {
+              "$ref": "#/definitions/AvailableFontsResponse"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "GetAvailableFonts"
+      }
+    },
     "/words/fonts/cache": {
       "delete": {
         "tags": [
@@ -9202,6 +9230,65 @@
     }
   },
   "definitions": {
+    "AvailableFontsResponse": {
+      "type": "null",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/AsposeResponse"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "AdditionalFonts": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FontInfo"
+              },
+              "description": "The list of addititional fonts, provided by aspose team"
+            },
+            "CustomFonts": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FontInfo"
+              },
+              "description": "Custom user fonts (from user file storage). To use them, you should specify \"fontsLocation\" parameter in any request"
+            },
+            "SystemFonts": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FontInfo"
+              },
+              "description": "The list of system fonts, availiable on the server"
+            }
+          }
+        }
+      ],
+      "description": "The list of fonts, available for document processing"
+    },
+    "FontInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "FontFamilyName": {
+          "type": "string",
+          "description": "Family name of the font."
+        },
+        "FullFontName": {
+          "type": "string",
+          "description": "Full name of the font."
+        },
+        "Version": {
+          "type": "string",
+          "description": "Version string of the font."
+        },
+        "FilePath": {
+          "type": "string",
+          "description": "Path to the font file if any."
+        }
+      },
+      "description": "Font info"
+    },
     "AsposeResponse": {
       "type": "object",
       "discriminator": "Type",
