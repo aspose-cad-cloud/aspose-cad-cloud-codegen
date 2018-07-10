@@ -13993,6 +13993,10 @@
           "type": "string",
           "description": "Determines how EMF+ Dual metafiles should be rendered"
         },
+        "EmulateRasterOperations": {
+          "type": "boolean",
+          "description": "Gets or sets a value determining whether or not the raster operations should be emulated.\n            "
+        },
         "RenderingMode": {
           "type": "string",
           "description": "Determines how metafile images should be rendered"
