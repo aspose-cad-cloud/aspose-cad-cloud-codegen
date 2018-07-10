@@ -14457,6 +14457,10 @@
               "description": "Specifies the details for encrypting the output PDF document",
               "$ref": "#/definitions/PdfEncryptionDetailsData"
             },
+            "EscapeUri": {
+              "type": "boolean",
+              "description": "A flag specifying whether URI should be escaped before writing.\n            "
+            },
             "ExportDocumentStructure": {
               "type": "boolean",
               "description": "Determines whether or not to export document structure"
