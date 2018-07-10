@@ -1,6 +1,8 @@
 [submodule "SDKs/NET"]
 	path = SDKs/NET
 	url = https://github.com/aspose-cad-cloud/aspose-cad-cloud-dotnet
+	branch = master
 [submodule "SDKs/Java"]
 	path = SDKs/Java
 	url = https://github.com/aspose-cad-cloud/aspose-cad-cloud-java
+	branch = master
