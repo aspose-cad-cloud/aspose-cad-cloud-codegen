@@ -14611,6 +14611,10 @@
           "description": "Specifies the default level in the document outline at which to display Word bookmarks",
           "format": "int32"
         },
+        "CreateMissingOutlineLevels": {
+          "type": "boolean",
+          "description": "Gets or sets a value determining whether or not to create missing outline levels\n    when the document is exported.\n    Default value for this property is false."
+        },
         "ExpandedOutlineLevels": {
           "type": "integer",
           "description": "Specifies how many levels in the document outline to show expanded when the file is viewed",
