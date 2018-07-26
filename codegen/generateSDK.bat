@@ -6,6 +6,8 @@ call codegen\generatePhpSDK ||  goto :error
 
 call codegen\generateRubySDK ||  goto :error
 
+call codegen\generatePythonSDK||  goto :error
+
 goto :EOF
 
 :error

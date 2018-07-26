@@ -32,7 +32,7 @@ import re  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
-
+from asposewordscloud.rest import ApiException
 from {{packageName}}.api_client import ApiClient
 
 
@@ -40,7 +40,7 @@ from {{packageName}}.api_client import ApiClient
 class {{classname}}(object):
     """
     Aspose.Words for Cloud API
-    
+
     :param api_client: an api client to perfom http requests
     """
     def __init__(self, api_client=None):
@@ -57,16 +57,9 @@ class {{classname}}(object):
         {{{notes}}}  # noqa: E501
 {{/notes}}
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-{{#sortParamsByRequiredFlag}}
-        >>> thread = api.{{operationId}}(self, request, async=True)
-{{/sortParamsByRequiredFlag}}
-{{^sortParamsByRequiredFlag}}
-        >>> thread = api.{{operationId}}(self, request, async=True)
-{{/sortParamsByRequiredFlag}}
-        >>> result = thread.get()
+        asynchronous HTTP request, please pass is_async=True
 
-        :param async bool
+        :param is_async bool
 {{#allParams}}
         :param {{dataType}} {{paramName}}:{{#description}} {{{description}}}{{/description}}{{#required}} (required){{/required}}{{#optional}}(optional){{/optional}}
 {{/allParams}}
@@ -75,12 +68,16 @@ class {{classname}}(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
-            return self.{{operationId}}_with_http_info(self, request, **kwargs)  # noqa: E501
-        else:
-            (data) = self.{{operationId}}_with_http_info(self, request, **kwargs)  # noqa: E501
+        try:
+            if kwargs.get('is_async'):
+                return self.{{operationId}}_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.{{operationId}}_with_http_info(request, **kwargs)  # noqa: E501
             return data
-
+        except ApiException as e:
+            if e.status == 401:
+                self.__refresh_token()
+                raise ApiException('Access token has expired. Token has been refreshed, please run request again.')
+        
     def {{operationId}}_with_http_info(self, request, **kwargs):  # noqa: E501
         """{{#summary}}{{.}}{{/summary}}{{^summary}}{{operationId}}{{/summary}}  # noqa: E501
 
@@ -88,11 +85,9 @@ class {{classname}}(object):
         {{{notes}}}  # noqa: E501
 {{/notes}}
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.{{operationId}}_with_http_info(self, request, async=True)
-        >>> result = thread.get()
+        asynchronous HTTP request, please pass is_async=True
 
-        :param async bool
+        :param is_async bool
         :param {{operationId}}_request request object with parameters
         :return: {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}
                  If the method is called asynchronously,
@@ -100,10 +95,10 @@ class {{classname}}(object):
         """
 
         params = locals()
-        params.append('async')
-        params.append('_return_http_data_only')
-        params.append('_preload_content')
-        params.append('_request_timeout')
+        params['is_async'] = ''
+        params['_return_http_data_only'] = False
+        params['_preload_content'] = True
+        params['_request_timeout'] = ''
         for key, val in six.iteritems(params['kwargs']):
             if key not in params:
                 raise TypeError(
@@ -115,7 +110,7 @@ class {{classname}}(object):
 {{#allParams}}
 {{#required}}
         # verify the required parameter '{{paramName}}' is set
-        if (request.{{paramName}} is None):
+        if request.{{paramName}} is None:
             raise ValueError("Missing the required parameter `{{paramName}}` when calling `{{operationId}}`")  # noqa: E501
 {{/required}}
 {{/allParams}}
@@ -123,11 +118,11 @@ class {{classname}}(object):
 {{#allParams}}
 {{#hasValidation}}
     {{#maxLength}}
-        if (request.{{paramName}} > {{maxLength}}):
+        if request.{{paramName}} > {{maxLength}}:
             raise ValueError("Invalid value for parameter `{{paramName}}` when calling `{{operationId}}`, length must be less than or equal to `{{maxLength}}`")  # noqa: E501
     {{/maxLength}}
     {{#minLength}}
-        if (request.{{paramName}} < {{minLength}}):
+        if request.{{paramName}} < {{minLength}}:
             raise ValueError("Invalid value for parameter `{{paramName}}` when calling `{{operationId}}`, length must be greater than or equal to `{{minLength}}`")  # noqa: E501
     {{/minLength}}
     {{#maximum}}
@@ -139,11 +134,11 @@ class {{classname}}(object):
             raise ValueError("Invalid value for parameter `{{paramName}}` when calling `{{operationId}}`, must be a value greater than {{^exclusiveMinimum}}or equal to {{/exclusiveMinimum}}`{{minimum}}`")  # noqa: E501
     {{/minimum}}
     {{#maxItems}}
-        if (request.{{paramName}} > {{maxItems}}):
+        if request.{{paramName}} > {{maxItems}}:
             raise ValueError("Invalid value for parameter `{{paramName}}` when calling `{{operationId}}`, number of items must be less than or equal to `{{maxItems}}`")  # noqa: E501
     {{/maxItems}}
     {{#minItems}}
-        if (request.{{paramName}} < {{minItems}}):
+        if request.{{paramName}} < {{minItems}}:
             raise ValueError("Invalid value for parameter `{{paramName}}` when calling `{{operationId}}`, number of items must be greater than or equal to `{{minItems}}`")  # noqa: E501
     {{/minItems}}
 {{/hasValidation}}
@@ -151,7 +146,7 @@ class {{classname}}(object):
 {{/-last}}
 {{/allParams}}
         collection_formats = {}
-
+        path = '{{{path}}}'
         path_params = {}
 {{#pathParams}}
         if request.{{paramName}} is not None:
@@ -161,9 +156,12 @@ class {{classname}}(object):
 
         query_params = []
 {{#queryParams}}
-        if request.{{paramName}} is not None:
-            query_params.append((self.__downcase_first_letter('{{baseName}}'), request.{{paramName}})){{#isListContainer}}  # noqa: E501
-            collection_formats[self.__downcase_first_letter('{{baseName}}')] = '{{collectionFormat}}'{{/isListContainer}}  # noqa: E501
+        if self.__downcase_first_letter('{{baseName}}') in path:
+            path = path.replace('{' + self.__downcase_first_letter('{{baseName}}' + '}'), request.{{paramName}} if request.{{paramName}} is not None else '')
+        else:
+            if request.{{paramName}} is not None:
+                query_params.append((self.__downcase_first_letter('{{baseName}}'), request.{{paramName}})){{#isListContainer}}  # noqa: E501
+                collection_formats[self.__downcase_first_letter('{{baseName}}')] = '{{collectionFormat}}'{{/isListContainer}}  # noqa: E501
 {{/queryParams}}
 
         header_params = {}
@@ -174,10 +172,10 @@ class {{classname}}(object):
 {{/headerParams}}
 
         form_params = []
-        local_var_files = {}
+        local_var_files = []
 {{#formParams}}
         if request.{{paramName}} is not None:
-            {{#notFile}}form_params.append((self.__downcase_first_letter('{{baseName}}'), request.{{paramName}})){{/notFile}}{{#isFile}}local_var_files[self.__downcase_first_letter('{{baseName}}')] = equest.{{paramName}}{{/isFile}}{{#isListContainer}}  # noqa: E501
+            {{#notFile}}form_params.append((self.__downcase_first_letter('{{baseName}}'), request.{{paramName}})){{/notFile}}{{#isFile}}local_var_files.append((self.__downcase_first_letter('{{baseName}}'), request.{{paramName}})){{/isFile}}{{#isListContainer}}  # noqa: E501
             collection_formats[self.__downcase_first_letter('{{baseName}}')] = '{{collectionFormat}}'{{/isListContainer}}  # noqa: E501
 {{/formParams}}
 
@@ -199,10 +197,10 @@ class {{classname}}(object):
 
         {{/hasConsumes}}
         # Authentication setting
-        auth_settings = [{{#authMethods}}'{{name}}'{{#hasMore}}, {{/hasMore}}{{/authMethods}}]  # noqa: E501
+        auth_settings = ['oauth']  # noqa: E501
 
         return self.api_client.call_api(
-            '{{{path}}}', '{{httpMethod}}',
+            path, '{{httpMethod}}',
             path_params,
             query_params,
             header_params,
@@ -211,7 +209,7 @@ class {{classname}}(object):
             files=local_var_files,
             response_type={{#returnType}}'{{returnType}}'{{/returnType}}{{^returnType}}None{{/returnType}},  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            is_async=params.get('is_async'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -219,22 +217,58 @@ class {{classname}}(object):
 {{/operation}}
 
     # Helper method to convert first letter to downcase
-    def __downcase_first_letter(self, str):
+    def __downcase_first_letter(self, s):
         if len(s) == 0:
-            return s
+            return str
         else:
             return s[0].lower() + s[1:]
-			
+
+
     def __request_token(self):
         config = self.api_client.configuration
         api_version = config.api_version
         config.api_version = ''
-        request_url = "/oauth2/token"
-        post_data = "grant_type=client_credentials" + "&client_id=" + config.api_key['app_sid'] + "&client_secret=" + config.api_key['api_key']
-        data, status_code, header = self.api_client.call_api(request_url, 'POST', body=post_data, response_type= 'object')
-        self.api_client.configuration.access_token = data['access_token']
-        self.api_client.configuration.api_version = api_version
-        self.api_client.configuration.refresh_token = data['refresh_token']
-{{/operations}}
+        request_url = "oauth2/token"
+        form_params = [('grant_type', 'client_credentials'), ('client_id', config.api_key['app_sid']),
+                       ('client_secret', config.api_key['api_key'])]
 
+        header_params = {'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded'}
+
+        data = self.api_client.call_api(request_url, 'POST',
+                                        {},
+                                        [],
+                                        header_params,
+                                        post_params=form_params,
+                                        response_type='object',
+                                        files={}, _return_http_data_only=True)
+        access_token = data['access_token'] if six.PY3 else data['access_token'].encode('utf8')
+        refresh_token = data['refresh_token'] if six.PY3 else data['refresh_token'].encode('utf8')
+        self.api_client.configuration.access_token = access_token
+        self.api_client.configuration.api_version = api_version
+        self.api_client.configuration.refresh_token = refresh_token
+
+
+    def __refresh_token(self):
+        config = self.api_client.configuration
+        api_version = config.api_version
+        config.api_version = ''
+        request_url = "oauth2/token"
+        form_params = [('grant_type', 'refresh_token'), ('refresh_token', config.refresh_token)]
+
+        header_params = {'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded'}
+
+        data = self.api_client.call_api(request_url, 'POST',
+                                        {},
+                                        [],
+                                        header_params,
+                                        post_params=form_params,
+                                        response_type='object',
+                                        files={}, _return_http_data_only=True)
+        access_token = data['access_token'] if six.PY3 else data['access_token'].encode('utf8')
+        refresh_token = data['refresh_token'] if six.PY3 else data['refresh_token'].encode('utf8')
+        self.api_client.configuration.access_token = access_token
+        self.api_client.configuration.api_version = api_version
+        self.api_client.configuration.refresh_token = refresh_token
+
+{{/operations}}
 {{> requestModel}}

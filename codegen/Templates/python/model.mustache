@@ -78,13 +78,8 @@ class {{classname}}(object):
         self.discriminator = {{#discriminator}}'{{discriminator}}'{{/discriminator}}{{^discriminator}}None{{/discriminator}}
 {{#vars}}{{#-first}}
 {{/-first}}
-{{#required}}
-        self.{{name}} = {{name}}
-{{/required}}
-{{^required}}
         if {{name}} is not None:
             self.{{name}} = {{name}}
-{{/required}}
 {{/vars}}
 
 {{#vars}}
@@ -138,11 +133,14 @@ class {{classname}}(object):
 {{/isContainer}}
 {{^isContainer}}
         allowed_values = [{{#allowableValues}}{{#values}}{{#isString}}"{{/isString}}{{{this}}}{{#isString}}"{{/isString}}{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}]  # noqa: E501
-        if {{{name}}} not in allowed_values:
-            raise ValueError(
-                "Invalid value for `{{{name}}}` ({0}), must be one of {1}"  # noqa: E501
-                .format({{{name}}}, allowed_values)
-            )
+        if not {{{name}}}.isdigit():	
+            if {{{name}}} not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `{{{name}}}` ({0}), must be one of {1}"  # noqa: E501
+                    .format({{{name}}}, allowed_values))
+            self._{{name}} = {{name}}
+        else:
+            self._{{name}} = allowed_values[int({{name}}) if six.PY3 else long({{name}})]
 {{/isContainer}}
 {{/isEnum}}
 {{^isEnum}}
@@ -177,9 +175,9 @@ class {{classname}}(object):
 {{/minItems}}
 {{/hasValidation}}
 {{/isEnum}}
-
+{{^isEnum}}
         self._{{name}} = {{name}}
-
+{{/isEnum}}
 {{/vars}}
 {{#discriminator}}
     def get_real_child_model(self, data):
