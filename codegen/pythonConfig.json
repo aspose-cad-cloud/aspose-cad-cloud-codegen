@@ -1,6 +1,6 @@
 {
-	"packageName": "wordspythonsdk",
-	"projectName": "wordspythonsdk",
-	"packageVersion" : "18.6",
-	"apiPackage": "wordspythonsdk.apis"
+	"packageName": "asposewordscloud",
+	"projectName": "asposewordscloud",
+	"packageVersion" : "18.7",
+	"apiPackage": "asposewordscloud.apis"
 }

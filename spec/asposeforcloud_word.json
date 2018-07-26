@@ -9204,6 +9204,7 @@
   "definitions": {
     "AsposeResponse": {
       "type": "object",
+      "discriminator": "Type",
       "additionalProperties": false,
       "required": [
         "Code"
@@ -9226,8 +9227,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9249,8 +9249,7 @@
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9273,8 +9272,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/Link",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/Link"
         },
         {
           "type": "object"
@@ -9284,6 +9282,7 @@
     },
     "Link": {
       "type": "object",
+      "discriminator": "Type",
       "additionalProperties": false,
       "properties": {
         "Href": {
@@ -9310,8 +9309,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9330,8 +9328,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9353,8 +9350,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9374,6 +9370,7 @@
     },
     "LinkElement": {
       "type": "object",
+      "discriminator": "Type",
       "additionalProperties": false,
       "properties": {
         "link": {
@@ -9388,8 +9385,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/Link",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/Link"
         },
         {
           "type": "object"
@@ -9402,8 +9398,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9437,8 +9432,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9457,8 +9451,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9480,8 +9473,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FootnoteLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FootnoteLink"
         },
         {
           "type": "object",
@@ -9532,11 +9524,11 @@
     },
     "NodeLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9566,11 +9558,11 @@
     },
     "FootnoteLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object"
@@ -9583,8 +9575,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9603,8 +9594,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9623,8 +9613,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9646,8 +9635,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/OfficeMathLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/OfficeMathLink"
         },
         {
           "type": "object",
@@ -9716,11 +9704,11 @@
     },
     "OfficeMathLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object"
@@ -9733,8 +9721,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9753,8 +9740,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9773,8 +9759,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9796,8 +9781,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9895,8 +9879,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9915,8 +9898,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -9935,8 +9917,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -9958,8 +9939,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object"
@@ -9997,8 +9977,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10017,8 +9996,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -10044,8 +10022,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -10071,8 +10048,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -10094,8 +10070,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -10131,8 +10106,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -10624,8 +10598,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10644,8 +10617,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10684,8 +10656,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10704,8 +10675,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10736,8 +10706,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10756,8 +10725,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -10844,8 +10812,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10864,8 +10831,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -10887,8 +10853,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -10942,8 +10907,7 @@
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10967,8 +10931,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -10987,8 +10950,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -11010,8 +10972,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/RunLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/RunLink"
         },
         {
           "type": "object"
@@ -11021,11 +10982,11 @@
     },
     "RunLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -11044,8 +11005,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -11064,8 +11024,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -11084,8 +11043,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -11670,8 +11628,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -11690,8 +11647,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -11713,8 +11669,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -11733,8 +11688,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -11753,8 +11707,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -11787,8 +11740,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -11807,8 +11759,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -11830,8 +11781,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -11854,8 +11804,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -11874,8 +11823,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -11894,8 +11842,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -11914,11 +11861,11 @@
     },
     "FormField": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -11969,8 +11916,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FormField",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FormField"
         },
         {
           "type": "object",
@@ -11998,8 +11944,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FormField",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FormField"
         },
         {
           "type": "object",
@@ -12026,8 +11971,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FormField",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FormField"
         },
         {
           "type": "object",
@@ -12066,8 +12010,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12086,8 +12029,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12106,8 +12048,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12129,8 +12070,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12149,8 +12089,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/DrawingObjectLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/DrawingObjectLink"
         },
         {
           "type": "object",
@@ -12237,11 +12176,11 @@
     },
     "DrawingObjectLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object"
@@ -12254,8 +12193,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12274,8 +12212,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12294,14 +12231,14 @@
     },
     "HeaderFooterLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "required": [
         "Type"
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12327,8 +12264,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12347,8 +12283,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/HeaderFooterLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/HeaderFooterLink"
         },
         {
           "type": "object",
@@ -12371,8 +12306,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12452,8 +12386,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12478,8 +12411,7 @@
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12525,8 +12457,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12545,8 +12476,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12565,8 +12495,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12585,8 +12514,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FieldLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FieldLink"
         },
         {
           "type": "object",
@@ -12606,11 +12534,11 @@
     },
     "FieldLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/NodeLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/NodeLink"
         },
         {
           "type": "object",
@@ -12629,8 +12557,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12649,8 +12576,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12672,8 +12598,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12692,8 +12617,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12715,8 +12639,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object"
@@ -12729,8 +12652,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12749,8 +12671,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -12788,8 +12709,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -12808,8 +12728,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -13062,8 +12981,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13082,8 +13000,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -13105,8 +13022,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/CommentLink",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/CommentLink"
         },
         {
           "type": "object",
@@ -13147,11 +13063,11 @@
     },
     "CommentLink": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object"
@@ -13164,8 +13080,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13216,8 +13131,7 @@
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13267,8 +13181,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13291,8 +13204,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -13329,8 +13241,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13364,8 +13275,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13478,8 +13388,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13552,8 +13461,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13572,8 +13480,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/LinkElement",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/LinkElement"
         },
         {
           "type": "object",
@@ -13622,8 +13529,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -13676,6 +13582,7 @@
     },
     "SaveOptionsData": {
       "type": "object",
+      "discriminator": "Type",
       "additionalProperties": false,
       "properties": {
         "ColorMode": {
@@ -13722,8 +13629,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -13746,8 +13652,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/ImageSaveOptionsData"
         },
         {
           "type": "object"
@@ -13757,11 +13662,11 @@
     },
     "ImageSaveOptionsData": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -13952,11 +13857,11 @@
     },
     "FixedPageSaveOptionsData": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14017,8 +13922,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/ImageSaveOptionsData"
         },
         {
           "type": "object"
@@ -14031,8 +13935,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/ImageSaveOptionsData"
         },
         {
           "type": "object"
@@ -14045,8 +13948,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/ImageSaveOptionsData"
         },
         {
           "type": "object"
@@ -14059,8 +13961,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/ImageSaveOptionsData"
         },
         {
           "type": "object"
@@ -14073,8 +13974,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/ImageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14097,8 +13997,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/HtmlSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/HtmlSaveOptionsData"
         },
         {
           "type": "object",
@@ -14115,11 +14014,11 @@
     },
     "HtmlSaveOptionsData": {
       "type": "null",
+      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14300,8 +14199,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14365,8 +14263,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/HtmlSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/HtmlSaveOptionsData"
         },
         {
           "type": "object"
@@ -14379,8 +14276,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14410,8 +14306,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14438,8 +14333,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14663,8 +14557,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14687,8 +14580,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14707,8 +14599,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14735,8 +14626,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14775,8 +14665,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14815,8 +14704,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14835,8 +14723,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14859,8 +14746,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/SaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/SaveOptionsData"
         },
         {
           "type": "object",
@@ -14883,8 +14769,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/FixedPageSaveOptionsData",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/FixedPageSaveOptionsData"
         },
         {
           "type": "object",
@@ -14917,8 +14802,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/AsposeResponse",
-          "discriminator": "{\"propertyName\":\"Type\"}"
+          "$ref": "#/definitions/AsposeResponse"
         },
         {
           "type": "object",
@@ -14961,7 +14845,7 @@
     "oauth": {
       "type": "oauth2",
       "flow": "application",
-      "tokenUrl": "localhost/oauth2/token"
+      "authorizationUrl": "localhost/oauth2/token"
     },
     "appsid": {
       "type": "apiKey",
