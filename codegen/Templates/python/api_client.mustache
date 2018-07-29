@@ -159,7 +159,11 @@ class ApiClient(object):
             body = self.sanitize_for_serialization(body)
 
         # request url
-        url = self.configuration.host + '/' + self.configuration.api_version + resource_path
+        url = ''
+        if six.PY3:
+            url = self.configuration.host + '/' + self.configuration.api_version + resource_path
+        else:
+            url = (self.configuration.host + '/' + self.configuration.api_version + resource_path).encode('utf8')
 
         # perform request and return response
         response_data = {{#asyncio}}await {{/asyncio}}{{#tornado}}yield {{/tornado}}self.request(
@@ -237,7 +241,7 @@ class ApiClient(object):
 
         # fetch data from response object
         try:
-            data = json.loads(response.data)
+            data = json.loads(response.data.decode('utf8')) if six.PY3 else: json.loads(response.data)
         except ValueError:
             data = response.data
 
