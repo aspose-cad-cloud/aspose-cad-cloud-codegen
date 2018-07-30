@@ -5,8 +5,8 @@ codegen\Tools\SplitPythonCodeFile.exe C:\tmp\python\asposewordscloud\apis\words_
 
 del /S /Q "SDKs\python\docs" || goto :error
 del /S /Q "SDKs\python\asposewordscloud" || goto :error
-xcopy "C:\tmp\python\docs" "SDKs\python\docs" /E || goto :error
-xcopy "C:\tmp\python\asposewordscloud" "SDKs\python\asposewordscloud" /E || goto :error
+xcopy "C:\tmp\python\docs" "SDKs\python\docs\" /E || goto :error
+xcopy "C:\tmp\python\asposewordscloud" "SDKs\python\asposewordscloud\" /E || goto :error
 
 goto :EOF
 
