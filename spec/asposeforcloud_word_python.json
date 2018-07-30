@@ -9291,7 +9291,6 @@
     },
     "AsposeResponse": {
       "type": "object",
-      "discriminator": "Type",
       "additionalProperties": false,
       "required": [
         "Code"
@@ -9369,7 +9368,6 @@
     },
     "Link": {
       "type": "object",
-      "discriminator": "Type",
       "additionalProperties": false,
       "properties": {
         "Href": {
@@ -9457,7 +9455,6 @@
     },
     "LinkElement": {
       "type": "object",
-      "discriminator": "Type",
       "additionalProperties": false,
       "properties": {
         "link": {
@@ -9611,7 +9608,6 @@
     },
     "NodeLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -9645,7 +9641,6 @@
     },
     "FootnoteLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -9791,7 +9786,6 @@
     },
     "OfficeMathLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -11069,7 +11063,6 @@
     },
     "RunLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -11948,7 +11941,6 @@
     },
     "FormField": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -12263,7 +12255,6 @@
     },
     "DrawingObjectLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -12318,7 +12309,6 @@
     },
     "HeaderFooterLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "required": [
         "Type"
@@ -12621,7 +12611,6 @@
     },
     "FieldLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -13150,7 +13139,6 @@
     },
     "CommentLink": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -13669,7 +13657,6 @@
     },
     "SaveOptionsData": {
       "type": "object",
-      "discriminator": "Type",
       "additionalProperties": false,
       "properties": {
         "ColorMode": {
@@ -13749,7 +13736,6 @@
     },
     "ImageSaveOptionsData": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -13944,7 +13930,6 @@
     },
     "FixedPageSaveOptionsData": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
@@ -14105,7 +14090,6 @@
     },
     "HtmlSaveOptionsData": {
       "type": "null",
-      "discriminator": "Type",
       "additionalProperties": false,
       "allOf": [
         {
