@@ -173,7 +173,7 @@
       {{/required}}
       {{#isEnum}}
       {{^isContainer}}
-      {{{name}}}_validator = EnumAttributeValidator.new('{{{datatype}}}', %w[{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}])
+      {{{name}}}_validator = EnumAttributeValidator.new('{{{datatype}}}', [{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}])
       return false unless {{{name}}}_validator.valid?(@{{{name}}})
       {{/isContainer}}
       {{/isEnum}}
@@ -210,7 +210,7 @@
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] {{{name}}} Object to be assigned
     def {{{name}}}=({{{name}}})
-      validator = EnumAttributeValidator.new('{{{datatype}}}', %w[{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}])
+      validator = EnumAttributeValidator.new('{{{datatype}}}', [{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}])
       if {{{name}}}.to_i == 0
         unless validator.valid?({{{name}}})
           raise ArgumentError, "invalid value for '{{{name}}}', must be one of #{validator.allowable_values}."
