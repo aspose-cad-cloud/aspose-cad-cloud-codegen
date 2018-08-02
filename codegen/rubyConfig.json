@@ -1,6 +1,6 @@
 {
 	"moduleName": "WordsRubySdk",
-	"gemVersion": "18.6",
+	"gemVersion": "18.8",
 	"gemName": "words_ruby_sdk",
 	"variableNamingConvention":"camelCase"
 }
