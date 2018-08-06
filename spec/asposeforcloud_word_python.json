@@ -7040,6 +7040,14 @@
             "x-nullable": true,
             "description": "Count of the best classes to return.",
             "default": "1"
+          },
+          {
+            "type": "string",
+            "name": "Taxonomy",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Taxonomy to use for classification return.",
+            "default": "default"
           }
         ],
         "responses": {
