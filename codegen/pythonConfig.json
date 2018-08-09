@@ -1,6 +1,6 @@
 {
 	"packageName": "asposewordscloud",
 	"projectName": "asposewordscloud",
-	"packageVersion" : "18.7",
+	"packageVersion" : "18.7.0",
 	"apiPackage": "asposewordscloud.apis"
 }
