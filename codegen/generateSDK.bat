@@ -8,6 +8,8 @@ call codegen\generateRubySDK ||  goto :error
 
 call codegen\generatePythonSDK||  goto :error
 
+call codegen\generateJavaSDK || goto :error
+
 goto :EOF
 
 :error
