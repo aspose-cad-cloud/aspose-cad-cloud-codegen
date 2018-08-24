@@ -1,0 +1,8 @@
+{
+	"groupId": "com.aspose.words",
+	"modelPackage": "com.aspose.words.model",
+	"apiPackage": "com.aspose.words.api",
+	"artifactId": "AsposeWordsCloud",
+	"artifactVersion": "18.8",
+	"library": "jersey1"
+}
