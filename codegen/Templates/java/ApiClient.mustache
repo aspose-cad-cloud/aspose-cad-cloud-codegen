@@ -58,7 +58,7 @@ import {{invokerPackage}}.auth.OAuth;
 public class ApiClient {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   private String apiVersionV1 = "v1";
-  private String baseUrl = "https://api.aspose.com/";
+  private String baseUrl = "https://api.aspose.cloud/";
   private String basePath = baseUrl + apiVersionV1;
   private String clientVersion = "{{{artifactVersion}}}";
   private String apiKey = "";
@@ -76,10 +76,11 @@ public class ApiClient {
 
   private DateFormat dateFormat;
 
-  public ApiClient(String appKey, String appSid) throws ApiException {
+  public ApiClient(String appKey, String appSid, String baseUrl) throws ApiException {
     if (apiKey == null || appSid == null){
         throw new IllegalArgumentException("appKey and appSid couldn't be null values");
     }
+	if (baseUrl != null) this.baseUrl = baseUrl;
 
     this.apiKey = appKey;
     this.appSid = appSid;
@@ -606,7 +607,7 @@ public class ApiClient {
    */
   private String buildUrl(String path, List<Pair> queryParams, List<Pair> collectionQueryParams) {
     final StringBuilder url = new StringBuilder();
-    url.append(basePath).append(path);
+    url.append(path == "/oauth2/token" ? this.baseUrl : this.basePath).append(path);
 
     if (queryParams != null && !queryParams.isEmpty()) {
       // support (constant) query string in `path`, e.g. "/posts?draft=1"

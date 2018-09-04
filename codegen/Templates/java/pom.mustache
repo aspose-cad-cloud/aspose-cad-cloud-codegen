@@ -6,28 +6,33 @@
     <packaging>jar</packaging>
     <name>{{artifactId}}</name>
     <version>{{artifactVersion}}</version>
-    <url>{{artifactUrl}}</url>
-    <description>{{artifactDescription}}</description>
-    <scm>
-        <connection>{{scmConnection}}</connection>
-        <developerConnection>{{scmDeveloperConnection}}</developerConnection>
-        <url>{{scmUrl}}</url>
-    </scm>
-
+    <url>https://github.com/aspose-words-cloud/aspose-words-cloud-java</url>
+    <description>Aspose Words for Cloud Java SDK</description>
     <licenses>
         <license>
-            <name>{{licenseName}}</name>
-            <url>{{licenseUrl}}</url>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/mit-license.php</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
-
+    <repositories>
+        <repository>
+            <id>aspose</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <url>https://artifact.aspose.cloud/repo/</url>
+        </repository>
+    </repositories>
     <developers>
         <developer>
-            <name>{{developerName}}</name>
-            <email>{{developerEmail}}</email>
-            <organization>{{developerOrganization}}</organization>
-            <organizationUrl>{{developerOrganizationUrl}}</organizationUrl>
+            <name>Yaroslaw Ekimov</name>
+            <email>yaroslaw.ekimov@aspose.com</email>
+            <organization>Aspose</organization>
+            <organizationUrl>http://aspose.com</organizationUrl>
         </developer>
     </developers>
 
@@ -319,6 +324,12 @@
             <artifactId>junit</artifactId>
             <version>${junit-version}</version>
             <scope>test</scope>
+        </dependency>
+		 <!-- https://mvnrepository.com/artifact/com.aspose/aspose-cloud-storage -->
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-cloud-storage</artifactId>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
     <properties>
