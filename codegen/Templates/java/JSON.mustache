@@ -344,7 +344,19 @@ public class JSON {
                     if (date.endsWith("+0000")) {
                         date = date.substring(0, date.length()-5) + "Z";
                     }
-                    return OffsetDateTime.parse(date, formatter);
+                    String timeStampString = new Timestamp(Long.valueOf(date.substring(date.indexOf("(") + 1, date.indexOf(")") -1))).toString();
+                    Integer index = timeStampString.indexOf(" ");
+                    String dateString = timeStampString.substring(0, index);
+                    String[] timeString = timeStampString.substring(index + 1).split(":");
+                    String[] val = dateString.split("-");
+                    return OffsetDateTime.of(Integer.valueOf(val[0]),
+                            Integer.valueOf(val[1]),
+                            Integer.valueOf(val[2]),
+                            Integer.valueOf(timeString[0]),
+                            Integer.valueOf(timeString[1]),
+                            0,
+                            0,
+                            ZoneOffset.UTC);
             }
         }
     }

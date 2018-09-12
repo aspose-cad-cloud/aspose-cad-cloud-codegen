@@ -13,11 +13,7 @@ public class Configuration {
      * @return Default API client
      */
     public static ApiClient getDefaultApiClient() {
-        try {
-            defaultApiClient = new ApiClient("", "", null);
-        } catch (ApiException e) {
-            e.printStackTrace();
-        }
+        defaultApiClient = new ApiClient();
         return defaultApiClient;
     }
 

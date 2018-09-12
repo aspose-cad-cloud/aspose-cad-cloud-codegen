@@ -33,8 +33,7 @@ import java.io.File;
 /*
  * Request model for {{nickname}} operation.
  */
-public class {{vendorExtensions.x-operationId}}Request
-{
+public class {{vendorExtensions.x-operationId}}Request {
     {{#hasParams}}
     {{#allParams}}                
     /*
@@ -42,11 +41,10 @@ public class {{vendorExtensions.x-operationId}}Request
      */
     private {{{dataType}}} {{baseName}};
     {{#hasMore}}
-	
+
     {{/hasMore}}
     {{/allParams}}
     
-	
     /*
      * Initializes a new instance of the {{operationId}}Request class.
      *  
@@ -54,8 +52,7 @@ public class {{vendorExtensions.x-operationId}}Request
      * @param {{dataType}} {{paramName}} {{#description}}{{{description}}}{{/description}}
      {{/allParams}}
      */
-    public {{vendorExtensions.x-operationId}}Request({{#allParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}})             
-    {
+    public {{vendorExtensions.x-operationId}}Request({{#allParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{newline}} {{/hasMore}}{{/allParams}}) {
         {{#allParams}}
         {{baseName}} = {{paramName}};
         {{/allParams}}   
@@ -65,20 +62,18 @@ public class {{vendorExtensions.x-operationId}}Request
     /*
      * {{#description}} Gets {{{description}}}{{/description}}
      */
-    public {{{dataType}}} get{{baseName}}()
-    {
+    public {{{dataType}}} get{{baseName}}() {
         return {{baseName}};
     }
 
     /*
      * {{#description}}Sets {{{description}}}{{/description}}
      */
-    public void set{{baseName}}({{{dataType}}} value)
-    {
+    public void set{{baseName}}({{{dataType}}} value) {
         {{baseName}} = value;
     }
     {{#hasMore}}
-	
+
     {{/hasMore}}
     {{/allParams}}
     {{/hasParams}}	
