@@ -1,6 +1,5 @@
 {
 	"moduleName": "AsposeWordsCloud",
-	"gemVersion": "18.7",
 	"gemName": "aspose_words_cloud",
 	"variableNamingConvention":"camelCase"
 }
