@@ -6,8 +6,8 @@ del /S /Q "SDKs\node\bdd\features" || goto :error
 xcopy "test\bdd\Features" "SDKs\node\bdd\features" /E || goto :error
 xcopy "test\TestData" "SDKs\node\TestData" /E /y || goto :error
 
-rd /S /Q "SDKs\PHP\features\conversion" || goto :error
-rd /S /Q "SDKs\PHP\features\mailMerge" || goto :error
+del /S /Q "SDKs\PHP\features\conversion" || goto :error
+del /S /Q "SDKs\PHP\features\mailMerge" || goto :error
 xcopy "test\bdd\Features" "SDKs\PHP\features" /E || goto :error
 xcopy "test\TestData" "SDKs\PHP\TestData" /E /y || goto :error
 
