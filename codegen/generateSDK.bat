@@ -2,7 +2,7 @@ call codegen\generateNodeJsSDK ||  goto :error
 
 call codegen\generateNetSDK ||  goto :error
 
-echo 'call codegen\generatePhpSDK' ||  goto :error
+call codegen\generatePhpSDK ||  goto :error
 
 call codegen\generateRubySDK ||  goto :error
 
