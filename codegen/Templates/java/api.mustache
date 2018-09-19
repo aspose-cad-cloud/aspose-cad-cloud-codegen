@@ -95,7 +95,7 @@ public class {{classname}} {
         {{localVariablePrefix}}apiClient.invokeAPI({{localVariablePrefix}}localVarPath, "{{httpMethod}}", {{localVariablePrefix}}localVarQueryParams, {{localVariablePrefix}}localVarCollectionQueryParams, {{localVariablePrefix}}localVarPostBody, {{localVariablePrefix}}localVarHeaderParams, {{localVariablePrefix}}localVarFormParams, {{localVariablePrefix}}localVarAccept, {{localVariablePrefix}}localVarContentType, {{localVariablePrefix}}localVarAuthNames, null);
         {{/returnType}}
     }
-  {{/operation}}
+  {{/operation}}  
     private String addParameterToQuery(List<Pair> queryParams, String path, String paramName, Object paramValue){
         if (path.contains("{" + paramName + "}")){
             if (paramValue == null || paramValue == ""){
