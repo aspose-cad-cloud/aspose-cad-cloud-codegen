@@ -13,3 +13,6 @@
 [submodule "SDKs/java"]
 	path = SDKs/java
 	url = https://github.com/aspose-words-cloud/aspose-words-cloud-java.git
+[submodule "SDKs/PHP"]
+	path = SDKs/PHP
+	url = https://github.com/aspose-words-cloud/aspose-words-cloud-php.git
