@@ -61,7 +61,7 @@ class {{classname}}(object):
 
         :param is_async bool
 {{#allParams}}
-        :param {{dataType}} {{paramName}}:{{#description}} {{{description}}}{{/description}}{{#required}} (required){{/required}}{{#optional}}(optional){{/optional}}
+        :param {{paramName}} {{dataType}} :{{#description}} {{{description}}}{{/description}}{{#required}} (required){{/required}}{{#optional}}(optional){{/optional}}
 {{/allParams}}
         :return: {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}
                  If the method is called asynchronously,
@@ -75,8 +75,11 @@ class {{classname}}(object):
             return data
         except ApiException as e:
             if e.status == 401:
-                self.__refresh_token()
-                raise ApiException('Access token has expired. Token has been refreshed, please run request again.')
+                self.__request_token()
+                if kwargs.get('is_async'):
+                    return self.{{operationId}}_with_http_info(request, **kwargs)  # noqa: E501
+            (data) = self.{{operationId}}_with_http_info(request, **kwargs)  # noqa: E501
+            return data
         
     def {{operationId}}_with_http_info(self, request, **kwargs):  # noqa: E501
         """{{#summary}}{{.}}{{/summary}}{{^summary}}{{operationId}}{{/summary}}  # noqa: E501
@@ -88,7 +91,7 @@ class {{classname}}(object):
         asynchronous HTTP request, please pass is_async=True
 
         :param is_async bool
-        :param {{operationId}}_request request object with parameters
+        :param request {{operationId}}_request object with parameters
         :return: {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}
                  If the method is called asynchronously,
                  returns the request thread.
@@ -219,10 +222,9 @@ class {{classname}}(object):
     # Helper method to convert first letter to downcase
     def __downcase_first_letter(self, s):
         if len(s) == 0:
-            return str
+            return s
         else:
             return s[0].lower() + s[1:]
-
 
     def __request_token(self):
         config = self.api_client.configuration
@@ -247,7 +249,8 @@ class {{classname}}(object):
         self.api_client.configuration.api_version = api_version
         self.api_client.configuration.refresh_token = refresh_token
 
-
+    
+    # Refresh token method is going to be removed soon. Obsolete, do not use
     def __refresh_token(self):
         config = self.api_client.configuration
         api_version = config.api_version
