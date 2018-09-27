@@ -46,6 +46,7 @@ module {{moduleName}}
     # @return [{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}]
     def {{operationId}}(request)
       {{#returnType}}data, _status_code, _headers = {{/returnType}}{{operationId}}_with_http_info(request)
+      request_token if _status_code == 401
       {{#returnType}}data{{/returnType}}{{^returnType}}nil{{/returnType}}
     end
 
