@@ -39,7 +39,7 @@ export class {{classname}} {
      * {{&summary}}{{#notes}} {{&notes}}{{/notes}}
      * @param requestObj contains request parameters
      */
-    public async {{nickname}}(requestObj: model.{{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request): Promise<{response: http.ClientResponse, body: {{#vendorExtensions}}{{#x-binary-result}}Buffer{{/x-binary-result}}{{/vendorExtensions}}{{#vendorExtensions}}{{^x-binary-result}}{{#returnType}}model.{{{returnType}}}{{/returnType}}{{^returnType}}body?: any; {{/returnType}}{{/x-binary-result}}{{/vendorExtensions}}}> {
+    public async {{nickname}}(requestObj: model.{{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request): Promise<{response: http.IncomingMessage, body: {{#vendorExtensions}}{{#x-binary-result}}Buffer{{/x-binary-result}}{{/vendorExtensions}}{{#vendorExtensions}}{{^x-binary-result}}{{#returnType}}model.{{{returnType}}}{{/returnType}}{{^returnType}}body?: any; {{/returnType}}{{/x-binary-result}}{{/vendorExtensions}}}> {
         if (requestObj === null || requestObj === undefined) {
             throw new Error('Required parameter "requestObj" was null or undefined when calling {{nickname}}.');
         }
