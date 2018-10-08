@@ -1026,7 +1026,7 @@ public class ApiClient {
      /**
      * Request OAuth token
      */
-    private void requestToken() throws ApiException
+    public void requestToken() throws ApiException
     {
         try {
             RequestBody requestBody = new FormEncodingBuilder()
@@ -1053,7 +1053,7 @@ public class ApiClient {
     }
 
     /**
-     * Refresh OAuth token
+     * Refresh OAuth token. OBSOLETE DO NOT USE
      */
     public void refreshToken() throws ApiException
     {
