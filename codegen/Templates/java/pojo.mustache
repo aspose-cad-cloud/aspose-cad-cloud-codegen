@@ -73,19 +73,11 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#parcela
     super();
   {{/parent}}
   {{#gson}}
-  {{#discriminator}}
-    this.{{discriminator}} = this.getClass().getSimpleName();
-  {{/discriminator}}
   {{/gson}}
   }
   {{/parcelableModel}}
   {{^parcelableModel}}
   {{#gson}}
-  {{#discriminator}}
-  public {{classname}}() {
-    this.{{discriminator}} = this.getClass().getSimpleName();
-  }
-  {{/discriminator}}
   {{/gson}}
   {{/parcelableModel}}
   {{#vars}}
