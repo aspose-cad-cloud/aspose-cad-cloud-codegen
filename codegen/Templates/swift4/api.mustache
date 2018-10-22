@@ -1,0 +1,173 @@
+{{#operations}}
+{{>license}}
+import Foundation
+import Alamofire
+
+{{#swiftUseApiNamespace}}
+extension {{projectName}}API {
+{{/swiftUseApiNamespace}}
+
+{{#description}}
+/** {{description}} */{{/description}}
+open class {{classname}} {
+{{#operation}}
+    {{#allParams}}
+    {{#isEnum}}
+    /**
+     * enum for parameter {{paramName}}
+     */
+    public enum {{enumName}}_{{operationId}}: {{^isContainer}}{{{dataType}}}{{/isContainer}}{{#isContainer}}String{{/isContainer}} { {{#allowableValues}}{{#enumVars}}
+        case {{name}} = {{#isContainer}}"{{/isContainer}}{{#isString}}"{{/isString}}{{{value}}}{{#isString}}"{{/isString}}{{#isContainer}}"{{/isContainer}}{{/enumVars}}{{/allowableValues}}
+    }
+
+    {{/isEnum}}
+    {{/allParams}}
+    /**
+     {{#summary}}
+     {{{summary}}}
+     {{/summary}}{{#allParams}}
+     - parameter {{paramName}}: ({{#isFormParam}}form{{/isFormParam}}{{#isQueryParam}}query{{/isQueryParam}}{{#isPathParam}}path{{/isPathParam}}{{#isHeaderParam}}header{{/isHeaderParam}}{{#isBodyParam}}body{{/isBodyParam}}) {{description}} {{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func {{operationId}}(request: {{vendorExtensions.x-operationId}}Request, completion: @escaping ((_ data: {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}?,_ error: Error?) -> Void)) {
+        {{operationId}}WithRequestBuilder(request).execute { (response, error) -> Void in
+        {{#returnType}}
+            completion(response?.body, error)
+        {{/returnType}}
+        {{^returnType}}
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        {{/returnType}}
+        }
+    }
+
+    /**
+     {{#summary}}
+     {{{summary}}}
+     {{/summary}}
+     - {{httpMethod}} {{{path}}}{{#notes}}
+     - {{{notes}}}{{/notes}}{{#subresourceOperation}}
+     - subresourceOperation: {{subresourceOperation}}{{/subresourceOperation}}{{#defaultResponse}}
+     - defaultResponse: {{defaultResponse}}{{/defaultResponse}}{{#authMethods}}
+     - {{#isBasic}}BASIC{{/isBasic}}{{#isOAuth}}OAuth{{/isOAuth}}{{#isApiKey}}API Key{{/isApiKey}}:
+       - type: {{type}}{{#keyParamName}} {{keyParamName}} {{#isKeyInQuery}}(QUERY){{/isKeyInQuery}}{{#isKeyInHeaer}}(HEADER){{/isKeyInHeaer}}{{/keyParamName}}
+       - name: {{name}}{{/authMethods}}{{#responseHeaders}}
+     - responseHeaders: {{responseHeaders}}{{/responseHeaders}}{{#examples}}
+     - examples: {{{examples}}}{{/examples}}{{#externalDocs}}
+     - externalDocs: {{externalDocs}}{{/externalDocs}}{{#hasParams}}
+     {{/hasParams}}{{#allParams}}
+     - parameter {{paramName}}: ({{#isFormParam}}form{{/isFormParam}}{{#isQueryParam}}query{{/isQueryParam}}{{#isPathParam}}path{{/isPathParam}}{{#isHeaderParam}}header{{/isHeaderParam}}{{#isBodyParam}}body{{/isBodyParam}}) {{description}} {{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
+
+     - returns: RequestBuilder<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {{description}}
+     */
+    private class func {{operationId}}WithRequestBuilder(request: {{vendorExtensions.x-operationId}}Request) -> RequestBuilder<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {
+        {{^pathParams}}let{{/pathParams}}{{#pathParams}}{{^secondaryParam}}var{{/secondaryParam}}{{/pathParams}} path = "{{{path}}}"{{#pathParams}}
+        let {{paramName}}PreEscape = "\(request.{{baseName}}{{#isEnum}}{{#isContainer}}{{{dataType}}}{{/isContainer}}{{^isContainer}}.rawValue{{/isContainer}}{{/isEnum}})"
+        let {{paramName}}PostEscape = {{paramName}}PreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{{=<% %>=}}{<%paramName%>}<%={{ }}=%>", with: {{paramName}}PostEscape, options: .literal, range: nil){{/pathParams}}
+        let URLString = {{projectName}}API.basePath + path
+        {{#bodyParam}}
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: {{paramName}})
+        {{/bodyParam}}
+        {{^bodyParam}}
+            {{#hasFormParams}}
+        let formParams: [String:Any?] = [
+                {{#formParams}}
+            {{> _param}}{{#hasMore}},{{/hasMore}}
+                {{/formParams}}
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+            {{/hasFormParams}}
+            {{^hasFormParams}}
+        let parameters: [String:Any]? = nil
+            {{/hasFormParams}}
+        {{/bodyParam}}{{#hasQueryParams}}
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            {{#queryParams}}
+            {{> _param}}{{#hasMore}}, {{/hasMore}}
+            {{/queryParams}}
+        ]){{/hasQueryParams}}{{^hasQueryParams}}
+        let url = URLComponents(string: URLString){{/hasQueryParams}}{{#headerParams}}{{^secondaryParam}}
+        let nillableHeaders: [String: Any?] = [{{/secondaryParam}}
+            {{> _param}}{{#hasMore}},{{/hasMore}}{{^hasMore}}
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders){{/hasMore}}{{/headerParams}}
+
+        let requestBuilder: RequestBuilder<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}>.Type = {{projectName}}API.requestBuilderFactory.{{#returnType}}getBuilder(){{/returnType}}{{^returnType}}getNonDecodableBuilder(){{/returnType}}
+
+        return requestBuilder.init(method: "{{httpMethod}}", URLString: (url?.string ?? URLString), parameters: parameters, isBody: {{hasBodyParam}}{{#headerParams}}{{^secondaryParam}}, headers: headerParameters{{/secondaryParam}}{{/headerParams}})
+    }
+
+{{/operation}}
+}
+{{#swiftUseApiNamespace}}
+}
+{{/swiftUseApiNamespace}}
+ /**
+     Upload a specific file 
+     
+     - parameter path: (query) Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext 
+     - parameter file: (form) File to upload 
+     - parameter versionId: (query) Source file&#39;s version (optional)
+     - parameter storage: (query) User&#39;s storage name (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putCreate(path: String, file: URL, versionId: String? = nil, storage: String? = nil, completion: @escaping ((_ data: AsposeResponse?,_ error: Error?) -> Void)) {
+        AuthAspose.checkAuth() {
+            (authError) in
+            guard authError == nil else {
+                completion(nil, authError)
+                return
+            }
+            putCreateWithRequestBuilder(path: path, file: file, versionId: versionId, storage: storage).execute { (response, error) -> Void in
+                completion(response?.body, error);
+            }
+        }
+    }
+
+
+    /**
+     Upload a specific file 
+     - PUT /storage/file
+     - examples: [{contentType=application/json, example={
+  "Status" : "Status",
+  "Code" : 0
+}}]
+     
+     - parameter path: (query) Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext 
+     - parameter file: (form) File to upload 
+     - parameter versionId: (query) Source file&#39;s version (optional)
+     - parameter storage: (query) User&#39;s storage name (optional)
+     - returns: RequestBuilder<AsposeResponse> 
+     */
+    open class func putCreateWithRequestBuilder(path: String, file: URL, versionId: String? = nil, storage: String? = nil) -> RequestBuilder<AsposeResponse> {
+        let pathUrl = "/storage/file"
+        let URLString = {{projectName}}API.basePath + pathUrl
+        let formParams: [String:Any?] = [
+            "File": file
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+
+        let urlObj = NSURLComponents(string: URLString)
+        urlObj?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+            "path": path, 
+            "versionId": versionId, 
+            "storage": storage
+        ])
+        
+
+        let requestBuilder: RequestBuilder<AsposeResponse>.Type = {{projectName}}API.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (urlObj?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+{{/operations}}
+{{>requestModel}}
