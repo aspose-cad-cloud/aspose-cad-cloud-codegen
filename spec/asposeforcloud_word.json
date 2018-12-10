@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.Words for Cloud API Reference",
-    "version": "18.9.0"
+    "version": "18.11.0"
   },
   "host": "localhost",
   "basePath": "/v1.1",
@@ -11310,6 +11310,10 @@
         {
           "type": "object",
           "properties": {
+            "AddBidiMarks": {
+              "type": "boolean",
+              "description": "Specifies whether to add bi-directional marks before each BiDi run when exporting in plain text format.\nThe default value is true."
+            },
             "Encoding": {
               "type": "string",
               "description": "Specifies the encoding to use when exporting in plain text format"
