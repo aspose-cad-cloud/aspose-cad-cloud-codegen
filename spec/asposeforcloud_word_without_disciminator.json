@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.Words for Cloud API Reference",
-    "version": "18.11.0"
+    "version": "19.1.0"
   },
   "host": "localhost",
   "basePath": "/v1.1",
@@ -10459,10 +10459,6 @@
         "UseEmfEmbeddedToWmf": {
           "type": "boolean",
           "description": "Determines how WMF metafiles with embedded EMF metafiles should be rendered"
-        },
-        "ScaleWmfFontsToMetafileSize": {
-          "type": "boolean",
-          "description": "Gets or sets a value determining whether or not to scale fonts in WMF metafile according to metafile size on the page."
         }
       },
       "description": "container class for options of metafile rendering"
@@ -10777,10 +10773,6 @@
             "PrettyFormat": {
               "type": "boolean",
               "description": "Specifies whether or not use pretty formats output"
-            },
-            "ResolveFontNames": {
-              "type": "boolean",
-              "description": "A new option HtmlSaveOptions.ResolveFontNames has been added that affects writing of font names to HTML-based formats.\nBy default this option is set to false and, as before, Aspose.Words writes font names as specified in the source document, ignoring Document.FontSettings.\nIf this option is set to true, Aspose.Words resolves all font names before writing them to HTML.\nThat is, it checks availability of each font using Document.FontSettings and substitutes unavailable fonts if needed."
             },
             "ResourceFolder": {
               "type": "string",
