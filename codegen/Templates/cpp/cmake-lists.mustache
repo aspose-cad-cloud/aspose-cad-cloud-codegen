@@ -1,5 +1,5 @@
 #[[
-<copyright company="Aspose" file="CMakeLists.h">
+<copyright company="Aspose" file="CMakeLists.txt">
   Copyright (c) 2019 Aspose.Words for Cloud
 </copyright>
 <summary>
