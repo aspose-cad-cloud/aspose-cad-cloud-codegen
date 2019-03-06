@@ -16,3 +16,6 @@
 [submodule "SDKs/PHP"]
 	path = SDKs/PHP
 	url = https://github.com/aspose-words-cloud/aspose-words-cloud-php.git
+[submodule "SDKs/cpp"]
+	path = SDKs/cpp
+	url = https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git
