@@ -1,5 +1,5 @@
 del /S /Q "c:\tmp\cpp" || goto :error
-java -jar codegen\swagger-codegen-cli.jar generate -i spec\asposeforcloud_word.json -l cpprest -t codegen\Templates\cpp -o c:/tmp/cpp/ -c codegen\config.json || goto :error
+java -jar codegen\swagger-codegen-cli.jar generate -i spec\asposeforcloud_word.json -l cpprest -t codegen\Templates\cpp -o c:/tmp/cpp/ -c codegen\cppConfig.json || goto :error
 
 codegen\Tools\SplitCppCodeFile.exe C:\tmp\cpp\api\WordsApi C:\tmp\cpp\model\requests\ || goto :error
 
