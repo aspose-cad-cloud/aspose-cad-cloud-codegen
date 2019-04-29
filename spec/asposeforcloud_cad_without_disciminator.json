@@ -2,10 +2,10 @@
   "swagger": "2.0",
   "info": {
     "title": "Aspose.CAD for Cloud API Reference",
-    "version": "17.11.0"
+    "version": "17.11"
   },
-  "host": "api-qa.aspose.cloud",
-  "basePath": "/v1.1",
+  "host": "api.aspose.cloud",
+  "basePath": "/v1",
   "schemes": [],
   "consumes": [
     "application/xml",
@@ -19,9 +19,9 @@
     "/cad/{name}/saveAs": {
       "get": {
         "tags": [
-          "CAD"
+          "Cad"
         ],
-        "summary": "Export existing image to another format",
+        "summary": "Export existing drawing to another format",
         "operationId": "GetImageSaveAs",
         "produces": [
           "multipart/form-data"
@@ -29,15 +29,15 @@
         "parameters": [
           {
             "type": "string",
-            "name": "name",
+            "name": "Name",
             "in": "path",
             "required": true,
             "x-nullable": false,
-            "description": "Filename of image."
+            "description": "Filename of drawing."
           },
           {
             "type": "string",
-            "name": "format",
+            "name": "Format",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -45,29 +45,31 @@
           },
           {
             "type": "string",
-            "name": "folder",
-            "in": "query",
-            "description": "Original drawing folder."
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "File storage, which has to be used."
-          },
-          {
-            "type": "string",
-            "name": "rasterOptions",
+            "name": "RasterOptions",
             "in": "query",
             "x-nullable": true,
             "description": "The raster options as Base64 string."
           },
           {
             "type": "string",
-            "name": "outPath",
+            "name": "OutPath",
             "in": "query",
             "x-nullable": true,
             "description": "Path to updated file, if this is empty, response contains streamed image."
+          },
+          {
+            "type": "string",
+            "name": "Folder",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Folder with image to process."
+          },
+          {
+            "type": "string",
+            "name": "Storage",
+            "in": "query",
+            "x-nullable": true,
+            "description": "The images storage."
           }
         ],
         "responses": {
@@ -85,7 +87,7 @@
     "/cad/saveAs": {
       "post": {
         "tags": [
-          "CAD"
+          "Cad"
         ],
         "summary": "Export existing image to another format. Image is passed as request body.",
         "operationId": "PostImageSaveAs",
@@ -105,7 +107,7 @@
           },
           {
             "type": "string",
-            "name": "format",
+            "name": "Format",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -113,21 +115,21 @@
           },
           {
             "type": "string",
-            "name": "rasterOptions",
+            "name": "RasterOptions",
             "in": "query",
             "x-nullable": true,
             "description": "The raster options as Base64 string."
           },
           {
             "type": "string",
-            "name": "outPath",
+            "name": "OutPath",
             "in": "query",
             "x-nullable": true,
             "description": "Path to updated file, if this is empty, response contains streamed image."
           },
           {
             "type": "string",
-            "name": "storage",
+            "name": "Storage",
             "in": "query",
             "x-nullable": true,
             "description": "Your Aspose Cloud Storage name."
@@ -148,14 +150,14 @@
     "/cad/{name}/properties": {
       "get": {
         "tags": [
-          "CAD"
+          "Cad"
         ],
         "summary": "Get properties of an image.",
         "operationId": "GetImageProperties",
         "parameters": [
           {
             "type": "string",
-            "name": "name",
+            "name": "Name",
             "in": "path",
             "required": true,
             "x-nullable": false,
@@ -163,15 +165,17 @@
           },
           {
             "type": "string",
-            "name": "folder",
+            "name": "Folder",
             "in": "query",
-            "description": "Original drawing folder."
+            "x-nullable": true,
+            "description": "Folder with image to process. "
           },
           {
             "type": "string",
-            "name": "storage",
+            "name": "Storage",
             "in": "query",
-            "description": "File storage, which has to be used."
+            "x-nullable": true,
+            "description": "The images storage."
           }
         ],
         "responses": {
@@ -189,7 +193,7 @@
     "/cad/{name}/resize": {
       "get": {
         "tags": [
-          "CAD"
+          "Cad"
         ],
         "summary": "Change scale of an existing image",
         "operationId": "GetChangeImageScale",
@@ -199,7 +203,7 @@
         "parameters": [
           {
             "type": "string",
-            "name": "name",
+            "name": "Name",
             "in": "path",
             "required": true,
             "x-nullable": false,
@@ -207,7 +211,7 @@
           },
           {
             "type": "string",
-            "name": "format",
+            "name": "Format",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -215,7 +219,7 @@
           },
           {
             "type": "integer",
-            "name": "newWidth",
+            "name": "NewWidth",
             "in": "query",
             "required": true,
             "x-nullable": false,
@@ -224,7 +228,7 @@
           },
           {
             "type": "integer",
-            "name": "newHeight",
+            "name": "NewHeight",
             "in": "query",
             "required": true,
             "x-nullable": false,
@@ -233,22 +237,24 @@
           },
           {
             "type": "string",
-            "name": "folder",
-            "in": "query",
-            "description": "Original drawing folder."
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "File storage, which has to be used."
-          },
-          {
-            "type": "string",
-            "name": "outPath",
+            "name": "OutPath",
             "in": "query",
             "x-nullable": true,
             "description": "Path to updated file, if this is empty, response contains streamed image. "
+          },
+          {
+            "type": "string",
+            "name": "Folder",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Folder with image to process. "
+          },
+          {
+            "type": "string",
+            "name": "Storage",
+            "in": "query",
+            "x-nullable": true,
+            "description": "The images storage."
           }
         ],
         "responses": {
@@ -266,7 +272,7 @@
     "/cad/resize": {
       "post": {
         "tags": [
-          "CAD"
+          "Cad"
         ],
         "summary": "Change scale of an image from body",
         "operationId": "PostChangeImageScale",
@@ -286,7 +292,7 @@
           },
           {
             "type": "string",
-            "name": "format",
+            "name": "Format",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -294,7 +300,7 @@
           },
           {
             "type": "integer",
-            "name": "newWidth",
+            "name": "NewWidth",
             "in": "query",
             "required": true,
             "x-nullable": false,
@@ -303,7 +309,7 @@
           },
           {
             "type": "integer",
-            "name": "newHeight",
+            "name": "NewHeight",
             "in": "query",
             "required": true,
             "x-nullable": false,
@@ -312,14 +318,14 @@
           },
           {
             "type": "string",
-            "name": "outPath",
+            "name": "OutPath",
             "in": "query",
             "x-nullable": true,
             "description": "Path to updated file, if this is empty, response contains streamed image. "
           },
           {
             "type": "string",
-            "name": "storage",
+            "name": "Storage",
             "in": "query",
             "x-nullable": true,
             "description": "Your Aspose Cloud Storage name."
@@ -340,7 +346,7 @@
     "/cad/{name}/rotateflip": {
       "get": {
         "tags": [
-          "CAD"
+          "Cad"
         ],
         "summary": "Rotate and flip existing image",
         "operationId": "GetImageRotateFlip",
@@ -350,7 +356,7 @@
         "parameters": [
           {
             "type": "string",
-            "name": "name",
+            "name": "Name",
             "in": "path",
             "required": true,
             "x-nullable": false,
@@ -358,7 +364,7 @@
           },
           {
             "type": "string",
-            "name": "format",
+            "name": "Format",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -366,7 +372,7 @@
           },
           {
             "type": "string",
-            "name": "method",
+            "name": "Method",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -374,22 +380,24 @@
           },
           {
             "type": "string",
-            "name": "folder",
-            "in": "query",
-            "description": "Original drawing folder."
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "File storage, which has to be used."
-          },
-          {
-            "type": "string",
-            "name": "outPath",
+            "name": "OutPath",
             "in": "query",
             "x-nullable": true,
             "description": "Path to updated file, if this is empty, response contains streamed image."
+          },
+          {
+            "type": "string",
+            "name": "Folder",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Folder with image to process."
+          },
+          {
+            "type": "string",
+            "name": "Storage",
+            "in": "query",
+            "x-nullable": true,
+            "description": "The images storage."
           }
         ],
         "responses": {
@@ -407,7 +415,7 @@
     "/cad/rotateflip": {
       "post": {
         "tags": [
-          "CAD"
+          "Cad"
         ],
         "summary": "Rotate and flip existing image and get it from response.",
         "operationId": "PostImageRotateFlip",
@@ -427,7 +435,7 @@
           },
           {
             "type": "string",
-            "name": "format",
+            "name": "Format",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -435,7 +443,7 @@
           },
           {
             "type": "string",
-            "name": "method",
+            "name": "Method",
             "in": "query",
             "required": true,
             "x-nullable": true,
@@ -443,7 +451,7 @@
           },
           {
             "type": "string",
-            "name": "outPath",
+            "name": "OutPath",
             "in": "query",
             "x-nullable": true,
             "description": "Path to updated file, if this is empty, response contains streamed image."
@@ -560,7 +568,7 @@
     "oauth": {
       "type": "oauth2",
       "flow": "application",
-      "authorizationUrl": "api-qa.aspose.cloud/oauth2/token"
+      "authorizationUrl": "api.aspose.cloud/oauth2/token"
     }
   }
 }
