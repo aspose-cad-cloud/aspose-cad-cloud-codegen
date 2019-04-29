@@ -1,3 +1,5 @@
+mkdir c:\tmp
+
 call codegen\generateNetSDK ||  goto :error
 
 call codegen\generatePhpSDK ||  goto :error

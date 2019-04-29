@@ -4,7 +4,7 @@ java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_
 codegen\Tools\SplitRubyCodeFile.exe C:\tmp\ruby\lib\aspose_cad_cloud\api\cad_api.rb C:\tmp\ruby\lib\aspose_cad_cloud\models\requests\ || goto :error
 
 del /S /Q "SDKs\RUBY\lib" || goto :error
-xcopy "C:\tmp\ruby\lib" "SDKs\Ruby\lib" /E || goto :error
+xcopy "C:\tmp\ruby\lib" "SDKs\Ruby\lib\" /E || goto :error
 
 goto :EOF
 
