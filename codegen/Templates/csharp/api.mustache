@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="WordsApi.cs">
-//   Copyright (c) 2018 Aspose.Words for Cloud
+// <copyright company="Aspose" file="CadApi.cs">
+//   Copyright (c) 2018 Aspose.Cad for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,7 +33,7 @@ namespace {{packageName}}
     
     {{#operations}}
     /// <summary>
-    /// Aspose.Words for Cloud API.
+    /// Aspose.Cad for Cloud API.
     /// </summary>
     public class {{classname}}
     {        
@@ -41,7 +41,7 @@ namespace {{packageName}}
         private readonly Configuration configuration;     
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WordsApi"/> class.
+        /// Initializes a new instance of the <see cref="CadApi"/> class.
         /// </summary>
         /// <param name="apiKey">
         /// The api Key.
@@ -49,16 +49,16 @@ namespace {{packageName}}
         /// <param name="appSid">
         /// The app Sid.
         /// </param>
-        public WordsApi(string apiKey, string appSid)
+        public CadApi(string apiKey, string appSid)
             : this(new Configuration { AppKey = apiKey, AppSid = appSid })
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WordsApi"/> class.
+        /// Initializes a new instance of the <see cref="CadApi"/> class.
         /// </summary>    
         /// <param name="configuration">Configuration settings</param>
-        public WordsApi(Configuration configuration)
+        public CadApi(Configuration configuration)
         {
             this.configuration = configuration;
             

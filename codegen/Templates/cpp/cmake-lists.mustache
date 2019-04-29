@@ -1,6 +1,6 @@
 #[[
 <copyright company="Aspose" file="CMakeLists.txt">
-  Copyright (c) 2019 Aspose.Words for Cloud
+  Copyright (c) 2019 Aspose.Cad for Cloud
 </copyright>
 <summary>
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,29 +24,29 @@
 
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 
-project(Aspose.Words.Cloud LANGUAGES CXX)
+project(Aspose.Cad.Cloud LANGUAGES CXX)
 
-add_library(Words.Cloud)
+add_library(Cad.Cloud)
 
 file(GLOB_RECURSE srcs "*.h" "*.cpp")
-target_sources(Words.Cloud PRIVATE ${srcs})
-target_include_directories(Words.Cloud PUBLIC api model model/requests ${CMAKE_CURRENT_SOURCE_DIR})
+target_sources(Cad.Cloud PRIVATE ${srcs})
+target_include_directories(Cad.Cloud PUBLIC api model model/requests ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(Boost_USE_STATIC_LIBS OFF) 
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 find_package(Boost 1.68 REQUIRED COMPONENTS thread system regex date_time program_options filesystem)
 find_package(cpprestsdk CONFIG REQUIRED)
-target_link_libraries(Words.Cloud PUBLIC Boost::boost  Boost::thread Boost::system Boost::regex Boost::date_time Boost::program_options Boost::filesystem cpprestsdk::cpprest)
-target_compile_definitions(Words.Cloud PUBLIC _TURN_OFF_PLATFORM_STRING BOOST_ALL_NO_LIB)
-target_link_libraries(Words.Cloud PUBLIC $<$<CXX_COMPILER_ID:MSVC>:Bcrypt>)
+target_link_libraries(Cad.Cloud PUBLIC Boost::boost  Boost::thread Boost::system Boost::regex Boost::date_time Boost::program_options Boost::filesystem cpprestsdk::cpprest)
+target_compile_definitions(Cad.Cloud PUBLIC _TURN_OFF_PLATFORM_STRING BOOST_ALL_NO_LIB)
+target_link_libraries(Cad.Cloud PUBLIC $<$<CXX_COMPILER_ID:MSVC>:Bcrypt>)
 
 if(MSVC)
-  target_compile_options(Words.Cloud PRIVATE /bigobj)
+  target_compile_options(Cad.Cloud PRIVATE /bigobj)
 endif()
 
 if (COMMAND cotire)
-    cotire(Words.Cloud)
+    cotire(Cad.Cloud)
 endif()
 
-add_library(Aspose::Words.Cloud ALIAS Words.Cloud)
+add_library(Aspose::Cad.Cloud ALIAS Cad.Cloud)
