@@ -1,0 +1,566 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Aspose.CAD for Cloud API Reference",
+    "version": "17.11.0"
+  },
+  "host": "api-qa.aspose.cloud",
+  "basePath": "/v1.1",
+  "schemes": [],
+  "consumes": [
+    "application/xml",
+    "application/json"
+  ],
+  "produces": [
+    "application/xml",
+    "application/json"
+  ],
+  "paths": {
+    "/cad/{name}/saveAs": {
+      "get": {
+        "tags": [
+          "CAD"
+        ],
+        "summary": "Export existing image to another format",
+        "operationId": "GetImageSaveAs",
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "description": "Filename of image."
+          },
+          {
+            "type": "string",
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Original drawing folder."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "File storage, which has to be used."
+          },
+          {
+            "type": "string",
+            "name": "rasterOptions",
+            "in": "query",
+            "x-nullable": true,
+            "description": "The raster options as Base64 string."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Path to updated file, if this is empty, response contains streamed image."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with updated image.",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "GetImageSaveAs"
+      }
+    },
+    "/cad/saveAs": {
+      "post": {
+        "tags": [
+          "CAD"
+        ],
+        "summary": "Export existing image to another format. Image is passed as request body.",
+        "operationId": "PostImageSaveAs",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+          },
+          {
+            "type": "string",
+            "name": "rasterOptions",
+            "in": "query",
+            "x-nullable": true,
+            "description": "The raster options as Base64 string."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Path to updated file, if this is empty, response contains streamed image."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Your Aspose Cloud Storage name."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with updated image.\n           ",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "PostImageSaveAs"
+      }
+    },
+    "/cad/{name}/properties": {
+      "get": {
+        "tags": [
+          "CAD"
+        ],
+        "summary": "Get properties of an image.",
+        "operationId": "GetImageProperties",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "description": "The image name."
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Original drawing folder."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "File storage, which has to be used."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with updated image.",
+            "schema": {
+              "$ref": "#/definitions/ImagePropertiesResponse"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "GetImageProperties"
+      }
+    },
+    "/cad/{name}/resize": {
+      "get": {
+        "tags": [
+          "CAD"
+        ],
+        "summary": "Change scale of an existing image",
+        "operationId": "GetChangeImageScale",
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "description": "The image name."
+          },
+          {
+            "type": "string",
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+          },
+          {
+            "type": "integer",
+            "name": "newWidth",
+            "in": "query",
+            "required": true,
+            "x-nullable": false,
+            "description": "New width of the scaled image.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "newHeight",
+            "in": "query",
+            "required": true,
+            "x-nullable": false,
+            "description": "New height of the scaled image.",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Original drawing folder."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "File storage, which has to be used."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Path to updated file, if this is empty, response contains streamed image. "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with updated image.",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "GetChangeImageScale"
+      }
+    },
+    "/cad/resize": {
+      "post": {
+        "tags": [
+          "CAD"
+        ],
+        "summary": "Change scale of an image from body",
+        "operationId": "PostChangeImageScale",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+          },
+          {
+            "type": "integer",
+            "name": "newWidth",
+            "in": "query",
+            "required": true,
+            "x-nullable": false,
+            "description": "New width of the scaled image.",
+            "format": "int32"
+          },
+          {
+            "type": "integer",
+            "name": "newHeight",
+            "in": "query",
+            "required": true,
+            "x-nullable": false,
+            "description": "New height of the scaled image.",
+            "format": "int32"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Path to updated file, if this is empty, response contains streamed image. "
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Your Aspose Cloud Storage name."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with updated image.",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "PostChangeImageScale"
+      }
+    },
+    "/cad/{name}/rotateflip": {
+      "get": {
+        "tags": [
+          "CAD"
+        ],
+        "summary": "Rotate and flip existing image",
+        "operationId": "GetImageRotateFlip",
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "description": "Filename of image."
+          },
+          {
+            "type": "string",
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+          },
+          {
+            "type": "string",
+            "name": "method",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Rotate and flip method. Valid methods: Rotate180FlipNone,  Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY."
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Original drawing folder."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "File storage, which has to be used."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Path to updated file, if this is empty, response contains streamed image."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with updated image.",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "GetImageRotateFlip"
+      }
+    },
+    "/cad/rotateflip": {
+      "post": {
+        "tags": [
+          "CAD"
+        ],
+        "summary": "Rotate and flip existing image and get it from response.",
+        "operationId": "PostImageRotateFlip",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+          },
+          {
+            "type": "string",
+            "name": "method",
+            "in": "query",
+            "required": true,
+            "x-nullable": true,
+            "description": "Rotate and flip method. Valid methods: Rotate180FlipNone,  Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Path to updated file, if this is empty, response contains streamed image."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "with updated image.",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        },
+        "x-operationId": "PostImageRotateFlip"
+      }
+    }
+  },
+  "definitions": {
+    "ImagePropertiesResponse": {
+      "type": "null",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/SaaSposeResponse"
+        },
+        {
+          "type": "object"
+        }
+      ],
+      "description": "Represents properties of the image."
+    },
+    "SaaSposeResponse": {
+      "type": "object",
+      "discriminator": "Type",
+      "additionalProperties": false,
+      "required": [
+        "Code"
+      ],
+      "properties": {
+        "Code": {
+          "enum": [
+            "Continue",
+            "SwitchingProtocols",
+            "OK",
+            "Created",
+            "Accepted",
+            "NonAuthoritativeInformation",
+            "NoContent",
+            "ResetContent",
+            "PartialContent",
+            "MultipleChoices",
+            "Ambiguous",
+            "MovedPermanently",
+            "Moved",
+            "Found",
+            "Redirect",
+            "SeeOther",
+            "RedirectMethod",
+            "NotModified",
+            "UseProxy",
+            "Unused",
+            "TemporaryRedirect",
+            "RedirectKeepVerb",
+            "BadRequest",
+            "Unauthorized",
+            "PaymentRequired",
+            "Forbidden",
+            "NotFound",
+            "MethodNotAllowed",
+            "NotAcceptable",
+            "ProxyAuthenticationRequired",
+            "RequestTimeout",
+            "Conflict",
+            "Gone",
+            "LengthRequired",
+            "PreconditionFailed",
+            "RequestEntityTooLarge",
+            "RequestUriTooLong",
+            "UnsupportedMediaType",
+            "RequestedRangeNotSatisfiable",
+            "ExpectationFailed",
+            "UpgradeRequired",
+            "InternalServerError",
+            "NotImplemented",
+            "BadGateway",
+            "ServiceUnavailable",
+            "GatewayTimeout",
+            "HttpVersionNotSupported"
+          ],
+          "description": "Gets or sets the response status code."
+        },
+        "Status": {
+          "type": "string",
+          "description": "Gets or sets response status."
+        }
+      },
+      "description": "Base class for all responses."
+    }
+  },
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "appsid": {
+      "type": "apiKey",
+      "name": "appsid",
+      "in": "query"
+    },
+    "signature": {
+      "type": "apiKey",
+      "name": "signature",
+      "in": "query"
+    },
+    "oauth": {
+      "type": "oauth2",
+      "flow": "application",
+      "authorizationUrl": "api-qa.aspose.cloud/oauth2/token"
+    }
+  }
+}

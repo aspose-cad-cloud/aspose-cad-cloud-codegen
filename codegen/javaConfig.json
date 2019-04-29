@@ -1,7 +1,7 @@
 {
-	"groupId": "com.aspose.words.cloud",
-	"modelPackage": "com.aspose.words.cloud.model",
-	"apiPackage": "com.aspose.words.cloud.api",
-	"artifactId": "AsposeWordsCloud",
+	"groupId": "com.aspose.cad.cloud",
+	"modelPackage": "com.aspose.cad.cloud.model",
+	"apiPackage": "com.aspose.cad.cloud.api",
+	"artifactId": "AsposeCadCloud",
 	"library": "okhttp-gson"
 }

@@ -1,5 +1,5 @@
 {
-	"moduleName": "AsposeWordsCloud",
-	"gemName": "aspose_words_cloud",
+	"moduleName": "AsposeCadCloud",
+	"gemName": "aspose_cad_cloud",
 	"variableNamingConvention":"camelCase"
 }
