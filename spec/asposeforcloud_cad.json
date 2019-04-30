@@ -45,6 +45,18 @@
           },
           {
             "type": "string",
+            "name": "Folder",
+            "in": "query",
+            "description": "Original drawing folder."
+          },
+          {
+            "type": "string",
+            "name": "Storage",
+            "in": "query",
+            "description": "File storage, which has to be used."
+          },
+          {
+            "type": "string",
             "name": "RasterOptions",
             "in": "query",
             "x-nullable": true,
@@ -56,31 +68,19 @@
             "in": "query",
             "x-nullable": true,
             "description": "Path to updated file, if this is empty, response contains streamed image."
-          },
-          {
-            "type": "string",
-            "name": "Folder",
-            "in": "query",
-            "x-nullable": true,
-            "description": "Folder with image to process."
-          },
-          {
-            "type": "string",
-            "name": "Storage",
-            "in": "query",
-            "x-nullable": true,
-            "description": "The images storage."
           }
         ],
         "responses": {
           "200": {
             "description": "with updated image.",
             "schema": {
-              "type": "file"
+              "type": "file",
+              "description": "File with result of operation"
             },
             "x-nullable": true
           }
         },
+        "x-binary-result": "true",
         "x-operationId": "GetImageSaveAs"
       }
     },
@@ -100,7 +100,7 @@
         "parameters": [
           {
             "type": "file",
-            "name": "drawingData",
+            "name": "DrawingData",
             "in": "formData",
             "required": true,
             "description": "Input drawing"
@@ -139,11 +139,13 @@
           "200": {
             "description": "with updated image.\n           ",
             "schema": {
-              "type": "file"
+              "type": "file",
+              "description": "File with result of operation"
             },
             "x-nullable": true
           }
         },
+        "x-binary-result": "true",
         "x-operationId": "PostImageSaveAs"
       }
     },
@@ -167,15 +169,13 @@
             "type": "string",
             "name": "Folder",
             "in": "query",
-            "x-nullable": true,
-            "description": "Folder with image to process. "
+            "description": "Original drawing folder."
           },
           {
             "type": "string",
             "name": "Storage",
             "in": "query",
-            "x-nullable": true,
-            "description": "The images storage."
+            "description": "File storage, which has to be used."
           }
         ],
         "responses": {
@@ -237,35 +237,35 @@
           },
           {
             "type": "string",
-            "name": "OutPath",
-            "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image. "
-          },
-          {
-            "type": "string",
             "name": "Folder",
             "in": "query",
-            "x-nullable": true,
-            "description": "Folder with image to process. "
+            "description": "Original drawing folder."
           },
           {
             "type": "string",
             "name": "Storage",
             "in": "query",
+            "description": "File storage, which has to be used."
+          },
+          {
+            "type": "string",
+            "name": "OutPath",
+            "in": "query",
             "x-nullable": true,
-            "description": "The images storage."
+            "description": "Path to updated file, if this is empty, response contains streamed image. "
           }
         ],
         "responses": {
           "200": {
             "description": "with updated image.",
             "schema": {
-              "type": "file"
+              "type": "file",
+              "description": "File with result of operation"
             },
             "x-nullable": true
           }
         },
+        "x-binary-result": "true",
         "x-operationId": "GetChangeImageScale"
       }
     },
@@ -285,7 +285,7 @@
         "parameters": [
           {
             "type": "file",
-            "name": "drawingData",
+            "name": "DrawingData",
             "in": "formData",
             "required": true,
             "description": "Input drawing"
@@ -335,11 +335,13 @@
           "200": {
             "description": "with updated image.",
             "schema": {
-              "type": "file"
+              "type": "file",
+              "description": "File with result of operation"
             },
             "x-nullable": true
           }
         },
+        "x-binary-result": "true",
         "x-operationId": "PostChangeImageScale"
       }
     },
@@ -380,35 +382,35 @@
           },
           {
             "type": "string",
-            "name": "OutPath",
-            "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image."
-          },
-          {
-            "type": "string",
             "name": "Folder",
             "in": "query",
-            "x-nullable": true,
-            "description": "Folder with image to process."
+            "description": "Original drawing folder."
           },
           {
             "type": "string",
             "name": "Storage",
             "in": "query",
+            "description": "File storage, which has to be used."
+          },
+          {
+            "type": "string",
+            "name": "OutPath",
+            "in": "query",
             "x-nullable": true,
-            "description": "The images storage."
+            "description": "Path to updated file, if this is empty, response contains streamed image."
           }
         ],
         "responses": {
           "200": {
             "description": "with updated image.",
             "schema": {
-              "type": "file"
+              "type": "file",
+              "description": "File with result of operation"
             },
             "x-nullable": true
           }
         },
+        "x-binary-result": "true",
         "x-operationId": "GetImageRotateFlip"
       }
     },
@@ -428,7 +430,7 @@
         "parameters": [
           {
             "type": "file",
-            "name": "drawingData",
+            "name": "DrawingData",
             "in": "formData",
             "required": true,
             "description": "Input drawing"
@@ -461,11 +463,13 @@
           "200": {
             "description": "with updated image.",
             "schema": {
-              "type": "file"
+              "type": "file",
+              "description": "File with result of operation"
             },
             "x-nullable": true
           }
         },
+        "x-binary-result": "true",
         "x-operationId": "PostImageRotateFlip"
       }
     }
