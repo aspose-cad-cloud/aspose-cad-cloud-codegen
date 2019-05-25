@@ -1,12 +1,12 @@
 [submodule "SDKS/Ruby"]
 	path = SDKS/Ruby
 	url = git@github.com:aspose-cad-cloud/aspose-cad-cloud-ruby.git
-[submodule "SDKs/NET"]
-	path = SDKs/NET
+[submodule "SDKS/NET"]
+	path = SDKS/NET
 	url = git@github.com:aspose-cad-cloud/aspose-cad-cloud-dotnet.git
-[submodule "SDKs/Java"]
-	path = SDKs/Java
+[submodule "SDKS/Java"]
+	path = SDKS/Java
 	url = git@github.com:aspose-cad-cloud/aspose-cad-cloud-java.git
-[submodule "SDKs/PHP"]
-	path = SDKs/PHP
+[submodule "SDKS/PHP"]
+	path = SDKS/PHP
 	url = git@github.com:aspose-cad-cloud/aspose-cad-cloud-php.git
