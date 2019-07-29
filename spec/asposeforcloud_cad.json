@@ -1,152 +1,1450 @@
 {
+  "x-generator": "NSwag v12.0.14.0 (NJsonSchema v9.13.18.0 (Newtonsoft.Json v12.0.0.0))",
   "swagger": "2.0",
   "info": {
-    "title": "Aspose.CAD for Cloud API Reference",
-    "version": "17.11"
+    "title": "Aspose.CAD Cloud API Reference",
+    "version": "3.0"
   },
-  "host": "api.aspose.cloud",
-  "basePath": "/v1",
-  "schemes": [],
+  "host": "api-qa.aspose.cloud",
+  "basePath": "/v3.0",
+  "schemes": [
+    "https"
+  ],
   "consumes": [
-    "application/xml",
     "application/json"
   ],
   "produces": [
-    "application/xml",
     "application/json"
   ],
   "paths": {
-    "/cad/{name}/saveAs": {
-      "get": {
-        "tags": [
-          "Cad"
-        ],
-        "summary": "Export existing drawing to another format",
-        "operationId": "GetImageSaveAs",
-        "produces": [
-          "multipart/form-data"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "Name",
-            "in": "path",
-            "required": true,
-            "x-nullable": false,
-            "description": "Filename of drawing."
-          },
-          {
-            "type": "string",
-            "name": "Format",
-            "in": "query",
-            "required": true,
-            "x-nullable": true,
-            "description": "Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
-          },
-          {
-            "type": "string",
-            "name": "Folder",
-            "in": "query",
-            "description": "Original drawing folder."
-          },
-          {
-            "type": "string",
-            "name": "Storage",
-            "in": "query",
-            "description": "File storage, which has to be used."
-          },
-          {
-            "type": "string",
-            "name": "RasterOptions",
-            "in": "query",
-            "x-nullable": true,
-            "description": "The raster options as Base64 string."
-          },
-          {
-            "type": "string",
-            "name": "OutPath",
-            "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "with updated image.",
-            "schema": {
-              "type": "file",
-              "description": "File with result of operation"
-            },
-            "x-nullable": true
-          }
-        },
-        "x-binary-result": "true",
-        "x-operationId": "GetImageSaveAs"
-      }
-    },
-    "/cad/saveAs": {
+    "/cad/{name}/bmp": {
       "post": {
         "tags": [
           "Cad"
         ],
-        "summary": "Export existing image to another format. Image is passed as request body.",
-        "operationId": "PostImageSaveAs",
+        "operationId": "PostDrawingBmp",
         "consumes": [
-          "multipart/form-data"
+          "application/json"
         ],
-        "produces": [
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/BmpOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingBmp"
+      }
+    },
+    "/cad/bmp": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingBmp",
+        "consumes": [
           "multipart/form-data"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "DrawingData",
+            "name": "drawingData",
             "in": "formData",
             "required": true,
             "description": "Input drawing"
           },
           {
-            "type": "string",
-            "name": "Format",
-            "in": "query",
-            "required": true,
-            "x-nullable": true,
-            "description": "Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/BmpOptionsDTO model definition."
           },
           {
             "type": "string",
-            "name": "RasterOptions",
+            "name": "outPath",
             "in": "query",
-            "x-nullable": true,
-            "description": "The raster options as Base64 string."
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "OutPath",
+            "name": "storage",
             "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image."
-          },
-          {
-            "type": "string",
-            "name": "Storage",
-            "in": "query",
-            "x-nullable": true,
-            "description": "Your Aspose Cloud Storage name."
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
-            "description": "with updated image.\n           ",
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
             "schema": {
-              "type": "file",
-              "description": "File with result of operation"
-            },
-            "x-nullable": true
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
         "x-binary-result": "true",
-        "x-operationId": "PostImageSaveAs"
+        "x-operationId": "PutDrawingBmp"
+      }
+    },
+    "/cad/{name}/gif": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingGif",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/GifOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingGif"
+      }
+    },
+    "/cad/gif": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingGif",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/GifOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingGif"
+      }
+    },
+    "/cad/{name}/jpeg2000": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingJpeg2000",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Jpeg2000OptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingJpeg2000"
+      }
+    },
+    "/cad/jpeg2000": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingJpeg2000",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/Jpeg2000OptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingJpeg2000"
+      }
+    },
+    "/cad/{name}/jpeg": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingJpeg",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/JpegOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingJpeg"
+      }
+    },
+    "/cad/jpeg": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingJpeg",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/JpegOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingJpeg"
+      }
+    },
+    "/cad/{name}/png": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingPng",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/PngOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingPng"
+      }
+    },
+    "/cad/png": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingPng",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PngOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingPng"
+      }
+    },
+    "/cad/{name}/psd": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingPsd",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/PsdOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingPsd"
+      }
+    },
+    "/cad/psd": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingPsd",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PsdOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingPsd"
+      }
+    },
+    "/cad/{name}/tiff": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingTiff",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/TiffOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingTiff"
+      }
+    },
+    "/cad/tiff": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingTiff",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/TiffOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingTiff"
+      }
+    },
+    "/cad/{name}/pdf": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingPdf",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/PdfOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingPdf"
+      }
+    },
+    "/cad/pdf": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingPdf",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PdfOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingPdf"
+      }
+    },
+    "/cad/{name}/svg": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingSvg",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SvgOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingSvg"
+      }
+    },
+    "/cad/svg": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingSvg",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/SvgOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingSvg"
+      }
+    },
+    "/cad/{name}/wmf": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PostDrawingWmf",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/WmfOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingWmf"
+      }
+    },
+    "/cad/wmf": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingWmf",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "object",
+            "name": "options",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WmfOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingWmf"
       }
     },
     "/cad/{name}/properties": {
@@ -154,40 +1452,108 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Get properties of an image.",
-        "operationId": "GetImageProperties",
+        "operationId": "GetDrawingProperties",
         "parameters": [
           {
             "type": "string",
-            "name": "Name",
+            "name": "name",
             "in": "path",
             "required": true,
-            "x-nullable": false,
-            "description": "The image name."
+            "x-nullable": false
           },
           {
             "type": "string",
-            "name": "Folder",
+            "name": "folder",
             "in": "query",
-            "description": "Original drawing folder."
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "Storage",
+            "name": "storage",
             "in": "query",
-            "description": "File storage, which has to be used."
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
-            "description": "with updated image.",
+            "x-nullable": true,
+            "description": "Information about a drawing.",
             "schema": {
-              "$ref": "#/definitions/ImagePropertiesResponse"
-            },
-            "x-nullable": true
+              "$ref": "#/definitions/CadResponse"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
-        "x-operationId": "GetImageProperties"
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "GetDrawingProperties"
+      }
+    },
+    "/cad/properties": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingProperties",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Information about a drawing.",
+            "schema": {
+              "$ref": "#/definitions/CadResponse"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingProperties"
       }
     },
     "/cad/{name}/resize": {
@@ -195,154 +1561,171 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Change scale of an existing image",
-        "operationId": "GetChangeImageScale",
-        "produces": [
-          "multipart/form-data"
-        ],
+        "operationId": "GetDrawingResize",
         "parameters": [
           {
             "type": "string",
-            "name": "Name",
+            "name": "name",
             "in": "path",
             "required": true,
-            "x-nullable": false,
-            "description": "The image name."
+            "x-nullable": false
           },
           {
             "type": "string",
-            "name": "Format",
+            "name": "outputFormat",
             "in": "query",
             "required": true,
-            "x-nullable": true,
-            "description": "Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+            "x-nullable": true
           },
           {
             "type": "integer",
-            "name": "NewWidth",
+            "name": "newWidth",
             "in": "query",
             "required": true,
-            "x-nullable": false,
-            "description": "New width of the scaled image.",
-            "format": "int32"
+            "format": "int32",
+            "x-nullable": false
           },
           {
             "type": "integer",
-            "name": "NewHeight",
+            "name": "newHeight",
             "in": "query",
             "required": true,
-            "x-nullable": false,
-            "description": "New height of the scaled image.",
-            "format": "int32"
+            "format": "int32",
+            "x-nullable": false
           },
           {
             "type": "string",
-            "name": "Folder",
+            "name": "folder",
             "in": "query",
-            "description": "Original drawing folder."
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "Storage",
+            "name": "outPath",
             "in": "query",
-            "description": "File storage, which has to be used."
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "OutPath",
+            "name": "storage",
             "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image. "
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
-            "description": "with updated image.",
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
             "schema": {
-              "type": "file",
-              "description": "File with result of operation"
-            },
-            "x-nullable": true
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
         "x-binary-result": "true",
-        "x-operationId": "GetChangeImageScale"
+        "x-operationId": "GetDrawingResize"
       }
     },
     "/cad/resize": {
-      "post": {
+      "put": {
         "tags": [
           "Cad"
         ],
-        "summary": "Change scale of an image from body",
-        "operationId": "PostChangeImageScale",
+        "operationId": "PutDrawingResize",
         "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
           "multipart/form-data"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "DrawingData",
+            "name": "drawingData",
             "in": "formData",
             "required": true,
             "description": "Input drawing"
           },
           {
             "type": "string",
-            "name": "Format",
+            "name": "outputFormat",
             "in": "query",
             "required": true,
-            "x-nullable": true,
-            "description": "Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+            "x-nullable": true
           },
           {
             "type": "integer",
-            "name": "NewWidth",
+            "name": "newWidth",
             "in": "query",
             "required": true,
-            "x-nullable": false,
-            "description": "New width of the scaled image.",
-            "format": "int32"
+            "format": "int32",
+            "x-nullable": false
           },
           {
             "type": "integer",
-            "name": "NewHeight",
+            "name": "newHeight",
             "in": "query",
             "required": true,
-            "x-nullable": false,
-            "description": "New height of the scaled image.",
-            "format": "int32"
+            "format": "int32",
+            "x-nullable": false
           },
           {
             "type": "string",
-            "name": "OutPath",
+            "name": "outPath",
             "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image. "
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "Storage",
+            "name": "storage",
             "in": "query",
-            "x-nullable": true,
-            "description": "Your Aspose Cloud Storage name."
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
-            "description": "with updated image.",
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
             "schema": {
-              "type": "file",
-              "description": "File with result of operation"
-            },
-            "x-nullable": true
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
         "x-binary-result": "true",
-        "x-operationId": "PostChangeImageScale"
+        "x-operationId": "PutDrawingResize"
       }
     },
     "/cad/{name}/rotateflip": {
@@ -350,229 +1733,2834 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Rotate and flip existing image",
-        "operationId": "GetImageRotateFlip",
-        "produces": [
-          "multipart/form-data"
-        ],
+        "operationId": "GetDrawingRotateFlip",
         "parameters": [
           {
             "type": "string",
-            "name": "Name",
+            "name": "name",
             "in": "path",
             "required": true,
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "rotateFlipType",
+            "in": "query",
+            "required": true,
+            "x-schema": {},
             "x-nullable": false,
-            "description": "Filename of image."
+            "enum": [
+              "RotateNoneFlipNone",
+              "Rotate90FlipNone",
+              "Rotate180FlipNone",
+              "Rotate270FlipNone",
+              "RotateNoneFlipX",
+              "Rotate90FlipX",
+              "Rotate180FlipX",
+              "Rotate270FlipX",
+              "RotateNoneFlipY",
+              "Rotate90FlipY",
+              "Rotate180FlipY",
+              "Rotate270FlipY",
+              "RotateNoneFlipXY",
+              "Rotate90FlipXY",
+              "Rotate180FlipXY",
+              "Rotate270FlipXY"
+            ]
           },
           {
             "type": "string",
-            "name": "Format",
+            "name": "folder",
             "in": "query",
-            "required": true,
-            "x-nullable": true,
-            "description": "Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "Method",
+            "name": "outPath",
             "in": "query",
-            "required": true,
-            "x-nullable": true,
-            "description": "Rotate and flip method. Valid methods: Rotate180FlipNone,  Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY."
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "Folder",
+            "name": "storage",
             "in": "query",
-            "description": "Original drawing folder."
-          },
-          {
-            "type": "string",
-            "name": "Storage",
-            "in": "query",
-            "description": "File storage, which has to be used."
-          },
-          {
-            "type": "string",
-            "name": "OutPath",
-            "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image."
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
-            "description": "with updated image.",
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
             "schema": {
-              "type": "file",
-              "description": "File with result of operation"
-            },
-            "x-nullable": true
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
         "x-binary-result": "true",
-        "x-operationId": "GetImageRotateFlip"
+        "x-operationId": "GetDrawingRotateFlip"
       }
     },
     "/cad/rotateflip": {
-      "post": {
+      "put": {
         "tags": [
           "Cad"
         ],
-        "summary": "Rotate and flip existing image and get it from response.",
-        "operationId": "PostImageRotateFlip",
+        "operationId": "PutDrawingRotateFlip",
         "consumes": [
-          "multipart/form-data"
-        ],
-        "produces": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "DrawingData",
+            "name": "drawingData",
             "in": "formData",
             "required": true,
             "description": "Input drawing"
           },
           {
             "type": "string",
-            "name": "Format",
+            "name": "outputFormat",
             "in": "query",
             "required": true,
-            "x-nullable": true,
-            "description": "Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF."
+            "x-nullable": true
           },
           {
             "type": "string",
-            "name": "Method",
+            "name": "rotateFlipType",
             "in": "query",
             "required": true,
-            "x-nullable": true,
-            "description": "Rotate and flip method. Valid methods: Rotate180FlipNone,  Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY."
+            "x-schema": {},
+            "x-nullable": false,
+            "enum": [
+              "RotateNoneFlipNone",
+              "Rotate90FlipNone",
+              "Rotate180FlipNone",
+              "Rotate270FlipNone",
+              "RotateNoneFlipX",
+              "Rotate90FlipX",
+              "Rotate180FlipX",
+              "Rotate270FlipX",
+              "RotateNoneFlipY",
+              "Rotate90FlipY",
+              "Rotate180FlipY",
+              "Rotate270FlipY",
+              "RotateNoneFlipXY",
+              "Rotate90FlipXY",
+              "Rotate180FlipXY",
+              "Rotate270FlipXY"
+            ]
           },
           {
             "type": "string",
-            "name": "OutPath",
+            "name": "outPath",
             "in": "query",
-            "x-nullable": true,
-            "description": "Path to updated file, if this is empty, response contains streamed image."
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
-            "description": "with updated image.",
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
             "schema": {
-              "type": "file",
-              "description": "File with result of operation"
-            },
-            "x-nullable": true
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
         "x-binary-result": "true",
-        "x-operationId": "PostImageRotateFlip"
+        "x-operationId": "PutDrawingRotateFlip"
+      }
+    },
+    "/cad/{name}/saveAs/{outputFormat}": {
+      "get": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "GetDrawingSaveAs",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "GetDrawingSaveAs"
+      }
+    },
+    "/cad/saveAs/{outputFormat}": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "operationId": "PutDrawingSaveAs",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PutDrawingSaveAs"
       }
     }
   },
   "definitions": {
-    "ImagePropertiesResponse": {
-      "type": "null",
-      "additionalProperties": false,
+    "BmpOptionsDTO": {
       "allOf": [
         {
-          "$ref": "#/definitions/SaaSposeResponse"
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
         },
         {
-          "type": "object"
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "BitsPerPixel",
+            "Compression"
+          ],
+          "properties": {
+            "BitsPerPixel": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "Compression": {
+              "enum": [
+                "Rgb",
+                "Rle8",
+                "Rle4",
+                "Bitfields",
+                "Jpeg",
+                "Png",
+                "AlphaBitfields"
+              ]
+            }
+          }
         }
-      ],
-      "description": "Represents properties of the image."
+      ]
     },
-    "SaaSposeResponse": {
+    "ImageOptionsBaseDTO": {
+      "type": "object",
+      "discriminator": "Type",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "required": [
+        "Rotation"
+      ],
+      "properties": {
+        "Rotation": {
+          "enum": [
+            "RotateNoneFlipNone",
+            "Rotate90FlipNone",
+            "Rotate180FlipNone",
+            "Rotate270FlipNone",
+            "RotateNoneFlipX",
+            "Rotate90FlipX",
+            "Rotate180FlipX",
+            "Rotate270FlipX",
+            "RotateNoneFlipY",
+            "Rotate90FlipY",
+            "Rotate180FlipY",
+            "Rotate270FlipY",
+            "RotateNoneFlipXY",
+            "Rotate90FlipXY",
+            "Rotate180FlipXY",
+            "Rotate270FlipXY"
+          ]
+        },
+        "Layers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ResolutionSettings": {
+          "$ref": "#/definitions/ResolutionSetting"
+        },
+        "VectorRasterizationOptions": {
+          "$ref": "#/definitions/CadRasterizationOptionsDTO"
+        }
+      }
+    },
+    "ResolutionSetting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "HorizontalResolution",
+        "VerticalResolution"
+      ],
+      "properties": {
+        "HorizontalResolution": {
+          "type": "number",
+          "format": "double"
+        },
+        "VerticalResolution": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "CadRasterizationOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/VectorRasterizationOptionsDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Zoom",
+            "AutomaticLayoutsScaling",
+            "DrawType",
+            "NoScaling"
+          ],
+          "properties": {
+            "Zoom": {
+              "type": "number",
+              "format": "double"
+            },
+            "PenOptions": {
+              "$ref": "#/definitions/PenOptions"
+            },
+            "AutomaticLayoutsScaling": {
+              "type": "boolean"
+            },
+            "Layers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "Layouts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "DrawType": {
+              "enum": [
+                "UseDrawColor",
+                "UseObjectColor"
+              ]
+            },
+            "NoScaling": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "PenOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "StartCap",
+        "EndCap"
+      ],
+      "properties": {
+        "StartCap": {
+          "enum": [
+            "Flat",
+            "Square",
+            "Round",
+            "Triangle",
+            "NoAnchor",
+            "SquareAnchor",
+            "RoundAnchor",
+            "DiamondAnchor",
+            "ArrowAnchor",
+            "AnchorMask",
+            "Custom"
+          ]
+        },
+        "EndCap": {
+          "enum": [
+            "Flat",
+            "Square",
+            "Round",
+            "Triangle",
+            "NoAnchor",
+            "SquareAnchor",
+            "RoundAnchor",
+            "DiamondAnchor",
+            "ArrowAnchor",
+            "AnchorMask",
+            "Custom"
+          ]
+        }
+      }
+    },
+    "VectorRasterizationOptionsDTO": {
+      "type": "object",
+      "discriminator": "Type",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "required": [
+        "BorderX",
+        "BorderY",
+        "PageHeight",
+        "PageWidth",
+        "BackgroundColor",
+        "DrawColor",
+        "UnitType",
+        "ContentAsBitmap"
+      ],
+      "properties": {
+        "BorderX": {
+          "type": "number",
+          "format": "double"
+        },
+        "BorderY": {
+          "type": "number",
+          "format": "double"
+        },
+        "PageHeight": {
+          "type": "number",
+          "format": "double"
+        },
+        "PageWidth": {
+          "type": "number",
+          "format": "double"
+        },
+        "BackgroundColor": {
+          "$ref": "#/definitions/Color"
+        },
+        "DrawColor": {
+          "$ref": "#/definitions/Color"
+        },
+        "UnitType": {
+          "enum": [
+            "Kilometer",
+            "Meter",
+            "Centimenter",
+            "Millimeter",
+            "Micrometer",
+            "Nanometer",
+            "Angstrom",
+            "Decimeter",
+            "Decameter",
+            "Hectometer",
+            "Gigameter",
+            "AstronomicalUnit",
+            "LightYear",
+            "Parsec",
+            "Mile",
+            "Yard",
+            "Foot",
+            "Inch",
+            "Mil",
+            "MicroInch",
+            "Custom",
+            "Unitless"
+          ]
+        },
+        "ContentAsBitmap": {
+          "type": "boolean"
+        },
+        "GraphicsOptions": {
+          "$ref": "#/definitions/GraphicsOptions"
+        }
+      }
+    },
+    "Color": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "R",
+        "G",
+        "B",
+        "A",
+        "IsKnownColor",
+        "IsEmpty",
+        "IsNamedColor"
+      ],
+      "properties": {
+        "R": {
+          "type": "integer",
+          "format": "byte"
+        },
+        "G": {
+          "type": "integer",
+          "format": "byte"
+        },
+        "B": {
+          "type": "integer",
+          "format": "byte"
+        },
+        "A": {
+          "type": "integer",
+          "format": "byte"
+        },
+        "IsKnownColor": {
+          "type": "boolean"
+        },
+        "IsEmpty": {
+          "type": "boolean"
+        },
+        "IsNamedColor": {
+          "type": "boolean"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "GraphicsOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "TextRenderingHint",
+        "SmoothingMode",
+        "InterpolationMode"
+      ],
+      "properties": {
+        "TextRenderingHint": {
+          "enum": [
+            "SystemDefault",
+            "SingleBitPerPixelGridFit",
+            "SingleBitPerPixel",
+            "AntiAliasGridFit",
+            "AntiAlias",
+            "ClearTypeGridFit"
+          ]
+        },
+        "SmoothingMode": {
+          "enum": [
+            "Default",
+            "HighSpeed",
+            "HighQuality",
+            "None",
+            "AntiAlias",
+            "Invalid"
+          ]
+        },
+        "InterpolationMode": {
+          "enum": [
+            "Default",
+            "Low",
+            "High",
+            "Bilinear",
+            "Bicubic",
+            "NearestNeighbor",
+            "HighQualityBilinear",
+            "HighQualityBicubic",
+            "Invalid"
+          ]
+        }
+      }
+    },
+    "GifOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "DoPaletteCorrection",
+            "ColorResolution",
+            "IsPaletteSorted",
+            "PixelAspectRatio",
+            "BackgroundColorIndex",
+            "HasTrailer",
+            "Interlaced"
+          ],
+          "properties": {
+            "DoPaletteCorrection": {
+              "type": "boolean"
+            },
+            "ColorResolution": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "IsPaletteSorted": {
+              "type": "boolean"
+            },
+            "PixelAspectRatio": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "BackgroundColorIndex": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "HasTrailer": {
+              "type": "boolean"
+            },
+            "Interlaced": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "Jpeg2000OptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Codec"
+          ],
+          "properties": {
+            "Comments": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "Codec": {
+              "enum": [
+                "J2K",
+                "Jp2",
+                "Jpt"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "JpegOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "CompressionType",
+            "ColorType",
+            "Quality"
+          ],
+          "properties": {
+            "Jfif": {
+              "$ref": "#/definitions/JFIFData"
+            },
+            "Comment": {
+              "type": "string"
+            },
+            "ExifData": {
+              "$ref": "#/definitions/JpegExifData"
+            },
+            "CompressionType": {
+              "enum": [
+                "Baseline",
+                "Progressive",
+                "Lossless",
+                "JpegLs"
+              ]
+            },
+            "ColorType": {
+              "enum": [
+                "Grayscale",
+                "YCbCr",
+                "Cmyk",
+                "Ycck",
+                "Rgb"
+              ]
+            },
+            "Quality": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "RdOptSettings": {
+              "$ref": "#/definitions/RdOptimizerSettings"
+            }
+          }
+        }
+      ]
+    },
+    "JFIFData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "DensityUnits",
+        "Version",
+        "XDensity",
+        "YDensity"
+      ],
+      "properties": {
+        "DensityUnits": {
+          "enum": [
+            "NoUnits",
+            "PixelsPerInch",
+            "PixelsPerCm"
+          ]
+        },
+        "Thumbnail": {
+          "$ref": "#/definitions/RasterImage"
+        },
+        "Version": {
+          "type": "integer"
+        },
+        "XDensity": {
+          "type": "integer"
+        },
+        "YDensity": {
+          "type": "integer"
+        }
+      }
+    },
+    "RasterImage": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Image"
+        },
+        {
+          "type": "object",
+          "x-abstract": true,
+          "additionalProperties": false,
+          "required": [
+            "RawFallbackIndex",
+            "RawLineSize",
+            "IsRawDataAvailable",
+            "HorizontalResolution",
+            "VerticalResolution",
+            "HasTransparentColor",
+            "HasAlpha",
+            "TransparentColor"
+          ],
+          "properties": {
+            "XmpData": {
+              "$ref": "#/definitions/XmpPacketWrapper"
+            },
+            "RawIndexedColorConverter": {
+              "$ref": "#/definitions/IIndexedColorConverter"
+            },
+            "RawCustomColorConverter": {
+              "$ref": "#/definitions/IColorConverter"
+            },
+            "RawFallbackIndex": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "RawDataSettings": {
+              "$ref": "#/definitions/RawDataSettings"
+            },
+            "RawDataFormat": {
+              "$ref": "#/definitions/PixelDataFormat"
+            },
+            "RawLineSize": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "IsRawDataAvailable": {
+              "type": "boolean"
+            },
+            "HorizontalResolution": {
+              "type": "number",
+              "format": "double"
+            },
+            "VerticalResolution": {
+              "type": "number",
+              "format": "double"
+            },
+            "HasTransparentColor": {
+              "type": "boolean"
+            },
+            "HasAlpha": {
+              "type": "boolean"
+            },
+            "TransparentColor": {
+              "$ref": "#/definitions/Color"
+            }
+          }
+        }
+      ]
+    },
+    "XmpPacketWrapper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PackagesCount"
+      ],
+      "properties": {
+        "HeaderPi": {
+          "$ref": "#/definitions/XmpHeaderPi"
+        },
+        "Meta": {
+          "$ref": "#/definitions/XmpMeta"
+        },
+        "TrailerPi": {
+          "$ref": "#/definitions/XmpTrailerPi"
+        },
+        "Packages": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/KeyValuePairOfStringAndObject"
+            }
+          }
+        },
+        "PackagesCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "XmpHeaderPi": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Guid": {
+          "type": "string"
+        }
+      }
+    },
+    "XmpMeta": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/XmpElementBase"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "AdobeXmpToolkit": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "XmpElementBase": {
+      "type": "object",
+      "discriminator": "Type",
+      "x-abstract": true,
+      "additionalProperties": false
+    },
+    "XmpTrailerPi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "IsWritable"
+      ],
+      "properties": {
+        "IsWritable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "KeyValuePairOfStringAndObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Key": {
+          "type": "string"
+        },
+        "Value": {}
+      }
+    },
+    "IIndexedColorConverter": {
+      "type": "object",
+      "x-abstract": true,
+      "additionalProperties": false
+    },
+    "IColorConverter": {
+      "type": "object",
+      "x-abstract": true,
+      "additionalProperties": false
+    },
+    "RawDataSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "DitheringMethod",
+        "FallbackIndex",
+        "LineSize"
+      ],
+      "properties": {
+        "PixelDataFormat": {
+          "$ref": "#/definitions/PixelDataFormat"
+        },
+        "ColorPalette": {
+          "$ref": "#/definitions/IColorPalette"
+        },
+        "DitheringMethod": {
+          "enum": [
+            "PaletteIgnore",
+            "PaletteConversion",
+            "CustomConverter"
+          ]
+        },
+        "IndexedColorConverter": {
+          "$ref": "#/definitions/IIndexedColorConverter"
+        },
+        "CustomColorConverter": {
+          "$ref": "#/definitions/IColorConverter"
+        },
+        "FallbackIndex": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "LineSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PixelDataFormat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PixelFormat",
+        "BitsPerPixel",
+        "ChannelsCount"
+      ],
+      "properties": {
+        "PixelFormat": {
+          "enum": [
+            "Grayscale",
+            "Bgr",
+            "Rgb",
+            "YCbCr",
+            "Cmyk",
+            "Ycck"
+          ]
+        },
+        "BitsPerPixel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ChannelsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ChannelBits": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "IColorPalette": {
+      "type": "object",
+      "x-abstract": true,
+      "additionalProperties": false
+    },
+    "Image": {
+      "discriminator": "Type",
+      "allOf": [
+        {
+          "$ref": "#/definitions/DataStreamSupporter"
+        },
+        {
+          "type": "object",
+          "x-abstract": true,
+          "additionalProperties": false,
+          "required": [
+            "Bounds",
+            "Size",
+            "HasBackgroundColor",
+            "BackgroundColor",
+            "UnitType"
+          ],
+          "properties": {
+            "Bounds": {
+              "$ref": "#/definitions/Rectangle"
+            },
+            "Container": {
+              "$ref": "#/definitions/Image"
+            },
+            "Palette": {
+              "$ref": "#/definitions/IColorPalette"
+            },
+            "Size": {
+              "$ref": "#/definitions/Size"
+            },
+            "HasBackgroundColor": {
+              "type": "boolean"
+            },
+            "BackgroundColor": {
+              "$ref": "#/definitions/Color"
+            },
+            "UnitType": {
+              "enum": [
+                "Kilometer",
+                "Meter",
+                "Centimenter",
+                "Millimeter",
+                "Micrometer",
+                "Nanometer",
+                "Angstrom",
+                "Decimeter",
+                "Decameter",
+                "Hectometer",
+                "Gigameter",
+                "AstronomicalUnit",
+                "LightYear",
+                "Parsec",
+                "Mile",
+                "Yard",
+                "Foot",
+                "Inch",
+                "Mil",
+                "MicroInch",
+                "Custom",
+                "Unitless"
+              ]
+            },
+            "Attributes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Rectangle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Location",
+        "Size",
+        "X",
+        "Y",
+        "Width",
+        "Height",
+        "Left",
+        "Top",
+        "Right",
+        "Bottom",
+        "IsEmpty"
+      ],
+      "properties": {
+        "Location": {
+          "$ref": "#/definitions/Point"
+        },
+        "Size": {
+          "$ref": "#/definitions/Size"
+        },
+        "X": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Y": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Width": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Left": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Top": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Right": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Bottom": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "IsEmpty": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "IsEmpty",
+        "X",
+        "Y"
+      ],
+      "properties": {
+        "IsEmpty": {
+          "type": "boolean"
+        },
+        "X": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Y": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Size": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "IsEmpty",
+        "Width",
+        "Height"
+      ],
+      "properties": {
+        "IsEmpty": {
+          "type": "boolean"
+        },
+        "Width": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DataStreamSupporter": {
+      "discriminator": "Type",
+      "allOf": [
+        {
+          "$ref": "#/definitions/DisposableObject"
+        },
+        {
+          "type": "object",
+          "x-abstract": true,
+          "additionalProperties": false,
+          "properties": {
+            "DataStreamContainer": {
+              "$ref": "#/definitions/StreamContainer"
+            }
+          }
+        }
+      ]
+    },
+    "StreamContainer": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/DisposableObject"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Position",
+            "IsStreamDisposedOnClose",
+            "Length",
+            "CanRead",
+            "CanSeek",
+            "CanWrite"
+          ],
+          "properties": {
+            "SyncRoot": {},
+            "Position": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "Stream": {
+              "$ref": "#/definitions/Stream"
+            },
+            "IsStreamDisposedOnClose": {
+              "type": "boolean"
+            },
+            "Length": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "CanRead": {
+              "type": "boolean"
+            },
+            "CanSeek": {
+              "type": "boolean"
+            },
+            "CanWrite": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "Stream": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MarshalByRefObject"
+        },
+        {
+          "type": "object",
+          "x-abstract": true,
+          "additionalProperties": false,
+          "required": [
+            "CanTimeout",
+            "ReadTimeout",
+            "WriteTimeout"
+          ],
+          "properties": {
+            "CanTimeout": {
+              "type": "boolean"
+            },
+            "ReadTimeout": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "WriteTimeout": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      ]
+    },
+    "MarshalByRefObject": {
+      "type": "object",
+      "discriminator": "Type",
+      "x-abstract": true,
+      "additionalProperties": false
+    },
+    "DisposableObject": {
       "type": "object",
       "discriminator": "Type",
       "additionalProperties": false,
       "required": [
-        "Code"
+        "Disposed"
       ],
       "properties": {
-        "Code": {
-          "enum": [
-            "Continue",
-            "SwitchingProtocols",
-            "OK",
-            "Created",
-            "Accepted",
-            "NonAuthoritativeInformation",
-            "NoContent",
-            "ResetContent",
-            "PartialContent",
-            "MultipleChoices",
-            "Ambiguous",
-            "MovedPermanently",
-            "Moved",
-            "Found",
-            "Redirect",
-            "SeeOther",
-            "RedirectMethod",
-            "NotModified",
-            "UseProxy",
-            "Unused",
-            "TemporaryRedirect",
-            "RedirectKeepVerb",
-            "BadRequest",
-            "Unauthorized",
-            "PaymentRequired",
-            "Forbidden",
-            "NotFound",
-            "MethodNotAllowed",
-            "NotAcceptable",
-            "ProxyAuthenticationRequired",
-            "RequestTimeout",
-            "Conflict",
-            "Gone",
-            "LengthRequired",
-            "PreconditionFailed",
-            "RequestEntityTooLarge",
-            "RequestUriTooLong",
-            "UnsupportedMediaType",
-            "RequestedRangeNotSatisfiable",
-            "ExpectationFailed",
-            "UpgradeRequired",
-            "InternalServerError",
-            "NotImplemented",
-            "BadGateway",
-            "ServiceUnavailable",
-            "GatewayTimeout",
-            "HttpVersionNotSupported"
-          ],
-          "description": "Gets or sets the response status code."
-        },
-        "Status": {
-          "type": "string",
-          "description": "Gets or sets response status."
+        "Disposed": {
+          "type": "boolean"
         }
-      },
-      "description": "Base class for all responses."
+      }
+    },
+    "JpegExifData": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ExifData"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Compression",
+            "ImageLength",
+            "ImageWidth",
+            "Orientation",
+            "PhotometricInterpretation",
+            "PlanarConfiguration",
+            "ResolutionUnit",
+            "SamplesPerPixel",
+            "YCbCrPositioning"
+          ],
+          "properties": {
+            "Artist": {
+              "type": "string"
+            },
+            "BitsPerSample": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "Compression": {
+              "type": "integer"
+            },
+            "Copyright": {
+              "type": "string"
+            },
+            "DateTime": {
+              "type": "string"
+            },
+            "ImageDescription": {
+              "type": "string"
+            },
+            "ImageLength": {
+              "type": "integer"
+            },
+            "ImageWidth": {
+              "type": "integer"
+            },
+            "Make": {
+              "type": "string"
+            },
+            "Model": {
+              "type": "string"
+            },
+            "Orientation": {
+              "enum": [
+                "TopLeft",
+                "TopRight",
+                "BottomRight",
+                "BottomLeft",
+                "LeftTop",
+                "RightTop",
+                "RightBottom",
+                "LeftBottom"
+              ]
+            },
+            "PhotometricInterpretation": {
+              "type": "integer"
+            },
+            "PlanarConfiguration": {
+              "type": "integer"
+            },
+            "PrimaryChromaticities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "ReferenceBlackWhite": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "ResolutionUnit": {
+              "enum": [
+                "None",
+                "Inch",
+                "Cm"
+              ]
+            },
+            "SamplesPerPixel": {
+              "type": "integer"
+            },
+            "Software": {
+              "type": "string"
+            },
+            "Thumbnail": {
+              "$ref": "#/definitions/RasterImage"
+            },
+            "TransferFunction": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "XResolution": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "YCbCrCoefficients": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "YCbCrPositioning": {
+              "enum": [
+                "Centered",
+                "CoSited"
+              ]
+            },
+            "YCbCrSubSampling": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "YResolution": {
+              "$ref": "#/definitions/TiffRational"
+            }
+          }
+        }
+      ]
+    },
+    "TiffRational": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Denominator",
+        "Nominator",
+        "Value",
+        "ValueD"
+      ],
+      "properties": {
+        "Denominator": {
+          "type": "integer"
+        },
+        "Nominator": {
+          "type": "integer"
+        },
+        "Value": {
+          "type": "number",
+          "format": "double"
+        },
+        "ValueD": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ExifData": {
+      "discriminator": "Type",
+      "allOf": [
+        {
+          "$ref": "#/definitions/TiffDataTypeController"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "IsBigEndian",
+            "ColorSpace",
+            "Contrast",
+            "CustomRendered",
+            "ExposureMode",
+            "ExposureProgram",
+            "FileSource",
+            "Flash",
+            "FocalLengthIn35MmFilm",
+            "FocalPlaneResolutionUnit",
+            "GPSAltitudeRef",
+            "GPSDifferential",
+            "GainControl",
+            "ISOSpeed",
+            "ISOSpeedLatitudeYYY",
+            "ISOSpeedLatitudeZZZ",
+            "PhotographicSensitivity",
+            "LightSource",
+            "MeteringMode",
+            "PixelXDimension",
+            "PixelYDimension",
+            "RecommendedExposureIndex",
+            "Saturation",
+            "SceneCaptureType",
+            "SceneType",
+            "SensingMethod",
+            "SensitivityType",
+            "Sharpness",
+            "StandardOutputSensitivity",
+            "SubjectDistanceRange",
+            "WhiteBalance"
+          ],
+          "properties": {
+            "IsBigEndian": {
+              "type": "boolean"
+            },
+            "ApertureValue": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "BodySerialNumber": {
+              "type": "string"
+            },
+            "BrightnessValue": {
+              "$ref": "#/definitions/TiffSRational"
+            },
+            "CFAPattern": {
+              "type": "string",
+              "format": "byte"
+            },
+            "CameraOwnerName": {
+              "type": "string"
+            },
+            "ColorSpace": {
+              "enum": [
+                "SRgb",
+                "AdobeRgb",
+                "Uncalibrated"
+              ]
+            },
+            "ComponentsConfiguration": {
+              "type": "string",
+              "format": "byte"
+            },
+            "CompressedBitsPerPixel": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "Contrast": {
+              "enum": [
+                "Normal",
+                "Low",
+                "High"
+              ]
+            },
+            "CustomRendered": {
+              "enum": [
+                "NormalProcess",
+                "CustomProcess"
+              ]
+            },
+            "DateTimeDigitized": {
+              "type": "string"
+            },
+            "DateTimeOriginal": {
+              "type": "string"
+            },
+            "DeviceSettingDescription": {
+              "type": "string",
+              "format": "byte"
+            },
+            "DigitalZoomRatio": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "ExifVersion": {
+              "type": "string",
+              "format": "byte"
+            },
+            "ExposureBiasValue": {
+              "$ref": "#/definitions/TiffSRational"
+            },
+            "ExposureIndex": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "ExposureMode": {
+              "enum": [
+                "Auto",
+                "Manual",
+                "AutoBracket"
+              ]
+            },
+            "ExposureProgram": {
+              "enum": [
+                "Notdefined",
+                "Manual",
+                "Auto",
+                "Aperturepriority",
+                "Shutterpriority",
+                "Creativeprogram",
+                "Actionprogram",
+                "Portraitmode",
+                "Landscapemode"
+              ]
+            },
+            "ExposureTime": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "FNumber": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "FileSource": {
+              "enum": [
+                "Others",
+                "FilmScanner",
+                "ReflexionPrintScanner",
+                "DigitalStillCamera"
+              ]
+            },
+            "Flash": {
+              "enum": [
+                "Noflash",
+                "Fired",
+                "FiredReturnLightNotDetected",
+                "FiredReturnLightDetected",
+                "YesCompulsory",
+                "YesCompulsoryReturnLightNotDetected",
+                "YesCompulsoryReturnLightDetected",
+                "NoCompulsory",
+                "NoDidNotFireReturnLightNotDetected",
+                "NoAuto",
+                "YesAuto",
+                "YesAutoReturnLightNotDetected",
+                "YesAutoReturnLightDetected",
+                "NoFlashFunction"
+              ]
+            },
+            "FlashEnergy": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "FlashpixVersion": {
+              "type": "string",
+              "format": "byte"
+            },
+            "FocalLength": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "FocalLengthIn35MmFilm": {
+              "type": "integer"
+            },
+            "FocalPlaneResolutionUnit": {
+              "enum": [
+                "None",
+                "Inch",
+                "Cm"
+              ]
+            },
+            "FocalPlaneXResolution": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "FocalPlaneYResolution": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "GPSAltitude": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "GPSAltitudeRef": {
+              "enum": [
+                "AboveSeaLevel",
+                "BelowSeaLevel"
+              ]
+            },
+            "GPSAreaInformation": {
+              "type": "string",
+              "format": "byte"
+            },
+            "GPSDOP": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "GPSDestBearing": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "GPSDestBearingRef": {
+              "type": "string"
+            },
+            "GPSDestDistance": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "GPSDestDistanceRef": {
+              "type": "string"
+            },
+            "GPSDestLatitude": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "GPSDestLatitudeRef": {
+              "type": "string"
+            },
+            "GPSDestLongitude": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "GPSDestLongitudeRef": {
+              "type": "string"
+            },
+            "GPSDifferential": {
+              "type": "integer"
+            },
+            "GPSImgDirection": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "GPSImgDirectionRef": {
+              "type": "string"
+            },
+            "GPSDateStamp": {
+              "type": "string"
+            },
+            "GPSLatitude": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "GPSLatitudeRef": {
+              "type": "string"
+            },
+            "GPSLongitude": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "GPSLongitudeRef": {
+              "type": "string"
+            },
+            "GPSMapDatum": {
+              "type": "string"
+            },
+            "GPSMeasureMode": {
+              "type": "string"
+            },
+            "GPSProcessingMethod": {
+              "type": "string",
+              "format": "byte"
+            },
+            "GPSSatellites": {
+              "type": "string"
+            },
+            "GPSSpeed": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "GPSSpeedRef": {
+              "type": "string"
+            },
+            "GPSStatus": {
+              "type": "string"
+            },
+            "GPSTimestamp": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "GPSTrack": {
+              "type": "string"
+            },
+            "GPSTrackRef": {
+              "type": "string"
+            },
+            "GPSVersionID": {
+              "type": "string",
+              "format": "byte"
+            },
+            "GainControl": {
+              "enum": [
+                "None",
+                "LowGainUp",
+                "HighGainUp",
+                "LowGainDown",
+                "HighGainDown"
+              ]
+            },
+            "Gamma": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "ISOSpeed": {
+              "type": "integer"
+            },
+            "ISOSpeedLatitudeYYY": {
+              "type": "integer"
+            },
+            "ISOSpeedLatitudeZZZ": {
+              "type": "integer"
+            },
+            "PhotographicSensitivity": {
+              "type": "integer"
+            },
+            "ImageUniqueID": {
+              "type": "string"
+            },
+            "LensMake": {
+              "type": "string"
+            },
+            "LensModel": {
+              "type": "string"
+            },
+            "LensSerialNumber": {
+              "type": "string"
+            },
+            "LensSpecification": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "LightSource": {
+              "enum": [
+                "Unknown",
+                "Daylight",
+                "Fluorescent",
+                "Tungsten",
+                "Flash",
+                "Fineweather",
+                "Cloudyweather",
+                "Shade",
+                "DaylightFluorescent",
+                "DayWhiteFluorescent",
+                "CoolWhiteFluorescent",
+                "WhiteFluorescent",
+                "StandardlightA",
+                "StandardlightB",
+                "StandardlightC",
+                "D55",
+                "D65",
+                "D75",
+                "D50",
+                "ISOstudiotungsten",
+                "Otherlightsource"
+              ]
+            },
+            "MakerNoteData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffDataType"
+              }
+            },
+            "MakerNoteRawData": {
+              "type": "string",
+              "format": "byte"
+            },
+            "MaxApertureValue": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "MeteringMode": {
+              "enum": [
+                "Unknown",
+                "Average",
+                "Centerweightedaverage",
+                "Spot",
+                "MultiSpot",
+                "MultiSegment",
+                "Partial",
+                "Other"
+              ]
+            },
+            "OECF": {
+              "type": "string",
+              "format": "byte"
+            },
+            "PixelXDimension": {
+              "type": "integer"
+            },
+            "PixelYDimension": {
+              "type": "integer"
+            },
+            "Properties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffDataType"
+              }
+            },
+            "RecommendedExposureIndex": {
+              "type": "integer"
+            },
+            "RelatedSoundFile": {
+              "type": "string"
+            },
+            "Saturation": {
+              "enum": [
+                "Normal",
+                "Low",
+                "High"
+              ]
+            },
+            "SceneCaptureType": {
+              "enum": [
+                "Standard",
+                "Landscape",
+                "Portrait",
+                "NightScene"
+              ]
+            },
+            "SceneType": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "SensingMethod": {
+              "enum": [
+                "Notdefined",
+                "OneChipColorArea",
+                "TwoChipColorArea",
+                "ThreeChipColorArea",
+                "Colorsequentialarea",
+                "Trilinearsensor",
+                "Colorsequentiallinear"
+              ]
+            },
+            "SensitivityType": {
+              "type": "integer"
+            },
+            "Sharpness": {
+              "type": "integer"
+            },
+            "ShutterSpeedValue": {
+              "$ref": "#/definitions/TiffSRational"
+            },
+            "SpatialFrequencyResponse": {
+              "type": "string",
+              "format": "byte"
+            },
+            "SpectralSensitivity": {
+              "type": "string"
+            },
+            "StandardOutputSensitivity": {
+              "type": "integer"
+            },
+            "SubjectArea": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "SubjectDistance": {
+              "$ref": "#/definitions/TiffRational"
+            },
+            "SubjectDistanceRange": {
+              "enum": [
+                "Unknown",
+                "Macro",
+                "CloseView",
+                "DistantView"
+              ]
+            },
+            "SubjectLocation": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "SubsecTime": {
+              "type": "string"
+            },
+            "SubsecTimeDigitized": {
+              "type": "string"
+            },
+            "SubsecTimeOriginal": {
+              "type": "string"
+            },
+            "UserComment": {
+              "type": "string"
+            },
+            "WhiteBalance": {
+              "enum": [
+                "Auto",
+                "Manual"
+              ]
+            },
+            "WhitePoint": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffRational"
+              }
+            },
+            "CommonTags": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffDataType"
+              }
+            },
+            "ExifTags": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffDataType"
+              }
+            },
+            "GPSTags": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TiffDataType"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TiffSRational": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Denominator",
+        "Nominator",
+        "Value",
+        "ValueD"
+      ],
+      "properties": {
+        "Denominator": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Nominator": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Value": {
+          "type": "number",
+          "format": "double"
+        },
+        "ValueD": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "TiffDataType": {
+      "type": "object",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "TagId",
+        "AlignedDataSize",
+        "IsValid"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer"
+        },
+        "TagId": {
+          "enum": [
+            "SubFileType",
+            "OsubfileType",
+            "ImageWidth",
+            "ImageLength",
+            "BitsPerSample",
+            "Compression",
+            "Photometric",
+            "Thresholding",
+            "CellWidth",
+            "CellLength",
+            "FillOrder",
+            "DocumentName",
+            "ImageDescription",
+            "Make",
+            "Model",
+            "StripOffsets",
+            "Orientation",
+            "SamplesPerPixel",
+            "RowsPerStrip",
+            "StripByteCounts",
+            "MinSampleValue",
+            "MaxSampleValue",
+            "Xresolution",
+            "Yresolution",
+            "PlanarConfig",
+            "PageName",
+            "Xposition",
+            "Yposition",
+            "FreeOffsets",
+            "FreeByteCounts",
+            "GrayResponseUnit",
+            "GrayResponseCurve",
+            "T4Options",
+            "T6Options",
+            "ResolutionUnit",
+            "PageNumber",
+            "ColorResponseUnit",
+            "TransferFunction",
+            "Software",
+            "DateTime",
+            "Artist",
+            "HostComputer",
+            "Predictor",
+            "WhitePoint",
+            "PrimaryChromaticities",
+            "ColorMap",
+            "HalftoneHints",
+            "TileWidth",
+            "TileLength",
+            "TileOffsets",
+            "TileByteCounts",
+            "BadFaxLines",
+            "CleanFaxData",
+            "ConsecutiveBadFaxLines",
+            "SubIfd",
+            "InkSet",
+            "InkNames",
+            "NumberOfInks",
+            "DotRange",
+            "TargetPrinter",
+            "ExtraSamples",
+            "SampleFormat",
+            "SminSampleValue",
+            "SmaxSampleValue",
+            "TransferRange",
+            "ClipPath",
+            "Xclippathunits",
+            "Yclippathunits",
+            "Indexed",
+            "JpegTables",
+            "OpiProxy",
+            "JpegProc",
+            "JpegInerchangeFormat",
+            "JpegInterchangeFormatLength",
+            "JpegRestartInterval",
+            "JpegLosslessPredictors",
+            "JpegPointTransform",
+            "JpegQTables",
+            "JpegDCtables",
+            "JpegACtables",
+            "YcbcrCoefficients",
+            "YcbcrSubSampling",
+            "YcbcrPositioning",
+            "ReferenceBlackWhite",
+            "XmlPacket",
+            "OpiImageid",
+            "Refpts",
+            "Copyright",
+            "ExifIfdPointer",
+            "IccProfile"
+          ]
+        },
+        "AlignedDataSize": {
+          "type": "integer"
+        },
+        "IsValid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TiffDataTypeController": {
+      "type": "object",
+      "discriminator": "Type",
+      "additionalProperties": false
+    },
+    "RdOptimizerSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "BppScale",
+        "BppMax",
+        "MaxQ",
+        "MinQ",
+        "MaxPixelValue",
+        "PsnrMax",
+        "DiscretizedBppMax"
+      ],
+      "properties": {
+        "BppScale": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "BppMax": {
+          "type": "number",
+          "format": "double"
+        },
+        "MaxQ": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "MinQ": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "MaxPixelValue": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PsnrMax": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "DiscretizedBppMax": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PngOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ColorType",
+            "Progressive",
+            "FilterType",
+            "CompressionLevel",
+            "BitDepth"
+          ],
+          "properties": {
+            "ColorType": {
+              "enum": [
+                "Grayscale",
+                "Truecolor",
+                "IndexedColor",
+                "GrayscaleWithAlpha",
+                "TruecolorWithAlpha"
+              ]
+            },
+            "Progressive": {
+              "type": "boolean"
+            },
+            "FilterType": {
+              "enum": [
+                "None",
+                "Sub",
+                "Up",
+                "Avg",
+                "Paeth",
+                "Adaptive"
+              ]
+            },
+            "CompressionLevel": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "BitDepth": {
+              "type": "integer",
+              "format": "byte"
+            }
+          }
+        }
+      ]
+    },
+    "PsdOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Version",
+            "CompressionMethod",
+            "ColorMode",
+            "ChannelBitsCount",
+            "ChannelsCount"
+          ],
+          "properties": {
+            "Version": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "CompressionMethod": {
+              "enum": [
+                "Raw",
+                "RLE",
+                "ZipWithoutPrediction",
+                "ZipWithPrediction"
+              ]
+            },
+            "ColorMode": {
+              "enum": [
+                "Bitmap",
+                "Grayscale",
+                "Indexed",
+                "Rgb",
+                "Cmyk",
+                "Multichannel",
+                "Duotone",
+                "Lab"
+              ]
+            },
+            "ChannelBitsCount": {
+              "type": "integer"
+            },
+            "ChannelsCount": {
+              "type": "integer"
+            }
+          }
+        }
+      ]
+    },
+    "TiffOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ByteOrder",
+            "Compression",
+            "ExpectedFormat",
+            "Photometric"
+          ],
+          "properties": {
+            "ByteOrder": {
+              "enum": [
+                "LittleEndian",
+                "BigEndian"
+              ]
+            },
+            "Compression": {
+              "enum": [
+                "None",
+                "CcittRle",
+                "CcittFax3",
+                "CcittFax4",
+                "Lzw",
+                "Ojpeg",
+                "Jpeg",
+                "AdobeDeflate",
+                "Next",
+                "CcittRleW",
+                "Packbits",
+                "Thunderscan",
+                "It8Ctpad",
+                "It8Lw",
+                "It8Mp",
+                "It8Bl",
+                "PixarFilm",
+                "PixarLog",
+                "Deflate",
+                "Dcs",
+                "Jbig",
+                "Sgilog",
+                "Sgilog24",
+                "Jp2000"
+              ]
+            },
+            "ExpectedFormat": {
+              "enum": [
+                "Default",
+                "TiffLzwBw",
+                "TiffLzwRgb",
+                "TiffLzwRgba",
+                "TiffLzwCmyk",
+                "TiffCcittFax3",
+                "TiffCcittFax4",
+                "TiffDeflateBw",
+                "TiffDeflateRgb",
+                "TiffDeflateRgba",
+                "TiffCcitRle",
+                "TiffJpegRgb",
+                "TiffJpegYCbCr",
+                "TiffNoCompressionBw",
+                "TiffNoCompressionRgb",
+                "TiffNoCompressionRgba"
+              ]
+            },
+            "BitsPerSample": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "Photometric": {
+              "enum": [
+                "MinIsWhite",
+                "MinIsBlack",
+                "Rgb",
+                "Palette",
+                "Mask",
+                "Separated",
+                "Ycbcr",
+                "Cielab",
+                "Icclab",
+                "Itulab",
+                "Logl",
+                "Logluv"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "PdfOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "PdfDocumentInfo": {
+              "$ref": "#/definitions/PdfDocumentInfo"
+            },
+            "CorePdfOptions": {
+              "$ref": "#/definitions/PdfDocumentOptions"
+            }
+          }
+        }
+      ]
+    },
+    "PdfDocumentInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Keywords": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Author": {
+          "type": "string"
+        },
+        "Subject": {
+          "type": "string"
+        }
+      }
+    },
+    "PdfDocumentOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Compliance"
+      ],
+      "properties": {
+        "Compliance": {
+          "enum": [
+            "Pdf15",
+            "PdfA1a",
+            "PdfA1b"
+          ]
+        }
+      }
+    },
+    "SvgOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ColorType",
+            "TextAsShapes"
+          ],
+          "properties": {
+            "ColorType": {
+              "enum": [
+                "Grayscale",
+                "YCbCr",
+                "Cmyk",
+                "Ycck",
+                "Rgb"
+              ]
+            },
+            "TextAsShapes": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "WmfOptionsDTO": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ImageOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "BitsPerPixel"
+          ],
+          "properties": {
+            "BitsPerPixel": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      ]
+    },
+    "CadResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Height",
+        "Width"
+      ],
+      "properties": {
+        "Height": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Width": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "DwgProperties": {
+          "$ref": "#/definitions/DwgProperties"
+        },
+        "DxfProperties": {
+          "$ref": "#/definitions/DxfProperties"
+        },
+        "DwtProperties": {
+          "$ref": "#/definitions/DwgProperties"
+        },
+        "DgnProperties": {
+          "$ref": "#/definitions/DgnProperties"
+        },
+        "IfcProperties": {
+          "$ref": "#/definitions/IfcProperties"
+        },
+        "IgsProperties": {
+          "$ref": "#/definitions/IgsProperties"
+        },
+        "StlProperties": {
+          "$ref": "#/definitions/StlProperties"
+        },
+        "DwfProperties": {
+          "$ref": "#/definitions/DwfProperties"
+        }
+      }
+    },
+    "DwgProperties": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DxfProperties": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DgnProperties": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "IfcProperties": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "IgsProperties": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "StlProperties": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DwfProperties": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "FilesUploadResult": {
+      "type": "object",
+      "description": "File upload result",
+      "additionalProperties": false,
+      "properties": {
+        "Uploaded": {
+          "type": "array",
+          "description": "List of uploaded file names",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Errors": {
+          "type": "array",
+          "description": "List of errors.",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "description": "Error",
+      "additionalProperties": false,
+      "properties": {
+        "Code": {
+          "type": "string",
+          "description": "Code\n            "
+        },
+        "Message": {
+          "type": "string",
+          "description": "Message\n            "
+        },
+        "Description": {
+          "type": "string",
+          "description": "Description\n            "
+        },
+        "InnerError": {
+          "description": "Inner Error\n            ",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/ErrorDetails"
+        }
+      }
+    },
+    "ErrorDetails": {
+      "type": "object",
+      "description": "The error details",
+      "additionalProperties": false,
+      "required": [
+        "Date"
+      ],
+      "properties": {
+        "RequestId": {
+          "type": "string",
+          "description": "The request id"
+        },
+        "Date": {
+          "type": "string",
+          "description": "Date",
+          "format": "date-time"
+        }
+      }
+    },
+    "FilesList": {
+      "type": "object",
+      "description": "Files list",
+      "additionalProperties": false,
+      "properties": {
+        "Value": {
+          "type": "array",
+          "description": "Files and folders contained by folder StorageFile.",
+          "items": {
+            "$ref": "#/definitions/StorageFile"
+          }
+        }
+      }
+    },
+    "StorageFile": {
+      "type": "object",
+      "discriminator": "Type",
+      "description": "File or folder information",
+      "additionalProperties": false,
+      "required": [
+        "IsFolder",
+        "Size"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "File or folder name."
+        },
+        "IsFolder": {
+          "type": "boolean",
+          "description": "True if it is a folder."
+        },
+        "ModifiedDate": {
+          "type": "string",
+          "description": "File or folder last modified DateTime.",
+          "format": "date-time"
+        },
+        "Size": {
+          "type": "integer",
+          "description": "File or folder size.",
+          "format": "int64"
+        },
+        "Path": {
+          "type": "string",
+          "description": "File or folder path."
+        }
+      }
+    },
+    "StorageExist": {
+      "type": "object",
+      "description": "Storage exists",
+      "additionalProperties": false,
+      "required": [
+        "Exists"
+      ],
+      "properties": {
+        "Exists": {
+          "type": "boolean",
+          "description": "Shows that the storage exists.\n            "
+        }
+      }
+    },
+    "ObjectExist": {
+      "type": "object",
+      "description": "Object exists",
+      "additionalProperties": false,
+      "required": [
+        "Exists",
+        "IsFolder"
+      ],
+      "properties": {
+        "Exists": {
+          "type": "boolean",
+          "description": "Indicates that the file or folder exists."
+        },
+        "IsFolder": {
+          "type": "boolean",
+          "description": "True if it is a folder, false if it is a file."
+        }
+      }
+    },
+    "DiscUsage": {
+      "type": "object",
+      "description": "Class for disc space information.",
+      "additionalProperties": false,
+      "required": [
+        "UsedSize",
+        "TotalSize"
+      ],
+      "properties": {
+        "UsedSize": {
+          "type": "integer",
+          "description": "Application used disc space.",
+          "format": "int64"
+        },
+        "TotalSize": {
+          "type": "integer",
+          "description": "Total disc space.",
+          "format": "int64"
+        }
+      }
+    },
+    "FileVersions": {
+      "type": "object",
+      "description": "File versions FileVersion.",
+      "additionalProperties": false,
+      "properties": {
+        "Value": {
+          "type": "array",
+          "description": "File versions FileVersion.",
+          "items": {
+            "$ref": "#/definitions/FileVersion"
+          }
+        }
+      }
+    },
+    "FileVersion": {
+      "type": "object",
+      "description": "File Version",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/StorageFile"
+        },
+        {
+          "type": "object",
+          "description": "File Version",
+          "additionalProperties": false,
+          "required": [
+            "IsLatest"
+          ],
+          "properties": {
+            "VersionId": {
+              "type": "string",
+              "description": "File Version ID."
+            },
+            "IsLatest": {
+              "type": "boolean",
+              "description": "Specifies whether the file is (true) or is not (false) the latest version of an file."
+            }
+          }
+        }
+      ]
     }
   },
-  "parameters": {},
-  "responses": {},
   "securityDefinitions": {
-    "appsid": {
-      "type": "apiKey",
-      "name": "appsid",
-      "in": "query"
-    },
-    "signature": {
-      "type": "apiKey",
-      "name": "signature",
-      "in": "query"
-    },
-    "oauth": {
+    "JWT": {
       "type": "oauth2",
       "flow": "application",
-      "authorizationUrl": "api.aspose.cloud/oauth2/token"
+      "tokenUrl": "https://api-qa.aspose.cloud/connect/token"
     }
   }
 }
