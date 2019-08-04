@@ -1,12 +1,12 @@
-call codegen\generateNodeJsSDK ||  goto :error
+::call codegen\generateNodeJsSDK ||  goto :error
 
 call codegen\generateNetSDK ||  goto :error
 
-call codegen\generatePhpSDK ||  goto :error
+::call codegen\generatePhpSDK ||  goto :error
 
-call codegen\generateRubySDK ||  goto :error
+::call codegen\generateRubySDK ||  goto :error
 
-call codegen\generatePythonSDK||  goto :error
+::call codegen\generatePythonSDK||  goto :error
 
 rem call codegen\generateJavaSDK || goto :error
 

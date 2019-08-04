@@ -112,7 +112,7 @@ namespace {{packageName}}
             {{#formParams}}
             if (request.{{baseName}} != null) 
             {
-                {{#isFile}}formParams.Add("{{paramName}}", this.apiInvoker.ToFileInfo(request.{{baseName}}, "{{baseName}}"));{{/isFile}}{{^isFile}}formParams.Add("{{baseName}}", request.{{baseName}}); // form parameter{{/isFile}}
+                {{#isFile}}formParams.Add("{{paramName}}", this.apiInvoker.ToFileInfo(request.{{baseName}}, "{{baseName}}"));{{/isFile}}{{^isFile}}{{#isPrimitiveType}}formParams.Add("{{paramName}}", request.{{baseName}});{{/isPrimitiveType}}{{^isPrimitiveType}}formParams.Add("{{baseName}}", this.apiInvoker.ToJsonFileInfo(request.{{baseName}}, "{{baseName}}"));{{/isPrimitiveType}} // form parameter{{/isFile}}
             }
             
             {{/formParams}}
