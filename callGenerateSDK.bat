@@ -1,0 +1,1 @@
+call codegen\generateSDK ||  goto :error

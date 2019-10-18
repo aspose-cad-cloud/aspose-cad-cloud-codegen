@@ -5,8 +5,11 @@
     "title": "Aspose.CAD Cloud API Reference",
     "version": "3.0"
   },
-  "host": "localhost:44350",
+  "host": "api-qa.aspose.cloud",
   "basePath": "/v3.0",
+  "schemes": [
+    "https"
+  ],
   "consumes": [
     "application/json"
   ],
@@ -72,20 +75,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -144,17 +147,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -224,20 +227,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -296,17 +299,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -376,20 +379,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -448,17 +451,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -528,20 +531,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -600,17 +603,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -680,20 +683,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -752,17 +755,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -832,20 +835,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -904,17 +907,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -984,20 +987,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -1056,17 +1059,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -1136,20 +1139,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -1208,17 +1211,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -1288,20 +1291,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -1360,17 +1363,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -1440,20 +1443,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -1512,17 +1515,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -1573,20 +1576,20 @@
               "$ref": "#/definitions/CadResponse"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -1625,17 +1628,17 @@
               "$ref": "#/definitions/CadResponse"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -1718,20 +1721,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -1810,17 +1813,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -1913,20 +1916,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -2015,17 +2018,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -2091,20 +2094,20 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           }
         },
         "security": [
@@ -2166,17 +2169,17 @@
               "type": "file"
             }
           },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
           "401": {
             "description": "Authentication failed."
           },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
+          "400": {
+            "description": "Invalid request parameters or input data."
           },
           "501": {
             "description": "The specific operation is not yet supported - please, contact us if you require it."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
           }
         },
         "security": [
@@ -2290,6 +2293,7 @@
     },
     "ResolutionSetting": {
       "type": "object",
+      "description": "The resolution setting for image save options.",
       "additionalProperties": false,
       "required": [
         "HorizontalResolution",
@@ -2298,22 +2302,27 @@
       "properties": {
         "HorizontalResolution": {
           "type": "number",
+          "description": "Gets or sets the horizontal resolution.",
           "format": "double"
         },
         "VerticalResolution": {
           "type": "number",
+          "description": "Gets or sets the vertical resolution.",
           "format": "double"
         }
-      },
-      "description": "Resolution Setting"
+      }
     },
     "CadRasterizationOptionsDTO": {
+      "type": "object",
+      "description": "Raster export options",
+      "additionalProperties": false,
       "allOf": [
         {
           "$ref": "#/definitions/VectorRasterizationOptionsDTO"
         },
         {
           "type": "object",
+          "description": "Raster export options",
           "additionalProperties": false,
           "required": [
             "Zoom",
@@ -2324,42 +2333,55 @@
           "properties": {
             "Zoom": {
               "type": "number",
+              "description": "Zoom factor",
               "format": "double"
             },
             "PenOptions": {
+              "description": "Pen options",
+              "allOf": [
+                {}
+              ],
               "$ref": "#/definitions/PenOptions"
             },
             "AutomaticLayoutsScaling": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Determines whether layout has to be scaled automatically"
             },
             "Layers": {
               "type": "array",
+              "description": "Layers to export",
               "items": {
                 "type": "string"
               }
             },
             "Layouts": {
               "type": "array",
+              "description": "Layouts to export",
               "items": {
                 "type": "string"
               }
             },
             "DrawType": {
+              "description": "Drawing mode",
               "enum": [
                 "UseDrawColor",
                 "UseObjectColor"
+              ],
+              "allOf": [
+                {}
               ]
             },
             "NoScaling": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Determines whether scaling has to be turned off"
             }
           }
         }
-      ],
-      "description": "Cad Rasterization Options D T O"
+      ]
     },
     "PenOptions": {
       "type": "object",
+      "description": "Drawing pen options",
       "additionalProperties": false,
       "required": [
         "StartCap",
@@ -2367,6 +2389,7 @@
       ],
       "properties": {
         "StartCap": {
+          "description": "Gets or sets the start cap.",
           "enum": [
             "Flat",
             "Square",
@@ -2379,9 +2402,13 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
+          ],
+          "allOf": [
+            {}
           ]
         },
         "EndCap": {
+          "description": "Gets or sets the end cap.",
           "enum": [
             "Flat",
             "Square",
@@ -2394,14 +2421,17 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
+          ],
+          "allOf": [
+            {}
           ]
         }
-      },
-      "description": "Pen Options"
+      }
     },
     "VectorRasterizationOptionsDTO": {
       "type": "object",
       "discriminator": "Type",
+      "description": "Base raster export options class",
       "x-abstract": true,
       "additionalProperties": false,
       "required": [
@@ -2486,11 +2516,11 @@
           ],
           "$ref": "#/definitions/GraphicsOptions"
         }
-      },
-      "description": "Vector Rasterization Options D T O"
+      }
     },
     "Color": {
       "type": "object",
+      "description": "The color of the pixel.",
       "additionalProperties": false,
       "required": [
         "R",
@@ -2504,37 +2534,45 @@
       "properties": {
         "R": {
           "type": "integer",
+          "description": "Gets the red component value of this Color structure.",
           "format": "byte"
         },
         "G": {
           "type": "integer",
+          "description": "Gets the green component value of this Color structure.",
           "format": "byte"
         },
         "B": {
           "type": "integer",
+          "description": "Gets the blue component value of this Color structure.",
           "format": "byte"
         },
         "A": {
           "type": "integer",
+          "description": "Gets the alpha component value of this Color structure.",
           "format": "byte"
         },
         "IsKnownColor": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Gets a value indicating whether this Color structure is a predefined color. Predefined colors are represented by the elements of the KnownColor enumeration."
         },
         "IsEmpty": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Gets a value indicating whether this Color structure is uninitialized."
         },
         "IsNamedColor": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Gets a value indicating whether this Color structure is a named color or a member of the KnownColor enumeration."
         },
         "Name": {
-          "type": "string"
+          "type": "string",
+          "description": "Gets the name of this Color."
         }
-      },
-      "description": "Color"
+      }
     },
     "GraphicsOptions": {
       "type": "object",
+      "description": "Represents graphics options for embedded bitmap.",
       "additionalProperties": false,
       "required": [
         "TextRenderingHint",
@@ -2543,6 +2581,7 @@
       ],
       "properties": {
         "TextRenderingHint": {
+          "description": "Gets or sets text rendering hint.",
           "enum": [
             "SystemDefault",
             "SingleBitPerPixelGridFit",
@@ -2550,9 +2589,13 @@
             "AntiAliasGridFit",
             "AntiAlias",
             "ClearTypeGridFit"
+          ],
+          "allOf": [
+            {}
           ]
         },
         "SmoothingMode": {
+          "description": "Gets or sets smoothing mode.",
           "enum": [
             "Default",
             "HighSpeed",
@@ -2560,9 +2603,13 @@
             "None",
             "AntiAlias",
             "Invalid"
+          ],
+          "allOf": [
+            {}
           ]
         },
         "InterpolationMode": {
+          "description": "Gets or sets interpolation mode.",
           "enum": [
             "Default",
             "Low",
@@ -2573,10 +2620,12 @@
             "HighQualityBilinear",
             "HighQualityBicubic",
             "Invalid"
+          ],
+          "allOf": [
+            {}
           ]
         }
-      },
-      "description": "Graphics Options"
+      }
     },
     "GifOptionsDTO": {
       "type": "object",
@@ -2733,6 +2782,7 @@
     },
     "RdOptimizerSettings": {
       "type": "object",
+      "description": "RD optimizer settings class",
       "additionalProperties": false,
       "required": [
         "BppScale",
@@ -2746,34 +2796,40 @@
       "properties": {
         "BppScale": {
           "type": "integer",
+          "description": "Gets or sets the BPP (bits per pixel) scale factor.",
           "format": "int32"
         },
         "BppMax": {
           "type": "number",
+          "description": "Gets or sets the maximum R value for consideration in  in bits per pixel",
           "format": "double"
         },
         "MaxQ": {
           "type": "integer",
+          "description": "Gets or sets the maximum quantization value.",
           "format": "int32"
         },
         "MinQ": {
           "type": "integer",
+          "description": "Gets the minimum allowed quantization value.",
           "format": "int32"
         },
         "MaxPixelValue": {
           "type": "integer",
+          "description": "Gets the maximum pixel value.",
           "format": "int32"
         },
         "PsnrMax": {
           "type": "integer",
+          "description": "Gets the PSNR maximum expected value.",
           "format": "int32"
         },
         "DiscretizedBppMax": {
           "type": "integer",
+          "description": "Gets the maximum R value for consideration.",
           "format": "int32"
         }
-      },
-      "description": "Rd Optimizer Settings"
+      }
     },
     "PngOptionsDTO": {
       "type": "object",
@@ -3054,39 +3110,47 @@
     },
     "PdfDocumentInfo": {
       "type": "object",
+      "description": "This class represents set of metadata for document description.",
       "additionalProperties": false,
       "properties": {
         "Keywords": {
-          "type": "string"
+          "type": "string",
+          "description": "Gets or sets keywords of the document."
         },
         "Title": {
-          "type": "string"
+          "type": "string",
+          "description": "Gets or sets title of the document."
         },
         "Author": {
-          "type": "string"
+          "type": "string",
+          "description": "Gets or sets author of the document."
         },
         "Subject": {
-          "type": "string"
+          "type": "string",
+          "description": "Gets or sets subject of the document."
         }
-      },
-      "description": "Pdf Document Info"
+      }
     },
     "PdfDocumentOptions": {
       "type": "object",
+      "description": "The PDF options.",
       "additionalProperties": false,
       "required": [
         "Compliance"
       ],
       "properties": {
         "Compliance": {
+          "description": "Desired conformance level for generated PDF document.\nImportant note: This option should not be changed after PdfDocument object is constructed.\nDefault is Pdf15.",
           "enum": [
             "Pdf15",
             "PdfA1a",
             "PdfA1b"
+          ],
+          "allOf": [
+            {}
           ]
         }
-      },
-      "description": "Pdf Document Options"
+      }
     },
     "SvgOptionsDTO": {
       "type": "object",
@@ -3230,8 +3294,8 @@
     },
     "DwgProperties": {
       "type": "object",
-      "additionalProperties": false,
-      "description": "Dwg Properties"
+      "description": "Represents information about DWG drawing.",
+      "additionalProperties": false
     },
     "DxfProperties": {
       "type": "object",
@@ -3268,7 +3332,7 @@
     "JWT": {
       "type": "oauth2",
       "flow": "application",
-      "tokenUrl": "http://localhost:44350/connect/token"
+      "tokenUrl": "https://api-qa.aspose.cloud/connect/token"
     }
   }
 }
