@@ -3,13 +3,13 @@ java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_
 
 codegen\Tools\SplitJavaCodeFile.exe C:\tmp\java\src\main\java\com\aspose\cad\cloud\api\cadApi.java C:\tmp\java\src\main\java\com\aspose\cad\cloud\model\requests\ || goto :error
 
-del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\sdk\model" || goto :error
-del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\sdk\api\cadApi.java" || goto :error
+del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" || goto :error
+del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\api\CadApi.java" || goto :error
 RD /S /Q "C:\tmp\java\src\test" || goto :error
 
 
-xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\model" "SDKs\Java\src\main\java\com\aspose\cad\cloud\sdk\model" /E || goto :error
-xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\api" "SDKs\Java\src\main\java\com\aspose\cad\cloud\sdk\api" /E || goto :error
+xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\model" "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" /E || goto :error
+xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\api" "SDKs\Java\src\main\java\com\aspose\cad\cloud\api" /E || goto :error
 
 goto :EOF
 
