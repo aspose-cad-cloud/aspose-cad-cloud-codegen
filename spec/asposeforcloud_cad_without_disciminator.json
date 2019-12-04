@@ -39,6 +39,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export BMP options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/BmpOptionsDTO"
@@ -56,7 +57,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -108,6 +109,7 @@
         "summary": "Export drawing to BMP format. Drawing data is passed as zero-indexed multipart/form-data as well as export BMP options serialized as JSON.\nOrder of drawing data and BMP options could vary.",
         "operationId": "PutDrawingBmp",
         "consumes": [
+          "application/octet-stream",
           "multipart/form-data"
         ],
         "parameters": [
@@ -119,17 +121,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/BmpOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/BmpOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -166,6 +168,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "BmpOptionsDTO",
         "x-operationId": "PutDrawingBmp"
       }
     },
@@ -191,6 +194,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export GIF options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/GifOptionsDTO"
@@ -208,7 +212,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -260,7 +264,8 @@
         "summary": "Export drawing to GIF format. Drawing data is passed as zero-indexed multipart/form-data as well as export GIF options serialized as JSON.\nOrder of drawing data and GIF options could vary.",
         "operationId": "PutDrawingGif",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -271,8 +276,8 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
+            "type": "string",
+            "name": "exportOptions",
             "in": "formData",
             "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/GifOptionsDTO model definition."
           },
@@ -280,7 +285,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -318,6 +323,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "GifOptionsDTO",
         "x-operationId": "PutDrawingGif"
       }
     },
@@ -343,6 +349,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export JPEG2000 options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/Jpeg2000OptionsDTO"
@@ -360,7 +367,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -412,7 +419,8 @@
         "summary": "Export drawing to JPEG2000 format. Drawing data is passed as zero-indexed multipart/form-data as well as export JPEG2000 options serialized as JSON.\nOrder of drawing data and JPEG2000 options could vary.",
         "operationId": "PutDrawingJpeg2000",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -423,17 +431,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/Jpeg2000OptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/Jpeg2000OptionsDTO model definition."
           },
           {
             "type": "string",
@@ -470,6 +478,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "Jpeg2000OptionsDTO",
         "x-operationId": "PutDrawingJpeg2000"
       }
     },
@@ -495,6 +504,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export JPEG options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/JpegOptionsDTO"
@@ -512,7 +522,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -564,7 +574,8 @@
         "summary": "Export drawing to JPEG format. Drawing data is passed as zero-indexed multipart/form-data as well as export JPEG options serialized as JSON.\nOrder of drawing data and JPEG options could vary.",
         "operationId": "PutDrawingJpeg",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -575,17 +586,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/JpegOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/JpegOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -622,6 +633,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "JpegOptionsDTO",
         "x-operationId": "PutDrawingJpeg"
       }
     },
@@ -647,6 +659,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export PNG options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/PngOptionsDTO"
@@ -664,7 +677,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -716,7 +729,8 @@
         "summary": "Export drawing to PNG format. Drawing data is passed as zero-indexed multipart/form-data as well as export PNG options serialized as JSON.\nOrder of drawing data and PNG options could vary.",
         "operationId": "PutDrawingPng",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -727,17 +741,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PngOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PngOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -774,6 +788,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "PngOptionsDTO",
         "x-operationId": "PutDrawingPng"
       }
     },
@@ -799,6 +814,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export PSD options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/PsdOptionsDTO"
@@ -816,7 +832,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -868,7 +884,8 @@
         "summary": "Export drawing to PSD format. Drawing data is passed as zero-indexed multipart/form-data as well as export PSD options serialized as JSON.\nOrder of drawing data and PSD options could vary.",
         "operationId": "PutDrawingPsd",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -879,17 +896,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PsdOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PsdOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -926,6 +943,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "PsdOptionsDTO",
         "x-operationId": "PutDrawingPsd"
       }
     },
@@ -951,6 +969,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export TIFF options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/TiffOptionsDTO"
@@ -968,7 +987,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -1020,7 +1039,8 @@
         "summary": "Export drawing to TIFF format. Drawing data is passed as zero-indexed multipart/form-data as well as export TIFF options serialized as JSON.\nOrder of drawing data and TIFF options could vary.",
         "operationId": "PutDrawingTiff",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -1031,17 +1051,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/TiffOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/TiffOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -1078,6 +1098,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "TiffOptionsDTO",
         "x-operationId": "PutDrawingTiff"
       }
     },
@@ -1103,6 +1124,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export PDF options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/PdfOptionsDTO"
@@ -1120,7 +1142,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -1172,7 +1194,8 @@
         "summary": "Export drawing to PDF format. Drawing data is passed as zero-indexed multipart/form-data as well as export PDF options serialized as JSON.\nOrder of drawing data and PDF options could vary.",
         "operationId": "PutDrawingPdf",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -1183,17 +1206,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PdfOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/PdfOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -1230,6 +1253,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "PdfOptionsDTO",
         "x-operationId": "PutDrawingPdf"
       }
     },
@@ -1255,6 +1279,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export SVG options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/SvgOptionsDTO"
@@ -1272,7 +1297,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -1324,7 +1349,8 @@
         "summary": "Export drawing to SVG format. Drawing data is passed as zero-indexed multipart/form-data as well as export SVG options serialized as JSON.\nOrder of drawing data and SVG options could vary.",
         "operationId": "PutDrawingSvg",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -1335,17 +1361,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/SvgOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/SvgOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -1382,6 +1408,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "SvgOptionsDTO",
         "x-operationId": "PutDrawingSvg"
       }
     },
@@ -1407,6 +1434,7 @@
           {
             "name": "options",
             "in": "body",
+            "required": true,
             "description": "Export WMF options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/WmfOptionsDTO"
@@ -1424,7 +1452,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -1476,7 +1504,8 @@
         "summary": "Export drawing to WMF format. Drawing data is passed as zero-indexed multipart/form-data as well as export WMF options serialized as JSON.\nOrder of drawing data and WMF options could vary.",
         "operationId": "PutDrawingWmf",
         "consumes": [
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -1487,17 +1516,17 @@
             "description": "Input drawing"
           },
           {
-            "type": "object",
-            "name": "options",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WmfOptionsDTO model definition."
-          },
-          {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WmfOptionsDTO model definition."
           },
           {
             "type": "string",
@@ -1534,6 +1563,7 @@
           }
         ],
         "x-binary-result": "true",
+        "x-options-input": "WmfOptionsDTO",
         "x-operationId": "PutDrawingWmf"
       }
     },
@@ -1601,12 +1631,12 @@
       }
     },
     "/cad/properties": {
-      "put": {
+      "post": {
         "tags": [
           "Properties"
         ],
         "summary": "Retrieves info about drawing which is passed as a zero-indexed multipart/form-data content or as raw body stream.",
-        "operationId": "PutDrawingProperties",
+        "operationId": "PostDrawingProperties",
         "consumes": [
           "multipart/form-data",
           "application/octet-stream"
@@ -1646,7 +1676,7 @@
             "JWT": []
           }
         ],
-        "x-operationId": "PutDrawingProperties"
+        "x-operationId": "PostDrawingProperties"
       }
     },
     "/cad/{name}/resize": {
@@ -1670,7 +1700,7 @@
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Resulting image format.",
+            "description": "Resulting file format.",
             "x-nullable": true
           },
           {
@@ -1702,7 +1732,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -1747,13 +1777,14 @@
       }
     },
     "/cad/resize": {
-      "put": {
+      "post": {
         "tags": [
           "Resize"
         ],
         "summary": "Resize a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.",
-        "operationId": "PutDrawingResize",
+        "operationId": "PostDrawingResize",
         "consumes": [
+          "application/octet-stream",
           "multipart/form-data"
         ],
         "parameters": [
@@ -1769,7 +1800,7 @@
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Resulting image format.",
+            "description": "Resulting file format.",
             "x-nullable": true
           },
           {
@@ -1794,7 +1825,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -1832,7 +1863,7 @@
           }
         ],
         "x-binary-result": "true",
-        "x-operationId": "PutDrawingResize"
+        "x-operationId": "PostDrawingResize"
       }
     },
     "/cad/{name}/rotateflip": {
@@ -1856,7 +1887,7 @@
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Resulting image format.",
+            "description": "Resulting file format.",
             "x-nullable": true
           },
           {
@@ -1897,7 +1928,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -1942,15 +1973,15 @@
       }
     },
     "/cad/rotateflip": {
-      "put": {
+      "post": {
         "tags": [
           "RotateFlip"
         ],
         "summary": "Rotate/flip a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.",
-        "operationId": "PutDrawingRotateFlip",
+        "operationId": "PostDrawingRotateFlip",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
@@ -1965,7 +1996,7 @@
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Resulting image format.",
+            "description": "Resulting file format.",
             "x-nullable": true
           },
           {
@@ -1999,7 +2030,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -2037,7 +2068,7 @@
           }
         ],
         "x-binary-result": "true",
-        "x-operationId": "PutDrawingRotateFlip"
+        "x-operationId": "PostDrawingRotateFlip"
       }
     },
     "/cad/{name}/saveAs/{outputFormat}": {
@@ -2061,7 +2092,7 @@
             "name": "outputFormat",
             "in": "path",
             "required": true,
-            "description": "Resulting image format.",
+            "description": "Resulting file format.",
             "x-nullable": false
           },
           {
@@ -2075,7 +2106,7 @@
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -2120,15 +2151,15 @@
       }
     },
     "/cad/saveAs/{outputFormat}": {
-      "put": {
+      "post": {
         "tags": [
           "SaveAs"
         ],
         "summary": "Export existing drawing to another format. Drawing data is passed as zero-indexed multipart/form-data content or as raw body stream.\n            ",
-        "operationId": "PutDrawingSaveAs",
+        "operationId": "PostDrawingSaveAs",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
@@ -2143,14 +2174,14 @@
             "name": "outputFormat",
             "in": "path",
             "required": true,
-            "description": "Resulting image format.",
+            "description": "Resulting file format.",
             "x-nullable": false
           },
           {
             "type": "string",
             "name": "outPath",
             "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed image).",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
             "x-nullable": true
           },
           {
@@ -2188,704 +2219,7 @@
           }
         ],
         "x-binary-result": "true",
-        "x-operationId": "PutDrawingSaveAs"
-      }
-    },
-    "/cad/storage/file/{path}": {
-      "get": {
-        "tags": [
-          "File"
-        ],
-        "summary": "Download file",
-        "operationId": "DownloadFile",
-        "produces": [
-          "multipart/form-data"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "File path e.g. '/folder/file.ext'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "versionId",
-            "in": "query",
-            "description": "File version ID to download",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "The raw data of the file.",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          },
-          "404": {
-            "description": "File for given path not found."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "DownloadFile",
-        "x-binary-result": true
-      },
-      "put": {
-        "tags": [
-          "File"
-        ],
-        "summary": "Upload file",
-        "operationId": "UploadFile",
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext\n            If the content is multipart and path does not contains the file name it tries to get them from filename parameter\n            from Content-Disposition header.\n            ",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "file",
-            "name": "File",
-            "in": "formData",
-            "required": true,
-            "description": "File to upload"
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Empty error list if the upload is successful.",
-            "schema": {
-              "$ref": "#/definitions/FilesUploadResult"
-            }
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "UploadFile"
-      },
-      "delete": {
-        "tags": [
-          "File"
-        ],
-        "summary": "Delete file",
-        "operationId": "DeleteFile",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "File path e.g. '/folder/file.ext'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "versionId",
-            "in": "query",
-            "description": "File version ID to delete",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns 200 if the delete is successful."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired"
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "DeleteFile"
-      }
-    },
-    "/cad/storage/file/copy/{srcPath}": {
-      "put": {
-        "tags": [
-          "File"
-        ],
-        "summary": "Copy file",
-        "operationId": "CopyFile",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "srcPath",
-            "in": "path",
-            "required": true,
-            "description": "Source file path e.g. '/folder/file.ext'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "destPath",
-            "in": "query",
-            "required": true,
-            "description": "Destination file path",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "srcStorageName",
-            "in": "query",
-            "description": "Source storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "destStorageName",
-            "in": "query",
-            "description": "Destination storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "versionId",
-            "in": "query",
-            "description": "File version ID to copy",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns 200 if the copy is successful."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "CopyFile"
-      }
-    },
-    "/cad/storage/file/move/{srcPath}": {
-      "put": {
-        "tags": [
-          "File"
-        ],
-        "summary": "Move file",
-        "operationId": "MoveFile",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "srcPath",
-            "in": "path",
-            "required": true,
-            "description": "Source file path e.g. '/src.ext'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "destPath",
-            "in": "query",
-            "required": true,
-            "description": "Destination file path e.g. '/dest.ext'",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "srcStorageName",
-            "in": "query",
-            "description": "Source storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "destStorageName",
-            "in": "query",
-            "description": "Destination storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "versionId",
-            "in": "query",
-            "description": "File version ID to move",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns 200 if the move is successful."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          },
-          "404": {
-            "description": "File for given path not found."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "MoveFile"
-      }
-    },
-    "/cad/storage/folder/{path}": {
-      "get": {
-        "tags": [
-          "Folder"
-        ],
-        "summary": "Get all files and folders within a folder",
-        "operationId": "GetFilesList",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "Folder path e.g. '/folder'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Returns all files and folders contained by the folder.",
-            "schema": {
-              "$ref": "#/definitions/FilesList"
-            }
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          },
-          "404": {
-            "description": "Can't find folder for given path."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "GetFilesList"
-      },
-      "put": {
-        "tags": [
-          "Folder"
-        ],
-        "summary": "Create the folder",
-        "operationId": "CreateFolder",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "Folder path to create e.g. 'folder_1/folder_2/'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns 200 if the create is successful."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          },
-          "400": {
-            "description": "Storage not found or it is not associated with the application."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "CreateFolder"
-      },
-      "delete": {
-        "tags": [
-          "Folder"
-        ],
-        "summary": "Delete folder",
-        "operationId": "DeleteFolder",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "Folder path e.g. '/folder'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "boolean",
-            "name": "recursive",
-            "in": "query",
-            "description": "Enable to delete folders, subfolders and files",
-            "default": false,
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns 200 if the delete is successful."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired"
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "DeleteFolder"
-      }
-    },
-    "/cad/storage/folder/copy/{srcPath}": {
-      "put": {
-        "tags": [
-          "Folder"
-        ],
-        "summary": "Copy folder",
-        "operationId": "CopyFolder",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "srcPath",
-            "in": "path",
-            "required": true,
-            "description": "Source folder path e.g. '/src'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "destPath",
-            "in": "query",
-            "required": true,
-            "description": "Destination folder path e.g. '/dst'",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "srcStorageName",
-            "in": "query",
-            "description": "Source storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "destStorageName",
-            "in": "query",
-            "description": "Destination storage name",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns 200 if the copy is successful."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired"
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "CopyFolder"
-      }
-    },
-    "/cad/storage/folder/move/{srcPath}": {
-      "put": {
-        "tags": [
-          "Folder"
-        ],
-        "summary": "Move folder",
-        "operationId": "MoveFolder",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "srcPath",
-            "in": "path",
-            "required": true,
-            "description": "Folder path to move e.g. '/folder'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "destPath",
-            "in": "query",
-            "required": true,
-            "description": "Destination folder path to move to e.g '/dst'",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "srcStorageName",
-            "in": "query",
-            "description": "Source storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "destStorageName",
-            "in": "query",
-            "description": "Destination storage name",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns 200 if the move is successful."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "MoveFolder"
-      }
-    },
-    "/cad/storage/{storageName}/exist": {
-      "get": {
-        "tags": [
-          "Storage"
-        ],
-        "summary": "Check if storage exists",
-        "operationId": "StorageExists",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "path",
-            "required": true,
-            "description": "Storage name",
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Storage exist result.",
-            "schema": {
-              "$ref": "#/definitions/StorageExist"
-            }
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "StorageExists"
-      }
-    },
-    "/cad/storage/exist/{path}": {
-      "get": {
-        "tags": [
-          "Storage"
-        ],
-        "summary": "Check if file or folder exists",
-        "operationId": "ObjectExists",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "File or folder path e.g. '/file.ext' or '/folder'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "versionId",
-            "in": "query",
-            "description": "File version ID",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Object exist result.",
-            "schema": {
-              "$ref": "#/definitions/ObjectExist"
-            }
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "ObjectExists"
-      }
-    },
-    "/cad/storage/disc": {
-      "get": {
-        "tags": [
-          "Storage"
-        ],
-        "summary": "Get disc usage",
-        "operationId": "GetDiscUsage",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Disc usage.",
-            "schema": {
-              "$ref": "#/definitions/DiscUsage"
-            }
-          },
-          "400": {
-            "description": "Storage not found or it is not associated with an application."
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "GetDiscUsage"
-      }
-    },
-    "/cad/storage/version/{path}": {
-      "get": {
-        "tags": [
-          "Storage"
-        ],
-        "summary": "Get file versions",
-        "operationId": "GetFileVersions",
-        "parameters": [
-          {
-            "type": "string",
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "description": "File path e.g. '/file.ext'",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "storageName",
-            "in": "query",
-            "description": "Storage name",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "File versions.",
-            "schema": {
-              "$ref": "#/definitions/FileVersions"
-            }
-          },
-          "401": {
-            "description": "Authorization token is invalid or expired."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-operationId": "GetFileVersions"
+        "x-operationId": "PostDrawingSaveAs"
       }
     }
   },
@@ -2896,7 +2230,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -2931,7 +2265,7 @@
         }
       ]
     },
-    "ImageOptionsBaseDTO": {
+    "DrawingOptionsBaseDTO": {
       "type": "object",
       "discriminator": "Type",
       "description": "Image options base class",
@@ -3330,7 +2664,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3387,7 +2721,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3420,7 +2754,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3434,7 +2768,7 @@
           "properties": {
             "Comment": {
               "type": "string",
-              "description": "Comment to resulting image"
+              "description": "Comment to Resulting file"
             },
             "CompressionType": {
               "description": "Compression type",
@@ -3534,7 +2868,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3599,7 +2933,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3664,7 +2998,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3780,7 +3114,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3855,7 +3189,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3893,7 +3227,7 @@
       "additionalProperties": false,
       "allOf": [
         {
-          "$ref": "#/definitions/ImageOptionsBaseDTO"
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
         },
         {
           "type": "object",
@@ -3905,7 +3239,7 @@
           "properties": {
             "BitsPerPixel": {
               "type": "integer",
-              "description": "Bits per pixel for resulting image",
+              "description": "Bits per pixel for Resulting file",
               "format": "int32"
             }
           }
@@ -3914,7 +3248,7 @@
     },
     "CadResponse": {
       "type": "object",
-      "description": "Represents information about image.",
+      "description": "Represents information about a drawing.",
       "additionalProperties": false,
       "required": [
         "Height",
@@ -3923,12 +3257,12 @@
       "properties": {
         "Height": {
           "type": "integer",
-          "description": "Gets or sets the height of image.",
+          "description": "Gets or sets the height of a drawing.",
           "format": "int32"
         },
         "Width": {
           "type": "integer",
-          "description": "Gets or sets the width of image.",
+          "description": "Gets or sets the width of a drawing.",
           "format": "int32"
         },
         "DwgProperties": {
@@ -3986,6 +3320,13 @@
             {}
           ],
           "$ref": "#/definitions/DwfProperties"
+        },
+        "Cff2Properties": {
+          "description": "Gets or sets the CFF2 properties.",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/Cff2Properties"
         }
       }
     },
@@ -4024,215 +3365,10 @@
       "description": "Represents information about DWF drawing.",
       "additionalProperties": false
     },
-    "FilesUploadResult": {
+    "Cff2Properties": {
       "type": "object",
-      "description": "File upload result",
-      "additionalProperties": false,
-      "properties": {
-        "Uploaded": {
-          "type": "array",
-          "description": "List of uploaded file names",
-          "items": {
-            "type": "string"
-          }
-        },
-        "Errors": {
-          "type": "array",
-          "description": "List of errors.",
-          "items": {
-            "$ref": "#/definitions/Error"
-          }
-        }
-      }
-    },
-    "Error": {
-      "type": "object",
-      "description": "Error",
-      "additionalProperties": false,
-      "properties": {
-        "Code": {
-          "type": "string",
-          "description": "Code\n            "
-        },
-        "Message": {
-          "type": "string",
-          "description": "Message\n            "
-        },
-        "Description": {
-          "type": "string",
-          "description": "Description\n            "
-        },
-        "InnerError": {
-          "description": "Inner Error\n            ",
-          "allOf": [
-            {}
-          ],
-          "$ref": "#/definitions/ErrorDetails"
-        }
-      }
-    },
-    "ErrorDetails": {
-      "type": "object",
-      "description": "The error details",
-      "additionalProperties": false,
-      "required": [
-        "Date"
-      ],
-      "properties": {
-        "RequestId": {
-          "type": "string",
-          "description": "The request id"
-        },
-        "Date": {
-          "type": "string",
-          "description": "Date",
-          "format": "date-time"
-        }
-      }
-    },
-    "FilesList": {
-      "type": "object",
-      "description": "Files list",
-      "additionalProperties": false,
-      "properties": {
-        "Value": {
-          "type": "array",
-          "description": "Files and folders contained by folder StorageFile.",
-          "items": {
-            "$ref": "#/definitions/StorageFile"
-          }
-        }
-      }
-    },
-    "StorageFile": {
-      "type": "object",
-      "discriminator": "Type",
-      "description": "File or folder information",
-      "additionalProperties": false,
-      "required": [
-        "IsFolder",
-        "Size"
-      ],
-      "properties": {
-        "Name": {
-          "type": "string",
-          "description": "File or folder name."
-        },
-        "IsFolder": {
-          "type": "boolean",
-          "description": "True if it is a folder."
-        },
-        "ModifiedDate": {
-          "type": "string",
-          "description": "File or folder last modified DateTime.",
-          "format": "date-time"
-        },
-        "Size": {
-          "type": "integer",
-          "description": "File or folder size.",
-          "format": "int64"
-        },
-        "Path": {
-          "type": "string",
-          "description": "File or folder path."
-        }
-      }
-    },
-    "StorageExist": {
-      "type": "object",
-      "description": "Storage exists",
-      "additionalProperties": false,
-      "required": [
-        "Exists"
-      ],
-      "properties": {
-        "Exists": {
-          "type": "boolean",
-          "description": "Shows that the storage exists.\n            "
-        }
-      }
-    },
-    "ObjectExist": {
-      "type": "object",
-      "description": "Object exists",
-      "additionalProperties": false,
-      "required": [
-        "Exists",
-        "IsFolder"
-      ],
-      "properties": {
-        "Exists": {
-          "type": "boolean",
-          "description": "Indicates that the file or folder exists."
-        },
-        "IsFolder": {
-          "type": "boolean",
-          "description": "True if it is a folder, false if it is a file."
-        }
-      }
-    },
-    "DiscUsage": {
-      "type": "object",
-      "description": "Class for disc space information.",
-      "additionalProperties": false,
-      "required": [
-        "UsedSize",
-        "TotalSize"
-      ],
-      "properties": {
-        "UsedSize": {
-          "type": "integer",
-          "description": "Application used disc space.",
-          "format": "int64"
-        },
-        "TotalSize": {
-          "type": "integer",
-          "description": "Total disc space.",
-          "format": "int64"
-        }
-      }
-    },
-    "FileVersions": {
-      "type": "object",
-      "description": "File versions FileVersion.",
-      "additionalProperties": false,
-      "properties": {
-        "Value": {
-          "type": "array",
-          "description": "File versions FileVersion.",
-          "items": {
-            "$ref": "#/definitions/FileVersion"
-          }
-        }
-      }
-    },
-    "FileVersion": {
-      "type": "object",
-      "description": "File Version",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/StorageFile"
-        },
-        {
-          "type": "object",
-          "description": "File Version",
-          "additionalProperties": false,
-          "required": [
-            "IsLatest"
-          ],
-          "properties": {
-            "VersionId": {
-              "type": "string",
-              "description": "File Version ID."
-            },
-            "IsLatest": {
-              "type": "boolean",
-              "description": "Specifies whether the file is (true) or is not (false) the latest version of an file."
-            }
-          }
-        }
-      ]
+      "description": "Represents information about CFF2 drawing.",
+      "additionalProperties": false
     }
   },
   "securityDefinitions": {
