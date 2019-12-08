@@ -55,7 +55,7 @@ public class {{vendorExtensions.x-operationId}}Request {
      */
     public {{vendorExtensions.x-operationId}}Request({{#allParams}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{newline}} {{/hasMore}}{{/allParams}}) {
         {{#allParams}}
-        {{baseName}} = {{paramName}};
+        this.{{baseName}} = {{paramName}};
         {{/allParams}}   
     }
 

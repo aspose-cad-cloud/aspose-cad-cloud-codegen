@@ -7,9 +7,9 @@ del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" || goto :error
 del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\api\CadApi.java" || goto :error
 RD /S /Q "C:\tmp\java\src\test" || goto :error
 
-
-xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\model" "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" /E || goto :error
-xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\api" "SDKs\Java\src\main\java\com\aspose\cad\cloud\api" /E || goto :error
+xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud" "SDKs\Java\src\main\java\com\aspose\cad\cloud" /E /Y || goto :error
+::xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\model" "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" /E || goto :error
+::xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\api" "SDKs\Java\src\main\java\com\aspose\cad\cloud\api" /E || goto :error
 
 goto :EOF
 

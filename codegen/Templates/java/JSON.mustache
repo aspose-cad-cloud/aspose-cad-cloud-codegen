@@ -10,6 +10,7 @@ import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
+import com.sun.jmx.snmp.Timestamp;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.TypeSelector;
 {{#joda}}
@@ -20,6 +21,7 @@ import org.joda.time.format.DateTimeFormatterBuilder;
 import org.joda.time.format.ISODateTimeFormat;
 {{/joda}}
 {{#threetenbp}}
+import org.threeten.bp.*;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;

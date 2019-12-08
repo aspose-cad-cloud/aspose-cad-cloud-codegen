@@ -1,7 +1,9 @@
 {
 	"groupId": "com.aspose.cad.cloud",
 	"modelPackage": "com.aspose.cad.cloud.model",
+	"package": "com.aspose.cad.cloud",
 	"apiPackage": "com.aspose.cad.cloud.api",
 	"artifactId": "AsposeCadCloud",
+	"artifactVersion":"19.9",
 	"library": "okhttp-gson"
 }

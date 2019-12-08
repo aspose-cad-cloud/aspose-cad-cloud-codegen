@@ -1,5 +1,5 @@
 {{>licenseInfo}}
-package {{package}};
+package {{invokerPackage}};
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -41,10 +41,10 @@ import java.util.regex.Pattern;
 
 public class ApiClient {
 
-    private String apiVersion = "v1";
+    private String apiVersion = "v3.0";
     private String baseUrl = "https://api.aspose.cloud";
 	private String basePath = baseUrl + "/" + apiVersion;
-	private String clientVersion = "19.2.0";
+	private String clientVersion = "19.9";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -157,6 +157,15 @@ public class ApiClient {
         this.baseUrl = baseUrl;
 		this.basePath = baseUrl + "/" + this.apiVersion;
 		return this;
+    }
+	
+	/**
+     * Get base api url
+     *
+     * @return Base api url
+     */
+    public String getBaseUrl() {
+        return this.baseUrl;
     }
 
     /**
