@@ -1044,7 +1044,7 @@ public class ApiClient {
                     .addEncoded("client_secret", getAppKey())
                     .build();
 
-            String url = baseUrl + "/oauth2/token";
+            String url = baseUrl + "/connect/token";
             Request request = new Request.Builder()
                     .url(url)
                     .post(requestBody)
@@ -1072,7 +1072,7 @@ public class ApiClient {
                     .addEncoded("refresh_token", this.refreshToken)
                     .build();
 
-            String url = baseUrl + "/oauth2/token";
+            String url = baseUrl + "/connect/token";
             Request request = new Request.Builder()
                     .url(url)
                     .post(requestBody)

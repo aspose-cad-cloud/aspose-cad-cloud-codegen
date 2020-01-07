@@ -84,7 +84,10 @@ public class {{classname}} {
         final String[] {{localVariablePrefix}}localVarContentTypes = {
           {{#consumes}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/consumes}}
         };
-        final String {{localVariablePrefix}}localVarContentType = {{localVariablePrefix}}apiClient.selectHeaderContentType({{localVariablePrefix}}localVarContentTypes);
+        String {{localVariablePrefix}}localVarContentType = {{localVariablePrefix}}apiClient.selectHeaderContentType({{localVariablePrefix}}localVarContentTypes);
+		if ({{localVariablePrefix}}localVarFormParams.size() > 0) {
+            {{localVariablePrefix}}localVarContentType = "multipart/form-data";
+        }
         
         String[] {{localVariablePrefix}}localVarAuthNames = new String[] { {{#authMethods}}"{{name}}"{{#hasMore}}, {{/hasMore}}{{/authMethods}} };
         

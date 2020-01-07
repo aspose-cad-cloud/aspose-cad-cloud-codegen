@@ -607,7 +607,7 @@ public class ApiClient {
    */
   private String buildUrl(String path, List<Pair> queryParams, List<Pair> collectionQueryParams) {
     final StringBuilder url = new StringBuilder();
-    url.append(path == "/oauth2/token" ? this.baseUrl : this.basePath).append(path);
+    url.append(path == "/connect/token" ? this.baseUrl : this.basePath).append(path);
 
     if (queryParams != null && !queryParams.isEmpty()) {
       // support (constant) query string in `path`, e.g. "/posts?draft=1"
@@ -785,7 +785,7 @@ public class ApiClient {
   }
   
   private void getRequestToken() throws ApiException {
-	final String path = "/oauth2/token";
+	final String path = "/connect/token";
 	final String body = String.format("grant_type=client_credentials&client_id=%s&client_secret=%s", appSid, apiKey);
 	HashMap<String, String> response = invokeAPI(path, "POST", new ArrayList<Pair>(), new ArrayList<Pair>(), body,
             new HashMap<String, String>(), new HashMap<String, Object>(), "application/json", "plain/text", new String[]{}, new GenericType<HashMap<String, String>>(){});
