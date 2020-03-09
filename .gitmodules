@@ -10,3 +10,9 @@
 [submodule "SDKS/PHP"]
 	path = SDKS/PHP
 	url = git@github.com:aspose-cad-cloud/aspose-cad-cloud-php.git
+[submodule "SDKS/NodeJs"]
+	path = SDKS/NodeJs
+	url = git@github.com:aspose-cad-cloud/aspose-cad-cloud-nodejs.git
+[submodule "SDKS/Python"]
+	path = SDKS/Python
+	url = git@github.com:aspose-cad-cloud/aspose-cad-cloud-python.git

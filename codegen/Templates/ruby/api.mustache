@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose" file="cad_api.rb">
-#   Copyright (c) 2018 Aspose.Cad for Cloud
+#   Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,7 +28,7 @@ require 'uri'
 module {{moduleName}}
 {{#operations}}
   #
-  # Aspose.Cad for Cloud API
+  # Aspose.CAD Cloud API
   #
   class {{classname}}
     attr_accessor :api_client
@@ -55,7 +55,7 @@ module {{moduleName}}
     # @param request {{operationId}}_request
     # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>]
     # {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
-    private def {{operationId}}_with_http_info(request)
+    def {{operationId}}_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? {{operationId}}_request
 
       @api_client.config.logger.debug 'Calling API: {{classname}}.{{operationId}} ...' if @api_client.config.debugging
@@ -167,6 +167,10 @@ module {{moduleName}}
       form_params[downcase_first_letter('{{baseName}}')] = {{#collectionFormat}}@api_client.build_collection_param(request.{{{paramName}}}, :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}request.{{{paramName}}}{{/collectionFormat}} unless request.{{paramName}}.nil?
       {{/required}}
       {{/formParams}}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       {{^bodyParam}}
@@ -175,7 +179,7 @@ module {{moduleName}}
       {{#bodyParam}}
       post_body = @api_client.object_to_http_body({{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}})
       {{/bodyParam}}
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:{{httpMethod}}, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -206,12 +210,11 @@ module {{moduleName}}
       config = @api_client.config
       api_version = config.api_version
       config.api_version = ''
-      request_url = "/oauth2/token"
+      request_url = "/connect/token"
       post_data = "grant_type=client_credentials" + "&client_id=" + config.api_key['app_sid'] + "&client_secret=" + config.api_key['api_key']
-      data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :return_type => 'Object')
+      data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :header_params => { "Content-Type": "application/x-www-form-urlencoded" }, :return_type => 'Object')
       @api_client.config.access_token = data[:access_token]
       @api_client.config.api_version = api_version
-      @api_client.config.refresh_token = data[:refresh_token]
     end
     
     # requires all files inside a directory from current dir

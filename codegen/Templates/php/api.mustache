@@ -2,7 +2,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose" file="CadApi.php">
- *   Copyright (c) 2018 Aspose.Cad for Cloud
+ *   Copyright (c) 2018 Aspose.CAD Cloud
  * </copyright>
  * <summary>
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,7 +37,7 @@ use GuzzleHttp\RequestOptions;
 use {{invokerPackage}}\Model\Requests;
 
 /*
- * {{classname}} Aspose.Cad for Cloud API.
+ * {{classname}} Aspose.CAD Cloud API.
  */
 {{#operations}}class {{classname}}
 {
@@ -547,7 +547,7 @@ use {{invokerPackage}}\Model\Requests;
          $UrlToSign = trim($url, "/");
          $urlQuery = http_build_query($queryParams);
  
-         $urlPartToSign = $this->config->getBasePath() .  "/" . parse_url($UrlToSign, PHP_URL_PATH) . "?" . $urlQuery;
+         $urlPartToSign = "/" . $this->config->getBasePath() .  "/" . parse_url($UrlToSign, PHP_URL_PATH) . "?" . $urlQuery;
         
         return $urlPartToSign;
     }
@@ -557,12 +557,11 @@ use {{invokerPackage}}\Model\Requests;
      */
     private function _requestToken() 
     {
-        $requestUrl = $this->config->getHost() . "/oauth2/token";
+        $requestUrl = $this->config->getHost() . "/connect/token";
         $postData = "grant_type=client_credentials" . "&client_id=" . $this->config->getAppSid() . "&client_secret=" . $this->config->getAppKey();
-        $response = $this->client->send(new Request('POST', $requestUrl, [], $postData));
+        $response = $this->client->send(new Request('POST', $requestUrl, [ 'Content-Type' => 'application/x-www-form-urlencoded' ], $postData));
         $result = json_decode($response->getBody()->getContents(), true);
         $this->config->setAccessToken($result["access_token"]);
-        $this->config->setRefreshToken($result["refresh_token"]);
     }
   
     /*
@@ -570,7 +569,7 @@ use {{invokerPackage}}\Model\Requests;
      */
     private function _refreshToken() 
     {
-        $requestUrl = $this->config->getHost() . "/oauth2/token";
+        $requestUrl = $this->config->getHost() . "/connect/token";
         $postData = "grant_type=refresh_token&refresh_token=" . $this->config->getRefreshToken();
         $response = $this->client->send(new Request('POST', $requestUrl, [], $postData));
         $result = json_decode($response->getBody()->getContents(), true);

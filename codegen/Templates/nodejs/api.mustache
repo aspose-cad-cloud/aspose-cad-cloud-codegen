@@ -3,13 +3,11 @@ import http = require("http");
 import request = require("request");
 
 import { Configuration } from "./internal/configuration";
-import { ObjectSerializer } from "./internal/objectSerializer";
-import { addQueryParameterToUrl, invokeApiMethod } from "./internal/requestHelper";
-import { CadApiAvailiableVersions } from "./internal/cadApiAvailiableVersions";
+import { ObjectSerializer } from "./internal/object-serializer";
+import { addQueryParameterToUrl, invokeApiMethod } from "./internal/request-helper";
 import * as model from "./model/model";
 
 export * from "./model/model";
-export * from "./internal/cadApiAvailiableVersions";
 
 {{#apiInfo}}
 {{#apis}}
@@ -28,10 +26,10 @@ export class {{classname}} {
      * @param appKey App key.
      * @param baseUrl Base api Url.
      * @param debugMode A value indicating whether debug mode. In debug mode all requests and responses are logged to console.
-     * @param version API version.
+     * @param apiVersion API version.
      */
-    constructor(appSID: string, appKey: string, baseUrl?: string, debugMode?: boolean, version?: CadApiAvailiableVersions) {
-        this.configuration = new Configuration(appSID, appKey, baseUrl, debugMode, version);
+    constructor(appSID: string, appKey: string, baseUrl?: string, debugMode?: boolean, apiVersion?: string) {
+        this.configuration = new Configuration(appSID, appKey, baseUrl, debugMode, apiVersion);
     }
 
 {{#operation}}

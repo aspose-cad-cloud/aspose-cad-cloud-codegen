@@ -20,7 +20,7 @@
     "/cad/{name}/bmp": {
       "post": {
         "tags": [
-          "Bmp"
+          "Cad"
         ],
         "summary": "Export an existing drawing to BMP format with export settings specified.",
         "operationId": "PostDrawingBmp",
@@ -104,7 +104,7 @@
     "/cad/bmp": {
       "put": {
         "tags": [
-          "Bmp"
+          "Cad"
         ],
         "summary": "Export drawing to BMP format. Drawing data is passed as zero-indexed multipart/form-data as well as export BMP options serialized as JSON.\nOrder of drawing data and BMP options could vary.",
         "operationId": "PutDrawingBmp",
@@ -175,7 +175,7 @@
     "/cad/{name}/gif": {
       "post": {
         "tags": [
-          "Gif"
+          "Cad"
         ],
         "summary": "Export an existing drawing into GIF format with export settings specified.",
         "operationId": "PostDrawingGif",
@@ -259,7 +259,7 @@
     "/cad/gif": {
       "put": {
         "tags": [
-          "Gif"
+          "Cad"
         ],
         "summary": "Export drawing to GIF format. Drawing data is passed as zero-indexed multipart/form-data as well as export GIF options serialized as JSON.\nOrder of drawing data and GIF options could vary.",
         "operationId": "PutDrawingGif",
@@ -330,7 +330,7 @@
     "/cad/{name}/jpeg2000": {
       "post": {
         "tags": [
-          "Jpeg2000"
+          "Cad"
         ],
         "summary": "Export an existing drawing into JPEG2000 format with export settings specified.",
         "operationId": "PostDrawingJpeg2000",
@@ -414,7 +414,7 @@
     "/cad/jpeg2000": {
       "put": {
         "tags": [
-          "Jpeg2000"
+          "Cad"
         ],
         "summary": "Export drawing to JPEG2000 format. Drawing data is passed as zero-indexed multipart/form-data as well as export JPEG2000 options serialized as JSON.\nOrder of drawing data and JPEG2000 options could vary.",
         "operationId": "PutDrawingJpeg2000",
@@ -485,7 +485,7 @@
     "/cad/{name}/jpeg": {
       "post": {
         "tags": [
-          "Jpeg"
+          "Cad"
         ],
         "summary": "Export an existing drawing into JPEG format with export settings specified.",
         "operationId": "PostDrawingJpeg",
@@ -569,7 +569,7 @@
     "/cad/jpeg": {
       "put": {
         "tags": [
-          "Jpeg"
+          "Cad"
         ],
         "summary": "Export drawing to JPEG format. Drawing data is passed as zero-indexed multipart/form-data as well as export JPEG options serialized as JSON.\nOrder of drawing data and JPEG options could vary.",
         "operationId": "PutDrawingJpeg",
@@ -640,7 +640,7 @@
     "/cad/{name}/png": {
       "post": {
         "tags": [
-          "Png"
+          "Cad"
         ],
         "summary": "Export an existing drawing into PNG format with export settings specified.",
         "operationId": "PostDrawingPng",
@@ -724,7 +724,7 @@
     "/cad/png": {
       "put": {
         "tags": [
-          "Png"
+          "Cad"
         ],
         "summary": "Export drawing to PNG format. Drawing data is passed as zero-indexed multipart/form-data as well as export PNG options serialized as JSON.\nOrder of drawing data and PNG options could vary.",
         "operationId": "PutDrawingPng",
@@ -795,7 +795,7 @@
     "/cad/{name}/psd": {
       "post": {
         "tags": [
-          "Psd"
+          "Cad"
         ],
         "summary": "Export an existing drawing into PSD format with export settings specified.",
         "operationId": "PostDrawingPsd",
@@ -879,7 +879,7 @@
     "/cad/psd": {
       "put": {
         "tags": [
-          "Psd"
+          "Cad"
         ],
         "summary": "Export drawing to PSD format. Drawing data is passed as zero-indexed multipart/form-data as well as export PSD options serialized as JSON.\nOrder of drawing data and PSD options could vary.",
         "operationId": "PutDrawingPsd",
@@ -950,7 +950,7 @@
     "/cad/{name}/tiff": {
       "post": {
         "tags": [
-          "Tiff"
+          "Cad"
         ],
         "summary": "Export an existing drawing into TIFF format with export settings specified.",
         "operationId": "PostDrawingTiff",
@@ -1034,7 +1034,7 @@
     "/cad/tiff": {
       "put": {
         "tags": [
-          "Tiff"
+          "Cad"
         ],
         "summary": "Export drawing to TIFF format. Drawing data is passed as zero-indexed multipart/form-data as well as export TIFF options serialized as JSON.\nOrder of drawing data and TIFF options could vary.",
         "operationId": "PutDrawingTiff",
@@ -1105,7 +1105,7 @@
     "/cad/{name}/pdf": {
       "post": {
         "tags": [
-          "Pdf"
+          "Cad"
         ],
         "summary": "Export an existing drawing to PDF format with export settings specified.",
         "operationId": "PostDrawingPdf",
@@ -1189,7 +1189,7 @@
     "/cad/pdf": {
       "put": {
         "tags": [
-          "Pdf"
+          "Cad"
         ],
         "summary": "Export drawing to PDF format. Drawing data is passed as zero-indexed multipart/form-data as well as export PDF options serialized as JSON.\nOrder of drawing data and PDF options could vary.",
         "operationId": "PutDrawingPdf",
@@ -1260,7 +1260,7 @@
     "/cad/{name}/svg": {
       "post": {
         "tags": [
-          "Svg"
+          "Cad"
         ],
         "summary": "Export an existing drawing to SVG format with export settings specified.",
         "operationId": "PostDrawingSvg",
@@ -1344,7 +1344,7 @@
     "/cad/svg": {
       "put": {
         "tags": [
-          "Svg"
+          "Cad"
         ],
         "summary": "Export drawing to SVG format. Drawing data is passed as zero-indexed multipart/form-data as well as export SVG options serialized as JSON.\nOrder of drawing data and SVG options could vary.",
         "operationId": "PutDrawingSvg",
@@ -1415,7 +1415,7 @@
     "/cad/{name}/wmf": {
       "post": {
         "tags": [
-          "Wmf"
+          "Cad"
         ],
         "summary": "Export an existing drawing to WMF format with export settings specified.",
         "operationId": "PostDrawingWmf",
@@ -1499,7 +1499,7 @@
     "/cad/wmf": {
       "put": {
         "tags": [
-          "Wmf"
+          "Cad"
         ],
         "summary": "Export drawing to WMF format. Drawing data is passed as zero-indexed multipart/form-data as well as export WMF options serialized as JSON.\nOrder of drawing data and WMF options could vary.",
         "operationId": "PutDrawingWmf",
@@ -1570,7 +1570,7 @@
     "/cad/{name}/properties": {
       "get": {
         "tags": [
-          "Properties"
+          "Cad"
         ],
         "summary": "Retrieves info about an existing drawing.\n            ",
         "operationId": "GetDrawingProperties",
@@ -1633,7 +1633,7 @@
     "/cad/properties": {
       "post": {
         "tags": [
-          "Properties"
+          "Cad"
         ],
         "summary": "Retrieves info about drawing which is passed as a zero-indexed multipart/form-data content or as raw body stream.",
         "operationId": "PostDrawingProperties",
@@ -1682,7 +1682,7 @@
     "/cad/{name}/resize": {
       "get": {
         "tags": [
-          "Resize"
+          "Cad"
         ],
         "summary": "Resize an existing drawing.",
         "operationId": "GetDrawingResize",
@@ -1779,7 +1779,7 @@
     "/cad/resize": {
       "post": {
         "tags": [
-          "Resize"
+          "Cad"
         ],
         "summary": "Resize a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.",
         "operationId": "PostDrawingResize",
@@ -1869,7 +1869,7 @@
     "/cad/{name}/rotateflip": {
       "get": {
         "tags": [
-          "RotateFlip"
+          "Cad"
         ],
         "summary": "Rotate/flip an existing drawing.",
         "operationId": "GetDrawingRotateFlip",
@@ -1975,7 +1975,7 @@
     "/cad/rotateflip": {
       "post": {
         "tags": [
-          "RotateFlip"
+          "Cad"
         ],
         "summary": "Rotate/flip a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.",
         "operationId": "PostDrawingRotateFlip",
@@ -2074,7 +2074,7 @@
     "/cad/{name}/saveAs/{outputFormat}": {
       "get": {
         "tags": [
-          "SaveAs"
+          "Cad"
         ],
         "summary": "Export an existing drawing to another format.",
         "operationId": "GetDrawingSaveAs",
@@ -2153,7 +2153,7 @@
     "/cad/saveAs/{outputFormat}": {
       "post": {
         "tags": [
-          "SaveAs"
+          "Cad"
         ],
         "summary": "Export existing drawing to another format. Drawing data is passed as zero-indexed multipart/form-data content or as raw body stream.\n            ",
         "operationId": "PostDrawingSaveAs",

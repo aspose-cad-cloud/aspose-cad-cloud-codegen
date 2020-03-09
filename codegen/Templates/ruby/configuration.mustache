@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------------
 # <copyright company="Aspose" file="configuration.rb">
-#  Copyright (c) 2018 Aspose.Cad for Cloud
+#  Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,13 +32,13 @@ module {{moduleName}}
   class Configuration
     
     # Defines v1 api version
-    V1_API_VERSION = '/v1'.freeze
+    V1_API_VERSION = '/v1.0'.freeze
     
     # Defines v2 api version
-    V2_API_VERSION = '/v2'.freeze
+    V2_API_VERSION = '/v2.0'.freeze
     
     # Defines v3 api version
-    V3_API_VERSION = '/v3'.freeze
+    V3_API_VERSION = '/v3.0'.freeze
     
     # Defines v1.1 api version
     V1_1_API_VERSION = '/v1.1'.freeze
@@ -113,7 +113,7 @@ module {{moduleName}}
     def initialize
       @scheme = '{{scheme}}'
       @host = "api.aspose.cloud"
-      @api_version = V1_API_VERSION
+      @api_version = V3_API_VERSION
       @api_key = {}
       @api_key_prefix = {}
       @client_side_validation = true
