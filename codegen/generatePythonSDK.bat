@@ -4,9 +4,9 @@ java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_
 codegen\Tools\SplitPythonCodeFile.exe C:\tmp\python\asposecadcloud\apis\cad_api.py C:\tmp\python\asposecadcloud\models\requests\ || goto :error
 
 RD /S /Q "SDKs\python\docs" || goto :error
-RD /S /Q "SDKs\python\src" || goto :error
+RD /S /Q "SDKs\python\asposecadcloud" || goto :error
 xcopy "C:\tmp\python\docs" "SDKs\python\docs" /E /I || goto :error
-xcopy "C:\tmp\python\asposecadcloud" "SDKs\python\src" /E /I || goto :error
+xcopy "C:\tmp\python\asposecadcloud" "SDKs\python\asposecadcloud" /E /I || goto :error
 
 goto :EOF
 

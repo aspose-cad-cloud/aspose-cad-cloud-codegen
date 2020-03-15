@@ -13,14 +13,20 @@ namespace Aspose.CAD.Cloud.Codegen.PostProcessor
     {
         static void Main(string[] args)
         {
-#if DEBUG
-            args = new [] { @"C:\Work\ASP\!Cloud\Aspose.CAD.Cloud.Codegen\spec\asposeforcloud_cad.json", @"c:\tmp\csharp\" };
-#endif
+//#if DEBUG
+//            args = new [] { @"C:\Work\ASP\!Cloud\Aspose.CAD.Cloud.Codegen\spec\asposeforcloud_cad.json", @"c:\tmp\csharp\" };
+//#endif
 
             if (args.Length < 2)
             {
                 Console.WriteLine("Usage: PostProcessor.exe <swagger JSON spec path> <swagger-codegen generated files folder>");
                 return;
+            }
+
+            args[1] = args[1].Trim('\\') + '\\';
+            if (!Directory.Exists(args[1]))
+            {
+                Directory.CreateDirectory(args[1]);
             }
 
             AddDefinitionMissingDescriptions(args[0], args[1]);
