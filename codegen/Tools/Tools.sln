@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitPythonCodeFile", "SplitPythonCodeFile\SplitPythonCodeFile.csproj", "{E3979BEA-6BD0-4673-9593-3C2DFCD0A505}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitJavaCodeFile", "SplitJavaCodeFile\SplitJavaCodeFile.csproj", "{BEBB69B6-72EA-48DA-99C2-7E1882B00597}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitPhpCodeFile", "SplitPhpCodeFile\SplitPhpCodeFile.csproj", "{E670B6EC-76D5-4FB3-8F3C-66D13E30EB7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitRubyCodeFile", "SplitRubyCodeFile\SplitRubyCodeFile.csproj", "{693DDB30-D3C3-4315-93C2-9463B195EEA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3979BEA-6BD0-4673-9593-3C2DFCD0A505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3979BEA-6BD0-4673-9593-3C2DFCD0A505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3979BEA-6BD0-4673-9593-3C2DFCD0A505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3979BEA-6BD0-4673-9593-3C2DFCD0A505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEBB69B6-72EA-48DA-99C2-7E1882B00597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEBB69B6-72EA-48DA-99C2-7E1882B00597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEBB69B6-72EA-48DA-99C2-7E1882B00597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEBB69B6-72EA-48DA-99C2-7E1882B00597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E670B6EC-76D5-4FB3-8F3C-66D13E30EB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E670B6EC-76D5-4FB3-8F3C-66D13E30EB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E670B6EC-76D5-4FB3-8F3C-66D13E30EB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E670B6EC-76D5-4FB3-8F3C-66D13E30EB7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693DDB30-D3C3-4315-93C2-9463B195EEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693DDB30-D3C3-4315-93C2-9463B195EEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693DDB30-D3C3-4315-93C2-9463B195EEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693DDB30-D3C3-4315-93C2-9463B195EEA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C56B03C4-F115-41F2-9EBA-9C68D2474E68}
+	EndGlobalSection
+EndGlobal
