@@ -1,6 +1,5 @@
 {
 	"packageName": "asposecadcloud",
 	"projectName": "aspose-cad-cloud",
-	"packageVersion" : "19.11.0",
-	"apiPackage": "asposecadcloud.apis"
+	"packageVersion" : "19.11.0"
 }

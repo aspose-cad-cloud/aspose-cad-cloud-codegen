@@ -21,7 +21,8 @@ namespace SplitPythonCodeFile
             }
 
             string text2 = File.ReadAllText(apiFilePath);
-            MatchCollection matchCollection = Regex.Matches(text2, "# <copyright company=\"Aspose\" file=\"(.*?).py\">");
+
+            MatchCollection matchCollection = Regex.Matches(text2, "#  <copyright company=\"Aspose\" file=\"(.*?).py\">");
 
             string text3 = string.Empty;
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
