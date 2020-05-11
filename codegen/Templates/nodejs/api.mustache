@@ -1,19 +1,18 @@
 {{>licenseInfo}}
-import http = require("http");
-import request = require("request");
-
+import * as request from "request";
 import { Configuration } from "./internal/configuration";
 import { ObjectSerializer } from "./internal/object-serializer";
 import { addQueryParameterToUrl, invokeApiMethod } from "./internal/request-helper";
 import * as model from "./model/model";
 
+export { ApiError } from "./internal/api-error";
 export * from "./model/model";
 
 {{#apiInfo}}
 {{#apis}}
 {{#operations}}
 /**
- * Library for communicating with the Aspose.Cad Cloud API
+ * Library for communication with Aspose.CAD Cloud API
  */
 export class {{classname}} {
     /**
@@ -22,14 +21,15 @@ export class {{classname}} {
     public configuration: Configuration;
 
     /**
-     * @param appSID App SID.
-     * @param appKey App key.
-     * @param baseUrl Base api Url.
+     * @param appKey App key. Please, set this value as null in case of on-premise hosting.
+     * @param appSID App SID. Please, set this value as null in case of on-premise hosting.
+     * @param baseUrl Base api Url. This param is required in case of on-premise hosting.
      * @param debugMode A value indicating whether debug mode. In debug mode all requests and responses are logged to console.
-     * @param apiVersion API version.
+     * @param proxy proxy uri.
+     * @param version API version.
      */
-    constructor(appSID: string, appKey: string, baseUrl?: string, debugMode?: boolean, apiVersion?: string) {
-        this.configuration = new Configuration(appSID, appKey, baseUrl, debugMode, apiVersion);
+    constructor(appKey: string, appSID: string, baseUrl?: string, debugMode?: boolean, version?: string, proxy?: string) {
+        this.configuration = new Configuration(appKey, appSID, baseUrl, debugMode, version, proxy);
     }
 
 {{#operation}}
@@ -37,7 +37,7 @@ export class {{classname}} {
      * {{&summary}}{{#notes}} {{&notes}}{{/notes}}
      * @param requestObj contains request parameters
      */
-    public async {{nickname}}(requestObj: model.{{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request): Promise<{response: http.IncomingMessage, body: {{#vendorExtensions}}{{#x-binary-result}}Buffer{{/x-binary-result}}{{/vendorExtensions}}{{#vendorExtensions}}{{^x-binary-result}}{{#returnType}}model.{{{returnType}}}{{/returnType}}{{^returnType}}body?: any; {{/returnType}}{{/x-binary-result}}{{/vendorExtensions}}}> {
+    public async {{nickname}}(requestObj: model.{{#vendorExtensions}}{{x-operationId}}{{/vendorExtensions}}Request): Promise<{{#returnType}}{{#vendorExtensions}}{{#x-binary-result}}Buffer{{/x-binary-result}}{{^x-binary-result}}model.{{{returnType}}}{{/x-binary-result}}{{/vendorExtensions}}{{/returnType}}{{^returnType}}any{{/returnType}}> {
         if (requestObj === null || requestObj === undefined) {
             throw new Error('Required parameter "requestObj" was null or undefined when calling {{nickname}}.');
         }
@@ -48,58 +48,81 @@ export class {{classname}} {
         {{#hasHeaderParams}}
         const headerParams: any = {};
         {{/hasHeaderParams}}
-        {{#hasFormParams}}
-        const formParams: any = {};
-        {{/hasFormParams}}
 {{#allParams}}{{#required}}
         // verify required parameter 'requestObj.{{paramName}}' is not null or undefined
         if (requestObj.{{paramName}} === null || requestObj.{{paramName}} === undefined) {
             throw new Error('Required parameter "requestObj.{{paramName}}" was null or undefined when calling {{nickname}}.');
         }
-{{/required}}{{/allParams}}        
-{{#queryParams}}        
-        localVarPath = addQueryParameterToUrl(localVarPath, queryParameters, "{{paramName}}", requestObj.{{paramName}});
+{{/required}}{{/allParams}}
+{{#hasFormParams}}
+        const formParams: { [key: string]: any } = {};
+{{/hasFormParams}}        
+{{#queryParams}}
+        if (requestObj.{{paramName}}) {
+            localVarPath = addQueryParameterToUrl(localVarPath, queryParameters, "{{paramName}}", requestObj.{{paramName}});
+        }
+
 {{/queryParams}}
 {{#headerParams}}
         headerParams.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
 {{/headerParams}}
 {{#formParams}}
         if (requestObj.{{paramName}} !== undefined) {
+            const paramKey = "{{baseName}}";
+            let formValue = null;
             {{#isFile}}
-            formParams.{{baseName}} = requestObj.{{paramName}};
+            formValue = requestObj.{{paramName}};
             {{/isFile}}
             {{^isFile}}
-            formParams.{{baseName}} = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
+            formValue = ObjectSerializer.serialize(requestObj.{{paramName}}, "{{{dataType}}}");
             {{/isFile}}
+            formParams[paramKey] = {
+                value: formValue,
+                options: {
+                    filename: "{{baseName}}",
+                    contentType: "application/octet-stream",
+                    knownLength: formValue.length,
+                    proxy: this.configuration.proxy,
+                },
+            };
         }
-
 {{/formParams}}
         const requestOptions: request.Options = {
             method: "{{httpMethod}}",
             qs: queryParameters,
+            proxy: this.configuration.proxy,
             {{#hasHeaderParams}}
             headers: headerParams,
             {{/hasHeaderParams}}
             uri: localVarPath,
-{{^isResponseFile}}
-            json: true,
-{{/isResponseFile}}
 {{#isResponseFile}}
             encoding: null,
 {{/isResponseFile}}
+{{^formParams}}
+            json: false,
+{{/formParams}}
 {{#bodyParam}}
             body: ObjectSerializer.serialize(requestObj.{{paramName}}, requestObj.{{paramName}}.constructor.name === "Object" ? "{{{dataType}}}" : requestObj.{{paramName}}.constructor.name),
 {{/bodyParam}}
         };
-
+        
 {{#hasFormParams}}
-        (requestOptions as any).formData = formParams;        
+        if (Object.keys(formParams).length > 0) {
+            requestOptions.formData = formParams;
+        }
 {{/hasFormParams}}
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        {{#returnType}}const response = {{/returnType}}await invokeApiMethod(requestOptions, this.configuration);
+        {{#vendorExtensions}}
         {{#returnType}}
-        const result =  ObjectSerializer.deserialize(response.body, "{{{returnType}}}");
-        return Promise.resolve({body: result, response});
-        {{/returnType}}        
+        let result = null;
+        {{#x-binary-result}}result = response.body;{{/x-binary-result}}
+        {{^x-binary-result}}
+        if (response.body) {
+            result = ObjectSerializer.deserialize(response.body, "{{{returnType}}}");
+        }{{/x-binary-result}}
+        {{/returnType}}
+        {{/vendorExtensions}}
+        return Promise.resolve({{#returnType}}result{{/returnType}});        
     }
 
 {{/operation}}

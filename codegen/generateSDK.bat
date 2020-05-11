@@ -4,15 +4,15 @@
 
 call codegen\generateNodeJsSDK ||  goto :error
 
-call codegen\generateNetSDK ||  goto :error
+::call codegen\generateNetSDK ||  goto :error
 
-call codegen\generatePhpSDK ||  goto :error
+::call codegen\generatePhpSDK ||  goto :error
 
-call codegen\generateRubySDK ||  goto :error
+::call codegen\generateRubySDK ||  goto :error
 
-call codegen\generatePythonSDK||  goto :error
+::call codegen\generatePythonSDK||  goto :error
 
-call codegen\generateJavaSDK || goto :error
+::call codegen\generateJavaSDK || goto :error
 
 goto :EOF
 

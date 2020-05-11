@@ -1,0 +1,26 @@
+<testsuites name="jest tests" tests="9" failures="0" time="338.34">
+  <testsuite name="RotateFlipTestSuite_V3" errors="0" failures="0" skipped="0" timestamp="2020-05-11T18:08:55" time="144.551" tests="3">
+    <testcase classname="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - true, op - RotateNoneFlipNone" name="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - true, op - RotateNoneFlipNone" time="45.119">
+    </testcase>
+    <testcase classname="RotateFlipTestSuite_V3 getRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" name="RotateFlipTestSuite_V3 getRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" time="14.302">
+    </testcase>
+    <testcase classname="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" name="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" time="20.796">
+    </testcase>
+  </testsuite>
+  <testsuite name="ResizeTestSuite_V3" errors="0" failures="0" skipped="0" timestamp="2020-05-11T18:11:20" time="107.038" tests="3">
+    <testcase classname="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - true, width - 640, height - 480" name="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - true, width - 640, height - 480" time="45.968">
+    </testcase>
+    <testcase classname="ResizeTestSuite_V3 getResizeDrawingTest: saveResultToStorage - false, width - 1024, height = 768" name="ResizeTestSuite_V3 getResizeDrawingTest: saveResultToStorage - false, width - 1024, height = 768" time="22.978">
+    </testcase>
+    <testcase classname="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - false, width - 1024, height - 768" name="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - false, width - 1024, height - 768" time="30.45">
+    </testcase>
+  </testsuite>
+  <testsuite name="SaveAsTestSuite_V3" errors="0" failures="0" skipped="0" timestamp="2020-05-11T18:13:07" time="86.509" tests="3">
+    <testcase classname="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - true" name="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - true" time="49.903">
+    </testcase>
+    <testcase classname="SaveAsTestSuite_V3 getSaveDrawingAsTest: saveResultToStorage - false" name="SaveAsTestSuite_V3 getSaveDrawingAsTest: saveResultToStorage - false" time="11.805">
+    </testcase>
+    <testcase classname="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - false" name="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - false" time="17.587">
+    </testcase>
+  </testsuite>
+</testsuites>
