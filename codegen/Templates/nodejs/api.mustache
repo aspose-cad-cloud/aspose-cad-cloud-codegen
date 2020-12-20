@@ -57,9 +57,9 @@ export class {{classname}} {
 {{#hasFormParams}}
         const formParams: { [key: string]: any } = {};
 {{/hasFormParams}}        
-{{#queryParams}}
+{{#queryParams}}        
         if (requestObj.{{paramName}}) {
-            localVarPath = addQueryParameterToUrl(localVarPath, queryParameters, "{{paramName}}", requestObj.{{paramName}});
+        localVarPath = addQueryParameterToUrl(localVarPath, queryParameters, "{{paramName}}", requestObj.{{paramName}});
         }
 
 {{/queryParams}}
