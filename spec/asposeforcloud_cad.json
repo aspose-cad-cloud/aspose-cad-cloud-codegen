@@ -6,10 +6,6 @@
     "version": "3.0"
   },
   "host": "api-qa.aspose.cloud",
-  "basePath": "/v3.0",
-  "schemes": [
-    "https"
-  ],
   "consumes": [
     "application/json"
   ],
@@ -17,10 +13,10 @@
     "application/json"
   ],
   "paths": {
-    "/cad/{name}/bmp": {
+    "/v3.0/cad/{name}/bmp": {
       "post": {
         "tags": [
-          "Cad"
+          "Bmp"
         ],
         "summary": "Export an existing drawing to BMP format with export settings specified.",
         "operationId": "PostDrawingBmp",
@@ -76,20 +72,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -101,10 +97,10 @@
         "x-operationId": "PostDrawingBmp"
       }
     },
-    "/cad/bmp": {
+    "/v3.0/cad/bmp": {
       "put": {
         "tags": [
-          "Cad"
+          "Bmp"
         ],
         "summary": "Export drawing to BMP format. Drawing data is passed as zero-indexed multipart/form-data as well as export BMP options serialized as JSON.\nOrder of drawing data and BMP options could vary.",
         "operationId": "PutDrawingBmp",
@@ -149,17 +145,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -172,10 +168,10 @@
         "x-operationId": "PutDrawingBmp"
       }
     },
-    "/cad/{name}/gif": {
+    "/v3.0/cad/{name}/gif": {
       "post": {
         "tags": [
-          "Cad"
+          "Gif"
         ],
         "summary": "Export an existing drawing into GIF format with export settings specified.",
         "operationId": "PostDrawingGif",
@@ -231,20 +227,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -256,10 +252,10 @@
         "x-operationId": "PostDrawingGif"
       }
     },
-    "/cad/gif": {
+    "/v3.0/cad/gif": {
       "put": {
         "tags": [
-          "Cad"
+          "Gif"
         ],
         "summary": "Export drawing to GIF format. Drawing data is passed as zero-indexed multipart/form-data as well as export GIF options serialized as JSON.\nOrder of drawing data and GIF options could vary.",
         "operationId": "PutDrawingGif",
@@ -304,17 +300,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -327,10 +323,10 @@
         "x-operationId": "PutDrawingGif"
       }
     },
-    "/cad/{name}/jpeg2000": {
+    "/v3.0/cad/{name}/jpeg2000": {
       "post": {
         "tags": [
-          "Cad"
+          "Jpeg2000"
         ],
         "summary": "Export an existing drawing into JPEG2000 format with export settings specified.",
         "operationId": "PostDrawingJpeg2000",
@@ -386,20 +382,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -411,10 +407,10 @@
         "x-operationId": "PostDrawingJpeg2000"
       }
     },
-    "/cad/jpeg2000": {
+    "/v3.0/cad/jpeg2000": {
       "put": {
         "tags": [
-          "Cad"
+          "Jpeg2000"
         ],
         "summary": "Export drawing to JPEG2000 format. Drawing data is passed as zero-indexed multipart/form-data as well as export JPEG2000 options serialized as JSON.\nOrder of drawing data and JPEG2000 options could vary.",
         "operationId": "PutDrawingJpeg2000",
@@ -459,17 +455,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -482,10 +478,10 @@
         "x-operationId": "PutDrawingJpeg2000"
       }
     },
-    "/cad/{name}/jpeg": {
+    "/v3.0/cad/{name}/jpeg": {
       "post": {
         "tags": [
-          "Cad"
+          "Jpeg"
         ],
         "summary": "Export an existing drawing into JPEG format with export settings specified.",
         "operationId": "PostDrawingJpeg",
@@ -541,20 +537,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -566,10 +562,10 @@
         "x-operationId": "PostDrawingJpeg"
       }
     },
-    "/cad/jpeg": {
+    "/v3.0/cad/jpeg": {
       "put": {
         "tags": [
-          "Cad"
+          "Jpeg"
         ],
         "summary": "Export drawing to JPEG format. Drawing data is passed as zero-indexed multipart/form-data as well as export JPEG options serialized as JSON.\nOrder of drawing data and JPEG options could vary.",
         "operationId": "PutDrawingJpeg",
@@ -614,17 +610,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -637,10 +633,10 @@
         "x-operationId": "PutDrawingJpeg"
       }
     },
-    "/cad/{name}/png": {
+    "/v3.0/cad/{name}/png": {
       "post": {
         "tags": [
-          "Cad"
+          "Png"
         ],
         "summary": "Export an existing drawing into PNG format with export settings specified.",
         "operationId": "PostDrawingPng",
@@ -696,20 +692,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -721,10 +717,10 @@
         "x-operationId": "PostDrawingPng"
       }
     },
-    "/cad/png": {
+    "/v3.0/cad/png": {
       "put": {
         "tags": [
-          "Cad"
+          "Png"
         ],
         "summary": "Export drawing to PNG format. Drawing data is passed as zero-indexed multipart/form-data as well as export PNG options serialized as JSON.\nOrder of drawing data and PNG options could vary.",
         "operationId": "PutDrawingPng",
@@ -769,17 +765,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -792,10 +788,10 @@
         "x-operationId": "PutDrawingPng"
       }
     },
-    "/cad/{name}/psd": {
+    "/v3.0/cad/{name}/psd": {
       "post": {
         "tags": [
-          "Cad"
+          "Psd"
         ],
         "summary": "Export an existing drawing into PSD format with export settings specified.",
         "operationId": "PostDrawingPsd",
@@ -851,20 +847,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -876,10 +872,10 @@
         "x-operationId": "PostDrawingPsd"
       }
     },
-    "/cad/psd": {
+    "/v3.0/cad/psd": {
       "put": {
         "tags": [
-          "Cad"
+          "Psd"
         ],
         "summary": "Export drawing to PSD format. Drawing data is passed as zero-indexed multipart/form-data as well as export PSD options serialized as JSON.\nOrder of drawing data and PSD options could vary.",
         "operationId": "PutDrawingPsd",
@@ -924,17 +920,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -947,10 +943,10 @@
         "x-operationId": "PutDrawingPsd"
       }
     },
-    "/cad/{name}/tiff": {
+    "/v3.0/cad/{name}/tiff": {
       "post": {
         "tags": [
-          "Cad"
+          "Tiff"
         ],
         "summary": "Export an existing drawing into TIFF format with export settings specified.",
         "operationId": "PostDrawingTiff",
@@ -1006,20 +1002,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1031,10 +1027,10 @@
         "x-operationId": "PostDrawingTiff"
       }
     },
-    "/cad/tiff": {
+    "/v3.0/cad/tiff": {
       "put": {
         "tags": [
-          "Cad"
+          "Tiff"
         ],
         "summary": "Export drawing to TIFF format. Drawing data is passed as zero-indexed multipart/form-data as well as export TIFF options serialized as JSON.\nOrder of drawing data and TIFF options could vary.",
         "operationId": "PutDrawingTiff",
@@ -1079,17 +1075,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1102,10 +1098,10 @@
         "x-operationId": "PutDrawingTiff"
       }
     },
-    "/cad/{name}/pdf": {
+    "/v3.0/cad/{name}/pdf": {
       "post": {
         "tags": [
-          "Cad"
+          "Pdf"
         ],
         "summary": "Export an existing drawing to PDF format with export settings specified.",
         "operationId": "PostDrawingPdf",
@@ -1161,20 +1157,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1186,10 +1182,10 @@
         "x-operationId": "PostDrawingPdf"
       }
     },
-    "/cad/pdf": {
+    "/v3.0/cad/pdf": {
       "put": {
         "tags": [
-          "Cad"
+          "Pdf"
         ],
         "summary": "Export drawing to PDF format. Drawing data is passed as zero-indexed multipart/form-data as well as export PDF options serialized as JSON.\nOrder of drawing data and PDF options could vary.",
         "operationId": "PutDrawingPdf",
@@ -1234,17 +1230,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1257,10 +1253,10 @@
         "x-operationId": "PutDrawingPdf"
       }
     },
-    "/cad/{name}/svg": {
+    "/v3.0/cad/{name}/svg": {
       "post": {
         "tags": [
-          "Cad"
+          "Svg"
         ],
         "summary": "Export an existing drawing to SVG format with export settings specified.",
         "operationId": "PostDrawingSvg",
@@ -1316,20 +1312,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1341,10 +1337,10 @@
         "x-operationId": "PostDrawingSvg"
       }
     },
-    "/cad/svg": {
+    "/v3.0/cad/svg": {
       "put": {
         "tags": [
-          "Cad"
+          "Svg"
         ],
         "summary": "Export drawing to SVG format. Drawing data is passed as zero-indexed multipart/form-data as well as export SVG options serialized as JSON.\nOrder of drawing data and SVG options could vary.",
         "operationId": "PutDrawingSvg",
@@ -1389,17 +1385,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1412,10 +1408,10 @@
         "x-operationId": "PutDrawingSvg"
       }
     },
-    "/cad/{name}/wmf": {
+    "/v3.0/cad/{name}/wmf": {
       "post": {
         "tags": [
-          "Cad"
+          "Wmf"
         ],
         "summary": "Export an existing drawing to WMF format with export settings specified.",
         "operationId": "PostDrawingWmf",
@@ -1471,20 +1467,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1496,10 +1492,10 @@
         "x-operationId": "PostDrawingWmf"
       }
     },
-    "/cad/wmf": {
+    "/v3.0/cad/wmf": {
       "put": {
         "tags": [
-          "Cad"
+          "Wmf"
         ],
         "summary": "Export drawing to WMF format. Drawing data is passed as zero-indexed multipart/form-data as well as export WMF options serialized as JSON.\nOrder of drawing data and WMF options could vary.",
         "operationId": "PutDrawingWmf",
@@ -1544,17 +1540,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1567,10 +1563,10 @@
         "x-operationId": "PutDrawingWmf"
       }
     },
-    "/cad/{name}/properties": {
+    "/v3.0/cad/{name}/properties": {
       "get": {
         "tags": [
-          "Cad"
+          "Properties"
         ],
         "summary": "Retrieves info about an existing drawing.\n            ",
         "operationId": "GetDrawingProperties",
@@ -1606,20 +1602,20 @@
               "$ref": "#/definitions/CadResponse"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1630,10 +1626,10 @@
         "x-operationId": "GetDrawingProperties"
       }
     },
-    "/cad/properties": {
+    "/v3.0/cad/properties": {
       "post": {
         "tags": [
-          "Cad"
+          "Properties"
         ],
         "summary": "Retrieves info about drawing which is passed as a zero-indexed multipart/form-data content or as raw body stream.",
         "operationId": "PostDrawingProperties",
@@ -1658,17 +1654,17 @@
               "$ref": "#/definitions/CadResponse"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1679,10 +1675,10 @@
         "x-operationId": "PostDrawingProperties"
       }
     },
-    "/cad/{name}/resize": {
+    "/v3.0/cad/{name}/resize": {
       "get": {
         "tags": [
-          "Cad"
+          "Resize"
         ],
         "summary": "Resize an existing drawing.",
         "operationId": "GetDrawingResize",
@@ -1751,20 +1747,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1776,10 +1772,10 @@
         "x-operationId": "GetDrawingResize"
       }
     },
-    "/cad/resize": {
+    "/v3.0/cad/resize": {
       "post": {
         "tags": [
-          "Cad"
+          "Resize"
         ],
         "summary": "Resize a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.",
         "operationId": "PostDrawingResize",
@@ -1844,17 +1840,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1866,10 +1862,10 @@
         "x-operationId": "PostDrawingResize"
       }
     },
-    "/cad/{name}/rotateflip": {
+    "/v3.0/cad/{name}/rotateflip": {
       "get": {
         "tags": [
-          "Cad"
+          "RotateFlip"
         ],
         "summary": "Rotate/flip an existing drawing.",
         "operationId": "GetDrawingRotateFlip",
@@ -1947,20 +1943,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -1972,10 +1968,10 @@
         "x-operationId": "GetDrawingRotateFlip"
       }
     },
-    "/cad/rotateflip": {
+    "/v3.0/cad/rotateflip": {
       "post": {
         "tags": [
-          "Cad"
+          "RotateFlip"
         ],
         "summary": "Rotate/flip a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.",
         "operationId": "PostDrawingRotateFlip",
@@ -2049,17 +2045,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -2071,10 +2067,10 @@
         "x-operationId": "PostDrawingRotateFlip"
       }
     },
-    "/cad/{name}/saveAs/{outputFormat}": {
+    "/v3.0/cad/{name}/saveAs/{outputFormat}": {
       "get": {
         "tags": [
-          "Cad"
+          "SaveAs"
         ],
         "summary": "Export an existing drawing to another format.",
         "operationId": "GetDrawingSaveAs",
@@ -2125,20 +2121,20 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
           },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -2150,10 +2146,10 @@
         "x-operationId": "GetDrawingSaveAs"
       }
     },
-    "/cad/saveAs/{outputFormat}": {
+    "/v3.0/cad/saveAs/{outputFormat}": {
       "post": {
         "tags": [
-          "Cad"
+          "SaveAs"
         ],
         "summary": "Export existing drawing to another format. Drawing data is passed as zero-indexed multipart/form-data content or as raw body stream.\n            ",
         "operationId": "PostDrawingSaveAs",
@@ -2200,17 +2196,17 @@
               "type": "file"
             }
           },
-          "401": {
-            "description": "Authentication failed."
-          },
           "400": {
             "description": "Invalid request parameters or input data."
           },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          "401": {
+            "description": "Authentication failed."
           },
           "500": {
             "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
@@ -2220,6 +2216,703 @@
         ],
         "x-binary-result": "true",
         "x-operationId": "PostDrawingSaveAs"
+      }
+    },
+    "/v3.0/cad/storage/file/{path}": {
+      "get": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Download file",
+        "operationId": "DownloadFile",
+        "produces": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "File path e.g. '/folder/file.ext'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "versionId",
+            "in": "query",
+            "description": "File version ID to download",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "The raw data of the file.",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          },
+          "404": {
+            "description": "File for given path not found."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "DownloadFile",
+        "x-binary-result": true
+      },
+      "put": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Upload file",
+        "operationId": "UploadFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext\n            If the content is multipart and path does not contains the file name it tries to get them from filename parameter\n            from Content-Disposition header.\n            ",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "file",
+            "name": "File",
+            "in": "formData",
+            "required": true,
+            "description": "File to upload"
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Empty error list if the upload is successful.",
+            "schema": {
+              "$ref": "#/definitions/FilesUploadResult"
+            }
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "UploadFile"
+      },
+      "delete": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Delete file",
+        "operationId": "DeleteFile",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "File path e.g. '/folder/file.ext'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "versionId",
+            "in": "query",
+            "description": "File version ID to delete",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns 200 if the delete is successful."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "DeleteFile"
+      }
+    },
+    "/v3.0/cad/storage/file/copy/{srcPath}": {
+      "put": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Copy file",
+        "operationId": "CopyFile",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "srcPath",
+            "in": "path",
+            "required": true,
+            "description": "Source file path e.g. '/folder/file.ext'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "destPath",
+            "in": "query",
+            "required": true,
+            "description": "Destination file path",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "srcStorageName",
+            "in": "query",
+            "description": "Source storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "destStorageName",
+            "in": "query",
+            "description": "Destination storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "versionId",
+            "in": "query",
+            "description": "File version ID to copy",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns 200 if the copy is successful."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "CopyFile"
+      }
+    },
+    "/v3.0/cad/storage/file/move/{srcPath}": {
+      "put": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Move file",
+        "operationId": "MoveFile",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "srcPath",
+            "in": "path",
+            "required": true,
+            "description": "Source file path e.g. '/src.ext'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "destPath",
+            "in": "query",
+            "required": true,
+            "description": "Destination file path e.g. '/dest.ext'",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "srcStorageName",
+            "in": "query",
+            "description": "Source storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "destStorageName",
+            "in": "query",
+            "description": "Destination storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "versionId",
+            "in": "query",
+            "description": "File version ID to move",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns 200 if the move is successful."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          },
+          "404": {
+            "description": "File for given path not found."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "MoveFile"
+      }
+    },
+    "/v3.0/cad/storage/folder/{path}": {
+      "get": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Get all files and folders within a folder",
+        "operationId": "GetFilesList",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "Folder path e.g. '/folder'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Returns all files and folders contained by the folder.",
+            "schema": {
+              "$ref": "#/definitions/FilesList"
+            }
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          },
+          "404": {
+            "description": "Can't find folder for given path."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "GetFilesList"
+      },
+      "put": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Create the folder",
+        "operationId": "CreateFolder",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "Folder path to create e.g. 'folder_1/folder_2/'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns 200 if the create is successful."
+          },
+          "400": {
+            "description": "Storage not found or it is not associated with the application."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "CreateFolder"
+      },
+      "delete": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Delete folder",
+        "operationId": "DeleteFolder",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "Folder path e.g. '/folder'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "boolean",
+            "name": "recursive",
+            "in": "query",
+            "description": "Enable to delete folders, subfolders and files",
+            "default": false,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns 200 if the delete is successful."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "DeleteFolder"
+      }
+    },
+    "/v3.0/cad/storage/folder/copy/{srcPath}": {
+      "put": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Copy folder",
+        "operationId": "CopyFolder",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "srcPath",
+            "in": "path",
+            "required": true,
+            "description": "Source folder path e.g. '/src'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "destPath",
+            "in": "query",
+            "required": true,
+            "description": "Destination folder path e.g. '/dst'",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "srcStorageName",
+            "in": "query",
+            "description": "Source storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "destStorageName",
+            "in": "query",
+            "description": "Destination storage name",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns 200 if the copy is successful."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "CopyFolder"
+      }
+    },
+    "/v3.0/cad/storage/folder/move/{srcPath}": {
+      "put": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Move folder",
+        "operationId": "MoveFolder",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "srcPath",
+            "in": "path",
+            "required": true,
+            "description": "Folder path to move e.g. '/folder'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "destPath",
+            "in": "query",
+            "required": true,
+            "description": "Destination folder path to move to e.g '/dst'",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "srcStorageName",
+            "in": "query",
+            "description": "Source storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "destStorageName",
+            "in": "query",
+            "description": "Destination storage name",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns 200 if the move is successful."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "MoveFolder"
+      }
+    },
+    "/v3.0/cad/storage/{storageName}/exist": {
+      "get": {
+        "tags": [
+          "Storage"
+        ],
+        "summary": "Check if storage exists",
+        "operationId": "StorageExists",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "path",
+            "required": true,
+            "description": "Storage name",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Storage exist result.",
+            "schema": {
+              "$ref": "#/definitions/StorageExist"
+            }
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "StorageExists"
+      }
+    },
+    "/v3.0/cad/storage/exist/{path}": {
+      "get": {
+        "tags": [
+          "Storage"
+        ],
+        "summary": "Check if file or folder exists",
+        "operationId": "ObjectExists",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "File or folder path e.g. '/file.ext' or '/folder'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "versionId",
+            "in": "query",
+            "description": "File version ID",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Object exist result.",
+            "schema": {
+              "$ref": "#/definitions/ObjectExist"
+            }
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "ObjectExists"
+      }
+    },
+    "/v3.0/cad/storage/disc": {
+      "get": {
+        "tags": [
+          "Storage"
+        ],
+        "summary": "Get disc usage",
+        "operationId": "GetDiscUsage",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Disc usage.",
+            "schema": {
+              "$ref": "#/definitions/DiscUsage"
+            }
+          },
+          "400": {
+            "description": "Storage not found or it is not associated with an application."
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "GetDiscUsage"
+      }
+    },
+    "/v3.0/cad/storage/version/{path}": {
+      "get": {
+        "tags": [
+          "Storage"
+        ],
+        "summary": "Get file versions",
+        "operationId": "GetFileVersions",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "description": "File path e.g. '/file.ext'",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "storageName",
+            "in": "query",
+            "description": "Storage name",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "File versions.",
+            "schema": {
+              "$ref": "#/definitions/FileVersions"
+            }
+          },
+          "401": {
+            "description": "Authorization token is invalid or expired."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-operationId": "GetFileVersions"
       }
     }
   },
@@ -2324,7 +3017,6 @@
     },
     "ResolutionSetting": {
       "type": "object",
-      "description": "The resolution setting for image save options.",
       "additionalProperties": false,
       "required": [
         "HorizontalResolution",
@@ -2333,15 +3025,14 @@
       "properties": {
         "HorizontalResolution": {
           "type": "number",
-          "description": "Gets or sets the horizontal resolution.",
           "format": "double"
         },
         "VerticalResolution": {
           "type": "number",
-          "description": "Gets or sets the vertical resolution.",
           "format": "double"
         }
-      }
+      },
+      "description": "Resolution Setting"
     },
     "CadRasterizationOptionsDTO": {
       "type": "object",
@@ -2412,7 +3103,6 @@
     },
     "PenOptions": {
       "type": "object",
-      "description": "Drawing pen options",
       "additionalProperties": false,
       "required": [
         "StartCap",
@@ -2420,7 +3110,6 @@
       ],
       "properties": {
         "StartCap": {
-          "description": "Gets or sets the start cap.",
           "enum": [
             "Flat",
             "Square",
@@ -2433,13 +3122,9 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ],
-          "allOf": [
-            {}
           ]
         },
         "EndCap": {
-          "description": "Gets or sets the end cap.",
           "enum": [
             "Flat",
             "Square",
@@ -2452,12 +3137,10 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ],
-          "allOf": [
-            {}
           ]
         }
-      }
+      },
+      "description": "Pen Options"
     },
     "VectorRasterizationOptionsDTO": {
       "type": "object",
@@ -2551,7 +3234,6 @@
     },
     "Color": {
       "type": "object",
-      "description": "The color of the pixel.",
       "additionalProperties": false,
       "required": [
         "R",
@@ -2565,45 +3247,37 @@
       "properties": {
         "R": {
           "type": "integer",
-          "description": "Gets the red component value of this Color structure.",
           "format": "byte"
         },
         "G": {
           "type": "integer",
-          "description": "Gets the green component value of this Color structure.",
           "format": "byte"
         },
         "B": {
           "type": "integer",
-          "description": "Gets the blue component value of this Color structure.",
           "format": "byte"
         },
         "A": {
           "type": "integer",
-          "description": "Gets the alpha component value of this Color structure.",
           "format": "byte"
         },
         "IsKnownColor": {
-          "type": "boolean",
-          "description": "Gets a value indicating whether this Color structure is a predefined color. Predefined colors are represented by the elements of the KnownColor enumeration."
+          "type": "boolean"
         },
         "IsEmpty": {
-          "type": "boolean",
-          "description": "Gets a value indicating whether this Color structure is uninitialized."
+          "type": "boolean"
         },
         "IsNamedColor": {
-          "type": "boolean",
-          "description": "Gets a value indicating whether this Color structure is a named color or a member of the KnownColor enumeration."
+          "type": "boolean"
         },
         "Name": {
-          "type": "string",
-          "description": "Gets the name of this Color."
+          "type": "string"
         }
-      }
+      },
+      "description": "Color"
     },
     "GraphicsOptions": {
       "type": "object",
-      "description": "Represents graphics options for embedded bitmap.",
       "additionalProperties": false,
       "required": [
         "TextRenderingHint",
@@ -2612,7 +3286,6 @@
       ],
       "properties": {
         "TextRenderingHint": {
-          "description": "Gets or sets text rendering hint.",
           "enum": [
             "SystemDefault",
             "SingleBitPerPixelGridFit",
@@ -2620,13 +3293,9 @@
             "AntiAliasGridFit",
             "AntiAlias",
             "ClearTypeGridFit"
-          ],
-          "allOf": [
-            {}
           ]
         },
         "SmoothingMode": {
-          "description": "Gets or sets smoothing mode.",
           "enum": [
             "Default",
             "HighSpeed",
@@ -2634,13 +3303,9 @@
             "None",
             "AntiAlias",
             "Invalid"
-          ],
-          "allOf": [
-            {}
           ]
         },
         "InterpolationMode": {
-          "description": "Gets or sets interpolation mode.",
           "enum": [
             "Default",
             "Low",
@@ -2651,12 +3316,10 @@
             "HighQualityBilinear",
             "HighQualityBicubic",
             "Invalid"
-          ],
-          "allOf": [
-            {}
           ]
         }
-      }
+      },
+      "description": "Graphics Options"
     },
     "GifOptionsDTO": {
       "type": "object",
@@ -2813,7 +3476,6 @@
     },
     "RdOptimizerSettings": {
       "type": "object",
-      "description": "RD optimizer settings class",
       "additionalProperties": false,
       "required": [
         "BppScale",
@@ -2827,40 +3489,34 @@
       "properties": {
         "BppScale": {
           "type": "integer",
-          "description": "Gets or sets the BPP (bits per pixel) scale factor.",
           "format": "int32"
         },
         "BppMax": {
           "type": "number",
-          "description": "Gets or sets the maximum R value for consideration in  in bits per pixel",
           "format": "double"
         },
         "MaxQ": {
           "type": "integer",
-          "description": "Gets or sets the maximum quantization value.",
           "format": "int32"
         },
         "MinQ": {
           "type": "integer",
-          "description": "Gets the minimum allowed quantization value.",
           "format": "int32"
         },
         "MaxPixelValue": {
           "type": "integer",
-          "description": "Gets the maximum pixel value.",
           "format": "int32"
         },
         "PsnrMax": {
           "type": "integer",
-          "description": "Gets the PSNR maximum expected value.",
           "format": "int32"
         },
         "DiscretizedBppMax": {
           "type": "integer",
-          "description": "Gets the maximum R value for consideration.",
           "format": "int32"
         }
-      }
+      },
+      "description": "Rd Optimizer Settings"
     },
     "PngOptionsDTO": {
       "type": "object",
@@ -3141,47 +3797,47 @@
     },
     "PdfDocumentInfo": {
       "type": "object",
-      "description": "This class represents set of metadata for document description.",
       "additionalProperties": false,
       "properties": {
         "Keywords": {
-          "type": "string",
-          "description": "Gets or sets keywords of the document."
+          "type": "string"
         },
         "Title": {
-          "type": "string",
-          "description": "Gets or sets title of the document."
+          "type": "string"
         },
         "Author": {
-          "type": "string",
-          "description": "Gets or sets author of the document."
+          "type": "string"
         },
         "Subject": {
-          "type": "string",
-          "description": "Gets or sets subject of the document."
+          "type": "string"
         }
-      }
+      },
+      "description": "Pdf Document Info"
     },
     "PdfDocumentOptions": {
       "type": "object",
-      "description": "The PDF options.",
       "additionalProperties": false,
       "required": [
         "Compliance"
       ],
       "properties": {
         "Compliance": {
-          "description": "Desired conformance level for generated PDF document.\nImportant note: This option should not be changed after PdfDocument object is constructed.\nDefault is Pdf15.",
           "enum": [
             "Pdf15",
             "PdfA1a",
             "PdfA1b"
-          ],
-          "allOf": [
-            {}
           ]
+        },
+        "DigitalSignatureDetails": {
+          "$ref": "#/definitions/\b   "
         }
-      }
+      },
+      "description": "Pdf Document Options"
+    },
+    "\b   ": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "\b"
     },
     "SvgOptionsDTO": {
       "type": "object",
@@ -3369,13 +4025,223 @@
       "type": "object",
       "description": "Represents information about CFF2 drawing.",
       "additionalProperties": false
+    },
+    "FilesUploadResult": {
+      "type": "object",
+      "description": "File upload result",
+      "additionalProperties": false,
+      "properties": {
+        "Uploaded": {
+          "type": "array",
+          "description": "List of uploaded file names",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Errors": {
+          "type": "array",
+          "description": "List of errors.",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "description": "Error",
+      "additionalProperties": false,
+      "properties": {
+        "Code": {
+          "type": "string",
+          "description": "Code\n            "
+        },
+        "Message": {
+          "type": "string",
+          "description": "Message\n            "
+        },
+        "Description": {
+          "type": "string",
+          "description": "Description\n            "
+        },
+        "InnerError": {
+          "description": "Inner Error\n            ",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/ErrorDetails"
+        }
+      }
+    },
+    "ErrorDetails": {
+      "type": "object",
+      "description": "The error details",
+      "additionalProperties": false,
+      "required": [
+        "Date"
+      ],
+      "properties": {
+        "RequestId": {
+          "type": "string",
+          "description": "The request id"
+        },
+        "Date": {
+          "type": "string",
+          "description": "Date",
+          "format": "date-time"
+        }
+      }
+    },
+    "FilesList": {
+      "type": "object",
+      "description": "Files list",
+      "additionalProperties": false,
+      "properties": {
+        "Value": {
+          "type": "array",
+          "description": "Files and folders contained by folder StorageFile.",
+          "items": {
+            "$ref": "#/definitions/StorageFile"
+          }
+        }
+      }
+    },
+    "StorageFile": {
+      "type": "object",
+      "discriminator": "Type",
+      "description": "File or folder information",
+      "additionalProperties": false,
+      "required": [
+        "IsFolder",
+        "Size"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "File or folder name."
+        },
+        "IsFolder": {
+          "type": "boolean",
+          "description": "True if it is a folder."
+        },
+        "ModifiedDate": {
+          "type": "string",
+          "description": "File or folder last modified DateTime.",
+          "format": "date-time"
+        },
+        "Size": {
+          "type": "integer",
+          "description": "File or folder size.",
+          "format": "int64"
+        },
+        "Path": {
+          "type": "string",
+          "description": "File or folder path."
+        }
+      }
+    },
+    "StorageExist": {
+      "type": "object",
+      "description": "Storage exists",
+      "additionalProperties": false,
+      "required": [
+        "Exists"
+      ],
+      "properties": {
+        "Exists": {
+          "type": "boolean",
+          "description": "Shows that the storage exists.\n            "
+        }
+      }
+    },
+    "ObjectExist": {
+      "type": "object",
+      "description": "Object exists",
+      "additionalProperties": false,
+      "required": [
+        "Exists",
+        "IsFolder"
+      ],
+      "properties": {
+        "Exists": {
+          "type": "boolean",
+          "description": "Indicates that the file or folder exists."
+        },
+        "IsFolder": {
+          "type": "boolean",
+          "description": "True if it is a folder, false if it is a file."
+        }
+      }
+    },
+    "DiscUsage": {
+      "type": "object",
+      "description": "Class for disc space information.",
+      "additionalProperties": false,
+      "required": [
+        "UsedSize",
+        "TotalSize"
+      ],
+      "properties": {
+        "UsedSize": {
+          "type": "integer",
+          "description": "Application used disc space.",
+          "format": "int64"
+        },
+        "TotalSize": {
+          "type": "integer",
+          "description": "Total disc space.",
+          "format": "int64"
+        }
+      }
+    },
+    "FileVersions": {
+      "type": "object",
+      "description": "File versions FileVersion.",
+      "additionalProperties": false,
+      "properties": {
+        "Value": {
+          "type": "array",
+          "description": "File versions FileVersion.",
+          "items": {
+            "$ref": "#/definitions/FileVersion"
+          }
+        }
+      }
+    },
+    "FileVersion": {
+      "type": "object",
+      "description": "File Version",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/StorageFile"
+        },
+        {
+          "type": "object",
+          "description": "File Version",
+          "additionalProperties": false,
+          "required": [
+            "IsLatest"
+          ],
+          "properties": {
+            "VersionId": {
+              "type": "string",
+              "description": "File Version ID."
+            },
+            "IsLatest": {
+              "type": "boolean",
+              "description": "Specifies whether the file is (true) or is not (false) the latest version of an file."
+            }
+          }
+        }
+      ]
     }
   },
   "securityDefinitions": {
     "JWT": {
       "type": "oauth2",
       "flow": "application",
-      "tokenUrl": "https://api-qa.aspose.cloud/connect/token"
+      "tokenUrl": "/connect/token"
     }
   }
 }

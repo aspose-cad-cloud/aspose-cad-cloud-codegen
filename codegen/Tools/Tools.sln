@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitPhpCodeFile", "SplitPh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitRubyCodeFile", "SplitRubyCodeFile\SplitRubyCodeFile.csproj", "{693DDB30-D3C3-4315-93C2-9463B195EEA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitCSharpCodeFile", "SplitCSharpCodeFile\SplitCSharpCodeFile.csproj", "{599F588C-D39B-431F-AA3A-0C8CB952402E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostProcessor", "PostProcessor\PostProcessor.csproj", "{DADC53B7-BAFA-4809-A340-3D0CAE3FDCD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{693DDB30-D3C3-4315-93C2-9463B195EEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{693DDB30-D3C3-4315-93C2-9463B195EEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{693DDB30-D3C3-4315-93C2-9463B195EEA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{599F588C-D39B-431F-AA3A-0C8CB952402E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599F588C-D39B-431F-AA3A-0C8CB952402E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599F588C-D39B-431F-AA3A-0C8CB952402E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599F588C-D39B-431F-AA3A-0C8CB952402E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADC53B7-BAFA-4809-A340-3D0CAE3FDCD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADC53B7-BAFA-4809-A340-3D0CAE3FDCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADC53B7-BAFA-4809-A340-3D0CAE3FDCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADC53B7-BAFA-4809-A340-3D0CAE3FDCD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

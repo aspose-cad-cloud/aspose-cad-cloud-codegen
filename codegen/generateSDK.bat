@@ -2,7 +2,7 @@
 ::powershell -Command Invoke-WebRequest -OutFile spec\asposeforcloud_cad.json https://api-qa.aspose.cloud/v3.0/cad/swagger/sdkspec
 ::powershell -Command Invoke-WebRequest -OutFile spec\asposeforcloud_cad_without_disciminator.json https://api-qa.aspose.cloud/v3.0/cad/swagger/sdkspec
 
-call codegen\generateNodeJsSDK ||  goto :error
+::call codegen\generateNodeJsSDK ||  goto :error
 
 ::call codegen\generateNetSDK ||  goto :error
 
