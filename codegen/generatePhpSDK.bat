@@ -1,5 +1,5 @@
 del /S /Q "c:\tmp\php" || goto :error
-java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_cad.json -l php -t codegen\Templates\php -o c:/tmp/php/ --invoker-package Aspose\CAD --model-package Model --api-package Api || goto :error
+java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_cad_without_disciminator.json -l php -t codegen\Templates\php -o c:/tmp/php/ --invoker-package Aspose\CAD --model-package Model --api-package Api || goto :error
 
 codegen\Tools\SplitPhpCodeFile.exe C:\tmp\php\SwaggerClient-php\lib\Api\CADApi.php C:\tmp\php\SwaggerClient-php\lib\Model\Requests\ || goto :error
 

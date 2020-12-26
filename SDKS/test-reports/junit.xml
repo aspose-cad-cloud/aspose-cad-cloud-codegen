@@ -1,26 +1,125 @@
-<testsuites name="jest tests" tests="9" failures="0" time="338.34">
-  <testsuite name="RotateFlipTestSuite_V3" errors="0" failures="0" skipped="0" timestamp="2020-05-11T18:08:55" time="144.551" tests="3">
-    <testcase classname="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - true, op - RotateNoneFlipNone" name="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - true, op - RotateNoneFlipNone" time="45.119">
+<testsuites name="jest tests" tests="9" failures="9" time="58.713">
+  <testsuite name="RotateFlipTestSuite_V3" errors="0" failures="3" skipped="0" timestamp="2020-12-25T14:26:42" time="51.588" tests="3">
+    <testcase classname="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - true, op - RotateNoneFlipNone" name="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - true, op - RotateNoneFlipNone" time="0.016">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at RotateFlipApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:100:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:30:12)
+    at RotateFlipApiTests.postRotateFlipDrawingTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:77:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:157:29
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
-    <testcase classname="RotateFlipTestSuite_V3 getRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" name="RotateFlipTestSuite_V3 getRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" time="14.302">
+    <testcase classname="RotateFlipTestSuite_V3 getRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" name="RotateFlipTestSuite_V3 getRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" time="0.002">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at RotateFlipApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:53:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:30:12)
+    at RotateFlipApiTests.getRotateFlipDrawingTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:45:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:152:33
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
-    <testcase classname="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" name="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" time="20.796">
+    <testcase classname="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" name="RotateFlipTestSuite_V3 postRotateFlipDrawingTest: saveResultToStorage - false, op - Rotate90FlipX" time="0.002">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at RotateFlipApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:100:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:30:12)
+    at RotateFlipApiTests.postRotateFlipDrawingTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:77:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:157:29
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\rotate-flip-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
   </testsuite>
-  <testsuite name="ResizeTestSuite_V3" errors="0" failures="0" skipped="0" timestamp="2020-05-11T18:11:20" time="107.038" tests="3">
-    <testcase classname="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - true, width - 640, height - 480" name="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - true, width - 640, height - 480" time="45.968">
+  <testsuite name="ResizeTestSuite_V3" errors="0" failures="3" skipped="0" timestamp="2020-12-25T14:27:34" time="3.656" tests="3">
+    <testcase classname="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - true, width - 640, height - 480" name="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - true, width - 640, height - 480" time="0.015">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at ResizeApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:102:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:30:12)
+    at ResizeApiTests.postResizeDrawingTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:77:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:158:29
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
-    <testcase classname="ResizeTestSuite_V3 getResizeDrawingTest: saveResultToStorage - false, width - 1024, height = 768" name="ResizeTestSuite_V3 getResizeDrawingTest: saveResultToStorage - false, width - 1024, height = 768" time="22.978">
+    <testcase classname="ResizeTestSuite_V3 getResizeDrawingTest: saveResultToStorage - false, width - 1024, height = 768" name="ResizeTestSuite_V3 getResizeDrawingTest: saveResultToStorage - false, width - 1024, height = 768" time="0.003">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at ResizeApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:54:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:30:12)
+    at ResizeApiTests.getResizeDrawingTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:45:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:153:33
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
-    <testcase classname="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - false, width - 1024, height - 768" name="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - false, width - 1024, height - 768" time="30.45">
+    <testcase classname="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - false, width - 1024, height - 768" name="ResizeTestSuite_V3 postResizeDrawingTest: saveResultToStorage - false, width - 1024, height - 768" time="0.001">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at ResizeApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:102:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:30:12)
+    at ResizeApiTests.postResizeDrawingTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:77:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:158:29
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\resize-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
   </testsuite>
-  <testsuite name="SaveAsTestSuite_V3" errors="0" failures="0" skipped="0" timestamp="2020-05-11T18:13:07" time="86.509" tests="3">
-    <testcase classname="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - true" name="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - true" time="49.903">
+  <testsuite name="SaveAsTestSuite_V3" errors="0" failures="3" skipped="0" timestamp="2020-12-25T14:27:37" time="3.262" tests="3">
+    <testcase classname="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - true" name="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - true" time="0.021">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at SaveAsApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:91:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:30:12)
+    at SaveAsApiTests.postSaveDrawingAsTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:77:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:155:29
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
-    <testcase classname="SaveAsTestSuite_V3 getSaveDrawingAsTest: saveResultToStorage - false" name="SaveAsTestSuite_V3 getSaveDrawingAsTest: saveResultToStorage - false" time="11.805">
+    <testcase classname="SaveAsTestSuite_V3 getSaveDrawingAsTest: saveResultToStorage - false" name="SaveAsTestSuite_V3 getSaveDrawingAsTest: saveResultToStorage - false" time="0.003">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at SaveAsApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:48:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:30:12)
+    at SaveAsApiTests.getSaveDrawingAsTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:45:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:150:33
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
-    <testcase classname="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - false" name="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - false" time="17.587">
+    <testcase classname="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - false" name="SaveAsTestSuite_V3 postSaveDrawingAsTest: saveResultToStorage - false" time="0.002">
+      <failure>TypeError: Cannot read property &apos;endsWith&apos; of undefined
+    at SaveAsApiTests.&lt;anonymous&gt; (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:91:32)
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:30:12)
+    at SaveAsApiTests.postSaveDrawingAsTest (C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:77:16)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:155:29
+    at Generator.next (&lt;anonymous&gt;)
+    at C:\Code\ASP\!Cloud\aspose-cad-cloud-codegen\SDKS\NodeJs\test\api\saveas-api-tests-v3_0.ts:34:71
+    at new Promise (&lt;anonymous&gt;)</failure>
     </testcase>
   </testsuite>
 </testsuites>

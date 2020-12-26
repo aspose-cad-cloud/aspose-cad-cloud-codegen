@@ -1,5 +1,5 @@
 del /S /Q "c:\tmp\java" || goto :error
-java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_cad.json -l java -t codegen\Templates\java -o c:/tmp/java/ -c codegen\javaConfig.json || goto :error
+java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_cad_without_disciminator.json -l java -t codegen\Templates\java -o c:/tmp/java/ -c codegen\javaConfig.json || goto :error
 
 codegen\Tools\SplitJavaCodeFile.exe C:\tmp\java\src\main\java\com\aspose\cad\cloud\api\cadApi.java C:\tmp\java\src\main\java\com\aspose\cad\cloud\model\requests\ || goto :error
 

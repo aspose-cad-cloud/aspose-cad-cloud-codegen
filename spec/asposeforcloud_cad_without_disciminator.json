@@ -5,7 +5,8 @@
     "title": "Aspose.CAD Cloud API Reference",
     "version": "3.0"
   },
-  "host": "api-qa.aspose.cloud",
+  "host": "api.aspose.cloud",
+  "basePath": "/v3.0",
   "consumes": [
     "application/json"
   ],
@@ -13,7 +14,7 @@
     "application/json"
   ],
   "paths": {
-    "/v3.0/cad/{name}/bmp": {
+    "/cad/{name}/bmp": {
       "post": {
         "tags": [
           "Cad"
@@ -97,7 +98,7 @@
         "x-operationId": "PostDrawingBmp"
       }
     },
-    "/v3.0/cad/bmp": {
+    "/cad/bmp": {
       "put": {
         "tags": [
           "Cad"
@@ -168,7 +169,7 @@
         "x-operationId": "PutDrawingBmp"
       }
     },
-    "/v3.0/cad/{name}/gif": {
+    "/cad/{name}/gif": {
       "post": {
         "tags": [
           "Cad"
@@ -252,7 +253,7 @@
         "x-operationId": "PostDrawingGif"
       }
     },
-    "/v3.0/cad/gif": {
+    "/cad/gif": {
       "put": {
         "tags": [
           "Cad"
@@ -323,7 +324,7 @@
         "x-operationId": "PutDrawingGif"
       }
     },
-    "/v3.0/cad/{name}/jpeg2000": {
+    "/cad/{name}/jpeg2000": {
       "post": {
         "tags": [
           "Cad"
@@ -407,7 +408,7 @@
         "x-operationId": "PostDrawingJpeg2000"
       }
     },
-    "/v3.0/cad/jpeg2000": {
+    "/cad/jpeg2000": {
       "put": {
         "tags": [
           "Cad"
@@ -478,7 +479,7 @@
         "x-operationId": "PutDrawingJpeg2000"
       }
     },
-    "/v3.0/cad/{name}/jpeg": {
+    "/cad/{name}/jpeg": {
       "post": {
         "tags": [
           "Cad"
@@ -562,7 +563,7 @@
         "x-operationId": "PostDrawingJpeg"
       }
     },
-    "/v3.0/cad/jpeg": {
+    "/cad/jpeg": {
       "put": {
         "tags": [
           "Cad"
@@ -633,7 +634,7 @@
         "x-operationId": "PutDrawingJpeg"
       }
     },
-    "/v3.0/cad/{name}/png": {
+    "/cad/{name}/png": {
       "post": {
         "tags": [
           "Cad"
@@ -717,7 +718,7 @@
         "x-operationId": "PostDrawingPng"
       }
     },
-    "/v3.0/cad/png": {
+    "/cad/png": {
       "put": {
         "tags": [
           "Cad"
@@ -788,7 +789,7 @@
         "x-operationId": "PutDrawingPng"
       }
     },
-    "/v3.0/cad/{name}/psd": {
+    "/cad/{name}/psd": {
       "post": {
         "tags": [
           "Cad"
@@ -872,7 +873,7 @@
         "x-operationId": "PostDrawingPsd"
       }
     },
-    "/v3.0/cad/psd": {
+    "/cad/psd": {
       "put": {
         "tags": [
           "Cad"
@@ -943,7 +944,7 @@
         "x-operationId": "PutDrawingPsd"
       }
     },
-    "/v3.0/cad/{name}/tiff": {
+    "/cad/{name}/tiff": {
       "post": {
         "tags": [
           "Cad"
@@ -1027,7 +1028,7 @@
         "x-operationId": "PostDrawingTiff"
       }
     },
-    "/v3.0/cad/tiff": {
+    "/cad/tiff": {
       "put": {
         "tags": [
           "Cad"
@@ -1098,7 +1099,7 @@
         "x-operationId": "PutDrawingTiff"
       }
     },
-    "/v3.0/cad/{name}/pdf": {
+    "/cad/{name}/pdf": {
       "post": {
         "tags": [
           "Cad"
@@ -1182,7 +1183,7 @@
         "x-operationId": "PostDrawingPdf"
       }
     },
-    "/v3.0/cad/pdf": {
+    "/cad/pdf": {
       "put": {
         "tags": [
           "Cad"
@@ -1253,7 +1254,7 @@
         "x-operationId": "PutDrawingPdf"
       }
     },
-    "/v3.0/cad/{name}/svg": {
+    "/cad/{name}/svg": {
       "post": {
         "tags": [
           "Cad"
@@ -1337,7 +1338,7 @@
         "x-operationId": "PostDrawingSvg"
       }
     },
-    "/v3.0/cad/svg": {
+    "/cad/svg": {
       "put": {
         "tags": [
           "Cad"
@@ -1408,7 +1409,7 @@
         "x-operationId": "PutDrawingSvg"
       }
     },
-    "/v3.0/cad/{name}/wmf": {
+    "/cad/{name}/wmf": {
       "post": {
         "tags": [
           "Cad"
@@ -1492,7 +1493,7 @@
         "x-operationId": "PostDrawingWmf"
       }
     },
-    "/v3.0/cad/wmf": {
+    "/cad/wmf": {
       "put": {
         "tags": [
           "Cad"
@@ -1563,7 +1564,7 @@
         "x-operationId": "PutDrawingWmf"
       }
     },
-    "/v3.0/cad/{name}/properties": {
+    "/cad/{name}/properties": {
       "get": {
         "tags": [
           "Cad"
@@ -1626,7 +1627,7 @@
         "x-operationId": "GetDrawingProperties"
       }
     },
-    "/v3.0/cad/properties": {
+    "/cad/properties": {
       "post": {
         "tags": [
           "Cad"
@@ -1675,7 +1676,7 @@
         "x-operationId": "PostDrawingProperties"
       }
     },
-    "/v3.0/cad/{name}/resize": {
+    "/cad/{name}/resize": {
       "get": {
         "tags": [
           "Cad"
@@ -1772,7 +1773,7 @@
         "x-operationId": "GetDrawingResize"
       }
     },
-    "/v3.0/cad/resize": {
+    "/cad/resize": {
       "post": {
         "tags": [
           "Cad"
@@ -1862,7 +1863,7 @@
         "x-operationId": "PostDrawingResize"
       }
     },
-    "/v3.0/cad/{name}/rotateflip": {
+    "/cad/{name}/rotateflip": {
       "get": {
         "tags": [
           "Cad"
@@ -1968,7 +1969,7 @@
         "x-operationId": "GetDrawingRotateFlip"
       }
     },
-    "/v3.0/cad/rotateflip": {
+    "/cad/rotateflip": {
       "post": {
         "tags": [
           "Cad"
@@ -2067,7 +2068,7 @@
         "x-operationId": "PostDrawingRotateFlip"
       }
     },
-    "/v3.0/cad/{name}/saveAs/{outputFormat}": {
+    "/cad/{name}/saveAs/{outputFormat}": {
       "get": {
         "tags": [
           "Cad"
@@ -2146,7 +2147,7 @@
         "x-operationId": "GetDrawingSaveAs"
       }
     },
-    "/v3.0/cad/saveAs/{outputFormat}": {
+    "/cad/saveAs/{outputFormat}": {
       "post": {
         "tags": [
           "Cad"
@@ -2218,7 +2219,7 @@
         "x-operationId": "PostDrawingSaveAs"
       }
     },
-    "/v3.0/cad/storage/file/{path}": {
+    "/cad/storage/file/{path}": {
       "get": {
         "tags": [
           "Cad"
@@ -2373,7 +2374,7 @@
         "x-operationId": "DeleteFile"
       }
     },
-    "/v3.0/cad/storage/file/copy/{srcPath}": {
+    "/cad/storage/file/copy/{srcPath}": {
       "put": {
         "tags": [
           "Cad"
@@ -2435,7 +2436,7 @@
         "x-operationId": "CopyFile"
       }
     },
-    "/v3.0/cad/storage/file/move/{srcPath}": {
+    "/cad/storage/file/move/{srcPath}": {
       "put": {
         "tags": [
           "Cad"
@@ -2500,7 +2501,7 @@
         "x-operationId": "MoveFile"
       }
     },
-    "/v3.0/cad/storage/folder/{path}": {
+    "/cad/storage/folder/{path}": {
       "get": {
         "tags": [
           "Cad"
@@ -2634,7 +2635,7 @@
         "x-operationId": "DeleteFolder"
       }
     },
-    "/v3.0/cad/storage/folder/copy/{srcPath}": {
+    "/cad/storage/folder/copy/{srcPath}": {
       "put": {
         "tags": [
           "Cad"
@@ -2689,7 +2690,7 @@
         "x-operationId": "CopyFolder"
       }
     },
-    "/v3.0/cad/storage/folder/move/{srcPath}": {
+    "/cad/storage/folder/move/{srcPath}": {
       "put": {
         "tags": [
           "Cad"
@@ -2744,7 +2745,7 @@
         "x-operationId": "MoveFolder"
       }
     },
-    "/v3.0/cad/storage/{storageName}/exist": {
+    "/cad/storage/{storageName}/exist": {
       "get": {
         "tags": [
           "Cad"
@@ -2781,7 +2782,7 @@
         "x-operationId": "StorageExists"
       }
     },
-    "/v3.0/cad/storage/exist/{path}": {
+    "/cad/storage/exist/{path}": {
       "get": {
         "tags": [
           "Cad"
@@ -2832,7 +2833,7 @@
         "x-operationId": "ObjectExists"
       }
     },
-    "/v3.0/cad/storage/disc": {
+    "/cad/storage/disc": {
       "get": {
         "tags": [
           "Cad"
@@ -2871,7 +2872,7 @@
         "x-operationId": "GetDiscUsage"
       }
     },
-    "/v3.0/cad/storage/version/{path}": {
+    "/cad/storage/version/{path}": {
       "get": {
         "tags": [
           "Cad"
@@ -3821,15 +3822,8 @@
             "PdfA1a",
             "PdfA1b"
           ]
-        },
-        "DigitalSignatureDetails": {
-          "$ref": "#/definitions/\b   "
         }
       }
-    },
-    "\b   ": {
-      "type": "object",
-      "additionalProperties": false
     },
     "SvgOptionsDTO": {
       "type": "object",
@@ -4233,7 +4227,7 @@
     "JWT": {
       "type": "oauth2",
       "flow": "application",
-      "tokenUrl": "/connect/token"
+      "tokenUrl": "/v3.0/connect/token"
     }
   }
 }
