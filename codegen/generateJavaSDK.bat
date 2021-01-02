@@ -1,15 +1,18 @@
-del /S /Q "c:\tmp\java" || goto :error
-java -jar codegen\swagger-codegen-cli-2.3.0.jar generate -i spec\asposeforcloud_cad_without_disciminator.json -l java -t codegen\Templates\java -o c:/tmp/java/ -c codegen\javaConfig.json || goto :error
+set sdkfolder=.\SDKS\Java
+set tmpfolder=c:\tmp\java
 
-codegen\Tools\SplitJavaCodeFile.exe C:\tmp\java\src\main\java\com\aspose\cad\cloud\api\cadApi.java C:\tmp\java\src\main\java\com\aspose\cad\cloud\model\requests\ || goto :error
+del /S /Q "%tmpfolder%" || goto :error
+copy /y codegen\Templates\java\.swagger-codegen-ignore %tmpfolder%\.swagger-codegen-ignore
+java -jar codegen\swagger-codegen-cli-2.4.5.jar generate -i spec\asposeforcloud_cad_without_disciminator.json -l java --import-mappings JfifData=JfifData -DsupportJava6=true -DdateLibrary=legacy -t codegen\Templates\Java -o %tmpfolder% -c codegen\javaConfig.json || goto :error
+
+codegen\Tools\SplitJavaCodeFile.exe %tmpfolder%\src\main\java\com\aspose\cad\cloud\api\cadApi.java %tmpfolder%\src\main\java\com\aspose\cad\cloud\model\requests\ || goto :error
 
 del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" || goto :error
 del /S /Q "SDKs\Java\src\main\java\com\aspose\cad\cloud\api\CadApi.java" || goto :error
-RD /S /Q "C:\tmp\java\src\test" || goto :error
 
-xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud" "SDKs\Java\src\main\java\com\aspose\cad\cloud" /E /Y || goto :error
-::xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\model" "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" /E || goto :error
-::xcopy "C:\tmp\java\src\main\java\com\aspose\cad\cloud\api" "SDKs\Java\src\main\java\com\aspose\cad\cloud\api" /E || goto :error
+xcopy "%tmpfolder%\docs" "SDKs\Java\docs" /E /Y || goto :error
+xcopy "%tmpfolder%\src\main\java\com\aspose\cad\cloud\model" "SDKs\Java\src\main\java\com\aspose\cad\cloud\model" /E || goto :error
+xcopy "%tmpfolder%\src\main\java\com\aspose\cad\cloud\api" "SDKs\Java\src\main\java\com\aspose\cad\cloud\api" /E || goto :error
 
 goto :EOF
 

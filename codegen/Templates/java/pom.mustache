@@ -6,36 +6,25 @@
     <packaging>jar</packaging>
     <name>{{artifactId}}</name>
     <version>{{artifactVersion}}</version>
-    <url>https://github.com/aspose-cad-cloud/aspose-cad-cloud-java</url>
-    <description>Aspose Cad for Cloud Java SDK</description>
+    <url>{{artifactUrl}}</url>
+    <description>{{artifactDescription}}</description>
     <licenses>
         <license>
-            <name>MIT License</name>
-            <url>https://opensource.org/licenses/mit-license.php</url>
+            <name>{{licenseName}}</name>
+            <url>{{licenseUrl}}</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <repositories>
-        <repository>
-            <id>aspose</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <url>https://artifact.aspose.cloud/repo/</url>
-        </repository>
-    </repositories>
+    
     <developers>
         <developer>
-            <name>Denis Demenko</name>
-            <email>denis.demenko@aspose.com</email>
-            <organization>Aspose</organization>
-            <organizationUrl>http://aspose.com</organizationUrl>
+            <name>{{developerName}}</name>
+            <email>{{developerEmail}}</email>
+            <organization>{{developerOrganization}}</organization>
+            <organizationUrl>{{developerOrganizationUrl}}</organizationUrl>
         </developer>
     </developers>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -61,7 +50,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12</version>
+                <version>2.13</version>
                 <configuration>
                     <systemProperties>
                         <property>
@@ -70,8 +59,13 @@
                         </property>
                     </systemProperties>
                     <argLine>-Xms512m -Xmx1500m</argLine>
-                    <parallel>methods</parallel>
-                    <forkMode>pertest</forkMode>
+                    <forkMode>never</forkMode>
+                    <forkCount>0</forkCount>
+                    <reuseForks>false</reuseForks>
+					<includes>
+					    <include>**/*Tests.java</include>
+                        <include>**/*Test.java</include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>
@@ -151,8 +145,8 @@
                     {{/java8}}
                     {{^java8}}
                         <source>
-                        1.7</source>
-                        <target>1.7</target>
+                        1.5</source>
+                        <target>1.5</target>
                     {{/java8}}
                 </configuration>
             </plugin>
@@ -160,6 +154,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.4</version>
+				<configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -184,10 +181,50 @@
             </plugin>
         </plugins>
     </build>
+	
+	<reporting>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>2.13</version>
+		  <configuration>
+              <outputDirectory>target/surefire-reports</outputDirectory>
+          </configuration>
+        </plugin>
+      </plugins>
+    </reporting>
 
     <profiles>
         <profile>
+		    <repositories>
+            	<repository>
+                	<id>mvnrepository</id>
+                	<name>mvnrepository</name>
+                	<url>http://www.mvnrepository.com</url>
+                	<snapshots>
+                    	<enabled>false</enabled>
+                	</snapshots>
+                	<releases>
+                    	<enabled>true</enabled>
+                	</releases>
+            	</repository>
+            	<repository>
+       				<id>AsposeJavaAPI</id>
+       				<name>Aspose Java API</name>
+       				<url>http://artifact.aspose.com/repo/</url>
+       				<snapshots>
+                    	<enabled>false</enabled>
+                	</snapshots>
+                	<releases>
+                    	<enabled>true</enabled>
+                	</releases>
+   				</repository>
+        	</repositories>
             <id>sign-artifacts</id>
+			<activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -210,25 +247,13 @@
     </profiles>
 
     <dependencies>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>${swagger-annotations-version}</version>
-        </dependency>
-
-        <!-- HTTP client: jersey-client -->
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>${jersey-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-multipart</artifactId>
-            <version>${jersey-version}</version>
-        </dependency>
-
-        <!-- JSON processing: jackson -->
+	
+		<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
+        </dependency> 
+	
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -248,6 +273,23 @@
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>${jackson-version}</version>
+        </dependency>
+		<dependency>
+      		<groupId>com.aspose</groupId>
+      		<artifactId>aspose-cloud-storage</artifactId>
+      		<version>1.0.1</version>
+      		<scope>compile</scope>
+		</dependency>
+		<dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
         </dependency>
         {{#withXml}}
 
@@ -273,13 +315,6 @@
                 <version>${jackson-version}</version>
             </dependency>
         {{/java8}}
-        {{#threetenbp}}
-            <dependency>
-                <groupId>com.github.joschi.jackson</groupId>
-                <artifactId>jackson-datatype-threetenbp</artifactId>
-                <version>${jackson-version}</version>
-            </dependency>
-        {{/threetenbp}}
         {{^java8}}
             <!-- Base64 encoding that works in both JVM and Android -->
             <dependency>
@@ -318,27 +353,18 @@
                 <scope>provided</scope>
             </dependency>
         {{/parcelableModel}}
-        <!-- test dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
-		 <!-- https://mvnrepository.com/artifact/com.aspose/aspose-cloud-storage -->
-        <dependency>
-            <groupId>com.aspose</groupId>
-            <artifactId>aspose-cloud-storage</artifactId>
-            <version>1.0.2</version>
-        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <swagger-annotations-version>1.5.17</swagger-annotations-version>
-        <jersey-version>1.19.4</jersey-version>
         {{#supportJava6}}
-        <commons_io_version>2.5</commons_io_version>
-        <commons_lang3_version>3.6</commons_lang3_version>
+            <commons_io_version>2.5</commons_io_version>
+            <commons_lang3_version>3.6</commons_lang3_version>
         {{/supportJava6}}
         <jackson-version>{{^threetenbp}}2.7.5{{/threetenbp}}{{#threetenbp}}2.6.4{{/threetenbp}}</jackson-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>

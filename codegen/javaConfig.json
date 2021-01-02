@@ -1,9 +1,12 @@
 {
-	"groupId": "com.aspose.cad.cloud",
+    "invokerPackage":"com.aspose.cad.cloud.invoker",
+	"apiPackage":"com.aspose.cad.cloud.api",
+	"groupId": "com.aspose.cad.cloud",	
+    "testPackage":"com.aspose.cad.cloud.test.api",
 	"modelPackage": "com.aspose.cad.cloud.model",
 	"package": "com.aspose.cad.cloud",
 	"apiPackage": "com.aspose.cad.cloud.api",
-	"artifactId": "AsposeCadCloud",
-	"artifactVersion":"19.9",
+	"artifactId": "aspose-cad-cloud",
+	"artifactVersion": "20.11",
 	"library": "okhttp-gson"
 }

@@ -1,116 +1,214 @@
 {{>licenseInfo}}
 package {{package}};
 
-import com.sun.jersey.api.client.GenericType;
-
-import {{invokerPackage}}.ApiException;
-import {{invokerPackage}}.ApiClient;
-import {{invokerPackage}}.Configuration;
 import {{modelPackage}}.*;
+import {{invokerPackage}}.*;
+import {{invokerPackage}}.internal.*;
+import {{invokerPackage}}.internal.requesthandlers.*;
 import {{modelPackage}}.requests.*;
-import {{invokerPackage}}.Pair;
 
-{{#imports}}import {{import}};
-{{/imports}}
-
-
+import java.io.File;
 {{^fullJavaUtil}}
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 {{/fullJavaUtil}}
 
-{{>generatedAnnotation}}
-{{#operations}}
-public class {{classname}} {
-    private ApiClient {{localVariablePrefix}}apiClient;
+/**
+ * Aspose.CAD Cloud API
+ */
+public class {{classname}} 
+{
+    /**
+     * Current SDK version
+     */
+    public static final String Version = "{{artifactVersion}}";
 
-    public {{classname}}() {
-      this(Configuration.getDefaultApiClient());
+    /**
+     * The configuration
+     */
+    public Configuration Configuration;
+    
+    /**
+     * The API invoker
+     */
+    private ApiInvoker apiInvoker;
+       
+    /**
+     * Initializes a new instance of the {{classname}} class for on-premise deployment service usage.
+     *  @param baseUrl The base URL.
+     */
+    public {{classname}}(String baseUrl)
+    {
+        Configuration config = new Configuration();
+        config.setApiBaseUrl(baseUrl);
+        config.OnPremise = true;
+        this.init{{classname}}(config);
     }
 
-    public {{classname}}(ApiClient apiClient) {
-      this.{{localVariablePrefix}}apiClient = apiClient;
+    /**
+     * Initializes a new instance of the {{classname}} class for Aspose Cloud-hosted service usage.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
+     */
+    public {{classname}}(String clientSecret, String clientId)
+    {
+        Configuration config = new Configuration();
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
+        this.init{{classname}}(config);
+    }
+    
+    /**
+     * Initializes a new instance of the {{classname}} class for on-premise deployment service usage.
+     *  @param baseUrl The base URL.
+     *  @param apiVersion API version.
+     *  @param debug If debug mode is enabled.
+     * @throws Exception 
+     */
+    public {{classname}}(String baseUrl, String apiVersion, Boolean debugMode) throws Exception
+    {
+        Configuration config = new Configuration();
+        config.setApiBaseUrl(baseUrl);
+        config.setApiVersion(apiVersion);
+        config.setDebugMode(debugMode);
+        config.OnPremise = true;
+        this.init{{classname}}(config);
     }
 
-    public ApiClient getApiClient() {
-      return {{localVariablePrefix}}apiClient;
+    /**
+     * Initializes a new instance of the {{classname}} class for Aspose Cloud-hosted service usage.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
+     * @param baseUrl The base URL.
+     */
+    public {{classname}}(String clientSecret, String clientId, String baseUrl)
+    {
+        Configuration config = new Configuration();
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
+        config.setApiBaseUrl(baseUrl);
+        this.init{{classname}}(config);
     }
 
-    public void setApiClient(ApiClient apiClient) {
-      this.{{localVariablePrefix}}apiClient = apiClient;
+    /**
+     * Initializes a new instance of the {{classname}} class for Aspose Cloud-hosted service usage.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
+     * @param baseUrl The base URL.
+     * @param apiVersion API version.
+     */
+    public {{classname}}(String clientSecret, String clientId, String baseUrl, String apiVersion) throws Exception
+    {
+        Configuration config = new Configuration();
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
+        config.setApiBaseUrl(baseUrl);
+        config.setApiVersion(apiVersion);
+        this.init{{classname}}(config);
     }
 
+    /**
+     * Initializes a new instance of the {{classname}} class for Aspose Cloud-hosted service usage.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
+     * @param baseUrl The base URL.
+     * @param apiVersion API version.
+     * @param debug If debug mode is enabled.
+     */
+    public {{classname}}(String clientSecret, String clientId, String baseUrl, String apiVersion, Boolean debug) throws Exception
+    {
+        Configuration config = new Configuration();
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
+        config.setApiBaseUrl(baseUrl);
+        config.setApiVersion(apiVersion);
+        config.setDebugMode(debug);
+        this.init{{classname}}(config);
+    }
+    
+    /**
+     * Initializes a new instance of the {{classname}} class.
+     * @param configuration Configuration settings.
+     */
+    private void init{{classname}}(Configuration configuration)
+    {
+        this.Configuration = configuration;
+        int handlersCount = configuration.OnPremise ? 2 : 3;
+        IRequestHandler[] requestHandlers = new IRequestHandler[handlersCount];
+        requestHandlers[--handlersCount] = new ApiExceptionRequestHandler();
+        requestHandlers[--handlersCount] = new DebugLogRequestHandler(this.Configuration);
+        if (!configuration.OnPremise)
+        {
+            requestHandlers[--handlersCount] = new AuthRequestHandler(this.Configuration);
+        }
+        
+        this.apiInvoker = new ApiInvoker(requestHandlers, this.Configuration);
+    }
+    
+    {{#operations}}
     {{#operation}}
     /**
      * {{summary}}
+     * {{notes}}
+     * @param request Holds parameters for this request invocation.
+     {{#returnType}}
+     * @return {{#vendorExtensions}}{{#x-binary-result}}byte[]{{/x-binary-result}}{{^x-binary-result}}{{returnType}}{{/x-binary-result}}{{/vendorExtensions}}
+     {{/returnType}}
+     * @throws Exception 
+     {{#isDeprecated}}
+     * @deprecated
+     {{/isDeprecated}}
+     {{#externalDocs}}
+     * {{description}}
+     * @see <a href="{{url}}">{{summary}} Documentation</a>
+     {{/externalDocs}}
      */
-    public {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}} {{operationId}}({{vendorExtensions.x-operationId}}Request request) throws ApiException {
-        Object {{localVariablePrefix}}localVarPostBody = {{#bodyParam}}request.get{{baseName}}(){{/bodyParam}}{{^bodyParam}}null{{/bodyParam}};
-        {{#allParams}}{{#required}}
-        // verify the required parameter '{{baseName}}' is set
-        if (request.get{{baseName}}() == null) {
-          throw new ApiException(400, "Missing the required parameter '{{baseName}}' when calling {{operationId}}");
-        }
-        {{/required}}{{/allParams}}
-        // create path and map variables
-        String {{localVariablePrefix}}localVarPath = "{{{path}}}"{{#pathParams}}
-          .replaceAll("\\{" + "{{{paramName}}}" + "\\}", {{localVariablePrefix}}apiClient.escapeString(request.get{{baseName}}().toString())){{/pathParams}};
-        
-        // query params
-        {{javaUtilPrefix}}List<Pair> {{localVariablePrefix}}localVarQueryParams = new {{javaUtilPrefix}}ArrayList<Pair>();
-        {{javaUtilPrefix}}List<Pair> {{localVariablePrefix}}localVarCollectionQueryParams = new {{javaUtilPrefix}}ArrayList<Pair>();
-        {{javaUtilPrefix}}Map<String, String> {{localVariablePrefix}}localVarHeaderParams = new {{javaUtilPrefix}}HashMap<String, String>();
-        {{javaUtilPrefix}}Map<String, Object> {{localVariablePrefix}}localVarFormParams = new {{javaUtilPrefix}}HashMap<String, Object>();
-        
-        {{#queryParams}}
-        {{localVariablePrefix}}localVarPath = addParameterToQuery(localVarQueryParams, localVarPath, "{{baseName}}", request.get{{baseName}}());
-        {{/queryParams}}
-        
-        {{#headerParams}}if (request.get{{baseName}}() != null)
-          {{localVariablePrefix}}localVarHeaderParams.put("{{baseName}}", {{localVariablePrefix}}apiClient.parameterToString(request.get{{baseName}}()));
-        {{/headerParams}}
-        
-        {{#formParams}}if (request.get{{baseName}}() != null)
-          {{localVariablePrefix}}localVarFormParams.put("{{baseName}}", request.get{{baseName}}());
-        {{/formParams}}
-        
-        final String[] {{localVariablePrefix}}localVarAccepts = {
-          {{#produces}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/produces}}
-        };
-        final String {{localVariablePrefix}}localVarAccept = {{localVariablePrefix}}apiClient.selectHeaderAccept({{localVariablePrefix}}localVarAccepts);
-        
-        final String[] {{localVariablePrefix}}localVarContentTypes = {
-          {{#consumes}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/consumes}}
-        };
-        String {{localVariablePrefix}}localVarContentType = {{localVariablePrefix}}apiClient.selectHeaderContentType({{localVariablePrefix}}localVarContentTypes);
-		if ({{localVariablePrefix}}localVarFormParams.size() > 0) {
-            {{localVariablePrefix}}localVarContentType = "multipart/form-data";
-        }
-        
-        String[] {{localVariablePrefix}}localVarAuthNames = new String[] { {{#authMethods}}"{{name}}"{{#hasMore}}, {{/hasMore}}{{/authMethods}} };
-        
-        {{#returnType}}
-        GenericType<{{{returnType}}}> {{localVariablePrefix}}localVarReturnType = new GenericType<{{{returnType}}}>() {};
-        return {{localVariablePrefix}}apiClient.invokeAPI({{localVariablePrefix}}localVarPath, "{{httpMethod}}", {{localVariablePrefix}}localVarQueryParams, {{localVariablePrefix}}localVarCollectionQueryParams,              {{localVariablePrefix}}localVarPostBody, {{localVariablePrefix}}localVarHeaderParams, {{localVariablePrefix}}localVarFormParams, {{localVariablePrefix}}localVarAccept, {{localVariablePrefix}}localVarContentType,   {{localVariablePrefix}}localVarAuthNames, {{localVariablePrefix}}localVarReturnType);
-        {{/returnType}}{{^returnType}}
-        {{localVariablePrefix}}apiClient.invokeAPI({{localVariablePrefix}}localVarPath, "{{httpMethod}}", {{localVariablePrefix}}localVarQueryParams, {{localVariablePrefix}}localVarCollectionQueryParams, {{localVariablePrefix}}localVarPostBody, {{localVariablePrefix}}localVarHeaderParams, {{localVariablePrefix}}localVarFormParams, {{localVariablePrefix}}localVarAccept, {{localVariablePrefix}}localVarContentType, {{localVariablePrefix}}localVarAuthNames, null);
-        {{/returnType}}
+    {{#isDeprecated}}
+    @Deprecated
+    {{/isDeprecated}}
+    public {{#returnType}}{{#vendorExtensions}}{{#x-binary-result}}byte[]{{/x-binary-result}}{{^x-binary-result}}{{returnType}}{{/x-binary-result}}{{/vendorExtensions}}{{/returnType}}{{^returnType}}void{{/returnType}} {{operationId}}({{vendorExtensions.x-operationId}}Request request) throws Exception 
+    {
+      {{#allParams}}{{#required}} // verify the required parameter 'request.{{paramName}}' is set
+      if (request.{{baseName}}== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.{{paramName}}' when calling {{operationId}}");
+      }
+      {{/required}}{{/allParams}}// create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "{{path}}";
+      {{#headerParams}}{{#-first}}HashMap<String,String> headerParams = new HashMap<String,String>();{{/-first}}{{/headerParams}}
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      {{#pathParams}}resourcePath = UrlHelper.addPathParameter(resourcePath, "{{paramName}}", request.{{baseName}});
+      {{/pathParams}}{{#queryParams}}
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "{{paramName}}", request.{{baseName}});{{/queryParams}}
+      {{#headerParams}}if (request.{{paramName}} != null) 
+      {
+          headerParams.Add("{{paramName}}", this.apiInvoker.toPathValue(request.{{baseName}})); // header parameter
+      }{{/headerParams}}
+      {{#hasBodyParam}}String postBody = SerializationHelper.serialize(request.{{bodyParam.baseName}});
+      {{/hasBodyParam}}
+      {{#formParams}}if (request.{{baseName}} != null) 
+      {
+          {{#isFile}}formParams.put("{{paramName}}", this.apiInvoker.toFileInfo(request.{{baseName}}, "{{baseName}}"));{{/isFile}}{{^isFile}}formParams.put("{{baseName}}", request.{{baseName}});{{/isFile}}
+      }{{/formParams}}
+      {{#vendorExtensions}}
+      {{#returnType}}byte[] response = {{/returnType}}this.apiInvoker.invokeApi(
+          resourcePath, 
+          "{{httpMethod}}", 
+          {{#hasBodyParam}}postBody{{/hasBodyParam}}{{^hasBodyParam}}null{{/hasBodyParam}}, 
+          {{#hasHeaderParams}}headerParams{{/hasHeaderParams}}{{^hasHeaderParams}}null{{/hasHeaderParams}}, 
+          formParams);
+          
+      {{#returnType}}
+      {{#x-binary-result}}return response;{{/x-binary-result}}
+      {{^x-binary-result}}if (response == null)
+      {
+          return null;
+      }
+      
+      return SerializationHelper.deserialize(new String(response), {{returnType}}.class);{{/x-binary-result}}
+      {{/returnType}}
+      {{/vendorExtensions}}
     }
-  {{/operation}}  
-    private String addParameterToQuery(List<Pair> queryParams, String path, String paramName, Object paramValue){
-        if (path.contains("{" + paramName + "}")){
-            if (paramValue == null || paramValue == ""){
-                return path.replace("{" + paramName + "}", "");
-            }else {
-                return path.replace("{" + paramName + "}", paramValue.toString());
-            }
-        }
-
-        queryParams.addAll(apiClient.parameterToPair(paramName, paramValue));
-        return path;
-    }
+  
+    {{/operation}}
+    {{/operations}}
 }
-{{/operations}}
 {{>requestModel}}

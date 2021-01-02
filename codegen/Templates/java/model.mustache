@@ -2,35 +2,20 @@
 
 package {{package}};
 
+import java.io.IOException;
 {{^supportJava6}}
 import java.util.Objects;
-import java.util.Arrays;
 {{/supportJava6}}
 {{#supportJava6}}
 import org.apache.commons.lang3.ObjectUtils;
 {{/supportJava6}}
-{{#imports}}
-import {{import}};
-{{/imports}}
-{{#serializableModel}}
-import java.io.Serializable;
-{{/serializableModel}}
-{{#jackson}}
-{{#withXml}}
-import com.fasterxml.jackson.dataformat.xml.annotation.*;
-{{/withXml}}
-{{/jackson}}
-{{#withXml}}
-import javax.xml.bind.annotation.*;
-{{/withXml}}
-{{#parcelableModel}}
-import android.os.Parcelable;
-import android.os.Parcel;
-{{/parcelableModel}}
-{{#useBeanValidation}}
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-{{/useBeanValidation}}
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.*;
+import com.google.gson.stream.*;
+import com.google.gson.annotations.*;
 
 {{#models}}
 {{#model}}
