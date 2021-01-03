@@ -12,6 +12,12 @@ namespace SplitPhpCodeFile
     {
         private static void Main(string[] args)
         {
+            // args = new[]
+            // {
+            //     @"c:\tmp\php\SwaggerClient-php\lib\Api\cadApi.php",
+            //     @"c:\tmp\php\SwaggerClient-php\lib\model\requests"
+            // };
+            
             string path = args[0];
             string text = args[1];
             if (!Directory.Exists(text))
@@ -26,11 +32,11 @@ namespace SplitPhpCodeFile
                 string str = matchCollection[i].Groups[1] + ".php";
                 string text4 = matchCollection[i].Groups[1].ToString();
                 string text5 = char.ToUpper(text4[0]).ToString() + text4.Substring(1);
-                int startIndex = text2.IndexOf("file=\"" + str + "\"") - 158;
+                int startIndex = text2.IndexOf("file=\"" + str + "\"") - 164;
                 text3 = text2.Substring(startIndex);
                 text2 = text2.Substring(0, text2.Length - text3.Length);
                 text3 = text3.Replace(text4, text5);
-                File.WriteAllText(text + text5 + ".php", string.Format("<?php\n{0}", text3));
+                File.WriteAllText(text + text5 + ".php", string.Format("{0}", text3));
             }
             File.WriteAllText(path, text2);
         }
