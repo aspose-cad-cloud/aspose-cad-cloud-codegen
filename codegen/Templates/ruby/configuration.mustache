@@ -40,9 +40,6 @@ module {{moduleName}}
     # Defines v3 api version
     V3_API_VERSION = '/v3.0'.freeze
     
-    # Defines v1.1 api version
-    V1_1_API_VERSION = '/v1.1'.freeze
-    
     # Defines url scheme
     attr_accessor :scheme
 
@@ -155,7 +152,7 @@ module {{moduleName}}
     # returns base url
     def base_url
       url = "#{scheme}://#{[host, api_version].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
-      URI.encode(url)
+      return URI::Parser.new.escape url
     end
 
     # Gets API key (with prefix if set).

@@ -45,7 +45,7 @@ module {{moduleName}}
     # @param request {{operationId}}_request
     # @return [{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}]
     def {{operationId}}(request)
-      {{#returnType}}data, _status_code, _headers = {{/returnType}}{{operationId}}_with_http_info(request)
+      data, _status_code, _headers = {{operationId}}_with_http_info(request)
       request_token if _status_code == 401
       {{#returnType}}data{{/returnType}}{{^returnType}}nil{{/returnType}}
     end
@@ -168,7 +168,7 @@ module {{moduleName}}
       {{/required}}
       {{/formParams}}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
