@@ -1,5 +1,5 @@
 {
-  "x-generator": "NSwag v12.0.14.0 (NJsonSchema v9.13.18.0 (Newtonsoft.Json v12.0.0.0))",
+  "x-generator": "NSwag v12.3.1.0 (NJsonSchema v9.14.1.0 (Newtonsoft.Json v13.0.0.0))",
   "swagger": "2.0",
   "info": {
     "title": "Aspose.CAD Cloud API Reference",
@@ -1564,6 +1564,626 @@
         "x-operationId": "PutDrawingWmf"
       }
     },
+    "/cad/{name}/dwf": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to Dwf format with export settings specified.",
+        "operationId": "PostDrawingDwf",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Dwf options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/DwfOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingDwf"
+      }
+    },
+    "/cad/dwf": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Dwf format. Drawing data is passed as zero-indexed multipart/form-data as well as export Dwf options serialized as JSON.\nOrder of drawing data and Dwf options could vary.",
+        "operationId": "PutDrawingDwf",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/DwfOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "DwfOptionsDTO",
+        "x-operationId": "PutDrawingDwf"
+      }
+    },
+    "/cad/{name}/dxf": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to DXF format with export settings specified.",
+        "operationId": "PostDrawingDXF",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export DXF options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/DxfOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingDXF"
+      }
+    },
+    "/cad/dxf": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to DXF format. Drawing data is passed as zero-indexed multipart/form-data as well as export DXF options serialized as JSON.\nOrder of drawing data and DXF options could vary.",
+        "operationId": "PutDrawingDXF",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/DxfOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "DxfOptionsDTO",
+        "x-operationId": "PutDrawingDXF"
+      }
+    },
+    "/cad/{name}/fbx": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to Fbx format with export settings specified.",
+        "operationId": "PostDrawingFbx",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Fbx options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/FbxOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingFbx"
+      }
+    },
+    "/cad/fbx": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Fbx format. Drawing data is passed as zero-indexed multipart/form-data as well as export Fbx options serialized as JSON.\nOrder of drawing data and Fbx options could vary.",
+        "operationId": "PutDrawingFbx",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/FbxOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "FbxOptionsDTO",
+        "x-operationId": "PutDrawingFbx"
+      }
+    },
+    "/cad/{name}/obj": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to Obj format with export settings specified.",
+        "operationId": "PostDrawingObj",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Obj options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/ObjOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingObj"
+      }
+    },
+    "/cad/obj": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Obj format. Drawing data is passed as zero-indexed multipart/form-data as well as export Obj options serialized as JSON.\nOrder of drawing data and Obj options could vary.",
+        "operationId": "PutDrawingObj",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/ObjOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "ObjOptionsDTO",
+        "x-operationId": "PutDrawingObj"
+      }
+    },
     "/cad/{name}/properties": {
       "get": {
         "tags": [
@@ -2949,10 +3569,8 @@
                 "Bitfields",
                 "Jpeg",
                 "Png",
-                "AlphaBitfields"
-              ],
-              "allOf": [
-                {}
+                "AlphaBitfields",
+                "Dxt1"
               ]
             }
           }
@@ -2988,9 +3606,6 @@
             "Rotate90FlipXY",
             "Rotate180FlipXY",
             "Rotate270FlipXY"
-          ],
-          "allOf": [
-            {}
           ]
         },
         "Layers": {
@@ -3088,9 +3703,6 @@
               "enum": [
                 "UseDrawColor",
                 "UseObjectColor"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "NoScaling": {
@@ -3437,9 +4049,6 @@
                 "Progressive",
                 "Lossless",
                 "JpegLs"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "ColorType": {
@@ -3450,9 +4059,6 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "Quality": {
@@ -3542,9 +4148,6 @@
                 "IndexedColor",
                 "GrayscaleWithAlpha",
                 "TruecolorWithAlpha"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "Progressive": {
@@ -3560,9 +4163,6 @@
                 "Avg",
                 "Paeth",
                 "Adaptive"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "CompressionLevel": {
@@ -3611,9 +4211,6 @@
                 "RLE",
                 "ZipWithoutPrediction",
                 "ZipWithPrediction"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "ColorMode": {
@@ -3627,9 +4224,6 @@
                 "Multichannel",
                 "Duotone",
                 "Lab"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "ChannelBitsCount": {
@@ -3668,9 +4262,6 @@
               "enum": [
                 "LittleEndian",
                 "BigEndian"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "Compression": {
@@ -3700,9 +4291,6 @@
                 "Sgilog",
                 "Sgilog24",
                 "Jp2000"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "ExpectedFormat": {
@@ -3724,9 +4312,6 @@
                 "TiffNoCompressionBw",
                 "TiffNoCompressionRgb",
                 "TiffNoCompressionRgba"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "BitsPerSample": {
@@ -3751,9 +4336,6 @@
                 "Itulab",
                 "Logl",
                 "Logluv"
-              ],
-              "allOf": [
-                {}
               ]
             }
           }
@@ -3822,8 +4404,245 @@
             "PdfA1a",
             "PdfA1b"
           ]
+        },
+        "DigitalSignatureDetails": {
+          "$ref": "#/definitions/PdfDigitalSignatureDetailsCore"
         }
       }
+    },
+    "PdfDigitalSignatureDetailsCore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "SignatureDate",
+        "HashAlgorithm"
+      ],
+      "properties": {
+        "Certificate": {
+          "$ref": "#/definitions/X509Certificate2"
+        },
+        "Reason": {
+          "type": "string"
+        },
+        "Location": {
+          "type": "string"
+        },
+        "SignatureDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "HashAlgorithm": {
+          "enum": [
+            "Sha1",
+            "Sha256",
+            "Sha384",
+            "Sha512",
+            "Md5"
+          ]
+        }
+      }
+    },
+    "X509Certificate2": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/X509Certificate"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Archived",
+            "HasPrivateKey",
+            "NotAfter",
+            "NotBefore",
+            "Version"
+          ],
+          "properties": {
+            "Archived": {
+              "type": "boolean"
+            },
+            "Extensions": {
+              "type": "array",
+              "items": {}
+            },
+            "FriendlyName": {
+              "type": "string"
+            },
+            "HasPrivateKey": {
+              "type": "boolean"
+            },
+            "PrivateKey": {
+              "$ref": "#/definitions/AsymmetricAlgorithm"
+            },
+            "IssuerName": {
+              "$ref": "#/definitions/X500DistinguishedName"
+            },
+            "NotAfter": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "NotBefore": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "PublicKey": {
+              "$ref": "#/definitions/PublicKey"
+            },
+            "RawData": {
+              "type": "string",
+              "format": "byte"
+            },
+            "SerialNumber": {
+              "type": "string"
+            },
+            "SignatureAlgorithm": {
+              "$ref": "#/definitions/Oid"
+            },
+            "SubjectName": {
+              "$ref": "#/definitions/X500DistinguishedName"
+            },
+            "Thumbprint": {
+              "type": "string"
+            },
+            "Version": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      ]
+    },
+    "AsymmetricAlgorithm": {
+      "type": "object",
+      "x-abstract": true,
+      "additionalProperties": false,
+      "required": [
+        "KeySize"
+      ],
+      "properties": {
+        "KeySize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "LegalKeySizes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeySizes"
+          }
+        },
+        "SignatureAlgorithm": {
+          "type": "string"
+        },
+        "KeyExchangeAlgorithm": {
+          "type": "string"
+        }
+      }
+    },
+    "KeySizes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "MinSize",
+        "MaxSize",
+        "SkipSize"
+      ],
+      "properties": {
+        "MinSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "MaxSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "SkipSize": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "X500DistinguishedName": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AsnEncodedData"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Name": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AsnEncodedData": {
+      "type": "object",
+      "discriminator": "Type",
+      "additionalProperties": false,
+      "properties": {
+        "Oid": {
+          "$ref": "#/definitions/Oid"
+        },
+        "RawData": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "Oid": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Value": {
+          "type": "string"
+        },
+        "FriendlyName": {
+          "type": "string"
+        }
+      }
+    },
+    "PublicKey": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "EncodedKeyValue": {
+          "$ref": "#/definitions/AsnEncodedData"
+        },
+        "EncodedParameters": {
+          "$ref": "#/definitions/AsnEncodedData"
+        },
+        "Key": {
+          "$ref": "#/definitions/AsymmetricAlgorithm"
+        },
+        "Oid": {
+          "$ref": "#/definitions/Oid"
+        }
+      }
+    },
+    "X509Certificate": {
+      "type": "object",
+      "discriminator": "Type",
+      "additionalProperties": false,
+      "required": [
+        "Handle"
+      ],
+      "properties": {
+        "Handle": {
+          "$ref": "#/definitions/IntPtr"
+        },
+        "Issuer": {
+          "type": "string"
+        },
+        "Subject": {
+          "type": "string"
+        }
+      }
+    },
+    "IntPtr": {
+      "type": "object",
+      "additionalProperties": false
     },
     "SvgOptionsDTO": {
       "type": "object",
@@ -3850,9 +4669,6 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ],
-              "allOf": [
-                {}
               ]
             },
             "TextAsShapes": {
@@ -3885,6 +4701,66 @@
               "format": "int32"
             }
           }
+        }
+      ]
+    },
+    "DwfOptionsDTO": {
+      "type": "object",
+      "description": "Export options for DWF format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for DWF format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DxfOptionsDTO": {
+      "type": "object",
+      "description": "Export options for DXF format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for DXF format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "FbxOptionsDTO": {
+      "type": "object",
+      "description": "Export options for FBX format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for FBX format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ObjOptionsDTO": {
+      "type": "object",
+      "description": "Export options for FBX format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for FBX format",
+          "additionalProperties": false
         }
       ]
     },
@@ -3963,12 +4839,33 @@
           ],
           "$ref": "#/definitions/DwfProperties"
         },
-        "Cff2Properties": {
-          "description": "Gets or sets the CFF2 properties.",
+        "Cf2Properties": {
+          "description": "Gets or sets the Cf2 properties.",
           "allOf": [
             {}
           ],
-          "$ref": "#/definitions/Cff2Properties"
+          "$ref": "#/definitions/Cf2Properties"
+        },
+        "FbxProperties": {
+          "description": "Gets or sets the Cf2 properties.",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/FbxProperties"
+        },
+        "ObjProperties": {
+          "description": "Gets or sets the FBX properties.",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/ObjProperties"
+        },
+        "PltProperties": {
+          "description": "Gets or sets the Cf2 properties.",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/PltProperties"
         }
       }
     },
@@ -4007,9 +4904,24 @@
       "description": "Represents information about DWF drawing.",
       "additionalProperties": false
     },
-    "Cff2Properties": {
+    "Cf2Properties": {
       "type": "object",
-      "description": "Represents information about CFF2 drawing.",
+      "description": "Represents information about CF2 drawing.",
+      "additionalProperties": false
+    },
+    "FbxProperties": {
+      "type": "object",
+      "description": "Represents information about FBX drawing.",
+      "additionalProperties": false
+    },
+    "ObjProperties": {
+      "type": "object",
+      "description": "Represents information about OBJ drawing.",
+      "additionalProperties": false
+    },
+    "PltProperties": {
+      "type": "object",
+      "description": "Represents information about PLT drawing.",
       "additionalProperties": false
     },
     "FilesUploadResult": {
@@ -4226,8 +5138,10 @@
   "securityDefinitions": {
     "JWT": {
       "type": "oauth2",
+      "description": "Use your client_id/client_secret from https://dashboard.aspose.cloud site",
+      "name": "JWT",
       "flow": "application",
-      "tokenUrl": "/v3.0/connect/token"
+      "tokenUrl": "https://api.aspose.cloud/connect/token"
     }
   }
 }
