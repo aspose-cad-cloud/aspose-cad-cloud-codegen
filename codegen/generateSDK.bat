@@ -2,12 +2,15 @@
 ::powershell -Command Invoke-WebRequest -OutFile spec\asposeforcloud_cad.json https://api-qa.aspose.cloud/v3.0/cad/swagger/sdkspec
 ::powershell -Command Invoke-WebRequest -OutFile spec\asposeforcloud_cad_without_disciminator.json https://api-qa.aspose.cloud/v3.0/cad/swagger/sdkspec
 
-::call codegen\generateNodeJsSDK ||  goto :error
-::call codegen\generateNetSDK ||  goto :error
-call codegen\generatePhpSDK ||  goto :error
-::call codegen\generateRubySDK ||  goto :error
-::call codegen\generatePythonSDK||  goto :error
-::call codegen\generateJavaSDK || goto :error
+REM powershell -Command Invoke-WebRequest -OutFile ..\spec\asposeforcloud_cad.json https://localhost:5003/v3.0/cad/swagger/spec
+REM powershell -Command Invoke-WebRequest -OutFile ..\spec\asposeforcloud_cad_without_disciminator.json https://localhost:5003/v3.0/cad/swagger/sdkspec
+
+call generateNodeJsSDK ||  goto :error
+call generateNetSDK ||  goto :error
+call generatePhpSDK ||  goto :error
+call generateRubySDK ||  goto :error
+call generatePythonSDK||  goto :error
+call generateJavaSDK || goto :error
 
 goto :EOF
 
@@ -15,10 +18,4 @@ goto :EOF
 echo Failed with error #%errorlevel%.
 exit /b %errorlevel%
 
-
-
-
-
-
-
-
+:EOF

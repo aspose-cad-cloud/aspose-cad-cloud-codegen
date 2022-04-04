@@ -1,1 +1,3 @@
-call codegen\generateSDK ||  goto :error
+cd codegen
+call generateSDK
+cd ..

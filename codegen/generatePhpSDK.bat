@@ -1,19 +1,22 @@
-set sdkfolder=.\SDKs\PHP
-set tmpfolder=c:\tmp\php
+echo OFF
+echo "======= PHP ======="
 
-del /S /Q "c:\tmp\php" || goto :error
-java -jar codegen\swagger-codegen-cli-2.4.5.jar generate -i spec\asposeforcloud_cad_without_disciminator.json -l php -t codegen\Templates\php -o c:/tmp/php/ --invoker-package Aspose\CAD --model-package Model --api-package Api || goto :error
+set sdkfolder=..\SDKs\PHP
+set tmpfolder=C:\tmp\PHP
 
-codegen\Tools\SplitPhpCodeFile.exe C:\tmp\php\SwaggerClient-php\lib\Api\CADApi.php C:\tmp\php\SwaggerClient-php\lib\Model\Requests\ || goto :error
+if exist %tmpfolder% del /S /Q "%tmpfolder%" || goto :error
+java -jar swagger-codegen-cli-2.4.5.jar generate -i ..\spec\asposeforcloud_cad_without_disciminator.json -l php -t Templates\php -o "%tmpfolder%" --invoker-package Aspose\CAD --model-package Model --api-package Api || goto :error
 
-del /S /Q "%sdkfolder%\docs" || goto :error
-del /S /Q "SDKs\PHP\src\Aspose\CAD\Model" || goto :error
-del /S /Q "SDKs\PHP\src\Aspose\CAD\CadApi.php" || goto :error
+Tools\SplitPhpCodeFile.exe %tmpfolder%\SwaggerClient-php\lib\Api\CADApi.php %tmpfolder%\SwaggerClient-php\lib\Model\Requests\ || goto :error
+
+if exist "%sdkfolder%\docs" del /S /Q "%sdkfolder%\docs" || goto :error
+if exist "%sdkfolder%\src\Aspose\CAD\Model" del /S /Q "%sdkfolder%\src\Aspose\CAD\Model" || goto :error
+if exist "%sdkfolder%\src\Aspose\CAD\CadApi.php" del /S /Q "%sdkfolder%\src\Aspose\CAD\CadApi.php" || goto :error
 
 xcopy "%tmpfolder%\SwaggerClient-php\docs\Api" "%sdkfolder%\docs\" /E || goto :error
 xcopy "%tmpfolder%\SwaggerClient-php\docs\Model" "%sdkfolder%\docs\" /E || goto :error
-xcopy "%tmpfolder%\SwaggerClient-php\lib\Model" "SDKs\PHP\src\Aspose\CAD\Model" /E || goto :error
-del /S /Q "C:\tmp\php\SwaggerClient-php\lib\Model" || goto :error
-rmdir "C:\tmp\php\SwaggerClient-php\lib\Model\Requests" || goto :error
-rmdir "C:\tmp\php\SwaggerClient-php\lib\Model" || goto :error
-xcopy "C:\tmp\php\SwaggerClient-php\lib\Api" "SDKs\PHP\src\Aspose\CAD" /E || goto :error
+xcopy "%tmpfolder%\SwaggerClient-php\lib\Model" "%sdkfolder%\src\Aspose\CAD\Model" /E || goto :error
+del /S /Q "%tmpfolder%\SwaggerClient-php\lib\Model" || goto :error
+rmdir "%tmpfolder%\SwaggerClient-php\lib\Model\Requests" || goto :error
+rmdir "%tmpfolder%\SwaggerClient-php\lib\Model" || goto :error
+xcopy "%tmpfolder%\SwaggerClient-php\lib\Api" "%sdkfolder%\src\Aspose\CAD" /E || goto :error
