@@ -22,26 +22,26 @@ namespace SplitPythonCodeFile
 
             string text2 = File.ReadAllText(apiFilePath);
 
-            MatchCollection matchCollection = Regex.Matches(text2, "#  <copyright company=\"Aspose\" file=\"(.*?).py\">");
-
+            var pattern = "#  coding: utf-8(.*?)\r\n#  (-*-)\r\n#  <copyright company=\"Aspose\" file=\"(.*?).py\">";
+            MatchCollection matchCollection = Regex.Matches(text2, pattern);
             string text3 = string.Empty;
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             for (int i = matchCollection.Count - 1; i > 0; i--) // skip CadApi by checking for strong "greater than"
             {
-                string str = matchCollection[i].Groups[1] + ".py";
-                string text4 = matchCollection[i].Groups[1].ToString();
+                string str = matchCollection[i].Groups[0].ToString();
+                string text4 = matchCollection[i].Groups[3].ToString();
                 IEnumerable<string> arg_B5_0 = text4.Split(new string[]
-                {
-                    "_"
-                }, 
-                StringSplitOptions.RemoveEmptyEntries);
+                    {
+                        "_"
+                    },
+                    StringSplitOptions.RemoveEmptyEntries);
 
                 Func<string, string> upperCaser = (s) => s.ToUpper()[0] + s.Substring(1);
 
                 IEnumerable<string> values = arg_B5_0.Select(upperCaser);
                 string text5 = string.Join(string.Empty, values);
                 dictionary.Add(text4, text5);
-                int startIndex = text2.IndexOf("file=\"" + str + "\"") - 116;
+                int startIndex = text2.IndexOf(str!, StringComparison.Ordinal);
                 text3 = text2.Substring(startIndex);
                 text2 = text2.Substring(0, text2.Length - text3.Length);
                 text3 = text3.Replace(text4, text5);
