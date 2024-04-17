@@ -14,6 +14,478 @@
     "application/json"
   ],
   "paths": {
+    "/cad/paper-to-cad": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.",
+        "operationId": "PaperToCad",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PaperToCad"
+      }
+    },
+    "/cad/convert": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
+        "operationId": "Convert",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "outputTypeExt",
+            "in": "query",
+            "description": "For output pdf format: PDF_15, PDFa_1a OR PDFa_1b. Null for another format.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "Convert"
+      }
+    },
+    "/cad/watermark": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
+        "operationId": "Watermark",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "watermarkRgb",
+            "in": "formData",
+            "required": true,
+            "description": "String Json model",
+            "schema": {
+              "$ref": "#/definitions/WatermarkRGB"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "outputTypeExt",
+            "in": "query",
+            "description": "For output pdf format: PDF_15, PDFa_1a OR PDFa_1b. Null for another format.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "Watermark"
+      }
+    },
+    "/cad/extracttext": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Extract Text from CAD drawing to txt file.",
+        "operationId": "ExtractText",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "ExtractText"
+      }
+    },
+    "/cad/extractmetadata": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Extract Metadata from CAD drawing to txt, xml or json file.",
+        "operationId": "ExtractMetadata",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "description": "Output TXT, XML or JSON file format.",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "ExtractMetadata"
+      }
+    },
+    "/cad/viewer": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Return file for viewer.",
+        "operationId": "Viewer",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "description": "Return file for viewer(SVG, PNG, PDF...).",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "Viewer"
+      }
+    },
+    "/cad/editmetadata": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Get Metadata info.",
+        "operationId": "EditMetadata",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "EditMetadata"
+      }
+    },
+    "/cad/editMetadata": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Save Metadata.",
+        "operationId": "EditMetadata2",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "metadataComponent",
+            "in": "formData",
+            "required": true,
+            "description": "Drawing components in string Json format that can be edited."
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "EditMetadata2"
+      }
+    },
     "/cad/{name}/bmp": {
       "post": {
         "tags": [
@@ -2184,6 +2656,936 @@
         "x-operationId": "PutDrawingObj"
       }
     },
+    "/cad/{name}/stp": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to STP format with export settings specified.",
+        "operationId": "PostDrawingSTP",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Stp options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/StpOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingSTP"
+      }
+    },
+    "/cad/stp": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Stp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Stp options serialized as JSON.\nOrder of drawing data and Stp options could vary.",
+        "operationId": "PutDrawingSTP",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/StpOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "StpOptionsDTO",
+        "x-operationId": "PutDrawingSTP"
+      }
+    },
+    "/cad/{name}/cgm": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to CGM format with export settings specified.",
+        "operationId": "PostDrawingCgm",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export CGM options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/CgmOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingCgm"
+      }
+    },
+    "/cad/cgm": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to CGM format. Drawing data is passed as zero-indexed multipart/form-data as well as export Cgm options serialized as JSON.\nOrder of drawing data and Cgm options could vary.",
+        "operationId": "PutDrawingCgm",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/CgmOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "CgmOptionsDTO",
+        "x-operationId": "PutDrawingCgm"
+      }
+    },
+    "/cad/{name}/glb": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to GLB format with export settings specified.",
+        "operationId": "PostDrawingGlb",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export GLB options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/GlbOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingGlb"
+      }
+    },
+    "/cad/glb": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to GLB format. Drawing data is passed as zero-indexed multipart/form-data as well as export GLB options serialized as JSON.\nOrder of drawing data and GLB options could vary.",
+        "operationId": "PutDrawingGlb",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/GlbOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "GlbOptionsDTO",
+        "x-operationId": "PutDrawingGlb"
+      }
+    },
+    "/cad/{name}/gltf": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to GLTF format with export settings specified.",
+        "operationId": "PostDrawingGltf",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export GLTF options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/GltfOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingGltf"
+      }
+    },
+    "/cad/gltf": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to GLTF format. Drawing data is passed as zero-indexed multipart/form-data as well as export GLTF options serialized as JSON.\nOrder of drawing data and GLTF options could vary.",
+        "operationId": "PutDrawingGltf",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/GltfOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "GltfOptionsDTO",
+        "x-operationId": "PutDrawingGltf"
+      }
+    },
+    "/cad/{name}/3ds": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to 3DS format with export settings specified.",
+        "operationId": "PostDrawingThreeDS",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export 3DS options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/ThreeDSOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingThreeDS"
+      }
+    },
+    "/cad/3ds": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to 3DS format. Drawing data is passed as zero-indexed multipart/form-data as well as export 3DS options serialized as JSON.\nOrder of drawing data and 3DS options could vary.",
+        "operationId": "PutDrawingThreeDS",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/ThreeDSOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "ThreeDSOptionsDTO",
+        "x-operationId": "PutDrawingThreeDS"
+      }
+    },
+    "/cad/{name}/u3d": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to U3D format with export settings specified.",
+        "operationId": "PostDrawingU3d",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export U3D options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/U3dOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingU3d"
+      }
+    },
+    "/cad/u3d": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to U3D format. Drawing data is passed as zero-indexed multipart/form-data as well as export U3D options serialized as JSON.\nOrder of drawing data and U3D options could vary.",
+        "operationId": "PutDrawingU3d",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/U3dOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "U3dOptionsDTO",
+        "x-operationId": "PutDrawingU3d"
+      }
+    },
     "/cad/{name}/properties": {
       "get": {
         "tags": [
@@ -4179,6 +5581,96 @@
         }
       ]
     },
+    "StpOptionsDTO": {
+      "type": "object",
+      "description": "Export options for STP format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for STP format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "CgmOptionsDTO": {
+      "type": "object",
+      "description": "Export options for CGM format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for STP format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GlbOptionsDTO": {
+      "type": "object",
+      "description": "Export options for GLB format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for GLB format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GltfOptionsDTO": {
+      "type": "object",
+      "description": "Export options for GLTF format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for GLTF format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ThreeDSOptionsDTO": {
+      "type": "object",
+      "description": "Export options for 3DS format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for 3DS format",
+          "additionalProperties": false
+        }
+      ] 
+    },
+    "U3dOptionsDTO": {
+      "type": "object",
+      "description": "Export options for U3D format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for U3D format",
+          "additionalProperties": false
+        }
+      ]
+    },
     "PsdOptionsDTO": {
       "type": "object",
       "description": "Export options for PSD format",
@@ -5133,6 +6625,45 @@
           }
         }
       ]
+    },
+    "WatermarkRGB":{
+      "type": "object",
+      "description": "Watermark text with RGB values",
+      "additionalProperties": false,
+      "properties": {
+        "Watermarktext": {
+          "type": "string",
+          "required": true,
+          "description": "Watermark text.",
+          "default": "Default",
+          "nullable": false
+        },
+        "Watermarkr": {
+          "type": "string",
+          "required": true,
+          "description": "Red light(0-255).",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 255,
+          "nullable": false
+        },
+        "Watermarkg": {
+          "type": "string",
+          "description": "Green light(0-255).",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 255,
+          "nullable": false
+        },
+        "Watermarkb": {
+          "type": "string",
+          "description": "Blue light(0-255).",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 255,
+          "nullable": false
+        }
+      }
     }
   },
   "securityDefinitions": {
