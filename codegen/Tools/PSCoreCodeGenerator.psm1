@@ -234,7 +234,7 @@ function Get-ModelDocFooter($model) {
 
 function Get-EnumTable($model) {
     $models = $jsonSpec.definitions.PSObject.Properties
-    $enumDesc = $models.Item($model.Name).Value.'x-enumDescriptions'.PSObject.Properties
+    $enumDesc = $models.Item($model.Name).Value.'enum'.PSObject.Properties
     $enumTableRows = @()
     foreach ($prop in $model.Value.enum) {
         $enumTableRows += "**$(ConvertTo-NativeEnum $prop)** | **$(ConvertTo-NativePrimitiveType $model.Value.type)** | '$($prop)' | $($enumDesc.Item($prop).Value)"

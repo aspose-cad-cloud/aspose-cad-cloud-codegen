@@ -4110,9 +4110,6 @@
             "in": "query",
             "required": true,
             "description": "Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY",
-            "x-schema": {
-              "$ref": "#/definitions/RotateFlipType"
-            },
             "x-nullable": false,
             "enum": [
               "RotateNoneFlipNone",
@@ -4131,8 +4128,7 @@
               "Rotate90FlipXY",
               "Rotate180FlipXY",
               "Rotate270FlipXY"
-            ],
-            "$ref": "#/definitions/RotateFlipType"
+            ]
           },
           {
             "type": "string",
@@ -4222,9 +4218,6 @@
             "in": "query",
             "required": true,
             "description": "Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY",
-            "x-schema": {
-              "$ref": "#/definitions/RotateFlipType"
-            },
             "x-nullable": false,
             "enum": [
               "RotateNoneFlipNone",
@@ -4243,8 +4236,7 @@
               "Rotate90FlipXY",
               "Rotate180FlipXY",
               "Rotate270FlipXY"
-            ],
-            "$ref": "#/definitions/RotateFlipType"
+            ]
           },
           {
             "type": "string",
@@ -5174,11 +5166,7 @@
                 "Png",
                 "AlphaBitfields",
                 "Dxt1"
-              ],
-              "$ref": "#/definitions/BitmapCompression",
-              "x-schema": {
-                "$ref": "#/definitions/BitmapCompression"
-              }
+              ]
             }
           }
         }
@@ -5237,11 +5225,7 @@
             "Rotate90FlipXY",
             "Rotate180FlipXY",
             "Rotate270FlipXY"
-          ],
-          "$ref": "#/definitions/RotateFlipType",
-          "x-schema": {
-            "$ref": "#/definitions/RotateFlipType"
-          }
+          ]
         },
         "Layers": {
           "type": "array",
@@ -5378,11 +5362,7 @@
               "enum": [
                 "UseDrawColor",
                 "UseObjectColor"
-              ],
-              "$ref": "#/definitions/CadDrawTypeMode",
-              "x-schema": {
-                "$ref": "#/definitions/CadDrawTypeMode"
-              }
+              ]
             },
             "NoScaling": {
               "type": "boolean",
@@ -5413,11 +5393,7 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ],
-          "$ref": "#/definitions/LineCap",
-          "x-schema": {
-            "$ref": "#/definitions/LineCap"
-          }
+          ]
         },
         "EndCap": {
           "enum": [
@@ -5432,11 +5408,7 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ],
-          "$ref": "#/definitions/LineCap",
-          "x-schema": {
-            "$ref": "#/definitions/LineCap"
-          }
+          ]
         }
       }
     },
@@ -5557,11 +5529,7 @@
             "MicroInch",
             "Custom",
             "Unitless"
-          ],
-          "$ref": "#/definitions/UnitType",
-          "x-schema": {
-            "$ref": "#/definitions/UnitType"
-          }
+          ]
         },
         "ContentAsBitmap": {
           "type": "boolean",
@@ -5688,11 +5656,7 @@
             "AntiAliasGridFit",
             "AntiAlias",
             "ClearTypeGridFit"
-          ],
-          "$ref": "#/definitions/TextRenderingHint",
-          "x-schema": {
-            "$ref": "#/definitions/TextRenderingHint"
-          }
+          ]
         },
         "SmoothingMode": {
           "enum": [
@@ -5702,11 +5666,7 @@
             "None",
             "AntiAlias",
             "Invalid"
-          ],
-          "$ref": "#/definitions/SmoothingMode",
-          "x-schema": {
-            "$ref": "#/definitions/SmoothingMode"
-          }
+          ]
         },
         "InterpolationMode": {
           "enum": [
@@ -5719,11 +5679,7 @@
             "HighQualityBilinear",
             "HighQualityBicubic",
             "Invalid"
-          ],
-          "$ref": "#/definitions/InterpolationMode",
-          "x-schema": {
-            "$ref": "#/definitions/InterpolationMode"
-          }
+          ]
         }
       }
     },
@@ -5892,11 +5848,7 @@
                 "J2K",
                 "Jp2",
                 "Jpt"
-              ],
-              "$ref": "#/definitions/Jpeg2000Codec",
-              "x-schema": {
-                "$ref": "#/definitions/Jpeg2000Codec"
-              }
+              ]
             }
           }
         }
@@ -5945,11 +5897,7 @@
                 "Progressive",
                 "Lossless",
                 "JpegLs"
-              ],
-              "$ref": "#/definitions/JpegCompressionMode",
-              "x-schema": {
-                "$ref": "#/definitions/JpegCompressionMode"
-              }
+              ]
             },
             "ColorType": {
               "description": "Color type",
@@ -5959,11 +5907,7 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ],
-              "$ref": "#/definitions/JpegCompressionColorMode",
-              "x-schema": {
-                "$ref": "#/definitions/JpegCompressionColorMode"
-              }
+              ]
             },
             "Quality": {
               "type": "integer",
@@ -6086,11 +6030,7 @@
                 "IndexedColor",
                 "GrayscaleWithAlpha",
                 "TruecolorWithAlpha"
-              ],
-              "$ref": "#/definitions/PngColorType",
-              "x-schema": {
-                "$ref": "#/definitions/PngColorType"
-              }
+              ]
             },
             "Progressive": {
               "type": "boolean",
@@ -6105,11 +6045,7 @@
                 "Avg",
                 "Paeth",
                 "Adaptive"
-              ],
-              "$ref": "#/definitions/PngFilterType",
-              "x-schema": {
-                "$ref": "#/definitions/PngFilterType"
-              }
+              ]
             },
             "CompressionLevel": {
               "type": "integer",
@@ -6195,11 +6131,7 @@
                 "RLE",
                 "ZipWithoutPrediction",
                 "ZipWithPrediction"
-              ],
-              "$ref": "#/definitions/CompressionMethod",
-              "x-schema": {
-                "$ref": "#/definitions/CompressionMethod"
-              }
+              ]
             },
             "ColorMode": {
               "description": "Color mode",
@@ -6212,11 +6144,7 @@
                 "Multichannel",
                 "Duotone",
                 "Lab"
-              ],
-              "$ref": "#/definitions/ColorModes",
-              "x-schema": {
-                "$ref": "#/definitions/ColorModes"
-              }
+              ]
             },
             "ChannelBitsCount": {
               "type": "integer",
@@ -6294,11 +6222,7 @@
               "enum": [
                 "LittleEndian",
                 "BigEndian"
-              ],
-              "$ref": "#/definitions/TiffByteOrder",
-              "x-schema": {
-                "$ref": "#/definitions/TiffByteOrder"
-              }
+              ]
             },
             "Compression": {
               "description": "Compression level",
@@ -6327,11 +6251,7 @@
                 "Sgilog",
                 "Sgilog24",
                 "Jp2000"
-              ],
-              "$ref": "#/definitions/TiffCompressions",
-              "x-schema": {
-                "$ref": "#/definitions/TiffCompressions"
-              }
+              ]
             },
             "ExpectedFormat": {
               "description": "Expected TIFF sub-format",
@@ -6352,11 +6272,7 @@
                 "TiffNoCompressionBw",
                 "TiffNoCompressionRgb",
                 "TiffNoCompressionRgba"
-              ],
-              "$ref": "#/definitions/TiffExpectedFormat",
-              "x-schema": {
-                "$ref": "#/definitions/TiffExpectedFormat"
-              }
+              ]
             },
             "BitsPerSample": {
               "type": "array",
@@ -6380,11 +6296,7 @@
                 "Itulab",
                 "Logl",
                 "Logluv"
-              ],
-              "$ref": "#/definitions/TiffPhotometrics",
-              "x-schema": {
-                "$ref": "#/definitions/TiffPhotometrics"
-              }
+              ]
             }
           }
         }
@@ -6607,11 +6519,7 @@
             "Pdf15",
             "PdfA1a",
             "PdfA1b"
-          ],
-          "$ref": "#/definitions/PdfCompliance",
-          "x-schema": {
-            "$ref": "#/definitions/PdfCompliance"
-          }
+          ]
         },
         "DigitalSignatureDetails": {
           "description": "Gets or sets a digital signature details. If not set, then no signing will be performed.",
@@ -6670,11 +6578,7 @@
             "Sha384",
             "Sha512",
             "Md5"
-          ],
-          "$ref": "#/definitions/PdfDigitalSignatureHashAlgorithmCore",
-          "x-schema": {
-            "$ref": "#/definitions/PdfDigitalSignatureHashAlgorithmCore"
-          }
+          ]
         }
       }
     },
@@ -6721,11 +6625,7 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ],
-              "$ref": "#/definitions/SvgColorMode",
-              "x-schema": {
-                "$ref": "#/definitions/SvgColorMode"
-              }
+              ]
             },
             "TextAsShapes": {
               "type": "boolean",
@@ -7121,7 +7021,7 @@
         }
       }
     },
-    "Error": {
+    "ErrorModel": {
       "type": "object",
       "description": "Error",
       "additionalProperties": false,

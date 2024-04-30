@@ -5322,7 +5322,8 @@
           "type": "number",
           "format": "double"
         }
-      }
+      },
+      "description": "Resolution Setting"
     },
     "CadRasterizationOptionsDTO": {
       "type": "object",
@@ -5438,7 +5439,8 @@
             "$ref": "#/definitions/LineCap"
           }
         }
-      }
+      },
+      "description": "Pen Options"
     },
     "LineCap": {
       "type": "string",
@@ -5617,7 +5619,8 @@
         "Name": {
           "type": "string"
         }
-      }
+      },
+      "description": "Color"
     },
     "UnitType": {
       "type": "string",
@@ -5725,7 +5728,8 @@
             "$ref": "#/definitions/InterpolationMode"
           }
         }
-      }
+      },
+      "description": "Graphics Options"
     },
     "TextRenderingHint": {
       "type": "string",
@@ -6056,7 +6060,8 @@
           "type": "integer",
           "format": "int32"
         }
-      }
+      },
+      "description": "Rd Optimizer Settings"
     },
     "PngOptionsDTO": {
       "type": "object",
@@ -6592,7 +6597,8 @@
         "Subject": {
           "type": "string"
         }
-      }
+      },
+      "description": "Pdf Document Info"
     },
     "PdfDocumentOptionsDTO": {
       "type": "object",
