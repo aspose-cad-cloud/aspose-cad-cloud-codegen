@@ -7,6 +7,9 @@
   },
   "host": "api.aspose.cloud",
   "basePath": "/v3.0",
+  "schemes": [
+    "https"
+  ],
   "consumes": [
     "application/json"
   ],
@@ -22,57 +25,44 @@
         "summary": "Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.",
         "operationId": "PaperToCad",
         "consumes": [
-          "application/octet-stream",
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
             "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.",
-            "x-nullable": false
+            "x-nullable": true
+          },
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "description": "Form-data file",
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
               "type": "file"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
         "x-operationId": "PaperToCad"
       }
     },
-    "/cad/convert": {
+    "/cad/Convert": {
       "post": {
         "tags": [
           "Cad"
@@ -80,190 +70,142 @@
         "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
         "operationId": "Convert",
         "consumes": [
-          "application/octet-stream",
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
             "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
-            "x-nullable": false
+            "x-nullable": true
+          },
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "description": "Form-data file",
+            "x-nullable": true
           },
           {
             "type": "string",
             "name": "outputTypeExt",
             "in": "query",
-            "description": "For output pdf format: PDF_15, PDFa_1a OR PDFa_1b. Null for another format.",
+            "description": "For output pdf format: PDF_15, PDFa_1a OR PDFa_1b. Null for another format",
             "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
               "type": "file"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
         "x-operationId": "Convert"
       }
     },
-    "/cad/watermark": {
+    "/cad/Watermark": {
       "post": {
         "tags": [
           "Cad"
         ],
-        "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
+        "summary": "Add watermark to drawing",
         "operationId": "Watermark",
         "consumes": [
-          "application/octet-stream",
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
-            "x-nullable": false
+            "x-nullable": true
+          },
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "x-nullable": true
           },
           {
             "type": "string",
             "name": "watermarkRgb",
             "in": "formData",
-            "required": true,
-            "description": "String Json model",
-            "schema": {
-              "$ref": "#/definitions/WatermarkRGB"
-            },
-            "x-nullable": false
+            "x-nullable": true
           },
           {
             "type": "string",
             "name": "outputTypeExt",
             "in": "query",
-            "description": "For output pdf format: PDF_15, PDFa_1a OR PDFa_1b. Null for another format.",
             "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
               "type": "file"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
         "x-operationId": "Watermark"
       }
     },
-    "/cad/extracttext": {
+    "/cad/ExtractText": {
       "post": {
         "tags": [
           "Cad"
         ],
-        "summary": "Extract Text from CAD drawing to txt file.",
+        "summary": "Extract Text from CAD drawing to txt file",
         "operationId": "ExtractText",
         "consumes": [
-          "application/octet-stream",
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
             "type": "file",
             "name": "drawing",
             "in": "formData",
-            "required": true,
-            "description": "Input drawing"
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
               "type": "file"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
         "x-operationId": "ExtractText"
       }
     },
-    "/cad/extractmetadata": {
+    "/cad/ExtractMetadata": {
       "post": {
         "tags": [
           "Cad"
@@ -271,122 +213,95 @@
         "summary": "Extract Metadata from CAD drawing to txt, xml or json file.",
         "operationId": "ExtractMetadata",
         "consumes": [
-          "application/octet-stream",
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
             "description": "Output TXT, XML or JSON file format.",
-            "x-nullable": false
+            "x-nullable": true
+          },
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "description": "Form-data file",
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
               "type": "file"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
         "x-operationId": "ExtractMetadata"
       }
     },
-    "/cad/viewer": {
+    "/cad/Viewer": {
       "post": {
         "tags": [
           "Cad"
         ],
-        "summary": "Return file for viewer.",
+        "summary": "Return file for viewer",
         "operationId": "Viewer",
         "consumes": [
-          "application/octet-stream",
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Return file for viewer(SVG, PNG, PDF...).",
-            "x-nullable": false
+            "x-nullable": true
+          },
+          {
+            "type": "file",
+            "name": "drawing",
+            "in": "formData",
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
               "type": "file"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
         "x-operationId": "Viewer"
       }
     },
-    "/cad/editmetadata": {
+    "/cad/EditMetadata": {
       "post": {
         "tags": [
           "Cad"
         ],
-        "summary": "Get Metadata info.",
+        "summary": "Get Metadata info",
         "operationId": "EditMetadata",
         "consumes": [
+          "multipart/form-data",
           "application/octet-stream",
           "multipart/form-data"
         ],
@@ -395,95 +310,65 @@
             "type": "file",
             "name": "drawing",
             "in": "formData",
-            "required": true,
-            "description": "Input drawing"
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
-              "type": "file"
+              "type": "string",
+              "format": "byte"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
         "x-operationId": "EditMetadata"
-      }
-    },
-    "/cad/editMetadata": {
+      },
       "put": {
         "tags": [
           "Cad"
         ],
-        "summary": "Save Metadata.",
-        "operationId": "EditMetadata2",
+        "summary": "Save Metadata",
+        "operationId": "PutEditMetadata",
         "consumes": [
-          "application/octet-stream",
-          "multipart/form-data"
+          "multipart/form-data",
+          "application/octet-stream"
         ],
         "parameters": [
           {
             "type": "file",
             "name": "drawing",
             "in": "formData",
-            "required": true,
-            "description": "Input drawing"
+            "x-nullable": true
           },
           {
             "type": "string",
             "name": "metadataComponent",
             "in": "formData",
-            "required": true,
-            "description": "Drawing components in string Json format that can be edited."
+            "x-nullable": true
           }
         ],
         "responses": {
           "200": {
             "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
+            "description": "",
             "schema": {
               "type": "file"
             }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
           }
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
-        "x-binary-result": "true",
-        "x-operationId": "EditMetadata2"
+        "x-operationId": "PutEditMetadata"
       }
     },
     "/cad/{name}/bmp": {
@@ -563,7 +448,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -633,12 +518,167 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
         "x-options-input": "BmpOptionsDTO",
         "x-operationId": "PutDrawingBmp"
+      }
+    },
+    "/cad/{name}/dicom": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to Dicom format with export settings specified.",
+        "operationId": "PostDrawingDicom",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Dicom options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/DicomOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingDicom"
+      }
+    },
+    "/cad/dicom": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Dicom format. Drawing data is passed as zero-indexed multipart/form-data as well as export Dicom options serialized as JSON.\nOrder of drawing data and Dicom options could vary.",
+        "operationId": "PutDrawingDicom",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/DicomOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "DicomOptionsDTO",
+        "x-operationId": "PutDrawingDicom"
       }
     },
     "/cad/{name}/gif": {
@@ -718,7 +758,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -788,7 +828,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -873,7 +913,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -943,7 +983,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1028,7 +1068,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1098,7 +1138,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1183,7 +1223,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1253,7 +1293,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1338,7 +1378,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1408,7 +1448,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1493,7 +1533,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1563,12 +1603,167 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
         "x-options-input": "TiffOptionsDTO",
         "x-operationId": "PutDrawingTiff"
+      }
+    },
+    "/cad/{name}/webp": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to Webp format with export settings specified.",
+        "operationId": "PostDrawingWebp",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Webp options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/WebpOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingWebp"
+      }
+    },
+    "/cad/webp": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Webp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Webp options serialized as JSON.\nOrder of drawing data and Webp options could vary.",
+        "operationId": "PutDrawingWebp",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WebpOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "WebpOptionsDTO",
+        "x-operationId": "PutDrawingWebp"
       }
     },
     "/cad/{name}/pdf": {
@@ -1648,7 +1843,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1718,7 +1913,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1803,7 +1998,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1873,7 +2068,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -1958,7 +2153,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -2028,12 +2223,167 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
         "x-options-input": "WmfOptionsDTO",
         "x-operationId": "PutDrawingWmf"
+      }
+    },
+    "/cad/{name}/cgm": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to CGM format with export settings specified.",
+        "operationId": "PostDrawingCgm",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export CGM options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/CgmOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingCgm"
+      }
+    },
+    "/cad/cgm": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to CGM format. Drawing data is passed as zero-indexed multipart/form-data as well as export CGM options serialized as JSON.\nOrder of drawing data and CGM options could vary.",
+        "operationId": "PutDrawingCgm",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/CgmOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "CgmOptionsDTO",
+        "x-operationId": "PutDrawingCgm"
       }
     },
     "/cad/{name}/dwf": {
@@ -2113,7 +2463,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -2183,7 +2533,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -2268,7 +2618,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -2338,7 +2688,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -2423,7 +2773,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -2493,477 +2843,12 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
         "x-options-input": "FbxOptionsDTO",
         "x-operationId": "PutDrawingFbx"
-      }
-    },
-    "/cad/{name}/obj": {
-      "post": {
-        "tags": [
-          "Cad"
-        ],
-        "summary": "Export an existing drawing to Obj format with export settings specified.",
-        "operationId": "PostDrawingObj",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "description": "Filename of an input drawing on a storage.",
-            "x-nullable": false
-          },
-          {
-            "name": "options",
-            "in": "body",
-            "required": true,
-            "description": "Export Obj options passed as a JSON on a request body.",
-            "schema": {
-              "$ref": "#/definitions/ObjOptionsDTO"
-            },
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "folder",
-            "in": "query",
-            "description": "Folder with a drawing to process.",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "outPath",
-            "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed file).",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "Your Aspose Cloud Storage name.",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-binary-result": "true",
-        "x-operationId": "PostDrawingObj"
-      }
-    },
-    "/cad/obj": {
-      "put": {
-        "tags": [
-          "Cad"
-        ],
-        "summary": "Export drawing to Obj format. Drawing data is passed as zero-indexed multipart/form-data as well as export Obj options serialized as JSON.\nOrder of drawing data and Obj options could vary.",
-        "operationId": "PutDrawingObj",
-        "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
-        ],
-        "parameters": [
-          {
-            "type": "file",
-            "name": "drawingData",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
-          {
-            "type": "string",
-            "name": "outPath",
-            "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed file).",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "exportOptions",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/ObjOptionsDTO model definition."
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "Your Aspose Cloud Storage name.",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-binary-result": "true",
-        "x-options-input": "ObjOptionsDTO",
-        "x-operationId": "PutDrawingObj"
-      }
-    },
-    "/cad/{name}/stp": {
-      "post": {
-        "tags": [
-          "Cad"
-        ],
-        "summary": "Export an existing drawing to STP format with export settings specified.",
-        "operationId": "PostDrawingSTP",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "description": "Filename of an input drawing on a storage.",
-            "x-nullable": false
-          },
-          {
-            "name": "options",
-            "in": "body",
-            "required": true,
-            "description": "Export Stp options passed as a JSON on a request body.",
-            "schema": {
-              "$ref": "#/definitions/StpOptionsDTO"
-            },
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "folder",
-            "in": "query",
-            "description": "Folder with a drawing to process.",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "outPath",
-            "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed file).",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "Your Aspose Cloud Storage name.",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-binary-result": "true",
-        "x-operationId": "PostDrawingSTP"
-      }
-    },
-    "/cad/stp": {
-      "put": {
-        "tags": [
-          "Cad"
-        ],
-        "summary": "Export drawing to Stp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Stp options serialized as JSON.\nOrder of drawing data and Stp options could vary.",
-        "operationId": "PutDrawingSTP",
-        "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
-        ],
-        "parameters": [
-          {
-            "type": "file",
-            "name": "drawingData",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
-          {
-            "type": "string",
-            "name": "outPath",
-            "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed file).",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "exportOptions",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/StpOptionsDTO model definition."
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "Your Aspose Cloud Storage name.",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-binary-result": "true",
-        "x-options-input": "StpOptionsDTO",
-        "x-operationId": "PutDrawingSTP"
-      }
-    },
-    "/cad/{name}/cgm": {
-      "post": {
-        "tags": [
-          "Cad"
-        ],
-        "summary": "Export an existing drawing to CGM format with export settings specified.",
-        "operationId": "PostDrawingCgm",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "description": "Filename of an input drawing on a storage.",
-            "x-nullable": false
-          },
-          {
-            "name": "options",
-            "in": "body",
-            "required": true,
-            "description": "Export CGM options passed as a JSON on a request body.",
-            "schema": {
-              "$ref": "#/definitions/CgmOptionsDTO"
-            },
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "folder",
-            "in": "query",
-            "description": "Folder with a drawing to process.",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "outPath",
-            "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed file).",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "Your Aspose Cloud Storage name.",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "404": {
-            "description": "Input file doesn't exist at provided path."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-binary-result": "true",
-        "x-operationId": "PostDrawingCgm"
-      }
-    },
-    "/cad/cgm": {
-      "put": {
-        "tags": [
-          "Cad"
-        ],
-        "summary": "Export drawing to CGM format. Drawing data is passed as zero-indexed multipart/form-data as well as export Cgm options serialized as JSON.\nOrder of drawing data and Cgm options could vary.",
-        "operationId": "PutDrawingCgm",
-        "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
-        ],
-        "parameters": [
-          {
-            "type": "file",
-            "name": "drawingData",
-            "in": "formData",
-            "required": true,
-            "description": "Input drawing"
-          },
-          {
-            "type": "string",
-            "name": "outPath",
-            "in": "query",
-            "description": "Path to updated file (if this is empty, response contains streamed file).",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "exportOptions",
-            "in": "formData",
-            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/CgmOptionsDTO model definition."
-          },
-          {
-            "type": "string",
-            "name": "storage",
-            "in": "query",
-            "description": "Your Aspose Cloud Storage name.",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "Data stream (if output path is not set).",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "400": {
-            "description": "Invalid request parameters or input data."
-          },
-          "401": {
-            "description": "Authentication failed."
-          },
-          "500": {
-            "description": "Either current server is busy or internal error occured."
-          },
-          "501": {
-            "description": "The specific operation is not yet supported - please, contact us if you require it."
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ],
-        "x-binary-result": "true",
-        "x-options-input": "CgmOptionsDTO",
-        "x-operationId": "PutDrawingCgm"
       }
     },
     "/cad/{name}/glb": {
@@ -3043,7 +2928,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3113,7 +2998,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3198,7 +3083,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3268,7 +3153,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3276,12 +3161,322 @@
         "x-operationId": "PutDrawingGltf"
       }
     },
+    "/cad/{name}/obj": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to Obj format with export settings specified.",
+        "operationId": "PostDrawingObj",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Obj options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/ObjOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingObj"
+      }
+    },
+    "/cad/obj": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Obj format. Drawing data is passed as zero-indexed multipart/form-data as well as export Obj options serialized as JSON.\nOrder of drawing data and Obj options could vary.",
+        "operationId": "PutDrawingObj",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/ObjOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "ObjOptionsDTO",
+        "x-operationId": "PutDrawingObj"
+      }
+    },
+    "/cad/{name}/stp": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to STP format with export settings specified.",
+        "operationId": "PostDrawingSTP",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export STP options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/StpOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingSTP"
+      }
+    },
+    "/cad/stp": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Stp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Stp options serialized as JSON.\nOrder of drawing data and Stp options could vary.",
+        "operationId": "PutDrawingSTP",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/StpOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "StpOptionsDTO",
+        "x-operationId": "PutDrawingSTP"
+      }
+    },
     "/cad/{name}/3ds": {
       "post": {
         "tags": [
           "Cad"
         ],
-        "summary": "Export an existing drawing to 3DS format with export settings specified.",
+        "summary": "Export an existing drawing to 3ds format with export settings specified.",
         "operationId": "PostDrawingThreeDS",
         "consumes": [
           "application/json"
@@ -3299,7 +3494,7 @@
             "name": "options",
             "in": "body",
             "required": true,
-            "description": "Export 3DS options passed as a JSON on a request body.",
+            "description": "Export 3ds options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/ThreeDSOptionsDTO"
             },
@@ -3353,7 +3548,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3365,11 +3560,11 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Export drawing to 3DS format. Drawing data is passed as zero-indexed multipart/form-data as well as export 3DS options serialized as JSON.\nOrder of drawing data and 3DS options could vary.",
+        "summary": "Export drawing to 3ds format. Drawing data is passed as zero-indexed multipart/form-data as well as export 3ds options serialized as JSON.\nOrder of drawing data and 3ds options could vary.",
         "operationId": "PutDrawingThreeDS",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
@@ -3423,7 +3618,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3436,7 +3631,7 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Export an existing drawing to U3D format with export settings specified.",
+        "summary": "Export an existing drawing to U3d format with export settings specified.",
         "operationId": "PostDrawingU3d",
         "consumes": [
           "application/json"
@@ -3454,7 +3649,7 @@
             "name": "options",
             "in": "body",
             "required": true,
-            "description": "Export U3D options passed as a JSON on a request body.",
+            "description": "Export U3d options passed as a JSON on a request body.",
             "schema": {
               "$ref": "#/definitions/U3dOptionsDTO"
             },
@@ -3508,7 +3703,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3520,11 +3715,11 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Export drawing to U3D format. Drawing data is passed as zero-indexed multipart/form-data as well as export U3D options serialized as JSON.\nOrder of drawing data and U3D options could vary.",
+        "summary": "Export drawing to U3d format. Drawing data is passed as zero-indexed multipart/form-data as well as export U3d options serialized as JSON.\nOrder of drawing data and U3d options could vary.",
         "operationId": "PutDrawingU3d",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
@@ -3578,7 +3773,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3643,7 +3838,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "GetDrawingProperties"
@@ -3692,7 +3887,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "PostDrawingProperties"
@@ -3788,7 +3983,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3878,7 +4073,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -3915,7 +4110,9 @@
             "in": "query",
             "required": true,
             "description": "Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY",
-            "x-schema": {},
+            "x-schema": {
+              "$ref": "#/definitions/RotateFlipType"
+            },
             "x-nullable": false,
             "enum": [
               "RotateNoneFlipNone",
@@ -3934,7 +4131,8 @@
               "Rotate90FlipXY",
               "Rotate180FlipXY",
               "Rotate270FlipXY"
-            ]
+            ],
+            "$ref": "#/definitions/RotateFlipType"
           },
           {
             "type": "string",
@@ -3984,7 +4182,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -4024,7 +4222,9 @@
             "in": "query",
             "required": true,
             "description": "Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY",
-            "x-schema": {},
+            "x-schema": {
+              "$ref": "#/definitions/RotateFlipType"
+            },
             "x-nullable": false,
             "enum": [
               "RotateNoneFlipNone",
@@ -4043,7 +4243,8 @@
               "Rotate90FlipXY",
               "Rotate180FlipXY",
               "Rotate270FlipXY"
-            ]
+            ],
+            "$ref": "#/definitions/RotateFlipType"
           },
           {
             "type": "string",
@@ -4083,7 +4284,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -4162,7 +4363,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -4234,7 +4435,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-binary-result": "true",
@@ -4292,7 +4493,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "DownloadFile",
@@ -4345,7 +4546,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "UploadFile"
@@ -4390,7 +4591,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "DeleteFile"
@@ -4452,7 +4653,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "CopyFile"
@@ -4517,7 +4718,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "MoveFile"
@@ -4564,7 +4765,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "GetFilesList"
@@ -4605,7 +4806,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "CreateFolder"
@@ -4651,7 +4852,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "DeleteFolder"
@@ -4706,7 +4907,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "CopyFolder"
@@ -4761,7 +4962,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "MoveFolder"
@@ -4798,7 +4999,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "StorageExists"
@@ -4849,7 +5050,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "ObjectExists"
@@ -4888,7 +5089,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "GetDiscUsage"
@@ -4932,7 +5133,7 @@
         },
         "security": [
           {
-            "JWT": []
+            "Bearer": []
           }
         ],
         "x-operationId": "GetFileVersions"
@@ -4973,10 +5174,38 @@
                 "Png",
                 "AlphaBitfields",
                 "Dxt1"
-              ]
+              ],
+              "$ref": "#/definitions/BitmapCompression",
+              "x-schema": {
+                "$ref": "#/definitions/BitmapCompression"
+              }
             }
           }
         }
+      ]
+    },
+    "BitmapCompression": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Rgb",
+        "Rle8",
+        "Rle4",
+        "Bitfields",
+        "Jpeg",
+        "Png",
+        "AlphaBitfields",
+        "Dxt1"
+      ],
+      "enum": [
+        "Rgb",
+        "Rle8",
+        "Rle4",
+        "Bitfields",
+        "Jpeg",
+        "Png",
+        "AlphaBitfields",
+        "Dxt1"
       ]
     },
     "DrawingOptionsBaseDTO": {
@@ -5008,7 +5237,11 @@
             "Rotate90FlipXY",
             "Rotate180FlipXY",
             "Rotate270FlipXY"
-          ]
+          ],
+          "$ref": "#/definitions/RotateFlipType",
+          "x-schema": {
+            "$ref": "#/definitions/RotateFlipType"
+          }
         },
         "Layers": {
           "type": "array",
@@ -5032,6 +5265,46 @@
           "$ref": "#/definitions/CadRasterizationOptionsDTO"
         }
       }
+    },
+    "RotateFlipType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "RotateNoneFlipNone",
+        "Rotate90FlipNone",
+        "Rotate180FlipNone",
+        "Rotate270FlipNone",
+        "RotateNoneFlipX",
+        "Rotate90FlipX",
+        "Rotate180FlipX",
+        "Rotate270FlipX",
+        "RotateNoneFlipY",
+        "Rotate90FlipY",
+        "Rotate180FlipY",
+        "Rotate270FlipY",
+        "RotateNoneFlipXY",
+        "Rotate90FlipXY",
+        "Rotate180FlipXY",
+        "Rotate270FlipXY"
+      ],
+      "enum": [
+        "RotateNoneFlipNone",
+        "Rotate90FlipNone",
+        "Rotate180FlipNone",
+        "Rotate270FlipNone",
+        "RotateNoneFlipX",
+        "Rotate90FlipX",
+        "Rotate180FlipX",
+        "Rotate270FlipX",
+        "RotateNoneFlipY",
+        "Rotate90FlipY",
+        "Rotate180FlipY",
+        "Rotate270FlipY",
+        "RotateNoneFlipXY",
+        "Rotate90FlipXY",
+        "Rotate180FlipXY",
+        "Rotate270FlipXY"
+      ]
     },
     "ResolutionSetting": {
       "type": "object",
@@ -5105,7 +5378,11 @@
               "enum": [
                 "UseDrawColor",
                 "UseObjectColor"
-              ]
+              ],
+              "$ref": "#/definitions/CadDrawTypeMode",
+              "x-schema": {
+                "$ref": "#/definitions/CadDrawTypeMode"
+              }
             },
             "NoScaling": {
               "type": "boolean",
@@ -5136,7 +5413,11 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ]
+          ],
+          "$ref": "#/definitions/LineCap",
+          "x-schema": {
+            "$ref": "#/definitions/LineCap"
+          }
         },
         "EndCap": {
           "enum": [
@@ -5151,9 +5432,55 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ]
+          ],
+          "$ref": "#/definitions/LineCap",
+          "x-schema": {
+            "$ref": "#/definitions/LineCap"
+          }
         }
       }
+    },
+    "LineCap": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Flat",
+        "Square",
+        "Round",
+        "Triangle",
+        "NoAnchor",
+        "SquareAnchor",
+        "RoundAnchor",
+        "DiamondAnchor",
+        "ArrowAnchor",
+        "AnchorMask",
+        "Custom"
+      ],
+      "enum": [
+        "Flat",
+        "Square",
+        "Round",
+        "Triangle",
+        "NoAnchor",
+        "SquareAnchor",
+        "RoundAnchor",
+        "DiamondAnchor",
+        "ArrowAnchor",
+        "AnchorMask",
+        "Custom"
+      ]
+    },
+    "CadDrawTypeMode": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "UseDrawColor",
+        "UseObjectColor"
+      ],
+      "enum": [
+        "UseDrawColor",
+        "UseObjectColor"
+      ]
     },
     "VectorRasterizationOptionsDTO": {
       "type": "object",
@@ -5230,7 +5557,11 @@
             "MicroInch",
             "Custom",
             "Unitless"
-          ]
+          ],
+          "$ref": "#/definitions/UnitType",
+          "x-schema": {
+            "$ref": "#/definitions/UnitType"
+          }
         },
         "ContentAsBitmap": {
           "type": "boolean",
@@ -5288,6 +5619,58 @@
         }
       }
     },
+    "UnitType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Kilometer",
+        "Meter",
+        "Centimenter",
+        "Millimeter",
+        "Micrometer",
+        "Nanometer",
+        "Angstrom",
+        "Decimeter",
+        "Decameter",
+        "Hectometer",
+        "Gigameter",
+        "AstronomicalUnit",
+        "LightYear",
+        "Parsec",
+        "Mile",
+        "Yard",
+        "Foot",
+        "Inch",
+        "Mil",
+        "MicroInch",
+        "Custom",
+        "Unitless"
+      ],
+      "enum": [
+        "Kilometer",
+        "Meter",
+        "Centimenter",
+        "Millimeter",
+        "Micrometer",
+        "Nanometer",
+        "Angstrom",
+        "Decimeter",
+        "Decameter",
+        "Hectometer",
+        "Gigameter",
+        "AstronomicalUnit",
+        "LightYear",
+        "Parsec",
+        "Mile",
+        "Yard",
+        "Foot",
+        "Inch",
+        "Mil",
+        "MicroInch",
+        "Custom",
+        "Unitless"
+      ]
+    },
     "GraphicsOptions": {
       "type": "object",
       "additionalProperties": false,
@@ -5305,7 +5688,11 @@
             "AntiAliasGridFit",
             "AntiAlias",
             "ClearTypeGridFit"
-          ]
+          ],
+          "$ref": "#/definitions/TextRenderingHint",
+          "x-schema": {
+            "$ref": "#/definitions/TextRenderingHint"
+          }
         },
         "SmoothingMode": {
           "enum": [
@@ -5315,7 +5702,11 @@
             "None",
             "AntiAlias",
             "Invalid"
-          ]
+          ],
+          "$ref": "#/definitions/SmoothingMode",
+          "x-schema": {
+            "$ref": "#/definitions/SmoothingMode"
+          }
         },
         "InterpolationMode": {
           "enum": [
@@ -5328,9 +5719,94 @@
             "HighQualityBilinear",
             "HighQualityBicubic",
             "Invalid"
-          ]
+          ],
+          "$ref": "#/definitions/InterpolationMode",
+          "x-schema": {
+            "$ref": "#/definitions/InterpolationMode"
+          }
         }
       }
+    },
+    "TextRenderingHint": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "SystemDefault",
+        "SingleBitPerPixelGridFit",
+        "SingleBitPerPixel",
+        "AntiAliasGridFit",
+        "AntiAlias",
+        "ClearTypeGridFit"
+      ],
+      "enum": [
+        "SystemDefault",
+        "SingleBitPerPixelGridFit",
+        "SingleBitPerPixel",
+        "AntiAliasGridFit",
+        "AntiAlias",
+        "ClearTypeGridFit"
+      ]
+    },
+    "SmoothingMode": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Default",
+        "HighSpeed",
+        "HighQuality",
+        "None",
+        "AntiAlias",
+        "Invalid"
+      ],
+      "enum": [
+        "Default",
+        "HighSpeed",
+        "HighQuality",
+        "None",
+        "AntiAlias",
+        "Invalid"
+      ]
+    },
+    "InterpolationMode": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Default",
+        "Low",
+        "High",
+        "Bilinear",
+        "Bicubic",
+        "NearestNeighbor",
+        "HighQualityBilinear",
+        "HighQualityBicubic",
+        "Invalid"
+      ],
+      "enum": [
+        "Default",
+        "Low",
+        "High",
+        "Bilinear",
+        "Bicubic",
+        "NearestNeighbor",
+        "HighQualityBilinear",
+        "HighQualityBicubic",
+        "Invalid"
+      ]
+    },
+    "DicomOptionsDTO": {
+      "type": "object",
+      "description": "Export options for DICOM format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for DICOM format",
+          "additionalProperties": false
+        }
+      ]
     },
     "GifOptionsDTO": {
       "type": "object",
@@ -5416,10 +5892,28 @@
                 "J2K",
                 "Jp2",
                 "Jpt"
-              ]
+              ],
+              "$ref": "#/definitions/Jpeg2000Codec",
+              "x-schema": {
+                "$ref": "#/definitions/Jpeg2000Codec"
+              }
             }
           }
         }
+      ]
+    },
+    "Jpeg2000Codec": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "J2K",
+        "Jp2",
+        "Jpt"
+      ],
+      "enum": [
+        "J2K",
+        "Jp2",
+        "Jpt"
       ]
     },
     "JpegOptionsDTO": {
@@ -5451,7 +5945,11 @@
                 "Progressive",
                 "Lossless",
                 "JpegLs"
-              ]
+              ],
+              "$ref": "#/definitions/JpegCompressionMode",
+              "x-schema": {
+                "$ref": "#/definitions/JpegCompressionMode"
+              }
             },
             "ColorType": {
               "description": "Color type",
@@ -5461,7 +5959,11 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ]
+              ],
+              "$ref": "#/definitions/JpegCompressionColorMode",
+              "x-schema": {
+                "$ref": "#/definitions/JpegCompressionColorMode"
+              }
             },
             "Quality": {
               "type": "integer",
@@ -5477,6 +5979,40 @@
             }
           }
         }
+      ]
+    },
+    "JpegCompressionMode": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Baseline",
+        "Progressive",
+        "Lossless",
+        "JpegLs"
+      ],
+      "enum": [
+        "Baseline",
+        "Progressive",
+        "Lossless",
+        "JpegLs"
+      ]
+    },
+    "JpegCompressionColorMode": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Grayscale",
+        "YCbCr",
+        "Cmyk",
+        "Ycck",
+        "Rgb"
+      ],
+      "enum": [
+        "Grayscale",
+        "YCbCr",
+        "Cmyk",
+        "Ycck",
+        "Rgb"
       ]
     },
     "RdOptimizerSettings": {
@@ -5550,7 +6086,11 @@
                 "IndexedColor",
                 "GrayscaleWithAlpha",
                 "TruecolorWithAlpha"
-              ]
+              ],
+              "$ref": "#/definitions/PngColorType",
+              "x-schema": {
+                "$ref": "#/definitions/PngColorType"
+              }
             },
             "Progressive": {
               "type": "boolean",
@@ -5565,7 +6105,11 @@
                 "Avg",
                 "Paeth",
                 "Adaptive"
-              ]
+              ],
+              "$ref": "#/definitions/PngFilterType",
+              "x-schema": {
+                "$ref": "#/definitions/PngFilterType"
+              }
             },
             "CompressionLevel": {
               "type": "integer",
@@ -5581,94 +6125,42 @@
         }
       ]
     },
-    "StpOptionsDTO": {
-      "type": "object",
-      "description": "Export options for STP format",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DrawingOptionsBaseDTO"
-        },
-        {
-          "type": "object",
-          "description": "Export options for STP format",
-          "additionalProperties": false
-        }
+    "PngColorType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Grayscale",
+        "Truecolor",
+        "IndexedColor",
+        "GrayscaleWithAlpha",
+        "TruecolorWithAlpha"
+      ],
+      "enum": [
+        "Grayscale",
+        "Truecolor",
+        "IndexedColor",
+        "GrayscaleWithAlpha",
+        "TruecolorWithAlpha"
       ]
     },
-    "CgmOptionsDTO": {
-      "type": "object",
-      "description": "Export options for CGM format",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DrawingOptionsBaseDTO"
-        },
-        {
-          "type": "object",
-          "description": "Export options for STP format",
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GlbOptionsDTO": {
-      "type": "object",
-      "description": "Export options for GLB format",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DrawingOptionsBaseDTO"
-        },
-        {
-          "type": "object",
-          "description": "Export options for GLB format",
-          "additionalProperties": false
-        }
-      ]
-    },
-    "GltfOptionsDTO": {
-      "type": "object",
-      "description": "Export options for GLTF format",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DrawingOptionsBaseDTO"
-        },
-        {
-          "type": "object",
-          "description": "Export options for GLTF format",
-          "additionalProperties": false
-        }
-      ]
-    },
-    "ThreeDSOptionsDTO": {
-      "type": "object",
-      "description": "Export options for 3DS format",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DrawingOptionsBaseDTO"
-        },
-        {
-          "type": "object",
-          "description": "Export options for 3DS format",
-          "additionalProperties": false
-        }
-      ] 
-    },
-    "U3dOptionsDTO": {
-      "type": "object",
-      "description": "Export options for U3D format",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DrawingOptionsBaseDTO"
-        },
-        {
-          "type": "object",
-          "description": "Export options for U3D format",
-          "additionalProperties": false
-        }
+    "PngFilterType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "None",
+        "Sub",
+        "Up",
+        "Avg",
+        "Paeth",
+        "Adaptive"
+      ],
+      "enum": [
+        "None",
+        "Sub",
+        "Up",
+        "Avg",
+        "Paeth",
+        "Adaptive"
       ]
     },
     "PsdOptionsDTO": {
@@ -5703,7 +6195,11 @@
                 "RLE",
                 "ZipWithoutPrediction",
                 "ZipWithPrediction"
-              ]
+              ],
+              "$ref": "#/definitions/CompressionMethod",
+              "x-schema": {
+                "$ref": "#/definitions/CompressionMethod"
+              }
             },
             "ColorMode": {
               "description": "Color mode",
@@ -5716,7 +6212,11 @@
                 "Multichannel",
                 "Duotone",
                 "Lab"
-              ]
+              ],
+              "$ref": "#/definitions/ColorModes",
+              "x-schema": {
+                "$ref": "#/definitions/ColorModes"
+              }
             },
             "ChannelBitsCount": {
               "type": "integer",
@@ -5728,6 +6228,46 @@
             }
           }
         }
+      ]
+    },
+    "CompressionMethod": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Raw",
+        "RLE",
+        "ZipWithoutPrediction",
+        "ZipWithPrediction"
+      ],
+      "enum": [
+        "Raw",
+        "RLE",
+        "ZipWithoutPrediction",
+        "ZipWithPrediction"
+      ]
+    },
+    "ColorModes": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Bitmap",
+        "Grayscale",
+        "Indexed",
+        "Rgb",
+        "Cmyk",
+        "Multichannel",
+        "Duotone",
+        "Lab"
+      ],
+      "enum": [
+        "Bitmap",
+        "Grayscale",
+        "Indexed",
+        "Rgb",
+        "Cmyk",
+        "Multichannel",
+        "Duotone",
+        "Lab"
       ]
     },
     "TiffOptionsDTO": {
@@ -5754,7 +6294,11 @@
               "enum": [
                 "LittleEndian",
                 "BigEndian"
-              ]
+              ],
+              "$ref": "#/definitions/TiffByteOrder",
+              "x-schema": {
+                "$ref": "#/definitions/TiffByteOrder"
+              }
             },
             "Compression": {
               "description": "Compression level",
@@ -5783,7 +6327,11 @@
                 "Sgilog",
                 "Sgilog24",
                 "Jp2000"
-              ]
+              ],
+              "$ref": "#/definitions/TiffCompressions",
+              "x-schema": {
+                "$ref": "#/definitions/TiffCompressions"
+              }
             },
             "ExpectedFormat": {
               "description": "Expected TIFF sub-format",
@@ -5804,7 +6352,11 @@
                 "TiffNoCompressionBw",
                 "TiffNoCompressionRgb",
                 "TiffNoCompressionRgba"
-              ]
+              ],
+              "$ref": "#/definitions/TiffExpectedFormat",
+              "x-schema": {
+                "$ref": "#/definitions/TiffExpectedFormat"
+              }
             },
             "BitsPerSample": {
               "type": "array",
@@ -5828,9 +6380,168 @@
                 "Itulab",
                 "Logl",
                 "Logluv"
-              ]
+              ],
+              "$ref": "#/definitions/TiffPhotometrics",
+              "x-schema": {
+                "$ref": "#/definitions/TiffPhotometrics"
+              }
             }
           }
+        }
+      ]
+    },
+    "TiffByteOrder": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "LittleEndian",
+        "BigEndian"
+      ],
+      "enum": [
+        "LittleEndian",
+        "BigEndian"
+      ]
+    },
+    "TiffCompressions": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "None",
+        "CcittRle",
+        "CcittFax3",
+        "CcittFax4",
+        "Lzw",
+        "Ojpeg",
+        "Jpeg",
+        "AdobeDeflate",
+        "Next",
+        "CcittRleW",
+        "Packbits",
+        "Thunderscan",
+        "It8Ctpad",
+        "It8Lw",
+        "It8Mp",
+        "It8Bl",
+        "PixarFilm",
+        "PixarLog",
+        "Deflate",
+        "Dcs",
+        "Jbig",
+        "Sgilog",
+        "Sgilog24",
+        "Jp2000"
+      ],
+      "enum": [
+        "None",
+        "CcittRle",
+        "CcittFax3",
+        "CcittFax4",
+        "Lzw",
+        "Ojpeg",
+        "Jpeg",
+        "AdobeDeflate",
+        "Next",
+        "CcittRleW",
+        "Packbits",
+        "Thunderscan",
+        "It8Ctpad",
+        "It8Lw",
+        "It8Mp",
+        "It8Bl",
+        "PixarFilm",
+        "PixarLog",
+        "Deflate",
+        "Dcs",
+        "Jbig",
+        "Sgilog",
+        "Sgilog24",
+        "Jp2000"
+      ]
+    },
+    "TiffExpectedFormat": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Default",
+        "TiffLzwBw",
+        "TiffLzwRgb",
+        "TiffLzwRgba",
+        "TiffLzwCmyk",
+        "TiffCcittFax3",
+        "TiffCcittFax4",
+        "TiffDeflateBw",
+        "TiffDeflateRgb",
+        "TiffDeflateRgba",
+        "TiffCcitRle",
+        "TiffJpegRgb",
+        "TiffJpegYCbCr",
+        "TiffNoCompressionBw",
+        "TiffNoCompressionRgb",
+        "TiffNoCompressionRgba"
+      ],
+      "enum": [
+        "Default",
+        "TiffLzwBw",
+        "TiffLzwRgb",
+        "TiffLzwRgba",
+        "TiffLzwCmyk",
+        "TiffCcittFax3",
+        "TiffCcittFax4",
+        "TiffDeflateBw",
+        "TiffDeflateRgb",
+        "TiffDeflateRgba",
+        "TiffCcitRle",
+        "TiffJpegRgb",
+        "TiffJpegYCbCr",
+        "TiffNoCompressionBw",
+        "TiffNoCompressionRgb",
+        "TiffNoCompressionRgba"
+      ]
+    },
+    "TiffPhotometrics": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "MinIsWhite",
+        "MinIsBlack",
+        "Rgb",
+        "Palette",
+        "Mask",
+        "Separated",
+        "Ycbcr",
+        "Cielab",
+        "Icclab",
+        "Itulab",
+        "Logl",
+        "Logluv"
+      ],
+      "enum": [
+        "MinIsWhite",
+        "MinIsBlack",
+        "Rgb",
+        "Palette",
+        "Mask",
+        "Separated",
+        "Ycbcr",
+        "Cielab",
+        "Icclab",
+        "Itulab",
+        "Logl",
+        "Logluv"
+      ]
+    },
+    "WebpOptionsDTO": {
+      "type": "object",
+      "description": "Export options for WEBP format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for WEBP format",
+          "additionalProperties": false
         }
       ]
     },
@@ -5859,7 +6570,7 @@
               "allOf": [
                 {}
               ],
-              "$ref": "#/definitions/PdfDocumentOptions"
+              "$ref": "#/definitions/PdfDocumentOptionsDTO"
             }
           }
         }
@@ -5883,8 +6594,9 @@
         }
       }
     },
-    "PdfDocumentOptions": {
+    "PdfDocumentOptionsDTO": {
       "type": "object",
+      "description": "Export document options.",
       "additionalProperties": false,
       "required": [
         "Compliance"
@@ -5895,15 +6607,38 @@
             "Pdf15",
             "PdfA1a",
             "PdfA1b"
-          ]
+          ],
+          "$ref": "#/definitions/PdfCompliance",
+          "x-schema": {
+            "$ref": "#/definitions/PdfCompliance"
+          }
         },
         "DigitalSignatureDetails": {
-          "$ref": "#/definitions/PdfDigitalSignatureDetailsCore"
+          "description": "Gets or sets a digital signature details. If not set, then no signing will be performed.",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/PdfDigitalSignatureDetailsCoreDTO"
         }
       }
     },
-    "PdfDigitalSignatureDetailsCore": {
+    "PdfCompliance": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Pdf15",
+        "PdfA1a",
+        "PdfA1b"
+      ],
+      "enum": [
+        "Pdf15",
+        "PdfA1a",
+        "PdfA1b"
+      ]
+    },
+    "PdfDigitalSignatureDetailsCoreDTO": {
       "type": "object",
+      "description": "Contains details for a PDF digital signature.",
       "additionalProperties": false,
       "required": [
         "SignatureDate",
@@ -5911,230 +6646,55 @@
       ],
       "properties": {
         "Certificate": {
-          "$ref": "#/definitions/X509Certificate2"
+          "type": "string",
+          "description": "A signing certificate in base64 format that contains a certificate of type X509Certificate2."
         },
         "Reason": {
-          "type": "string"
+          "type": "string",
+          "description": "The reason of signing."
         },
         "Location": {
-          "type": "string"
+          "type": "string",
+          "description": "Location of signing."
         },
         "SignatureDate": {
           "type": "string",
+          "description": "Date of signing.",
           "format": "date-time"
         },
         "HashAlgorithm": {
+          "description": "Hash algorithm.",
           "enum": [
             "Sha1",
             "Sha256",
             "Sha384",
             "Sha512",
             "Md5"
-          ]
-        }
-      }
-    },
-    "X509Certificate2": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/X509Certificate"
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "Archived",
-            "HasPrivateKey",
-            "NotAfter",
-            "NotBefore",
-            "Version"
           ],
-          "properties": {
-            "Archived": {
-              "type": "boolean"
-            },
-            "Extensions": {
-              "type": "array",
-              "items": {}
-            },
-            "FriendlyName": {
-              "type": "string"
-            },
-            "HasPrivateKey": {
-              "type": "boolean"
-            },
-            "PrivateKey": {
-              "$ref": "#/definitions/AsymmetricAlgorithm"
-            },
-            "IssuerName": {
-              "$ref": "#/definitions/X500DistinguishedName"
-            },
-            "NotAfter": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "NotBefore": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "PublicKey": {
-              "$ref": "#/definitions/PublicKey"
-            },
-            "RawData": {
-              "type": "string",
-              "format": "byte"
-            },
-            "SerialNumber": {
-              "type": "string"
-            },
-            "SignatureAlgorithm": {
-              "$ref": "#/definitions/Oid"
-            },
-            "SubjectName": {
-              "$ref": "#/definitions/X500DistinguishedName"
-            },
-            "Thumbprint": {
-              "type": "string"
-            },
-            "Version": {
-              "type": "integer",
-              "format": "int32"
-            }
+          "$ref": "#/definitions/PdfDigitalSignatureHashAlgorithmCore",
+          "x-schema": {
+            "$ref": "#/definitions/PdfDigitalSignatureHashAlgorithmCore"
           }
         }
+      }
+    },
+    "PdfDigitalSignatureHashAlgorithmCore": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Sha1",
+        "Sha256",
+        "Sha384",
+        "Sha512",
+        "Md5"
+      ],
+      "enum": [
+        "Sha1",
+        "Sha256",
+        "Sha384",
+        "Sha512",
+        "Md5"
       ]
-    },
-    "AsymmetricAlgorithm": {
-      "type": "object",
-      "x-abstract": true,
-      "additionalProperties": false,
-      "required": [
-        "KeySize"
-      ],
-      "properties": {
-        "KeySize": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "LegalKeySizes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/KeySizes"
-          }
-        },
-        "SignatureAlgorithm": {
-          "type": "string"
-        },
-        "KeyExchangeAlgorithm": {
-          "type": "string"
-        }
-      }
-    },
-    "KeySizes": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "MinSize",
-        "MaxSize",
-        "SkipSize"
-      ],
-      "properties": {
-        "MinSize": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "MaxSize": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "SkipSize": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "X500DistinguishedName": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/AsnEncodedData"
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "Name": {
-              "type": "string"
-            }
-          }
-        }
-      ]
-    },
-    "AsnEncodedData": {
-      "type": "object",
-      "discriminator": "Type",
-      "additionalProperties": false,
-      "properties": {
-        "Oid": {
-          "$ref": "#/definitions/Oid"
-        },
-        "RawData": {
-          "type": "string",
-          "format": "byte"
-        }
-      }
-    },
-    "Oid": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "Value": {
-          "type": "string"
-        },
-        "FriendlyName": {
-          "type": "string"
-        }
-      }
-    },
-    "PublicKey": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "EncodedKeyValue": {
-          "$ref": "#/definitions/AsnEncodedData"
-        },
-        "EncodedParameters": {
-          "$ref": "#/definitions/AsnEncodedData"
-        },
-        "Key": {
-          "$ref": "#/definitions/AsymmetricAlgorithm"
-        },
-        "Oid": {
-          "$ref": "#/definitions/Oid"
-        }
-      }
-    },
-    "X509Certificate": {
-      "type": "object",
-      "discriminator": "Type",
-      "additionalProperties": false,
-      "required": [
-        "Handle"
-      ],
-      "properties": {
-        "Handle": {
-          "$ref": "#/definitions/IntPtr"
-        },
-        "Issuer": {
-          "type": "string"
-        },
-        "Subject": {
-          "type": "string"
-        }
-      }
-    },
-    "IntPtr": {
-      "type": "object",
-      "additionalProperties": false
     },
     "SvgOptionsDTO": {
       "type": "object",
@@ -6161,7 +6721,11 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ]
+              ],
+              "$ref": "#/definitions/SvgColorMode",
+              "x-schema": {
+                "$ref": "#/definitions/SvgColorMode"
+              }
             },
             "TextAsShapes": {
               "type": "boolean",
@@ -6169,6 +6733,24 @@
             }
           }
         }
+      ]
+    },
+    "SvgColorMode": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Grayscale",
+        "YCbCr",
+        "Cmyk",
+        "Ycck",
+        "Rgb"
+      ],
+      "enum": [
+        "Grayscale",
+        "YCbCr",
+        "Cmyk",
+        "Ycck",
+        "Rgb"
       ]
     },
     "WmfOptionsDTO": {
@@ -6193,6 +6775,21 @@
               "format": "int32"
             }
           }
+        }
+      ]
+    },
+    "CgmOptionsDTO": {
+      "type": "object",
+      "description": "Export options for CGM format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for CGM format",
+          "additionalProperties": false
         }
       ]
     },
@@ -6241,6 +6838,36 @@
         }
       ]
     },
+    "GlbOptionsDTO": {
+      "type": "object",
+      "description": "Export options for GLB format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for GLB format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GltfOptionsDTO": {
+      "type": "object",
+      "description": "Export options for GLTF format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for GLTF format",
+          "additionalProperties": false
+        }
+      ]
+    },
     "ObjOptionsDTO": {
       "type": "object",
       "description": "Export options for FBX format",
@@ -6252,6 +6879,51 @@
         {
           "type": "object",
           "description": "Export options for FBX format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "StpOptionsDTO": {
+      "type": "object",
+      "description": "Export options for STP format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for STP format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ThreeDSOptionsDTO": {
+      "type": "object",
+      "description": "Export options for 3DS format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for 3DS format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "U3dOptionsDTO": {
+      "type": "object",
+      "description": "Export options for U3D format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for U3D format",
           "additionalProperties": false
         }
       ]
@@ -6358,6 +7030,13 @@
             {}
           ],
           "$ref": "#/definitions/PltProperties"
+        },
+        "StpProperties": {
+          "description": "Gets or sets the STP properties.",
+          "allOf": [
+            {}
+          ],
+          "$ref": "#/definitions/StpProperties"
         }
       }
     },
@@ -6414,6 +7093,11 @@
     "PltProperties": {
       "type": "object",
       "description": "Represents information about PLT drawing.",
+      "additionalProperties": false
+    },
+    "StpProperties": {
+      "type": "object",
+      "description": "Represents information about STP drawing.",
       "additionalProperties": false
     },
     "FilesUploadResult": {
@@ -6625,54 +7309,24 @@
           }
         }
       ]
-    },
-    "WatermarkRGB":{
-      "type": "object",
-      "description": "Watermark text with RGB values",
-      "additionalProperties": false,
-      "properties": {
-        "Watermarktext": {
-          "type": "string",
-          "required": true,
-          "description": "Watermark text.",
-          "default": "Default",
-          "nullable": false
-        },
-        "Watermarkr": {
-          "type": "string",
-          "required": true,
-          "description": "Red light(0-255).",
-          "default": 0,
-          "minimum": 0,
-          "maximum": 255,
-          "nullable": false
-        },
-        "Watermarkg": {
-          "type": "string",
-          "description": "Green light(0-255).",
-          "default": 0,
-          "minimum": 0,
-          "maximum": 255,
-          "nullable": false
-        },
-        "Watermarkb": {
-          "type": "string",
-          "description": "Blue light(0-255).",
-          "default": 0,
-          "minimum": 0,
-          "maximum": 255,
-          "nullable": false
-        }
-      }
     }
   },
   "securityDefinitions": {
-    "JWT": {
+    "Bearer": {
+      "type": "apiKey",
+      "description": "Type into: <b>Bearer &lt;your JWT token&gt;</b>. Obtain a JWT token from POST https://api.aspose.cloud/connect/token",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "OAuth2": {
       "type": "oauth2",
       "description": "Use your client_id/client_secret from https://dashboard.aspose.cloud site",
-      "name": "JWT",
+      "name": "OAuth2",
       "flow": "application",
-      "tokenUrl": "https://api.aspose.cloud/connect/token"
+      "tokenUrl": "https://api.aspose.cloud/connect/token",
+      "scopes": {
+        "api.products": "access to Aspose.CAD API"
+      }
     }
   }
 }
