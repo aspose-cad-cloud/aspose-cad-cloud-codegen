@@ -179,7 +179,7 @@ module {{moduleName}}
       {{#bodyParam}}
       post_body = @api_client.object_to_http_body({{#required}}request.{{{paramName}}}{{/required}}{{^required}}request.{{{paramName}}}{{/required}})
       {{/bodyParam}}
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:{{httpMethod}}, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,

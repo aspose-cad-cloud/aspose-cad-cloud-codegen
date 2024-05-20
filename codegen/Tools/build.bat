@@ -6,9 +6,9 @@ dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f netcorea
 dotnet publish SplitCSharpCodeFile\SplitCSharpCodeFile.csproj -r win-x64 -f netcoreapp3.1 -c Release -o .\ /p:PublishTrimmed=false /p:PublishSingleFile=true /p:CopyOutputSymbolsToPublishDirectory=false --self-contained false
 ::dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f netcoreapp3.1 -c Release -o .\ /p:PublishTrimmed=false /p:PublishSingleFile=true /p:CopyOutputSymbolsToPublishDirectory=false --self-contained false
 ::dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f netcoreapp3.1 -c Release -o .\ /p:PublishTrimmed=false /p:PublishSingleFile=true /p:CopyOutputSymbolsToPublishDirectory=false --self-contained false
-dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f net46 -c Release --self-contained -o .\ /p:CopyOutputSymbolsToPublishDirectory=false
-dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f net46 -c Release --self-contained -o .\ /p:CopyOutputSymbolsToPublishDirectory=false
-dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f net46 -c Release --self-contained -o .\ /p:CopyOutputSymbolsToPublishDirectory=false
+dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f netcoreapp3.1 -c Release -o .\ /p:PublishTrimmed=false /p:PublishSingleFile=true /p:CopyOutputSymbolsToPublishDirectory=false --self-contained false
+dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f netcoreapp3.1 -c Release -o .\ /p:PublishTrimmed=false /p:PublishSingleFile=true /p:CopyOutputSymbolsToPublishDirectory=false --self-contained false
+dotnet publish SplitRubyCodeFile\SplitRubyCodeFile.csproj -r win-x64 -f netcoreapp3.1 -c Release -o .\ /p:PublishTrimmed=false /p:PublishSingleFile=true /p:CopyOutputSymbolsToPublishDirectory=false --self-contained false
 del SplitPythonCodeFile.exe.config
 del SplitJavaCodeFile.exe.config
 del SplitPhpCodeFile.exe.config

@@ -25,15 +25,16 @@ namespace SplitJavaCodeFile
                 Directory.CreateDirectory(text);
             }
 
+            var pattern = @"\/[\s\*]\r?\n\* (-*-)\r?\n\* <copyright company=""Aspose"" file=""(.*?).java"">";
             string text2 = File.ReadAllText(path);
-            MatchCollection matchCollection =
-                Regex.Matches(text2, " * <copyright company=\"Aspose\" file=\"(.*?).java\">");
+            MatchCollection matchCollection = Regex.Matches(text2, pattern);
             string text3 = string.Empty;
             for (int i = matchCollection.Count - 1; i > 0; i--)
             {
-                string str = matchCollection[i].Groups[1] + ".java";
-                string str2 = matchCollection[i].Groups[1].ToString();
-                int startIndex = text2.IndexOf("file=\"" + str + "\"") - 152;
+                string str = matchCollection[i].Groups[0].ToString();
+                string str2 = matchCollection[i].Groups[2].ToString();
+                
+                int startIndex = text2.IndexOf(str!, StringComparison.Ordinal);
                 text3 = text2.Substring(startIndex);
                 text2 = text2.Substring(0, text2.Length - text3.Length);
                 File.WriteAllText(text + str2 + ".java", text3);

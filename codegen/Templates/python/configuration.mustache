@@ -253,32 +253,34 @@ class Configuration(object):
         """
         return {
 {{#authMethods}}
-{{#isApiKey}}
-            '{{name}}':
-                {
-                    'type': 'api_key',
-                    'in': {{#isKeyInHeader}}'header'{{/isKeyInHeader}}{{#isKeyInQuery}}'query'{{/isKeyInQuery}},
-                    'key': '{{keyParamName}}',
-                    'value': self.get_api_key_with_prefix('{{keyParamName}}')
-                },
-{{/isApiKey}}
-{{#isBasic}}
-            '{{name}}':
-                {
-                    'type': 'basic',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': self.get_basic_auth_token()
-                },
-{{/isBasic}}{{#isOAuth}}
-            '{{name}}':
-                {
-                    'type': 'oauth2',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
-                },
-{{/isOAuth}}{{/authMethods}}
+    {{#isApiKey}}
+                '{{name}}':
+                    {
+                        'type': 'api_key',
+                        'in': {{#isKeyInHeader}}'header'{{/isKeyInHeader}}{{#isKeyInQuery}}'query'{{/isKeyInQuery}},
+                        'key': '{{keyParamName}}',
+                        'value': self.get_api_key_with_prefix('{{keyParamName}}')
+                    },
+    {{/isApiKey}}
+    {{#isBasic}}
+                '{{name}}':
+                    {
+                        'type': 'basic',
+                        'in': 'header',
+                        'key': 'Authorization',
+                        'value': self.get_basic_auth_token()
+                    },
+    {{/isBasic}}
+    {{#isOAuth}}
+                '{{name}}':
+                    {
+                        'type': 'oauth2',
+                        'in': 'header',
+                        'key': 'Authorization',
+                        'value': 'Bearer ' + self.access_token
+                    },
+    {{/isOAuth}}
+{{/authMethods}}
         }
 
     @staticmethod
@@ -291,5 +293,5 @@ class Configuration(object):
                "OS: {env}\n" \
                "Python Version: {pyversion}\n" \
                "Version of the API: 3.0\n" \
-               "SDK Package Version: 20.11.0". \
+               "SDK Package Version: {{packageVersion}}". \
             format(env=sys.platform, pyversion=sys.version)
