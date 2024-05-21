@@ -59,6 +59,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "PaperToCad"
       }
     },
@@ -111,6 +112,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "Convert"
       }
     },
@@ -166,6 +168,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "Watermark"
       }
     },
@@ -202,6 +205,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "ExtractText"
       }
     },
@@ -247,6 +251,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "ExtractMetadata"
       }
     },
@@ -290,6 +295,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "Viewer"
       }
     },
@@ -302,8 +308,7 @@
         "operationId": "EditMetadata",
         "consumes": [
           "multipart/form-data",
-          "application/octet-stream",
-          "multipart/form-data"
+          "application/octet-stream"
         ],
         "parameters": [
           {
@@ -318,8 +323,7 @@
             "x-nullable": true,
             "description": "",
             "schema": {
-              "type": "string",
-              "format": "byte"
+              "type": "file"
             }
           }
         },
@@ -328,6 +332,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "EditMetadata"
       },
       "put": {
@@ -368,6 +373,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "PutEditMetadata"
       }
     },
@@ -7016,7 +7022,7 @@
           "type": "array",
           "description": "List of errors.",
           "items": {
-            "$ref": "#/definitions/Error"
+            "$ref": "#/definitions/ErrorModel"
           }
         }
       }
@@ -7212,13 +7218,13 @@
     }
   },
   "securityDefinitions": {
-    "Bearer": {
+    "ApiKey": {
       "type": "apiKey",
       "description": "Type into: <b>Bearer &lt;your JWT token&gt;</b>. Obtain a JWT token from POST https://api.aspose.cloud/connect/token",
       "name": "Authorization",
       "in": "header"
     },
-    "OAuth2": {
+    "Bearer": {
       "type": "oauth2",
       "description": "Use your client_id/client_secret from https://dashboard.aspose.cloud site",
       "name": "OAuth2",

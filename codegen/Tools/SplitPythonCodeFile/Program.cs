@@ -12,6 +12,11 @@ namespace SplitPythonCodeFile
     {
         private static void Main(string[] args)
         {
+            //args = new[]
+            //{
+            //    @"C:\tmp\python\asposecadcloud\api\cad_api.py",
+            //    @"C:\tmp\python\asposecadcloud\models\requests\"
+            //};
             string apiFilePath = args[0];
             string requestsDir = args[1];
 
@@ -22,14 +27,14 @@ namespace SplitPythonCodeFile
 
             string text2 = File.ReadAllText(apiFilePath);
 
-            var pattern = "#  coding: utf-8(.*?)\r\n#  (-*-)\r\n#  <copyright company=\"Aspose\" file=\"(.*?).py\">";
+            var pattern = @"#  coding: utf-8[\s\S]*?<copyright company=""Aspose"" file=""(.*?).py""";
             MatchCollection matchCollection = Regex.Matches(text2, pattern);
             string text3 = string.Empty;
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             for (int i = matchCollection.Count - 1; i > 0; i--) // skip CadApi by checking for strong "greater than"
             {
                 string str = matchCollection[i].Groups[0].ToString();
-                string text4 = matchCollection[i].Groups[3].ToString();
+                string text4 = matchCollection[i].Groups[1].ToString();
                 IEnumerable<string> arg_B5_0 = text4.Split(new string[]
                     {
                         "_"

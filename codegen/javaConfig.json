@@ -5,8 +5,7 @@
     "testPackage":"com.aspose.cad.cloud.test.api",
 	"modelPackage": "com.aspose.cad.cloud.model",
 	"package": "com.aspose.cad.cloud",
-	"apiPackage": "com.aspose.cad.cloud.api",
 	"artifactId": "aspose-cad-cloud",
-	"artifactVersion": "20.11",
+	"artifactVersion": "24.1",
 	"library": "okhttp-gson"
 }

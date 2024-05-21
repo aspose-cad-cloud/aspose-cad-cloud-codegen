@@ -12,11 +12,12 @@ namespace SplitPhpCodeFile
     {
         private static void Main(string[] args)
         {
-            // args = new[]
-            // {
-            //     @"c:\tmp\php\SwaggerClient-php\lib\Api\cadApi.php",
-            //     @"c:\tmp\php\SwaggerClient-php\lib\model\requests"
             // };
+            //args = new[]
+            //{
+            //    @"C:\Users\ArtemM\Desktop\cloud\aspose-cad-cloud-codegen\SDKS\PHP\src\Aspose\CAD\CadApi.php",
+            //    @"C:\Users\ArtemM\Desktop\cloud\aspose-cad-cloud-codegen\SDKS\PHP\src\Aspose\CAD\Model\Requests\"
+            //};
             
             string path = args[0];
             string text = args[1];
@@ -25,14 +26,16 @@ namespace SplitPhpCodeFile
                 Directory.CreateDirectory(text);
             }
             string text2 = File.ReadAllText(path);
-            MatchCollection matchCollection = Regex.Matches(text2, " \\* <copyright company=\"Aspose\" file=\"(.*?).php\">");
+            var pattern = @"[\s\<][\s\?]php\r?\n(.*?)[\s\*]+(-*-)\r?\n (.*?) <copyright company=""Aspose"" file=""(.*?).php"">";
+            
+            MatchCollection matchCollection = Regex.Matches(text2, pattern);
             string text3 = string.Empty;
             for (int i = matchCollection.Count - 1; i > 0; i--)
             {
-                string str = matchCollection[i].Groups[1] + ".php";
-                string text4 = matchCollection[i].Groups[1].ToString();
+                string str = matchCollection[i].Groups[0].ToString();
+                string text4 = matchCollection[i].Groups[4].ToString();
                 string text5 = char.ToUpper(text4[0]).ToString() + text4.Substring(1);
-                int startIndex = text2.IndexOf("file=\"" + str + "\"") - 164;
+                int startIndex = text2.IndexOf(str!, StringComparison.Ordinal);
                 text3 = text2.Substring(startIndex);
                 text2 = text2.Substring(0, text2.Length - text3.Length);
                 text3 = text3.Replace(text4, text5);

@@ -22,6 +22,11 @@ namespace SplitRubyCodeFile
 
         private static void Main(string[] args)
         {
+            //args = new[]
+            //{
+            //    @"C:\tmp\Ruby\lib\aspose_cad_cloud\api\cad_api.rb",
+            //    @"C:\tmp\Ruby\lib\aspose_cad_cloud\models\requests\"
+            //};
             string path = args[0];
             string text = args[1];
             if (!Directory.Exists(text))
@@ -30,14 +35,14 @@ namespace SplitRubyCodeFile
             }
 
             string text2 = File.ReadAllText(path);
-            MatchCollection matchCollection =
-                Regex.Matches(text2, "# <copyright company=\"Aspose\" file=\"(.*?).rb\">");
+            var pattern = " #\r?\n # (-*-)\r?\n # <copyright company=\"Aspose\" file=\"(.*?).rb\">";
+            MatchCollection matchCollection = Regex.Matches(text2, pattern);
             string text3 = string.Empty;
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            for (int i = matchCollection.Count - 1; i > 0; i--)
+            for (int i = matchCollection.Count - 1; i >= 0; i--)
             {
-                string str = matchCollection[i].Groups[1] + ".rb";
-                string text4 = matchCollection[i].Groups[1].ToString();
+                string str = matchCollection[i].Groups[0].ToString();
+                string text4 = matchCollection[i].Groups[2].ToString();
                 IEnumerable<string> arg_B5_0 = text4.Split(new string[]
                 {
                     "_"
@@ -46,7 +51,8 @@ namespace SplitRubyCodeFile
                 IEnumerable<string> values = arg_B5_0.Select(UpperCaser);
                 string text5 = string.Join(string.Empty, values);
                 dictionary.Add(text4, text5);
-                int startIndex = text2.IndexOf("file=\"" + str + "\"") - 156;
+                
+                int startIndex = text2.IndexOf(str!, StringComparison.Ordinal);
                 text3 = text2.Substring(startIndex);
                 text2 = text2.Substring(0, text2.Length - text3.Length);
                 text3 = text3.Replace(text4, text5);
