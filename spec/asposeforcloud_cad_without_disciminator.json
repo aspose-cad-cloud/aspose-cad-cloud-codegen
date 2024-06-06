@@ -22,7 +22,7 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.",
+        "summary": "Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.",
         "operationId": "PaperToCad",
         "consumes": [
           "multipart/form-data",
@@ -34,7 +34,7 @@
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.",
+            "description": "Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.",
             "x-nullable": true
           },
           {
@@ -68,7 +68,7 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
+        "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
         "operationId": "Convert",
         "consumes": [
           "multipart/form-data",
@@ -80,7 +80,7 @@
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
+            "description": "Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
             "x-nullable": true
           },
           {
@@ -2390,6 +2390,161 @@
         "x-binary-result": "true",
         "x-options-input": "CgmOptionsDTO",
         "x-operationId": "PutDrawingCgm"
+      }
+    },
+    "/cad/{name}/drc": {
+      "post": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export an existing drawing to Draco format with export settings specified.",
+        "operationId": "PostDrawingDraco",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Draco options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/DracoOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingDraco"
+      }
+    },
+    "/cad/drc": {
+      "put": {
+        "tags": [
+          "Cad"
+        ],
+        "summary": "Export drawing to Draco format. Drawing data is passed as zero-indexed multipart/form-data as well as export Draco options serialized as JSON.\nOrder of drawing data and Draco options could vary.",
+        "operationId": "PutDrawingDraco",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/DracoOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "DracoOptionsDTO",
+        "x-operationId": "PutDrawingDraco"
       }
     },
     "/cad/{name}/dwf": {
@@ -6710,6 +6865,21 @@
         {
           "type": "object",
           "description": "Export options for DWF format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DracoOptionsDTO": {
+      "type": "object",
+      "description": "Export options for Draco format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for Draco format",
           "additionalProperties": false
         }
       ]
