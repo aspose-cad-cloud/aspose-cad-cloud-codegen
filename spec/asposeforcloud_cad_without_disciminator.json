@@ -25,23 +25,23 @@
         "summary": "Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.",
         "operationId": "PaperToCad",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
             "description": "Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.",
-            "x-nullable": true
-          },
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "description": "Form-data file",
             "x-nullable": true
           }
         ],
@@ -68,26 +68,26 @@
         "tags": [
           "Cad"
         ],
-        "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
+        "summary": "Convert CAD drawing to DXF, DWG, DGN, DRC, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
         "operationId": "Convert",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
             "description": "Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
-            "x-nullable": true
-          },
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "description": "Form-data file",
             "x-nullable": true
           },
           {
@@ -124,10 +124,17 @@
         "summary": "Add watermark to drawing",
         "operationId": "Watermark",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
@@ -136,15 +143,14 @@
             "x-nullable": true
           },
           {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "x-nullable": true
-          },
-          {
             "type": "string",
-            "name": "watermarkRgb",
+            "name": "watermark",
             "in": "formData",
+            "required": true,
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WatermarkRGB model definition.",
+            "x-schema": {
+              "$ref": "#/definitions/WatermarkRGB"
+            },
             "x-nullable": true
           },
           {
@@ -180,15 +186,16 @@
         "summary": "Extract Text from CAD drawing to txt file",
         "operationId": "ExtractText",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "drawing",
+            "name": "drawingData",
             "in": "formData",
-            "x-nullable": true
+            "required": true,
+            "description": "Input drawing"
           }
         ],
         "responses": {
@@ -217,23 +224,23 @@
         "summary": "Extract Metadata from CAD drawing to txt, xml or json file.",
         "operationId": "ExtractMetadata",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
             "description": "Output TXT, XML or JSON file format.",
-            "x-nullable": true
-          },
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "description": "Form-data file",
             "x-nullable": true
           }
         ],
@@ -307,15 +314,16 @@
         "summary": "Get Metadata info",
         "operationId": "EditMetadata",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "drawing",
+            "name": "drawingData",
             "in": "formData",
-            "x-nullable": true
+            "required": true,
+            "description": "Input drawing"
           }
         ],
         "responses": {
@@ -342,21 +350,23 @@
         "summary": "Save Metadata",
         "operationId": "PutEditMetadata",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "drawing",
+            "name": "drawingData",
             "in": "formData",
-            "x-nullable": true
+            "required": true,
+            "description": "Input drawing"
           },
           {
             "type": "string",
             "name": "metadataComponent",
             "in": "formData",
-            "x-nullable": true
+            "required": true,
+            "description": "Metadata string json from POST/EditMetadata"
           }
         ],
         "responses": {
@@ -4271,6 +4281,9 @@
             "in": "query",
             "required": true,
             "description": "Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY",
+            "x-schema": {
+              "$ref": "#/definitions/RotateFlipType"
+            },
             "x-nullable": false,
             "enum": [
               "RotateNoneFlipNone",
@@ -4379,6 +4392,9 @@
             "in": "query",
             "required": true,
             "description": "Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY",
+            "x-schema": {
+              "$ref": "#/definitions/RotateFlipType"
+            },
             "x-nullable": false,
             "enum": [
               "RotateNoneFlipNone",
@@ -5294,6 +5310,37 @@
     }
   },
   "definitions": {
+    "WatermarkRGB": {
+      "type": "object",
+      "description": "Watermark text with RGB values",
+      "additionalProperties": false,
+      "required": [
+        "R",
+        "G",
+        "B"
+      ],
+      "properties": {
+        "Text": {
+          "type": "string",
+          "description": "Watermark text."
+        },
+        "R": {
+          "type": "integer",
+          "description": "Red light(0-255).",
+          "format": "int32"
+        },
+        "G": {
+          "type": "integer",
+          "description": "Green light(0-255).",
+          "format": "int32"
+        },
+        "B": {
+          "type": "integer",
+          "description": "Blue light(0-255).",
+          "format": "int32"
+        }
+      }
+    },
     "BmpOptionsDTO": {
       "type": "object",
       "description": "Export options for BMP format",
@@ -5626,8 +5673,6 @@
         "BorderY",
         "PageHeight",
         "PageWidth",
-        "BackgroundColor",
-        "DrawColor",
         "UnitType",
         "ContentAsBitmap"
       ],
@@ -5657,14 +5702,14 @@
           "allOf": [
             {}
           ],
-          "$ref": "#/definitions/Color"
+          "$ref": "#/definitions/ColorDTO"
         },
         "DrawColor": {
           "description": "Gets or sets a foreground color.",
           "allOf": [
             {}
           ],
-          "$ref": "#/definitions/Color"
+          "$ref": "#/definitions/ColorDTO"
         },
         "UnitType": {
           "enum": [
@@ -5705,46 +5750,30 @@
         }
       }
     },
-    "Color": {
+    "ColorDTO": {
       "type": "object",
+      "description": "RGB color values",
       "additionalProperties": false,
       "required": [
         "R",
         "G",
-        "B",
-        "A",
-        "IsKnownColor",
-        "IsEmpty",
-        "IsNamedColor"
+        "B"
       ],
       "properties": {
         "R": {
           "type": "integer",
-          "format": "byte"
+          "description": "Red light(0-255).",
+          "format": "int32"
         },
         "G": {
           "type": "integer",
-          "format": "byte"
+          "description": "Green light(0-255).",
+          "format": "int32"
         },
         "B": {
           "type": "integer",
-          "format": "byte"
-        },
-        "A": {
-          "type": "integer",
-          "format": "byte"
-        },
-        "IsKnownColor": {
-          "type": "boolean"
-        },
-        "IsEmpty": {
-          "type": "boolean"
-        },
-        "IsNamedColor": {
-          "type": "boolean"
-        },
-        "Name": {
-          "type": "string"
+          "description": "Blue light(0-255).",
+          "format": "int32"
         }
       }
     },
@@ -6854,21 +6883,6 @@
         }
       ]
     },
-    "DwfOptionsDTO": {
-      "type": "object",
-      "description": "Export options for DWF format",
-      "additionalProperties": false,
-      "allOf": [
-        {
-          "$ref": "#/definitions/DrawingOptionsBaseDTO"
-        },
-        {
-          "type": "object",
-          "description": "Export options for DWF format",
-          "additionalProperties": false
-        }
-      ]
-    },
     "DracoOptionsDTO": {
       "type": "object",
       "description": "Export options for Draco format",
@@ -6880,6 +6894,21 @@
         {
           "type": "object",
           "description": "Export options for Draco format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DwfOptionsDTO": {
+      "type": "object",
+      "description": "Export options for DWF format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for DWF format",
           "additionalProperties": false
         }
       ]
@@ -7192,12 +7221,12 @@
           "type": "array",
           "description": "List of errors.",
           "items": {
-            "$ref": "#/definitions/ErrorModel"
+            "$ref": "#/definitions/Error"
           }
         }
       }
     },
-    "ErrorModel": {
+    "Error": {
       "type": "object",
       "description": "Error",
       "additionalProperties": false,

@@ -22,26 +22,26 @@
         "tags": [
           "Live"
         ],
-        "summary": "Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.",
+        "summary": "Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.",
         "operationId": "PaperToCad",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.",
-            "x-nullable": true
-          },
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "description": "Form-data file",
+            "description": "Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.",
             "x-nullable": true
           }
         ],
@@ -59,6 +59,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "PaperToCad"
       }
     },
@@ -67,26 +68,26 @@
         "tags": [
           "Live"
         ],
-        "summary": "Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
+        "summary": "Convert CAD drawing to DXF, DWG, DGN, DRC, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.",
         "operationId": "Convert",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
-            "description": "Output DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
-            "x-nullable": true
-          },
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "description": "Form-data file",
+            "description": "Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG, PNG, BMP, DIB, TIFF, TIF, JPEG, GIF, PSD, JPG, JPE, JIF, JFIF, PSD, WEBP, DCM, DICOM, JP2, J2K, JPF, JPM, JPG2, J2C, JPC, JPX, MJ2 , DJVU file format.",
             "x-nullable": true
           },
           {
@@ -111,6 +112,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "Convert"
       }
     },
@@ -122,10 +124,17 @@
         "summary": "Add watermark to drawing",
         "operationId": "Watermark",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
@@ -134,15 +143,14 @@
             "x-nullable": true
           },
           {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "x-nullable": true
-          },
-          {
             "type": "string",
-            "name": "watermarkRgb",
+            "name": "watermark",
             "in": "formData",
+            "required": true,
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WatermarkRGB model definition.",
+            "x-schema": {
+              "$ref": "#/definitions/WatermarkRGB"
+            },
             "x-nullable": true
           },
           {
@@ -166,6 +174,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "Watermark"
       }
     },
@@ -177,15 +186,16 @@
         "summary": "Extract Text from CAD drawing to txt file",
         "operationId": "ExtractText",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "drawing",
+            "name": "drawingData",
             "in": "formData",
-            "x-nullable": true
+            "required": true,
+            "description": "Input drawing"
           }
         ],
         "responses": {
@@ -202,6 +212,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "ExtractText"
       }
     },
@@ -213,23 +224,23 @@
         "summary": "Extract Metadata from CAD drawing to txt, xml or json file.",
         "operationId": "ExtractMetadata",
         "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
+          "application/octet-stream",
+          "multipart/form-data"
         ],
         "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
           {
             "type": "string",
             "name": "outputFormat",
             "in": "query",
             "required": true,
             "description": "Output TXT, XML or JSON file format.",
-            "x-nullable": true
-          },
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "description": "Form-data file",
             "x-nullable": true
           }
         ],
@@ -247,6 +258,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "ExtractMetadata"
       }
     },
@@ -290,6 +302,7 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
         "x-operationId": "Viewer"
       }
     },
@@ -301,57 +314,16 @@
         "summary": "Get Metadata info",
         "operationId": "EditMetadata",
         "consumes": [
-          "multipart/form-data",
           "application/octet-stream",
           "multipart/form-data"
         ],
         "parameters": [
           {
             "type": "file",
-            "name": "drawing",
+            "name": "drawingData",
             "in": "formData",
-            "x-nullable": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": true,
-            "description": "",
-            "schema": {
-              "type": "string",
-              "format": "byte"
-            }
-          }
-        },
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "x-operationId": "EditMetadata"
-      },
-      "put": {
-        "tags": [
-          "Live"
-        ],
-        "summary": "Save Metadata",
-        "operationId": "PutEditMetadata",
-        "consumes": [
-          "multipart/form-data",
-          "application/octet-stream"
-        ],
-        "parameters": [
-          {
-            "type": "file",
-            "name": "drawing",
-            "in": "formData",
-            "x-nullable": true
-          },
-          {
-            "type": "string",
-            "name": "metadataComponent",
-            "in": "formData",
-            "x-nullable": true
+            "required": true,
+            "description": "Input drawing"
           }
         ],
         "responses": {
@@ -368,6 +340,50 @@
             "Bearer": []
           }
         ],
+        "x-binary-result": "true",
+        "x-operationId": "EditMetadata"
+      },
+      "put": {
+        "tags": [
+          "Live"
+        ],
+        "summary": "Save Metadata",
+        "operationId": "PutEditMetadata",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "metadataComponent",
+            "in": "formData",
+            "required": true,
+            "description": "Metadata string json from POST/EditMetadata"
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
         "x-operationId": "PutEditMetadata"
       }
     },
@@ -2386,6 +2402,161 @@
         "x-operationId": "PutDrawingCgm"
       }
     },
+    "/cad/{name}/drc": {
+      "post": {
+        "tags": [
+          "Draco"
+        ],
+        "summary": "Export an existing drawing to Draco format with export settings specified.",
+        "operationId": "PostDrawingDraco",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Filename of an input drawing on a storage.",
+            "x-nullable": false
+          },
+          {
+            "name": "options",
+            "in": "body",
+            "required": true,
+            "description": "Export Draco options passed as a JSON on a request body.",
+            "schema": {
+              "$ref": "#/definitions/DracoOptionsDTO"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "folder",
+            "in": "query",
+            "description": "Folder with a drawing to process.",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "404": {
+            "description": "Input file doesn't exist at provided path."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-operationId": "PostDrawingDraco"
+      }
+    },
+    "/cad/drc": {
+      "put": {
+        "tags": [
+          "Draco"
+        ],
+        "summary": "Export drawing to Draco format. Drawing data is passed as zero-indexed multipart/form-data as well as export Draco options serialized as JSON.\nOrder of drawing data and Draco options could vary.",
+        "operationId": "PutDrawingDraco",
+        "consumes": [
+          "multipart/form-data",
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "type": "file",
+            "name": "drawingData",
+            "in": "formData",
+            "required": true,
+            "description": "Input drawing"
+          },
+          {
+            "type": "string",
+            "name": "outPath",
+            "in": "query",
+            "description": "Path to updated file (if this is empty, response contains streamed file).",
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "exportOptions",
+            "in": "formData",
+            "description": "JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/DracoOptionsDTO model definition."
+          },
+          {
+            "type": "string",
+            "name": "storage",
+            "in": "query",
+            "description": "Your Aspose Cloud Storage name.",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "Data stream (if output path is not set).",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters or input data."
+          },
+          "401": {
+            "description": "Authentication failed."
+          },
+          "500": {
+            "description": "Either current server is busy or internal error occured."
+          },
+          "501": {
+            "description": "The specific operation is not yet supported - please, contact us if you require it."
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-binary-result": "true",
+        "x-options-input": "DracoOptionsDTO",
+        "x-operationId": "PutDrawingDraco"
+      }
+    },
     "/cad/{name}/dwf": {
       "post": {
         "tags": [
@@ -4131,8 +4302,7 @@
               "Rotate90FlipXY",
               "Rotate180FlipXY",
               "Rotate270FlipXY"
-            ],
-            "$ref": "#/definitions/RotateFlipType"
+            ]
           },
           {
             "type": "string",
@@ -4243,8 +4413,7 @@
               "Rotate90FlipXY",
               "Rotate180FlipXY",
               "Rotate270FlipXY"
-            ],
-            "$ref": "#/definitions/RotateFlipType"
+            ]
           },
           {
             "type": "string",
@@ -5141,6 +5310,37 @@
     }
   },
   "definitions": {
+    "WatermarkRGB": {
+      "type": "object",
+      "description": "Watermark text with RGB values",
+      "additionalProperties": false,
+      "required": [
+        "R",
+        "G",
+        "B"
+      ],
+      "properties": {
+        "Text": {
+          "type": "string",
+          "description": "Watermark text."
+        },
+        "R": {
+          "type": "integer",
+          "description": "Red light(0-255).",
+          "format": "int32"
+        },
+        "G": {
+          "type": "integer",
+          "description": "Green light(0-255).",
+          "format": "int32"
+        },
+        "B": {
+          "type": "integer",
+          "description": "Blue light(0-255).",
+          "format": "int32"
+        }
+      }
+    },
     "BmpOptionsDTO": {
       "type": "object",
       "description": "Export options for BMP format",
@@ -5174,11 +5374,7 @@
                 "Png",
                 "AlphaBitfields",
                 "Dxt1"
-              ],
-              "$ref": "#/definitions/BitmapCompression",
-              "x-schema": {
-                "$ref": "#/definitions/BitmapCompression"
-              }
+              ]
             }
           }
         }
@@ -5237,11 +5433,7 @@
             "Rotate90FlipXY",
             "Rotate180FlipXY",
             "Rotate270FlipXY"
-          ],
-          "$ref": "#/definitions/RotateFlipType",
-          "x-schema": {
-            "$ref": "#/definitions/RotateFlipType"
-          }
+          ]
         },
         "Layers": {
           "type": "array",
@@ -5322,8 +5514,7 @@
           "type": "number",
           "format": "double"
         }
-      },
-      "description": "Resolution Setting"
+      }
     },
     "CadRasterizationOptionsDTO": {
       "type": "object",
@@ -5379,11 +5570,7 @@
               "enum": [
                 "UseDrawColor",
                 "UseObjectColor"
-              ],
-              "$ref": "#/definitions/CadDrawTypeMode",
-              "x-schema": {
-                "$ref": "#/definitions/CadDrawTypeMode"
-              }
+              ]
             },
             "NoScaling": {
               "type": "boolean",
@@ -5414,11 +5601,7 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ],
-          "$ref": "#/definitions/LineCap",
-          "x-schema": {
-            "$ref": "#/definitions/LineCap"
-          }
+          ]
         },
         "EndCap": {
           "enum": [
@@ -5433,14 +5616,9 @@
             "ArrowAnchor",
             "AnchorMask",
             "Custom"
-          ],
-          "$ref": "#/definitions/LineCap",
-          "x-schema": {
-            "$ref": "#/definitions/LineCap"
-          }
+          ]
         }
-      },
-      "description": "Pen Options"
+      }
     },
     "LineCap": {
       "type": "string",
@@ -5495,8 +5673,6 @@
         "BorderY",
         "PageHeight",
         "PageWidth",
-        "BackgroundColor",
-        "DrawColor",
         "UnitType",
         "ContentAsBitmap"
       ],
@@ -5526,14 +5702,14 @@
           "allOf": [
             {}
           ],
-          "$ref": "#/definitions/Color"
+          "$ref": "#/definitions/ColorDTO"
         },
         "DrawColor": {
           "description": "Gets or sets a foreground color.",
           "allOf": [
             {}
           ],
-          "$ref": "#/definitions/Color"
+          "$ref": "#/definitions/ColorDTO"
         },
         "UnitType": {
           "enum": [
@@ -5559,11 +5735,7 @@
             "MicroInch",
             "Custom",
             "Unitless"
-          ],
-          "$ref": "#/definitions/UnitType",
-          "x-schema": {
-            "$ref": "#/definitions/UnitType"
-          }
+          ]
         },
         "ContentAsBitmap": {
           "type": "boolean",
@@ -5578,49 +5750,32 @@
         }
       }
     },
-    "Color": {
+    "ColorDTO": {
       "type": "object",
+      "description": "RGB color values",
       "additionalProperties": false,
       "required": [
         "R",
         "G",
-        "B",
-        "A",
-        "IsKnownColor",
-        "IsEmpty",
-        "IsNamedColor"
+        "B"
       ],
       "properties": {
         "R": {
           "type": "integer",
-          "format": "byte"
+          "description": "Red light(0-255).",
+          "format": "int32"
         },
         "G": {
           "type": "integer",
-          "format": "byte"
+          "description": "Green light(0-255).",
+          "format": "int32"
         },
         "B": {
           "type": "integer",
-          "format": "byte"
-        },
-        "A": {
-          "type": "integer",
-          "format": "byte"
-        },
-        "IsKnownColor": {
-          "type": "boolean"
-        },
-        "IsEmpty": {
-          "type": "boolean"
-        },
-        "IsNamedColor": {
-          "type": "boolean"
-        },
-        "Name": {
-          "type": "string"
+          "description": "Blue light(0-255).",
+          "format": "int32"
         }
-      },
-      "description": "Color"
+      }
     },
     "UnitType": {
       "type": "string",
@@ -5691,11 +5846,7 @@
             "AntiAliasGridFit",
             "AntiAlias",
             "ClearTypeGridFit"
-          ],
-          "$ref": "#/definitions/TextRenderingHint",
-          "x-schema": {
-            "$ref": "#/definitions/TextRenderingHint"
-          }
+          ]
         },
         "SmoothingMode": {
           "enum": [
@@ -5705,11 +5856,7 @@
             "None",
             "AntiAlias",
             "Invalid"
-          ],
-          "$ref": "#/definitions/SmoothingMode",
-          "x-schema": {
-            "$ref": "#/definitions/SmoothingMode"
-          }
+          ]
         },
         "InterpolationMode": {
           "enum": [
@@ -5722,14 +5869,9 @@
             "HighQualityBilinear",
             "HighQualityBicubic",
             "Invalid"
-          ],
-          "$ref": "#/definitions/InterpolationMode",
-          "x-schema": {
-            "$ref": "#/definitions/InterpolationMode"
-          }
+          ]
         }
-      },
-      "description": "Graphics Options"
+      }
     },
     "TextRenderingHint": {
       "type": "string",
@@ -5896,11 +6038,7 @@
                 "J2K",
                 "Jp2",
                 "Jpt"
-              ],
-              "$ref": "#/definitions/Jpeg2000Codec",
-              "x-schema": {
-                "$ref": "#/definitions/Jpeg2000Codec"
-              }
+              ]
             }
           }
         }
@@ -5949,11 +6087,7 @@
                 "Progressive",
                 "Lossless",
                 "JpegLs"
-              ],
-              "$ref": "#/definitions/JpegCompressionMode",
-              "x-schema": {
-                "$ref": "#/definitions/JpegCompressionMode"
-              }
+              ]
             },
             "ColorType": {
               "description": "Color type",
@@ -5963,11 +6097,7 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ],
-              "$ref": "#/definitions/JpegCompressionColorMode",
-              "x-schema": {
-                "$ref": "#/definitions/JpegCompressionColorMode"
-              }
+              ]
             },
             "Quality": {
               "type": "integer",
@@ -6060,8 +6190,7 @@
           "type": "integer",
           "format": "int32"
         }
-      },
-      "description": "Rd Optimizer Settings"
+      }
     },
     "PngOptionsDTO": {
       "type": "object",
@@ -6091,11 +6220,7 @@
                 "IndexedColor",
                 "GrayscaleWithAlpha",
                 "TruecolorWithAlpha"
-              ],
-              "$ref": "#/definitions/PngColorType",
-              "x-schema": {
-                "$ref": "#/definitions/PngColorType"
-              }
+              ]
             },
             "Progressive": {
               "type": "boolean",
@@ -6110,11 +6235,7 @@
                 "Avg",
                 "Paeth",
                 "Adaptive"
-              ],
-              "$ref": "#/definitions/PngFilterType",
-              "x-schema": {
-                "$ref": "#/definitions/PngFilterType"
-              }
+              ]
             },
             "CompressionLevel": {
               "type": "integer",
@@ -6200,11 +6321,7 @@
                 "RLE",
                 "ZipWithoutPrediction",
                 "ZipWithPrediction"
-              ],
-              "$ref": "#/definitions/CompressionMethod",
-              "x-schema": {
-                "$ref": "#/definitions/CompressionMethod"
-              }
+              ]
             },
             "ColorMode": {
               "description": "Color mode",
@@ -6217,11 +6334,7 @@
                 "Multichannel",
                 "Duotone",
                 "Lab"
-              ],
-              "$ref": "#/definitions/ColorModes",
-              "x-schema": {
-                "$ref": "#/definitions/ColorModes"
-              }
+              ]
             },
             "ChannelBitsCount": {
               "type": "integer",
@@ -6299,11 +6412,7 @@
               "enum": [
                 "LittleEndian",
                 "BigEndian"
-              ],
-              "$ref": "#/definitions/TiffByteOrder",
-              "x-schema": {
-                "$ref": "#/definitions/TiffByteOrder"
-              }
+              ]
             },
             "Compression": {
               "description": "Compression level",
@@ -6332,11 +6441,7 @@
                 "Sgilog",
                 "Sgilog24",
                 "Jp2000"
-              ],
-              "$ref": "#/definitions/TiffCompressions",
-              "x-schema": {
-                "$ref": "#/definitions/TiffCompressions"
-              }
+              ]
             },
             "ExpectedFormat": {
               "description": "Expected TIFF sub-format",
@@ -6357,11 +6462,7 @@
                 "TiffNoCompressionBw",
                 "TiffNoCompressionRgb",
                 "TiffNoCompressionRgba"
-              ],
-              "$ref": "#/definitions/TiffExpectedFormat",
-              "x-schema": {
-                "$ref": "#/definitions/TiffExpectedFormat"
-              }
+              ]
             },
             "BitsPerSample": {
               "type": "array",
@@ -6385,11 +6486,7 @@
                 "Itulab",
                 "Logl",
                 "Logluv"
-              ],
-              "$ref": "#/definitions/TiffPhotometrics",
-              "x-schema": {
-                "$ref": "#/definitions/TiffPhotometrics"
-              }
+              ]
             }
           }
         }
@@ -6597,8 +6694,7 @@
         "Subject": {
           "type": "string"
         }
-      },
-      "description": "Pdf Document Info"
+      }
     },
     "PdfDocumentOptionsDTO": {
       "type": "object",
@@ -6613,11 +6709,7 @@
             "Pdf15",
             "PdfA1a",
             "PdfA1b"
-          ],
-          "$ref": "#/definitions/PdfCompliance",
-          "x-schema": {
-            "$ref": "#/definitions/PdfCompliance"
-          }
+          ]
         },
         "DigitalSignatureDetails": {
           "description": "Gets or sets a digital signature details. If not set, then no signing will be performed.",
@@ -6676,11 +6768,7 @@
             "Sha384",
             "Sha512",
             "Md5"
-          ],
-          "$ref": "#/definitions/PdfDigitalSignatureHashAlgorithmCore",
-          "x-schema": {
-            "$ref": "#/definitions/PdfDigitalSignatureHashAlgorithmCore"
-          }
+          ]
         }
       }
     },
@@ -6727,11 +6815,7 @@
                 "Cmyk",
                 "Ycck",
                 "Rgb"
-              ],
-              "$ref": "#/definitions/SvgColorMode",
-              "x-schema": {
-                "$ref": "#/definitions/SvgColorMode"
-              }
+              ]
             },
             "TextAsShapes": {
               "type": "boolean",
@@ -6795,6 +6879,21 @@
         {
           "type": "object",
           "description": "Export options for CGM format",
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DracoOptionsDTO": {
+      "type": "object",
+      "description": "Export options for Draco format",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DrawingOptionsBaseDTO"
+        },
+        {
+          "type": "object",
+          "description": "Export options for Draco format",
           "additionalProperties": false
         }
       ]
@@ -7318,13 +7417,13 @@
     }
   },
   "securityDefinitions": {
-    "Bearer": {
+    "ApiKey": {
       "type": "apiKey",
       "description": "Type into: <b>Bearer &lt;your JWT token&gt;</b>. Obtain a JWT token from POST https://api.aspose.cloud/connect/token",
       "name": "Authorization",
       "in": "header"
     },
-    "OAuth2": {
+    "Bearer": {
       "type": "oauth2",
       "description": "Use your client_id/client_secret from https://dashboard.aspose.cloud site",
       "name": "OAuth2",

@@ -1,7 +1,7 @@
 <?php
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="CadApi.php">
+ * <copyright company="Aspose" file="{{classname}}.php">
  *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
  * </copyright>
  * <summary>
@@ -55,7 +55,7 @@ class {{classname}}
     private $configuration;
   
     /**
-     * Initialize a new instance of CadApi
+     * Initialize a new instance of {{classname}}
      *
      * @param \Aspose\CAD\Configuration   $config Configuration info
      * @param \GuzzleHttp\ClientInterface   $client PSR-7 compliant HTTP client
@@ -184,16 +184,25 @@ class {{classname}}
             }
         } elseif (count($formParams) > 0) {
             $multipartContents = [];
-            foreach ($formParams as $formParamName => $formParamValue) {
-                $multipartContents[] = [
-                    'name' => $formParamName,
-                    'contents' => $formParamValue,
-                    'filename' => $formParamName,
-                    'headers' => [
-                        'Content-Type' => 'application/octet-stream',
-                        'Content-Length' => strlen($formParamValue)
-                    ]
-                ];
+            foreach ($formParams as $formParamName => $formParamValue) {                
+                if(gettype($formParamValue) == "object"){
+                    echo $formParamName;
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                else{
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue,
+                        'filename' => $formParamName,
+                        'headers' => [
+                            'Content-Type' => 'multipart/form-data',
+                            'Content-Length' => strlen($formParamValue)
+                            ]
+                    ];
+                }
             }
             
             $boundary = sha1(uniqid('', true));

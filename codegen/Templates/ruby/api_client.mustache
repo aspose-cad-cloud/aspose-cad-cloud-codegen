@@ -252,7 +252,7 @@ module {{moduleName}}
       end
       prefix += '-' unless prefix.end_with?('-')
       encoding = response.body.encoding
-      tempfile = Tempfile.open(prefix, @config.temp_folder_path, encoding: encoding)
+      tempfile = Tempfile.open(prefix, @config.temp_folder_path, binmode: true, encoding: encoding)
       @tempfile = tempfile
       tempfile.write(response.body)
       response.on_complete do |resp|
