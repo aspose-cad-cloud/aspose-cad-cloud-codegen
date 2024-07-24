@@ -5514,7 +5514,8 @@
           "type": "number",
           "format": "double"
         }
-      }
+      },
+      "description": "Resolution Setting"
     },
     "CadRasterizationOptionsDTO": {
       "type": "object",
@@ -5618,7 +5619,8 @@
             "Custom"
           ]
         }
-      }
+      },
+      "description": "Pen Options"
     },
     "LineCap": {
       "type": "string",
@@ -5871,7 +5873,8 @@
             "Invalid"
           ]
         }
-      }
+      },
+      "description": "Graphics Options"
     },
     "TextRenderingHint": {
       "type": "string",
@@ -6190,7 +6193,8 @@
           "type": "integer",
           "format": "int32"
         }
-      }
+      },
+      "description": "Rd Optimizer Settings"
     },
     "PngOptionsDTO": {
       "type": "object",
@@ -6694,7 +6698,8 @@
         "Subject": {
           "type": "string"
         }
-      }
+      },
+      "description": "Pdf Document Info"
     },
     "PdfDocumentOptionsDTO": {
       "type": "object",

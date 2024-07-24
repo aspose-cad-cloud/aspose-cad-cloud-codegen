@@ -1,57 +1,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>{{groupId}}</groupId>
-    <artifactId>{{artifactId}}</artifactId>
+    <groupId>com.aspose</groupId>
+    <artifactId>aspose-cad-cloud</artifactId>
     <packaging>jar</packaging>
-    <name>{{artifactId}}</name>
+    <name>Aspose.CAD Cloud Java SDK</name>
     <version>{{artifactVersion}}</version>
-    <url>{{artifactUrl}}</url>
-    <description>{{artifactDescription}}</description>
+    <url>https://github.com/aspose-cad-cloud/aspose-cad-cloud-java</url>
+    <description>Aspose.CAD Cloud Java SDK</description>
+	
     <licenses>
         <license>
-            <name>{{licenseName}}</name>
-            <url>{{licenseUrl}}</url>
+            <name>MIT License</name>
+            <url>https://github.com/aspose-cad-cloud/aspose-cad-cloud-java/blob/master/LICENSE</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
+	
+	<scm>
+        <connection>scm:git:git://github.com/aspose-cad-cloud/aspose-cad-cloud-java.git</connection>
+        <developerConnection>scm:git:ssh://github.com:aspose-cad-cloud/aspose-cad-cloud-java.git</developerConnection>
+        <url>https://github.com/aspose-cad-cloud/aspose-cad-cloud-java</url>
+    </scm>
     
-    <developers>
-        <developer>
-            <name>{{developerName}}</name>
-            <email>{{developerEmail}}</email>
-            <organization>{{developerOrganization}}</organization>
-            <organizationUrl>{{developerOrganizationUrl}}</organizationUrl>
-        </developer>
-    </developers>
+    <organization>
+        <name>Aspose Pty Ltd</name>
+        <url>http://www.aspose.com</url>
+    </organization>
+
+	
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jackson-version>2.10.1</jackson-version>
+        <maven-plugin-version>1.0.0</maven-plugin-version>
+        <junit-version>4.12</junit-version>
+		<skipTests>true</skipTests>
+		<maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+		<javadoc.opts>-Xdoclint:none</javadoc.opts>
+		<releaseVersion>24.1</releaseVersion>
+    </properties>
     
     <build>
+	<extensions>
+      <extension>
+        <groupId>com.github.seahen</groupId>
+        <artifactId>maven-s3-wagon</artifactId>
+        <version>1.3.3</version>
+      </extension>
+    </extensions>
+
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <executions>
-                    <execution>
-                        <id>enforce-maven</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>2.2.0</version>
-                                </requireMavenVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+			
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.13</version>
                 <configuration>
+                    <skipTests>${skipTests}</skipTests>
                     <systemProperties>
                         <property>
                             <name>loggerPath</name>
@@ -68,6 +74,7 @@
                     </includes>
                 </configuration>
             </plugin>
+			
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -83,7 +90,6 @@
                 </executions>
             </plugin>
 
-            <!-- attach test jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -97,13 +103,19 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <archive>                   
+                         <manifest>
+                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                         </manifest>
+                    </archive>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.10</version>
+                <version>1.9</version>
                 <executions>
                     <execution>
                         <id>add_sources</id>
@@ -113,8 +125,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>
-                                src/main/java</source>
+                                <source>src/main/java</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -133,30 +144,33 @@
                     </execution>
                 </executions>
             </plugin>
+			
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
-                    {{#java8}}
-                        <source>
-                        1.8</source>
-                        <target>1.8</target>
-                    {{/java8}}
-                    {{^java8}}
-                        <source>
-                        1.5</source>
-                        <target>1.5</target>
-                    {{/java8}}
+				    <fork>true</fork>
+				    <compilerVersion>1.8</compilerVersion>
+					<executable>${JAVA_HOME}/bin/javac</executable>
+					<verbose>true</verbose>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
+			
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.10.4</version>
+				
+				<!-- uncomment if you're using JDK 1.8 or higher
 				<configuration>
-                    <additionalparam>-Xdoclint:none</additionalparam>
+                    <additionalparam>${javadoc.opts}</additionalparam>
                 </configuration>
+				-->
+				
+				
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -166,6 +180,7 @@
                     </execution>
                 </executions>
             </plugin>
+			
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -179,40 +194,36 @@
                     </execution>
                 </executions>
             </plugin>
+			
         </plugins>
+		
     </build>
+    
+    <reporting>
 	
-	<reporting>
       <plugins>
+	  
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-report-plugin</artifactId>
           <version>2.13</version>
-		  <configuration>
+          <configuration>
               <outputDirectory>target/surefire-reports</outputDirectory>
           </configuration>
         </plugin>
+		
       </plugins>
+	  
     </reporting>
 
     <profiles>
+	
         <profile>
-		    <repositories>
-            	<repository>
-                	<id>mvnrepository</id>
-                	<name>mvnrepository</name>
-                	<url>http://www.mvnrepository.com</url>
-                	<snapshots>
-                    	<enabled>false</enabled>
-                	</snapshots>
-                	<releases>
-                    	<enabled>true</enabled>
-                	</releases>
-            	</repository>
+        	<repositories>
             	<repository>
        				<id>AsposeJavaAPI</id>
        				<name>Aspose Java API</name>
-       				<url>http://artifact.aspose.com/repo/</url>
+       				<url>http://artifact.aspose.cloud/repo/</url>
        				<snapshots>
                     	<enabled>false</enabled>
                 	</snapshots>
@@ -221,153 +232,108 @@
                 	</releases>
    				</repository>
         	</repositories>
-            <id>sign-artifacts</id>
-			<activation>
+            <id>repositoryProfile</id>
+            <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
+		
     </profiles>
 
     <dependencies>
 	
-		<dependency>
+	    <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
-        </dependency> 
-	
+        </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+		
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+		
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+		
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>${jackson-version}</version>
         </dependency>
+		
 		<dependency>
-      		<groupId>com.aspose</groupId>
-      		<artifactId>aspose-cloud-storage</artifactId>
-      		<version>1.0.1</version>
-      		<scope>compile</scope>
-		</dependency>
-		<dependency>
-            <groupId>pl.pragmatists</groupId>
-            <artifactId>JUnitParams</artifactId>
-            <version>1.1.1</version>
-            <scope>test</scope>
+            <groupId>org.simpleframework</groupId>
+            <artifactId>simple-xml</artifactId>
+            <version>2.7.1</version>
         </dependency>
-		<dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            
+        <dependency>
+             <groupId>com.brsanthu</groupId>
+            <artifactId>migbase64</artifactId>
+            <version>2.2</version>
         </dependency>
-        {{#withXml}}
 
-            <!-- XML processing: Jackson -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.dataformat</groupId>
-                <artifactId>jackson-dataformat-xml</artifactId>
-                <version>${jackson-version}</version>
-            </dependency>
-
-        {{/withXml}}
-        {{#joda}}
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-joda</artifactId>
-                <version>${jackson-version}</version>
-            </dependency>
-        {{/joda}}
-        {{#java8}}
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jsr310</artifactId>
-                <version>${jackson-version}</version>
-            </dependency>
-        {{/java8}}
-        {{^java8}}
-            <!-- Base64 encoding that works in both JVM and Android -->
-            <dependency>
-                <groupId>com.brsanthu</groupId>
-                <artifactId>migbase64</artifactId>
-                <version>2.2</version>
-            </dependency>
-        {{/java8}}
-        {{#supportJava6}}
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons_lang3_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons_io_version}</version>
-            </dependency>
-        {{/supportJava6}}
-        {{#useBeanValidation}}
-            <!-- Bean Validation API support -->
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
-                <scope>provided</scope>
-            </dependency>
-        {{/useBeanValidation}}
-        {{#parcelableModel}}
-            <!-- Needed for Parcelable support-->
-            <dependency>
-                <groupId>com.google.android</groupId>
-                <artifactId>android</artifactId>
-                <version>4.1.1.4</version>
-                <scope>provided</scope>
-            </dependency>
-        {{/parcelableModel}}
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
+		
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
+	
+		<dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.18</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>2.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>2.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.gsonfire</groupId>
+            <artifactId>gson-fire</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+            <dependency>
+                <groupId>org.threeten</groupId>
+                <artifactId>threetenbp</artifactId>
+                <version>1.3.5</version>
+            </dependency>		
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        {{#supportJava6}}
-            <commons_io_version>2.5</commons_io_version>
-            <commons_lang3_version>3.6</commons_lang3_version>
-        {{/supportJava6}}
-        <jackson-version>{{^threetenbp}}2.7.5{{/threetenbp}}{{#threetenbp}}2.6.4{{/threetenbp}}</jackson-version>
-        <maven-plugin-version>1.0.0</maven-plugin-version>
-        <junit-version>4.12</junit-version>
-    </properties>
+
 </project>

@@ -50,7 +50,7 @@ namespace {{packageName}}.Model.Requests
         public {{nickname}}Request({{#allParams}}{{{dataType}}} {{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})             
         {
             {{#allParams}}
-            this.{{baseName}} = {{paramName}};
+            this.{{#lambda.camelcase_param}}{{baseName}}{{/lambda.camelcase_param}} = {{paramName}};
             {{/allParams}}   
         }
 
@@ -58,7 +58,7 @@ namespace {{packageName}}.Model.Requests
         /// <summary>
         /// {{^description}}Gets or sets {{baseName}}{{/description}}{{#description}}{{{description}}}{{/description}}
         /// </summary>  
-        public {{{dataType}}} {{baseName}} { get; set; }
+        public {{{dataType}}} {{#lambda.camelcase_param}}{{baseName}}{{/lambda.camelcase_param}} { get; set; }
         {{#hasMore}}
 
         {{/hasMore}}

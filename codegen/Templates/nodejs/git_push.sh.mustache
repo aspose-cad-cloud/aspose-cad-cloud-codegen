@@ -124,7 +124,7 @@ export class {{vendorExtensions.x-operationId}}Request {
     /**
      * {{^description}}Gets or sets {{paramName}}{{/description}}{{#description}}{{{description}}}{{/description}}
      */
-    public {{paramName}}: {{{dataType}}};
+    public {{paramName}}: {{#isFile}}Buffer{{/isFile}}{{^isFile}}{{{dataType}}}{{/isFile}};
     {{#hasMore}}
 
     {{/hasMore}}

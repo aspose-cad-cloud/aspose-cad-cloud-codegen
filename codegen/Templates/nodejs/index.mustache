@@ -1,0 +1,92 @@
+{
+  "name": "@asposecloud/aspose-cad-cloud",
+  "version": "{{npmVersion}}",
+  "description": "Aspose.CAD Cloud Node.Js SDK",
+  "homepage": "https://products.aspose.cloud/cad",
+  "author": {
+    "name": "Aspose.CAD Cloud",
+    "url": "https://github.com/aspose-cad-cloud"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aspose-cad-cloud/aspose-cad-cloud-nodejs.git"
+  },
+  "keywords": [
+    "Aspose",
+    "CAD",
+    "Cloud",
+    "REST",
+    "API",
+    "SDK",
+    "drawing",
+    "DWG",
+    "DXF",
+    "DWF",
+    "DWFX",
+    "DWT",
+    "STL",
+    "IGS",
+    "DGN",
+    "OBJ",
+    "CF2",
+    "image",
+    "bmp",
+    "gif",
+    "jpg",
+    "jpeg",
+    "jpeg2000",
+    "jp2",
+    "j2k",
+    "png",
+    "psd",
+    "tiff",
+    "tif",
+    "wmf",
+    "svg",
+    "export",
+    "conversion"
+  ],
+  "readmeFilename": "README.md",
+  "main": "dist/lib/api.js",
+  "types": "dist/lib/api.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "compile": "tsc",
+    "lint": "tslint lib/{,**/}*.ts test/{,**/}*.ts -t verbose --project ./tsconfig.json",
+    "test": "cross-var node --max_old_space_size=4096 ./node_modules/jest/bin/jest.js --testMatch=**/test/**/*-tests-v3_0.ts --verbose --detectOpenHandles --runInBand --no-cache --colors --ci --reporters=default --reporters=jest-junit",
+    "ci": "npm run-script compile && npm run-script test"
+  },
+  "jest-junit": {
+    "outputDirectory": "../test-reports",
+    "outputName": "./junit.xml"
+  },
+  "dependencies": {
+    "@types/request": "^2.47.0",
+    "combined-stream": "~1.0.5",
+    "https-proxy-agent": "^5.0.0",
+    "isstream": "~0.1.2",
+    "node-uuid": "~1.4.3",
+    "request": "^2.87.0",
+    "request-debug": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.14",
+    "@types/jest-each": "^0.3.2",
+    "@types/node": "^12.20.55",
+    "@types/ws": "^8.5.4",
+    "cross-var": "^1.1.0",
+    "jest": "^23.6.0",
+    "jest-each": "^23.6.0",
+    "jest-junit": "^5.2.0",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.8.0",
+    "typescript": "^4.0.0"
+  }
+}

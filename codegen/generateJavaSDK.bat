@@ -17,6 +17,9 @@ xcopy "%tmpfolder%\docs" "%sdkfolder%\docs" /E /Y || goto :error
 xcopy "%tmpfolder%\src\main\java\com\aspose\cad\cloud\model" "%sdkfolder%\src\main\java\com\aspose\cad\cloud\model" /E /Y || goto :error
 xcopy "%tmpfolder%\src\main\java\com\aspose\cad\cloud\api" "%sdkfolder%\src\main\java\com\aspose\cad\cloud\api" /E /Y || goto :error
 
+xcopy "%tmpfolder%\pom.xml" "%sdkfolder%\pom.xml" /E /Y || goto :error
+xcopy "%tmpfolder%\README.md" "%sdkfolder%\README.md" /E /Y || goto :error
+
 goto :EOF
 
 :error

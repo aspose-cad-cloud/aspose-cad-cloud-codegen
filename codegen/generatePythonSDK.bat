@@ -14,6 +14,9 @@ RD /S /Q "%sdkfolder%\asposecadcloud" || goto :error
 xcopy "%tmpfolder%\docs" "%sdkfolder%\docs" /E /I /Y || goto :error
 xcopy "%tmpfolder%\asposecadcloud" "%sdkfolder%\asposecadcloud" /E /I /Y || goto :error
 
+xcopy "%tmpfolder%\README.md" "%sdkfolder%\README.md" /E /I /Y || goto :error
+xcopy "%tmpfolder%\setup.py" "%sdkfolder%\setup.py" /E /I /Y || goto :error
+
 goto :EOF
 
 :error

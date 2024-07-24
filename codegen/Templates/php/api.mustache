@@ -26,14 +26,14 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-namespace {{invokerPackage}};
+namespace Aspose\CAD;
 
 use \GuzzleHttp\Client;
 use \GuzzleHttp\Exception\RequestException;
 use \GuzzleHttp\Psr7\MultipartStream;
 use \GuzzleHttp\Psr7\Request;
 use \GuzzleHttp\RequestOptions;
-use \{{invokerPackage}}\ObjectSerializer;
+use \Aspose\CAD\ObjectSerializer;
 
 /**
  * Aspose.CAD Cloud APIs.
@@ -98,7 +98,7 @@ class {{classname}}
 {{/description}}
      * @param \Aspose\CAD\Model\Requests\{{vendorExtensions.x-operationId}}Request $request Request object for operation
      *
-     * @throws \{{invokerPackage}}\ApiException Throws on non-2xx response
+     * @throws \Aspose\CAD\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
      * @return {{#returnType}}{{#vendorExtensions}}{{#x-binary-result}}\Psr\Http\Message\StreamInterface{{/x-binary-result}}{{^x-binary-result}}{{{returnType}}}{{/x-binary-result}}{{/vendorExtensions}}{{/returnType}}{{^returnType}}void{{/returnType}}
      */
