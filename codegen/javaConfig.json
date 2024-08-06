@@ -6,6 +6,6 @@
 	"modelPackage": "com.aspose.cad.cloud.model",
 	"package": "com.aspose.cad.cloud",
 	"artifactId": "aspose-cad-cloud",
-	"artifactVersion": "25.564568",
+	"artifactVersion": "24.1.0",
 	"library": "okhttp-gson"
 }
