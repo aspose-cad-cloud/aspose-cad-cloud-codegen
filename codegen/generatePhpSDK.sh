@@ -9,7 +9,7 @@ if [ -d "$tmpfolder" ]; then
   rm -rf "$tmpfolder" || { echo "Failed to delete $tmpfolder"; exit 1; }
 fi
 
-java -jar swagger-codegen-cli-2.4.5.jar generate -i ../spec/asposeforcloud_cad_without_disciminator.json -l php -t Templates/php -c phpConfig.json -o "$tmpfolder" --invoker-package Aspose/CAD --model-package Model --api-package Api || { echo "Swagger code generation failed"; exit 1; }
+java -jar swagger-codegen-cli-2.4.5.jar generate -i ../spec/asposeforcloud_cad_without_disciminator.json -l php -t Templates/php -c phpConfig.json -o "$tmpfolder" --invoker-package Aspose\\CAD --model-package Model --api-package Api || { echo "Swagger code generation failed"; exit 1; }
 
 Tools/SplitPhpCodeFile/bin/Release/netcoreapp3.1/linux-x64/publish/./SplitPhpCodeFile "$tmpfolder/SwaggerClient-php/lib/Api/CadApi.php" "$tmpfolder/SwaggerClient-php/lib/Model/Requests/" || { echo "SplitPhpCodeFile failed"; exit 1; }
 

@@ -96,7 +96,7 @@ class {{classname}}
      * {{.}}
      *
 {{/description}}
-     * @param \Aspose\CAD\Model\Requests\{{vendorExtensions.x-operationId}}Request $request Request object for operation
+     * @param \{{modelPackage}}\Requests\{{vendorExtensions.x-operationId}}Request $request Request object for operation
      *
      * @throws \Aspose\CAD\ApiException Throws on non-2xx response
      * @throws \InvalidArgumentException
@@ -128,7 +128,7 @@ class {{classname}}
      * {{.}}
      *
 {{/description}}
-     * @param \Aspose\CAD\Model\Requests\{{vendorExtensions.x-operationId}}Request $request Request object for operation
+     * @param \{{modelPackage}}\Requests\{{vendorExtensions.x-operationId}}Request $request Request object for operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -261,7 +261,7 @@ class {{classname}}
             $error = null;
             if (isset($body)) {
                 try {
-                    $error = ObjectSerializer::deserialize($body->getContents(), '\Aspose\CAD\Model\Error', []);
+                    $error = ObjectSerializer::deserialize($body->getContents(), '\{{modelPackage}}\Error', []);
                 } catch (\Throwable $th) {
                     // suppress exception
                 }
