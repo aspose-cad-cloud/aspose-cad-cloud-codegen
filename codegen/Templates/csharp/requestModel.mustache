@@ -29,7 +29,7 @@ namespace {{packageName}}.Model.Requests
   using {{packageName}}.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Cad.Cloud.Sdk.Api.CadApi.{{nickname}}" /> operation.
+  /// Request model for <see cref="Aspose.CAD.Cloud.Sdk.Api.CadApi.{{nickname}}" /> operation.
   /// </summary>  
   public class {{nickname}}Request{{#vendorExtensions}}{{#x-csharp-implements}} : {{x-csharp-implements}} {{/x-csharp-implements}}  {{/vendorExtensions}}
   {
@@ -50,7 +50,7 @@ namespace {{packageName}}.Model.Requests
         public {{nickname}}Request({{#allParams}}{{{dataType}}} {{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})             
         {
             {{#allParams}}
-            this.{{#lambda.camelcase_param}}{{baseName}}{{/lambda.camelcase_param}} = {{paramName}};
+            this.{{baseName}} = {{paramName}};
             {{/allParams}}   
         }
 
@@ -58,7 +58,7 @@ namespace {{packageName}}.Model.Requests
         /// <summary>
         /// {{^description}}Gets or sets {{baseName}}{{/description}}{{#description}}{{{description}}}{{/description}}
         /// </summary>  
-        public {{{dataType}}} {{#lambda.camelcase_param}}{{baseName}}{{/lambda.camelcase_param}} { get; set; }
+        public {{{dataType}}} {{baseName}} { get; set; }
         {{#hasMore}}
 
         {{/hasMore}}
