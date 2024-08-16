@@ -37,5 +37,5 @@ rm -rf "$tmpfolder/SwaggerClient-php/lib/Model" || { echo "Failed to delete $tmp
 cp -r "$tmpfolder/SwaggerClient-php/lib/Api/." "$sdkfolder/src/Aspose/CAD" || { echo "Failed to copy $tmpfolder/SwaggerClient-php/lib/Api"; exit 1; }
 cp -r "$tmpfolder/SwaggerClient-php/lib/Configuration.php" "$sdkfolder/src/Aspose/CAD" || { echo "Failed to copy $tmpfolder/SwaggerClient-php/lib/Configuration.php"; exit 1; }
 
-cp -r "$tmpfolder/SwaggerClient-php/lib/README.md" "$sdkfolder/README.md" || { echo "Failed to copy $tmpfolder/SwaggerClient-php/README.md"; exit 1; }
-cp -r "$tmpfolder/SwaggerClient-php/lib/composer.json" "$sdkfolder/composer.json" || { echo "Failed to copy $tmpfolder/SwaggerClient-php/composer.json"; exit 1; }
+cp -r "$tmpfolder/SwaggerClient-php/README.md" "$sdkfolder/README.md" || { echo "Failed to copy $tmpfolder/SwaggerClient-php/README.md"; exit 1; }
+cp -r "$tmpfolder/SwaggerClient-php/composer.json" "$sdkfolder/composer.json" || { echo "Failed to copy $tmpfolder/SwaggerClient-php/composer.json"; exit 1; }
