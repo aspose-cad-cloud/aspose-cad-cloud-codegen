@@ -1,6 +1,6 @@
 {
-	"moduleName": "AsposeCadCloud",
-	"gemName": "aspose_cad_cloud",
-	"gemVersion": "24.5.1",
-	"variableNamingConvention":"camelCase"
+    "moduleName": "AsposeCadCloud",
+    "gemName": "aspose_cad_cloud",
+    "gemVersion": "24.5.1",
+    "variableNamingConvention":"camelCase"
 }

@@ -1,6 +1,5 @@
 {
-  "packageName":"Aspose.CAD.Cloud.Sdk",
-  "packageVersion" : "24.5.1",
-  "modelPropertyNaming": "PascalCase",
-  "enumPropertyNaming": "PascalCase"
+    "packageName": "Aspose.CAD.Cloud.Sdk",
+    "packageVersion": "24.5.1",
+    "modelPropertyNaming": "PascalCase"
 }
