@@ -120,3 +120,4 @@ SDKs/servercreds.json
 /codegen/Tools/Aspose.CAD.Cloud.Codegen.PostProcessor/bin/Debug/netcoreapp2.2/*.dll
 /codegen/Tools/*.pdb
 /SDKS/test-reports
+deployment
