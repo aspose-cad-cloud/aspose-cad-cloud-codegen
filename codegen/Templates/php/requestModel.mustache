@@ -31,9 +31,9 @@
 namespace {{modelPackage}}\Requests;
 
 use \InvalidArgumentException;
-use \{{invokerPackage}}\Configuration;
-use \{{invokerPackage}}\ObjectSerializer;
-use \{{invokerPackage}}\CadRequest as CadRequest;
+use \Aspose\CAD\Configuration;
+use \Aspose\CAD\ObjectSerializer;
+use \Aspose\CAD\CadRequest as CadRequest;
 
 /**
  * Request model for {{nickname}} operation.
@@ -97,7 +97,7 @@ class {{vendorExtensions.x-operationId}}Request extends CadRequest
     /**
      * Prepares initial info for HTTP request
      *
-     * @param \{{invokerPackage}}\Configuration $config CAD API configuration.
+     * @param \Aspose\CAD\Configuration $config CAD API configuration.
      */
     public function getHttpRequestInfo($config)
     {

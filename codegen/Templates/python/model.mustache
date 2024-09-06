@@ -55,15 +55,15 @@ class {{classname}}({{#parent}}{{parent}}{{/parent}}{{^parent}}object{{/parent}}
                             and the value is json key in definition.
     """
     swagger_types = {
-{{#vars}}
-        '{{name}}': '{{{datatype}}}'{{#hasMore}},{{/hasMore}}
-{{/vars}}
+{{#allVars}}
+        '{{name}}': '{{datatype}}'{{#hasMore}},{{/hasMore}}
+{{/allVars}}
     }
 
     attribute_map = {
-{{#vars}}
+{{#allVars}}
         '{{name}}': '{{baseName}}'{{#hasMore}},{{/hasMore}}
-{{/vars}}
+{{/allVars}}
     }
 {{#discriminator}}
 

@@ -79,10 +79,12 @@ export class {{classname}} {
             formParams[paramKey] = {
                 value: formValue,
                 options: {
+                    {{#isFile}}
                     filename: "{{baseName}}",
-                    contentType: "application/octet-stream",
+                    contentType: "application/octet-stream",                    
                     knownLength: formValue.length,
-                    proxy: this.configuration.proxy,
+                    {{/isFile}}
+                    proxy: this.configuration.proxy
                 },
             };
         }
@@ -99,7 +101,7 @@ export class {{classname}} {
             encoding: null,
 {{/isResponseFile}}
 {{^formParams}}
-            json: false,
+            json: true,
 {{/formParams}}
 {{#bodyParam}}
             body: ObjectSerializer.serialize(requestObj.{{paramName}}, requestObj.{{paramName}}.constructor.name === "Object" ? "{{{dataType}}}" : requestObj.{{paramName}}.constructor.name),

@@ -7,7 +7,7 @@ set tmpfolder=C:\tmp\PHP
 if exist %tmpfolder% del /S /Q "%tmpfolder%" || goto :error
 java -jar swagger-codegen-cli-2.4.5.jar generate -i ..\spec\asposeforcloud_cad_without_disciminator.json -l php -t Templates\php -c phpConfig.json -o "%tmpfolder%" --invoker-package Aspose\CAD --model-package Model --api-package Api || goto :error
 
-Tools\SplitPhpCodeFile.exe %tmpfolder%\SwaggerClient-php\lib\Api\CADApi.php %tmpfolder%\SwaggerClient-php\lib\Model\Requests\ || goto :error
+Tools\SplitPhpCodeFile.exe %tmpfolder%\SwaggerClient-php\lib\Api\CadApi.php %tmpfolder%\SwaggerClient-php\lib\Model\Requests\ || goto :error
 
 if exist "%sdkfolder%\docs" del /S /Q "%sdkfolder%\docs" || goto :error
 if exist "%sdkfolder%\src\Aspose\CAD\Model" del /S /Q "%sdkfolder%\src\Aspose\CAD\Model" || goto :error
@@ -21,3 +21,6 @@ rmdir "%tmpfolder%\SwaggerClient-php\lib\Model\Requests" || goto :error
 rmdir "%tmpfolder%\SwaggerClient-php\lib\Model" || goto :error
 xcopy "%tmpfolder%\SwaggerClient-php\lib\Api" "%sdkfolder%\src\Aspose\CAD" /E || goto :error
 xcopy "%tmpfolder%\SwaggerClient-php\lib\Configuration.php" "%sdkfolder%\src\Aspose\CAD" /Y || goto :error
+
+xcopy "%tmpfolder%\SwaggerClient-php\README.md" "%sdkfolder%\README.md" /Y || goto :error
+xcopy "%tmpfolder%\SwaggerClient-php\composer.json" "%sdkfolder%\composer.json" /Y || goto :error

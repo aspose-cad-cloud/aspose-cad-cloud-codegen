@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -14,16 +15,17 @@ namespace Aspose.CAD.Cloud.Codegen.PostProcessor
         static void Main(string[] args)
         {
 //#if DEBUG
-//            args = new [] { @"C:\Work\ASP\!Cloud\Aspose.CAD.Cloud.Codegen\spec\asposeforcloud_cad.json", @"c:\tmp\csharp\" };
+//            args = new [] { 
+//                @"C:\Users\User\Desktop\cloud\aspose-cad-cloud-codegen\spec\asposeforcloud_cad.json",
+//                @"c:\tmp\csharp" };
 //#endif
-
             if (args.Length < 2)
             {
                 Console.WriteLine("Usage: PostProcessor.exe <swagger JSON spec path> <swagger-codegen generated files folder>");
                 return;
             }
 
-            args[1] = args[1].Trim('\\') + '\\';
+            args[1] = args[1].Trim('\\');
             if (!Directory.Exists(args[1]))
             {
                 Directory.CreateDirectory(args[1]);
@@ -122,6 +124,10 @@ namespace Aspose.CAD.Cloud.Codegen.PostProcessor
                                         .OrderBy(x => x.Name == "CadApi.cs"))
             {
                 // public xxx options { get; set; }
+                if (file.FullName.EndsWith("ConvertRequest.cs"))
+                {
+                    
+                }
                 var code = Regex.Replace(File.ReadAllText(file.FullName), "^\\s*public (.*) (.*?) { get;.*$", match =>
                 {
                     propertyUsages.Add(match.Groups[2].Value);
@@ -148,7 +154,7 @@ namespace Aspose.CAD.Cloud.Codegen.PostProcessor
             {
                 case null: throw new ArgumentNullException(nameof(input));
                 case "": throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input));
-                default: return input.First().ToString().ToUpper() + input.Substring(1);
+                default: return input.First().ToString().ToUpper(new CultureInfo("en-US")) + input[1..];
             }
         }
     }

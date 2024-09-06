@@ -12,6 +12,8 @@ Tools\SplitRubyCodeFile.exe %tmpfolder%\lib\aspose_cad_cloud\api\cad_api.rb %tmp
 del /S /Q "%sdkfolder%\lib" || goto :error
 xcopy "%tmpfolder%\lib" "%sdkfolder%\lib\" /E /Y || goto :error
 
+xcopy "%tmpfolder%\README.md" "%sdkfolder%\README.md" /E /Y || goto :error
+
 goto :EOF
 
 :error

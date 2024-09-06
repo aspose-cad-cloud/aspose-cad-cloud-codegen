@@ -21,3 +21,6 @@ if exist "%sdkfolder%\src\Aspose.CAD.Cloud.Sdk\Api\CadApi.cs" del /S /Q "%sdkfol
 xcopy "%tmpfolder%\docs" "%sdkfolder%\docs" /E /Y || goto :error
 xcopy "%tmpfolder%\src\Aspose.CAD.Cloud.Sdk\Model" "%sdkfolder%\src\Aspose.CAD.Cloud.Sdk\Model" /E /Y || goto :error
 xcopy "%tmpfolder%\src\Aspose.CAD.Cloud.Sdk\Api" "%sdkfolder%\src\Aspose.CAD.Cloud.Sdk\Api" /E /Y || goto :error
+
+xcopy "%tmpfolder%\src\Aspose.CAD.Cloud.Sdk\Aspose.CAD.Cloud.Sdk.csproj" "%sdkfolder%\src\Aspose.CAD.Cloud.Sdk\Aspose.CAD.Cloud.Sdk.csproj" /E /Y || goto :error
+xcopy "%tmpfolder%\src\Aspose.CAD.Cloud.Sdk\Aspose.CAD.Cloud.Sdk.nuspec" "%sdkfolder%\Aspose.CAD.Cloud.Sdk.nuspec" /E /Y || goto :error
